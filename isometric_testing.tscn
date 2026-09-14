@@ -21,12 +21,13 @@ transform = Transform3D(0.7071068, -0.45451948, 0.54167527, 0, 0.7660445, 0.6427
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1641713715]
 shape = SubResource("CapsuleShape3D_pakj4")
 
-[node name="MovementManager" type="Node3D" parent="CharacterBody3D" unique_id=453361689 node_paths=PackedStringArray("playerBody", "playerRig")]
+[node name="MovementManager" type="Node3D" parent="CharacterBody3D" unique_id=453361689 node_paths=PackedStringArray("playerBody", "playerRig", "weaponManager")]
 script = ExtResource("2_03h0e")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
 PLAYER_SPEED = 250.0
 rollSpeed = 400.0
+weaponManager = NodePath("../WeaponManager")
 rollTime = 0.8
 
 [node name="WeaponManager" type="Node3D" parent="CharacterBody3D" unique_id=1999383703 node_paths=PackedStringArray("playerBody", "playerRig", "movementManager")]
@@ -34,6 +35,7 @@ script = ExtResource("3_yf8x1")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
 movementManager = NodePath("../MovementManager")
+successiveAttackRecoveryTime = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1665459011]
 transform = Transform3D(1, 0, 0, 0, 0.025241971, 0.99968135, 0, -0.99968135, 0.025241971, 0, 8.480473, 0)
@@ -45,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6069078, 0, -8.047509)
 
 [node name="Floor wood2" parent="Node3D" unique_id=662122110 instance=ExtResource("3_w8o0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3815837, 0, -8.047509)
+metadata/_edit_group_ = true
 
 [node name="Wall1" parent="." unique_id=1515323171 instance=ExtResource("4_lcels")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.381437, 0, -12.84372)

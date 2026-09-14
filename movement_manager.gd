@@ -1,5 +1,6 @@
 extends Node3D
 class_name MovementManager
+
 @export var playerBody: CharacterBody3D
 @export var playerRig: Node3D
 @export var PLAYER_SPEED: float = 5
@@ -9,6 +10,7 @@ var directionVector: Vector3 = Vector3.ZERO
 var rollDirection: Vector3 = Vector3.ZERO
 
 @export var rollSpeed: float = 500
+@export var weaponManager: WeaponManager
 ##How many times faster the animation should play, directly correlates to rill time
 var rollAnimationSpeedFactor = 1
 ##This is the time it takes for the roll animation to play
@@ -53,7 +55,7 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta: float) -> void:
 	##print(movementIsLocked)
-	if !movementIsLocked:
+	if !movementIsLocked and stateMachine.get_current_node() != "attackSM":
 		directionVector = Vector3.ZERO
 		if Input.is_action_pressed("up"):
 			directionVector.x -= 1
@@ -84,10 +86,7 @@ func _physics_process(delta: float) -> void:
 
 func movementCheck():
 	if !isRolling:
-		if directionVector.length() > 0.1:
-			isMoving = true
-		if directionVector.length() < 0.1:
-			isMoving = false
+		isMoving = playerBody.velocity.length() >= 3 
 	else:
 		isMoving = true
 
