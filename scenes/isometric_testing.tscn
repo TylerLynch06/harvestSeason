@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ds3e2r4hf1fy3"]
 
-[ext_resource type="PackedScene" uid="uid://c117onynb4u7h" path="res://hero_warrior.tscn" id="1_txwh7"]
-[ext_resource type="Script" uid="uid://38s5c4fsg1ji" path="res://movement_manager.gd" id="2_03h0e"]
-[ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="3_w8o0e"]
-[ext_resource type="Script" uid="uid://bdm2yei07f808" path="res://weapon_manager.gd" id="3_yf8x1"]
-[ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="4_lcels"]
+[ext_resource type="PackedScene" uid="uid://c117onynb4u7h" path="res://scenes/hero_warrior.tscn" id="1_qg4wy"]
+[ext_resource type="Script" uid="uid://38s5c4fsg1ji" path="res://scripts/movement_manager.gd" id="2_wn16x"]
+[ext_resource type="Script" uid="uid://bdm2yei07f808" path="res://scripts/weapon_manager.gd" id="3_evdjr"]
+[ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="4_63vh6"]
+[ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="5_56sqr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pakj4"]
 
@@ -16,13 +16,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23946738, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1148544753]
 transform = Transform3D(0.7071068, -0.45451948, 0.54167527, 0, 0.7660445, 0.64278764, -0.7071068, -0.45451948, 0.54167527, 5, 5, 5)
 
-[node name="hero_warrior" parent="CharacterBody3D" unique_id=186290468 instance=ExtResource("1_txwh7")]
+[node name="hero_warrior" parent="CharacterBody3D" unique_id=186290468 instance=ExtResource("1_qg4wy")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1641713715]
 shape = SubResource("CapsuleShape3D_pakj4")
 
 [node name="MovementManager" type="Node3D" parent="CharacterBody3D" unique_id=453361689 node_paths=PackedStringArray("playerBody", "playerRig", "weaponManager")]
-script = ExtResource("2_03h0e")
+script = ExtResource("2_wn16x")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
 PLAYER_SPEED = 250.0
@@ -31,7 +31,7 @@ weaponManager = NodePath("../WeaponManager")
 rollTime = 0.8
 
 [node name="WeaponManager" type="Node3D" parent="CharacterBody3D" unique_id=1999383703 node_paths=PackedStringArray("playerBody", "playerRig", "movementManager")]
-script = ExtResource("3_yf8x1")
+script = ExtResource("3_evdjr")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
 movementManager = NodePath("../MovementManager")
@@ -42,15 +42,15 @@ transform = Transform3D(1, 0, 0, 0, 0.025241971, 0.99968135, 0, -0.99968135, 0.0
 
 [node name="Node3D" type="Node3D" parent="." unique_id=13703385]
 
-[node name="Floor wood1" parent="Node3D" unique_id=1250639630 instance=ExtResource("3_w8o0e")]
+[node name="Floor wood1" parent="Node3D" unique_id=1250639630 instance=ExtResource("4_63vh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6069078, 0, -8.047509)
 
-[node name="Floor wood2" parent="Node3D" unique_id=662122110 instance=ExtResource("3_w8o0e")]
+[node name="Floor wood2" parent="Node3D" unique_id=662122110 instance=ExtResource("4_63vh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3815837, 0, -8.047509)
 metadata/_edit_group_ = true
 
-[node name="Wall1" parent="." unique_id=1515323171 instance=ExtResource("4_lcels")]
+[node name="Wall1" parent="." unique_id=1515323171 instance=ExtResource("5_56sqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.381437, 0, -12.84372)
 
-[node name="Wall2" parent="." unique_id=1472453593 instance=ExtResource("4_lcels")]
+[node name="Wall2" parent="." unique_id=1472453593 instance=ExtResource("5_56sqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.381437, 0, -12.84372)
