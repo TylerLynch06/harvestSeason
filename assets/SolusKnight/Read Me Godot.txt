@@ -1,0 +1,19 @@
+create within Godot's project a folder called "Assets" and another called "Models" inside it. 
+The structure should look like this "Assets / Models /"
+
+Drag "Solus - The knight.dae" into the Models folder. Godot will import the 
+"dae" file and create the material for the model.
+
+Edit the material. In "Albedo" load the texture "knight_color.png". 
+In "Normal Map" activate the checkbox and load the texture "knight_normal.png"
+
+
+In "Metallic" load the texture "knight_occlusion metal roughness.png" select the blue texture channel. 
+In "Roughness" load the texture "knight_occlusion metal roughness.png" select the green texture channel.
+In "Ambient Occlusion" activate the checkbox and load the texture "krita occlusion metal roughness.png" 
+select the Red texture channel.
+
+In the inspector of Godot, look for the diskette symbol, click on it and "save" to save the material
+
+two clicks on "Solus - The knight.dae" and choose the option "new inherited". 
+This will clone your model and work on a copy. That's it, edit and save the copy as you wish.
