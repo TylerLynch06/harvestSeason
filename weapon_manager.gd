@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name WeaponManager
 @export var playerBody: CharacterBody3D
 @export var playerRig: Node3D
 @onready var animTree: AnimationTree = playerRig.get_node("AnimationTree")
@@ -7,12 +7,13 @@ extends Node3D
 ##this is a nested statemachine, not sure how to ready it by default
 @onready var attackStateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/attackSM/playback"]
 @export var movementManager: MovementManager
+
 var isAttacking = false
 var attackEnded = true
 #@export var attackDuration = 0.8
 #var attackTimer = 0
 ##after an attack ends anmd recovery begins, a user has this long to attack again to continue their combo
-@export var successiveAttackRecoveryTime = 0.5
+@export var successiveAttackRecoveryTime = 2
 var successiveAttackTimer = successiveAttackRecoveryTime
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,12 +25,10 @@ func _process(delta: float) -> void:
 	if isAttacking:
 		if !movementManager.movementIsLocked:
 			movementManager.lockMovement()
-		#attackTimer -= delta
-		#if attackTimer <= 0:
+		else:
+			successiveAttackTimer = successiveAttackRecoveryTime
 		if attackStateMachine.get_current_node() == "End":
-			attackEnded = true
 			isAttacking = false
-			movementManager.unlockMovement()
 			#attackTimer = attackDuration
 		if attackStateMachine.get_current_node() == "recovery1" or attackStateMachine.get_current_node() == "recovery2":
 			successiveAttackTimer -= delta
@@ -37,13 +36,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb"):
 		##lockMovement returns false if rolling
 		if movementManager.lockMovement():
-			successiveAttackTimer = successiveAttackRecoveryTime
-			stateMachine.travel("idle")
+			if !isAttacking:
+				successiveAttackTimer = successiveAttackRecoveryTime
 			stateMachine.travel("attackSM")
-			print(stateMachine.get_current_node()," ", attackStateMachine.get_current_node() )
+			##print(stateMachine.get_current_node()," ", attackStateMachine.get_current_node() )
 			##playerAnimationPlayer.speed_scale = attackSpeedScale
 			isAttacking = true
-			attackEnded = false
 			
 		##---COMBO STATES---
 		if successiveAttackTimer > 0:
@@ -54,10 +52,10 @@ func _process(delta: float) -> void:
 				attackStateMachine.travel("attack3")
 				successiveAttackTimer = successiveAttackRecoveryTime
 
-		#if isAttacking:
-			#stateMachine.travel("attack2")
-		#elif stateMachine.get_current_node() == "attack2":
-			#stateMachine.travel("attack3")
+	##Gross statement to fix walking interrupting moves
+	if !isAttacking and movementManager.movementIsLocked and attackStateMachine.get_current_node() != "recovery1" and attackStateMachine.get_current_node() != "recovery2":
+		attackStateMachine.travel("End")
+		movementManager.unlockMovement()
 
 
 
