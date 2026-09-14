@@ -1,0 +1,13 @@
+﻿LOW-POLY DUNGEON PACK - ASSET LICENSE  ·  Woshi Gang Studio
+==========================================================
+Non-exclusive, worldwide, royalty-free license.
+YOU MAY: use in unlimited personal AND commercial games/projects (including games
+you sell); modify, retexture, recolor, rig, and combine with your own work; client work.
+YOU MAY NOT: resell/redistribute/give away the models on their own (as a pack,
+template, or bundle), modified or not; claim authorship of the originals; include
+them in AI / machine-learning training datasets.
+No attribution required (a credit to 'Woshi Gang Studio' is appreciated).
+Provided 'as is', no warranty. FREE tier covered by these same terms.
+Original models & animations made with my own procedural Blender tools - no
+third-party AI model generators, nothing scraped or trained on other artists' work.
+(c) 2026 Woshi Gang Studio. All rights reserved.
