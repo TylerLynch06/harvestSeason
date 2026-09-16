@@ -1,41 +1,13 @@
 [gd_scene format=3 uid="uid://ds3e2r4hf1fy3"]
 
-[ext_resource type="PackedScene" uid="uid://c117onynb4u7h" path="res://scenes/hero_warrior.tscn" id="1_qg4wy"]
-[ext_resource type="Script" uid="uid://38s5c4fsg1ji" path="res://scripts/movement_manager.gd" id="2_qg4wy"]
-[ext_resource type="Script" uid="uid://bdm2yei07f808" path="res://scripts/weapon_manager.gd" id="3_wn16x"]
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_7bb16"]
 [ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="4_63vh6"]
 [ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="5_56sqr"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pakj4"]
-
 [node name="Node3D" type="Node3D" unique_id=558410108]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1395081925]
+[node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_7bb16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23946738, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1148544753]
-transform = Transform3D(0.7071068, -0.45451948, 0.54167527, 0, 0.7660445, 0.64278764, -0.7071068, -0.45451948, 0.54167527, 5, 5, 5)
-
-[node name="hero_warrior" parent="CharacterBody3D" unique_id=186290468 instance=ExtResource("1_qg4wy")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1641713715]
-shape = SubResource("CapsuleShape3D_pakj4")
-
-[node name="MovementManager" type="Node3D" parent="CharacterBody3D" unique_id=453361689 node_paths=PackedStringArray("playerBody", "playerRig", "weaponManager")]
-script = ExtResource("2_qg4wy")
-playerBody = NodePath("..")
-playerRig = NodePath("../hero_warrior")
-PLAYER_SPEED = 250.0
-rollSpeed = 400.0
-weaponManager = NodePath("../WeaponManager")
-rollTime = 0.8
-
-[node name="WeaponManager" type="Node3D" parent="CharacterBody3D" unique_id=1999383703 node_paths=PackedStringArray("playerBody", "playerRig", "movementManager")]
-script = ExtResource("3_wn16x")
-playerBody = NodePath("..")
-playerRig = NodePath("../hero_warrior")
-movementManager = NodePath("../MovementManager")
-postAttackMovementLockdownTime = 0.1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1665459011]
 transform = Transform3D(1, 0, 0, 0, 0.025241971, 0.99968135, 0, -0.99968135, 0.025241971, 0, 8.480473, 0)
