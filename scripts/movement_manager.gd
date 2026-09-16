@@ -39,12 +39,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(weaponManager.isAttacking)
 	if !movementIsLocked and !isRolling:
 		rollCooldownTimer -= delta
-		if isMoving:
+		if isMoving and !weaponManager.isAttacking:
 			stateMachine.travel("run")
 			stoppedMoving = false
-		elif !isMoving and !stoppedMoving:
+		elif !isMoving and !stoppedMoving and !weaponManager.isAttacking:
 			stateMachine.travel("idle")
 			stoppedMoving = true
 	elif isRolling:
@@ -55,7 +56,7 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta: float) -> void:
 	##print(movementIsLocked)
-	if !movementIsLocked and stateMachine.get_current_node() != "attackSM":
+	if !movementIsLocked:
 		directionVector = Vector3.ZERO
 		if Input.is_action_pressed("up"):
 			directionVector.x -= 1

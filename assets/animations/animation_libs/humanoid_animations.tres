@@ -1,0 +1,16 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://btt2oohy0otdf"]
+
+[ext_resource type="Animation" uid="uid://q8svwj4ko1ef" path="res://assets/animations/res_files/A_TPose.res" id="1_aj1ii"]
+[ext_resource type="Animation" uid="uid://0s074vvcy1b7" path="res://assets/animations/res_files/Jog_Fwd.res" id="2_xo6b7"]
+[ext_resource type="Animation" uid="uid://erqv8cpks646" path="res://assets/animations/res_files/Zombie_Idle.res" id="3_ok3mb"]
+[ext_resource type="Animation" uid="uid://dcwlga7v8v40d" path="res://assets/animations/res_files/Zombie_Scratch.res" id="4_2a5et"]
+[ext_resource type="Animation" uid="uid://dyxq4glt58y4w" path="res://assets/animations/res_files/Zombie_Walk_Fwd.res" id="5_hflgx"]
+
+[resource]
+_data = {
+&"A_TPose": ExtResource("1_aj1ii"),
+&"Jog_Fwd": ExtResource("2_xo6b7"),
+&"Zombie_Idle": ExtResource("3_ok3mb"),
+&"Zombie_Scratch": ExtResource("4_2a5et"),
+&"Zombie_Walk_Fwd": ExtResource("5_hflgx")
+}

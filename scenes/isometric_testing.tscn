@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://ds3e2r4hf1fy3"]
 
-[ext_resource type="PackedScene" uid="uid://b2v4a7cl1gdm5" path="res://scenes/hero_warrior.tscn" id="1_qg4wy"]
+[ext_resource type="PackedScene" uid="uid://c117onynb4u7h" path="res://scenes/hero_warrior.tscn" id="1_qg4wy"]
 [ext_resource type="Script" uid="uid://38s5c4fsg1ji" path="res://scripts/movement_manager.gd" id="2_qg4wy"]
 [ext_resource type="Script" uid="uid://bdm2yei07f808" path="res://scripts/weapon_manager.gd" id="3_wn16x"]
 [ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="4_63vh6"]
 [ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="5_56sqr"]
-[ext_resource type="PackedScene" uid="uid://dhs0wc6itq172" path="res://imp.tscn" id="6_wn16x"]
-[ext_resource type="PackedScene" uid="uid://52dp7cfisy08" path="res://assets/Bestiary - Dungeon Monsters Kit[Standard]/Exports/GLB (Godot-Unreal)/Puglin.glb" id="7_63vh6"]
-[ext_resource type="PackedScene" uid="uid://cxeeigcwx2i6x" path="res://assets/CarnivorousPlant_FREE/CarnivorousPlant_FREE.fbx" id="8_56sqr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pakj4"]
 
@@ -38,8 +35,7 @@ script = ExtResource("3_wn16x")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
 movementManager = NodePath("../MovementManager")
-postAttackMovementLockdownTime = 5.0
-successiveAttackRecoveryTime = 1
+postAttackMovementLockdownTime = 0.1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1665459011]
 transform = Transform3D(1, 0, 0, 0, 0.025241971, 0.99968135, 0, -0.99968135, 0.025241971, 0, 8.480473, 0)
@@ -58,18 +54,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.381437, 0, -12.84372)
 
 [node name="Wall2" parent="." unique_id=1472453593 instance=ExtResource("5_56sqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.381437, 0, -12.84372)
-
-[node name="Imp2" parent="." unique_id=1011170281 instance=ExtResource("6_wn16x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6899066, 0, -2.3629858)
-
-[node name="Imp" parent="." unique_id=1134127978 instance=ExtResource("6_wn16x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3449533, 0, -2.239244)
-
-[node name="Imp3" parent="." unique_id=1050956093 instance=ExtResource("6_wn16x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0145795345, 0, -2.239244)
-
-[node name="Puglin" parent="." unique_id=1549754995 instance=ExtResource("7_63vh6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4381127, 0, 0.56009173)
-
-[node name="CarnivorousPlant_FREE" parent="." unique_id=1990085964 instance=ExtResource("8_56sqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4659433, 0, 0.56009173)
