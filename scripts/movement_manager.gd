@@ -39,14 +39,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(weaponManager.isAttacking)
+	animTree.set("parameters/conditions/is_rolling", isRolling)
+	animTree.set("parameters/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
+	animTree.set("parameters/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
+
 	if !movementIsLocked and !isRolling:
 		rollCooldownTimer -= delta
 		if isMoving and !weaponManager.isAttacking:
-			stateMachine.travel("run")
+			#stateMachine.travel("run")
 			stoppedMoving = false
 		elif !isMoving and !stoppedMoving and !weaponManager.isAttacking:
-			stateMachine.travel("idle")
+			#stateMachine.travel("idle")
 			stoppedMoving = true
 	elif isRolling:
 		if rollTimer > 0:
@@ -77,7 +80,6 @@ func _physics_process(delta: float) -> void:
 		##LOCK DIRECTION ON ROLL
 		if Input.is_action_pressed("space") and canRoll():
 			isRolling = true	
-			stateMachine.travel("roll")
 
 		movementCheck()
 		movePlayer(delta)
@@ -125,4 +127,4 @@ func endRoll():
 	rollCooldownTimer = rollCooldown
 	isRolling = false
 	rollTimer = rollTime	
-	stateMachine.travel("idle")
+	#stateMachine.travel("idle")

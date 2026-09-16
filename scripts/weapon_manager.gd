@@ -5,65 +5,49 @@ class_name WeaponManager
 @onready var animTree: AnimationTree = playerRig.get_node("AnimationTree")
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 @export var movementManager: MovementManager
-@export var postAttackMovementLockdownTime: float
-var postAttackMovementLockdownTimer: float = postAttackMovementLockdownTime
-var isPostAttack: bool = false
+@export var comboWindowTime : float
+var comboWindowTimer: float
+#@export var postAttackMovementLockdownTime: float
+#var postAttackMovementLockdownTimer: float = postAttackMovementLockdownTime
 
 var isAttacking = false
-var attackEnded = true
-#@export var attackDuration = 0.8
-#var attackTimer = 0
-##after an attack ends anmd recovery begins, a user has this long to attack again to continue their combo
-@export var successiveAttackRecoveryTime = 2
-var successiveAttackTimer = successiveAttackRecoveryTime
+##ugly ugly ugly
+var comboState = 0
+var inCombo = false
+
 # Called when the node enters the scene tree for the first time.
+
+##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
 func _ready() -> void:
-	animTree.set("parameters/conditions/is_attacking", isAttacking)
-	process_priority = -2
-	postAttackMovementLockdownTimer = 0
 	pass
+	#postAttackMovementLockdownTimer = 0
 	#attackTimer = attackDuration
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#if isPostAttack:
-		#print(postAttackMovementLockdownTimer)
-	postAttackMovementLockdownTimer -= delta
-	if postAttackMovementLockdownTimer <= 0:
-		movementManager.unlockMovement()
-		isPostAttack = false
-	if isAttacking:
-		movementManager.lockMovement()
-		if stateMachine.get_current_node() != "idle":
-			successiveAttackTimer = successiveAttackRecoveryTime
-		elif stateMachine.get_current_node() == "idle" and postAttackMovementLockdownTimer < 0:
-			isAttacking = false
-			movementManager.unlockMovement()
-			#attackTimer = attackDuration
-			stateMachine.get_current_node() == "idle"
-			successiveAttackTimer -= delta
-		
-	if Input.is_action_just_pressed("lmb"):
-		##lockMovement returns false if rolling
-		if movementManager.lockMovement():
-			if !isAttacking:
-				successiveAttackTimer = successiveAttackRecoveryTime
-			stateMachine.travel("attack_1")
-			postAttackMovementLockdownTimer = postAttackMovementLockdownTime
-			isAttacking = true
-			
-		##---COMBO STATES---
-		if successiveAttackTimer > 0:
-			if stateMachine.get_current_node() == "recovery1":
-				stateMachine.travel("attack_2")
-				successiveAttackTimer = successiveAttackRecoveryTime
-			if stateMachine.get_current_node() == "recovery2":
-				stateMachine.travel("attack_3")
-				successiveAttackTimer = successiveAttackRecoveryTime
-
-
-
-
-		
-
+func _process(delta: float):
+	comboWindowTimer -= delta
+	if comboWindowTimer <= 0:
+		comboWindowTimer = 0
+		if comboState!=0:
+			print("RESET COMBO STATE")
+		comboState = 0
+	animTree.advance_expression_base_node = self.get_path()
 	
+func attack():
+	if !isAttacking:
+		isAttacking = true
+		comboState = comboState % 3
+		movementManager.lockMovement()
+	print(comboState,isAttacking)
+	#isAttacking = false
+	
+func canAttack():
+	return !isAttacking
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	print(anim_name) # Replace with function body.
+	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C"]:
+		print("changed combo state")
+		isAttacking = false
+		comboState += 1
+		movementManager.unlockMovement()
+		comboWindowTimer = comboWindowTime
