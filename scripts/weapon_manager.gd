@@ -11,13 +11,14 @@ var comboWindowTimer: float
 #var postAttackMovementLockdownTimer: float = postAttackMovementLockdownTime
 
 var isAttacking = false
-##ugly ugly ugly
 var comboState = 0
 var inCombo = false
 
 # Called when the node enters the scene tree for the first time.
 
 ##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
+##-----DO NOT TOUCH SPEAK TO TYLER BEFORE TOUCHING-----
+##-----FRAGILE CODE-----
 func _ready() -> void:
 	pass
 	#postAttackMovementLockdownTimer = 0
@@ -45,7 +46,7 @@ func canAttack():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	print(anim_name) # Replace with function body.
-	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C"]:
+	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C","UAL/sword_heavy_1"]:
 		print("changed combo state")
 		isAttacking = false
 		comboState += 1
