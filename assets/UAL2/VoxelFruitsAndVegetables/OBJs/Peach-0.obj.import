@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cda7ekq1h42um"
+path="res://.godot/imported/Peach-0.obj-65ec1961d42b111e1d8d106db9ba2de1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Peach-0.obj-65ec1961d42b111e1d8d106db9ba2de1.mesh"]
+
+source_file="res://assets/UAL2/VoxelFruitsAndVegetables/OBJs/Peach-0.obj"
+dest_files=["res://.godot/imported/Peach-0.obj-65ec1961d42b111e1d8d106db9ba2de1.mesh", "res://.godot/imported/Peach-0.obj-65ec1961d42b111e1d8d106db9ba2de1.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://demppbedt86hb"
+path="res://.godot/imported/RadishRed-0.obj-0aa7e9064c707617f6641eb1b4b3c26b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RadishRed-0.obj-0aa7e9064c707617f6641eb1b4b3c26b.mesh"]
+
+source_file="res://VoxelFruitsAndVegetables/OBJs/RadishRed-0.obj"
+dest_files=["res://.godot/imported/RadishRed-0.obj-0aa7e9064c707617f6641eb1b4b3c26b.mesh", "res://.godot/imported/RadishRed-0.obj-0aa7e9064c707617f6641eb1b4b3c26b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

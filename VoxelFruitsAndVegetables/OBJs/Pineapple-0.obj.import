@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6505bpd75ydg"
+path="res://.godot/imported/Pineapple-0.obj-6f456352c2076a158954b8d67ac8cf9e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pineapple-0.obj-6f456352c2076a158954b8d67ac8cf9e.mesh"]
+
+source_file="res://VoxelFruitsAndVegetables/OBJs/Pineapple-0.obj"
+dest_files=["res://.godot/imported/Pineapple-0.obj-6f456352c2076a158954b8d67ac8cf9e.mesh", "res://.godot/imported/Pineapple-0.obj-6f456352c2076a158954b8d67ac8cf9e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
