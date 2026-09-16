@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bs3oh8na6axhx"
+path="res://.godot/imported/Watermelon-0.obj-a26c152b29e85f40dd7f6ba2b2ef7739.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Watermelon-0.obj-a26c152b29e85f40dd7f6ba2b2ef7739.mesh"]
+
+source_file="res://assets/VoxelFruitsAndVegetables/OBJs/Watermelon-0.obj"
+dest_files=["res://.godot/imported/Watermelon-0.obj-a26c152b29e85f40dd7f6ba2b2ef7739.mesh", "res://.godot/imported/Watermelon-0.obj-a26c152b29e85f40dd7f6ba2b2ef7739.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

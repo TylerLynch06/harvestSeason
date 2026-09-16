@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dkfdpyrd73cfj"
+path="res://.godot/imported/Fig-0.obj-ee93693c6383b34f27c08866ab232625.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Fig-0.obj-ee93693c6383b34f27c08866ab232625.mesh"]
+
+source_file="res://VoxelFruitsAndVegetables/OBJs/Fig-0.obj"
+dest_files=["res://.godot/imported/Fig-0.obj-ee93693c6383b34f27c08866ab232625.mesh", "res://.godot/imported/Fig-0.obj-ee93693c6383b34f27c08866ab232625.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -7,6 +7,9 @@ class_name WeaponManager
 ##this is a nested statemachine, not sure how to ready it by default
 @onready var attackStateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/attackSM/playback"]
 @export var movementManager: MovementManager
+@export var postAttackMovementLockdownTime: float
+var postAttackMovementLockdownTimer: float = postAttackMovementLockdownTime
+var isPostAttack: bool = false
 
 var isAttacking = false
 var attackEnded = true
@@ -17,11 +20,18 @@ var attackEnded = true
 var successiveAttackTimer = successiveAttackRecoveryTime
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	postAttackMovementLockdownTimer = 0
 	pass
 	#attackTimer = attackDuration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if isPostAttack:
+		postAttackMovementLockdownTimer -= delta
+		if postAttackMovementLockdownTimer <= 0:
+			print(	"unlockedmovement")
+			movementManager.unlockMovement()
+			isPostAttack = false
 	if isAttacking:
 		if !movementManager.movementIsLocked:
 			movementManager.lockMovement()
@@ -54,8 +64,9 @@ func _process(delta: float) -> void:
 
 	##Gross statement to fix walking interrupting moves
 	if !isAttacking and movementManager.movementIsLocked and attackStateMachine.get_current_node() != "recovery1" and attackStateMachine.get_current_node() != "recovery2":
-		attackStateMachine.travel("End")
-		movementManager.unlockMovement()
+			attackStateMachine.travel("End")
+			isPostAttack = true
+			postAttackMovementLockdownTimer = postAttackMovementLockdownTime
 
 
 
