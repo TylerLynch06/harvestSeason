@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeedFactor)
 	moveSpeed = baseMoveSpeed * moveSpeedFactor
 	attackCooldownTimer -= delta
+	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
 
@@ -40,13 +41,12 @@ func _physics_process(delta: float) -> void:
 	var pos = getNextMovementPosition()
 	dirVector = calculateDirVector(pos)
 	rotateToTarget(pos,delta)
-	if !playerInRange():
-		isAttacking = false
+	if !playerInRange() and !isAttacking:
 		moveToPlayer(pos,delta)
 	else:
-		if attackCooldownTimer <= 0:
+		if attackCooldownTimer <= 0 and !isAttacking:
+			print("attack")
 			attack()
-			attackCooldownTimer = attackCooldown
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
