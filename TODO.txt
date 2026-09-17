@@ -13,8 +13,8 @@ Enemies -
 	create enemy bosses
 	
 	projectiles - 
-		collision
-		destroy self on hit
+		collision [Tyler]
+		destroy self on hit [Tyler]
 	
 Player - [Tyler]
 	player animations [Tyler]

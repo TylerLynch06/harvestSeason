@@ -27,13 +27,13 @@ func playerInRange():
 			return true
 	
 func moveToPlayer(_position,delta):
-	
 	##print(dirVector)
 	velocity = relativeRigForward * moveSpeed * delta
 	move_and_slide()
 
 func animation_finished(anim_name):
 	print(anim_name)
+	attackCooldownTimer = attackCooldown
 	if isAttacking:
 		isAttacking = false
 		
