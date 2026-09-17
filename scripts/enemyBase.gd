@@ -13,7 +13,8 @@ var moveSpeed: float = baseMoveSpeed
 ##we stop rotating if playing angle within [-criticalAngle,criticalAngle]
 @export var criticalAngle: float
 @export var animPlayer: AnimationPlayer
-var attackCooldownTimer: float
+var isAttacking: bool = false
+var attackCooldownTimer: float = 0
 var player : CharacterBody3D
 var dirVector: Vector3 = Vector3.ZERO
 
@@ -21,7 +22,6 @@ var dirVector: Vector3 = Vector3.ZERO
 func _ready() -> void:
 	turnSpeed = deg_to_rad(turnSpeed)
 	criticalAngle = deg_to_rad(criticalAngle)
-	print("RUNNING")
 	print(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0]
 	animTree.advance_expression_base_node = get_path()
@@ -29,22 +29,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	animTree.set("parameters/BlendTree/TimeScale/scale", moveSpeedFactor)
 	moveSpeed = baseMoveSpeed * moveSpeedFactor
-	if attackCooldownTimer > 0:
+	attackCooldownTimer -= delta
+	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
-	animPlayer.speed_scale = 50
 
 func _physics_process(delta: float) -> void:
-	if !playerInRange():
-		##CONSIDER REFORMATTING, THIS IS QUITE INEFFICIENT
-		##CALCUALTES PATH EVERY FRAME
-		var pos = getNextMovementPosition()
+	var pos = getNextMovementPosition()
+	dirVector = calculateDirVector(pos)
+	rotateToTarget(pos,delta)
+	if !playerInRange() and !isAttacking:
 		moveToPlayer(pos,delta)
-		rotateToTarget(pos,delta)
 	else:
-		if attackCooldownTimer < 0:
+		if attackCooldownTimer <= 0:
 			attack()
-			attackCooldown = attackCooldownTimer
-	
+			attackCooldownTimer = attackCooldown
+
+func calculateDirVector(_position):
+	return (_position - position).normalized()
+
 func getNextMovementPosition():
 	navigationAgent.target_position = player.position 
 	return navigationAgent.get_next_path_position()
