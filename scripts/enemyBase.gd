@@ -18,6 +18,7 @@ var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
 var dirVector: Vector3 = Vector3.ZERO
+var relativeRigForward: Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +40,8 @@ func _physics_process(delta: float) -> void:
 	var pos = getNextMovementPosition()
 	dirVector = calculateDirVector(pos)
 	rotateToTarget(pos,delta)
-	if !playerInRange() and !isAttacking:
+	if !playerInRange():
+		isAttacking = false
 		moveToPlayer(pos,delta)
 	else:
 		if attackCooldownTimer <= 0:
@@ -59,6 +61,7 @@ func rotateToTarget(pos, delta):
 		return
 	##Forward vector of the pivot
 	var forward = -pivot.global_transform.basis.z.normalized()
+	relativeRigForward = forward
 	var targetHeading = atan2(flatDir.x, flatDir.z)
 	var currentHeading = atan2(forward.x, forward.z)
 	##If angle spills over pi, it goes to -pi

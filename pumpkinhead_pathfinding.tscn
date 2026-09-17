@@ -1,8 +1,7 @@
 [gd_scene format=4 uid="uid://dui5ym8xpdo2g"]
 
-[ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="2_bwhib"]
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="3_lercn"]
-[ext_resource type="PackedScene" uid="uid://bydr511lxxoqc" path="res://scenes/pumpking.tscn" id="3_os8pf"]
+[ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)
@@ -94,7 +93,7 @@ geometry_source_geometry_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=344648526]
 environment = SubResource("Environment_sbtqg")
 
-[node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("2_bwhib")]
+[node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13807774, 9.536743e-07, -1.4460621)
 moveSpeedFactor = 1.5
 turnSpeed = 180.0
@@ -134,9 +133,5 @@ navigation_mesh = SubResource("NavigationMesh_7pw6a")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=674982492]
 transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.11313336, 0, 14.105721, 23.22163)
 
-[node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("3_lercn")]
+[node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("2_cq08y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.555323, 0, -0.25257993)
-
-[node name="BigPumpkin" parent="." unique_id=597271364 instance=ExtResource("3_os8pf")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.5664388, 0, 1.9057763)
-attackSpeedFactor = 2.0
