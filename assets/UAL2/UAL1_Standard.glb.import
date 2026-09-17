@@ -43,7 +43,7 @@ _subresources={
 "animations": {
 "A_TPose": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/A_TPose.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/A_TPose.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://q8svwj4ko1ef",
 "settings/loop_mode": 0,
@@ -2099,7 +2099,7 @@ _subresources={
 },
 "Crouch_Fwd": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Crouch_Fwd.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Crouch_Fwd.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://cmjq6ftxoauvy",
 "settings/loop_mode": 1,
@@ -4155,7 +4155,7 @@ _subresources={
 },
 "Crouch_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Crouch_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Crouch_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://c0a071omovaup",
 "settings/loop_mode": 1,
@@ -6211,7 +6211,7 @@ _subresources={
 },
 "Dance": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Dance.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Dance.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://jvu0mltoekxv",
 "settings/loop_mode": 1,
@@ -8267,7 +8267,7 @@ _subresources={
 },
 "Death01": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Death01.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Death01.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dnvbh4vwl3kqn",
 "settings/loop_mode": 0,
@@ -10323,7 +10323,7 @@ _subresources={
 },
 "Driving": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Driving.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Driving.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://kgfvdrdwn2pc",
 "settings/loop_mode": 1,
@@ -12379,7 +12379,7 @@ _subresources={
 },
 "Fixing_Kneeling": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Fixing_Kneeling.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Fixing_Kneeling.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://110nkgrxftmo",
 "settings/loop_mode": 0,
@@ -14435,7 +14435,7 @@ _subresources={
 },
 "Hit_Chest": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Hit_Chest.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Hit_Chest.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://b7oj76kqn0tvi",
 "settings/loop_mode": 0,
@@ -16491,7 +16491,7 @@ _subresources={
 },
 "Hit_Head": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Hit_Head.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Hit_Head.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://daiseke6by7u7",
 "settings/loop_mode": 0,
@@ -18547,7 +18547,7 @@ _subresources={
 },
 "Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dq7vd56lm5frx",
 "settings/loop_mode": 1,
@@ -20603,7 +20603,7 @@ _subresources={
 },
 "Idle_Talking": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Idle_Talking.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Idle_Talking.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://du1hd3j3nsx8h",
 "settings/loop_mode": 1,
@@ -22659,7 +22659,7 @@ _subresources={
 },
 "Idle_Torch": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Idle_Torch.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Idle_Torch.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://djvie018g0ota",
 "settings/loop_mode": 1,
@@ -24715,7 +24715,7 @@ _subresources={
 },
 "Interact": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Interact.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Interact.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://fxgpmxhsnm5m",
 "settings/loop_mode": 0,
@@ -26771,7 +26771,7 @@ _subresources={
 },
 "Jog_Fwd": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Jog_Fwd.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Jog_Fwd.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://0s074vvcy1b7",
 "settings/loop_mode": 1,
@@ -28827,7 +28827,7 @@ _subresources={
 },
 "Jump": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Jump.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Jump.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://p3ltjqjq6hse",
 "settings/loop_mode": 1,
@@ -30883,7 +30883,7 @@ _subresources={
 },
 "Jump_Land": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Jump_Land.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Jump_Land.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://oy0ul5yxquct",
 "settings/loop_mode": 0,
@@ -32939,7 +32939,7 @@ _subresources={
 },
 "Jump_Start": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Jump_Start.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Jump_Start.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://ba0bk7hthfcyu",
 "settings/loop_mode": 0,
@@ -34995,7 +34995,7 @@ _subresources={
 },
 "PickUp_Table": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/PickUp_Table.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/PickUp_Table.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bw58m51r5klbt",
 "settings/loop_mode": 0,
@@ -37051,7 +37051,7 @@ _subresources={
 },
 "Pistol_Aim_Down": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Aim_Down.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Aim_Down.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bhs34whrp6gni",
 "settings/loop_mode": 0,
@@ -39107,7 +39107,7 @@ _subresources={
 },
 "Pistol_Aim_Neutral": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Aim_Neutral.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Aim_Neutral.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bjyfhwf7leivn",
 "settings/loop_mode": 0,
@@ -41163,7 +41163,7 @@ _subresources={
 },
 "Pistol_Aim_Up": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Aim_Up.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Aim_Up.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dmeugsf2rgivi",
 "settings/loop_mode": 0,
@@ -43219,7 +43219,7 @@ _subresources={
 },
 "Pistol_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://3uw5gjln0ref",
 "settings/loop_mode": 1,
@@ -45275,7 +45275,7 @@ _subresources={
 },
 "Pistol_Reload": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Reload.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Reload.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bqrcdynlbdmkb",
 "settings/loop_mode": 0,
@@ -47331,7 +47331,7 @@ _subresources={
 },
 "Pistol_Shoot": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Pistol_Shoot.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Pistol_Shoot.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://3h6i4wfqm8il",
 "settings/loop_mode": 0,
@@ -49387,7 +49387,7 @@ _subresources={
 },
 "Punch_Cross": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Punch_Cross.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Punch_Cross.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dfj5rvs22rxq6",
 "settings/loop_mode": 0,
@@ -51443,7 +51443,7 @@ _subresources={
 },
 "Punch_Jab": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Punch_Jab.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Punch_Jab.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://djws1jd6msii0",
 "settings/loop_mode": 0,
@@ -53499,7 +53499,7 @@ _subresources={
 },
 "Push": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Push.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Push.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://c21x0ydc3q7x0",
 "settings/loop_mode": 1,
@@ -55555,7 +55555,7 @@ _subresources={
 },
 "Roll": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Roll.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Roll.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://d3qsdqnews5qg",
 "settings/loop_mode": 0,
@@ -57611,7 +57611,7 @@ _subresources={
 },
 "Sitting_Enter": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sitting_Enter.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sitting_Enter.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://ns02xmb64ox1",
 "settings/loop_mode": 0,
@@ -59667,7 +59667,7 @@ _subresources={
 },
 "Sitting_Exit": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sitting_Exit.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sitting_Exit.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dmqykb5hoc2mi",
 "settings/loop_mode": 0,
@@ -61723,7 +61723,7 @@ _subresources={
 },
 "Sitting_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sitting_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sitting_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://c1wluaves88vr",
 "settings/loop_mode": 1,
@@ -63779,7 +63779,7 @@ _subresources={
 },
 "Sitting_Talking": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sitting_Talking.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sitting_Talking.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://ws8npgrrg4eh",
 "settings/loop_mode": 1,
@@ -65835,7 +65835,7 @@ _subresources={
 },
 "Spell_Simple_Enter": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Spell_Simple_Enter.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Spell_Simple_Enter.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://c7o7vnwbh841j",
 "settings/loop_mode": 0,
@@ -67891,7 +67891,7 @@ _subresources={
 },
 "Spell_Simple_Exit": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Spell_Simple_Exit.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Spell_Simple_Exit.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://b7okndnunvbiy",
 "settings/loop_mode": 0,
@@ -69947,7 +69947,7 @@ _subresources={
 },
 "Spell_Simple_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Spell_Simple_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Spell_Simple_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://ctplgaubtjkaf",
 "settings/loop_mode": 1,
@@ -72003,7 +72003,7 @@ _subresources={
 },
 "Spell_Simple_Shoot": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Spell_Simple_Shoot.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Spell_Simple_Shoot.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://jgt8cctaq8ap",
 "settings/loop_mode": 0,
@@ -74059,7 +74059,7 @@ _subresources={
 },
 "Sprint": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sprint.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sprint.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bvvoqv077kdfj",
 "settings/loop_mode": 1,
@@ -76115,7 +76115,7 @@ _subresources={
 },
 "Swim_Fwd": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Swim_Fwd.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Swim_Fwd.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://drg5m8xq1dmmn",
 "settings/loop_mode": 1,
@@ -78171,7 +78171,7 @@ _subresources={
 },
 "Swim_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Swim_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Swim_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://q71qq6p4fkg3",
 "settings/loop_mode": 1,
@@ -80227,7 +80227,7 @@ _subresources={
 },
 "Sword_Attack": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sword_Attack.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Attack.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://d04flvr4wxy3l",
 "settings/loop_mode": 0,
@@ -82283,7 +82283,7 @@ _subresources={
 },
 "Sword_Idle": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Sword_Idle.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Idle.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://wsmid0heevgh",
 "settings/loop_mode": 0,
@@ -84339,7 +84339,7 @@ _subresources={
 },
 "Walk": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Walk.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Walk.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bswtln28rqyq8",
 "settings/loop_mode": 1,
@@ -86395,7 +86395,7 @@ _subresources={
 },
 "Walk_Formal": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/animations/Walk_Formal.res",
+"save_to_file/fallback_path": "res://assets/animations/res_files/Walk_Formal.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://ukwalketbhuh",
 "settings/loop_mode": 1,
