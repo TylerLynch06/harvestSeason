@@ -13,6 +13,7 @@ var moveSpeed: float = baseMoveSpeed
 ##we stop rotating if playing angle within [-criticalAngle,criticalAngle]
 @export var criticalAngle: float
 @export var animPlayer: AnimationPlayer
+@export var attackSpeedFactor: float = 1
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -27,7 +28,8 @@ func _ready() -> void:
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	animTree.set("parameters/BlendTree/TimeScale/scale", moveSpeedFactor)
+	animTree.set("parameters/move/TimeScale/scale", moveSpeedFactor)
+	animTree.set("parameters/attack/TimeScale/scale", attackSpeedFactor)
 	moveSpeed = baseMoveSpeed * moveSpeedFactor
 	attackCooldownTimer -= delta
 	if attackCooldownTimer < 0:

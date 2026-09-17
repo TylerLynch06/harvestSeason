@@ -16,8 +16,9 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
 func attack():
-	print("ATTACK")
-	isAttacking = true
+	if !isAttacking:
+		print("ATTACK")
+		isAttacking = true
 	
 func playerInRange():
 	var areas = attackRange.get_overlapping_areas()
