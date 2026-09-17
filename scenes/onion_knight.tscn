@@ -6748,10 +6748,11 @@ animPlayer = NodePath("AnimationPlayer")
 attackSpeedFactor = 1.5
 
 [node name="Armature" type="Node3D" parent="." unique_id=1844865695]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.6981929, 1.069776, -1.089083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6981929, 1.069776, -1.089083)
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="Armature" unique_id=668029262]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25524592, 0, 0)
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0762812e-10, 0.026856057, -3.1432843e-09)
@@ -6764,7 +6765,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.274193e-14, 0.53315985, -0.017297748)
 bones/1/enabled = true
 bones/1/position = Vector3(2.274193e-14, 0.53315985, -0.017297748)
-bones/1/rotation = Quaternion(-0.047315415, -0.18647797, 0.007366698, 0.9812915)
+bones/1/rotation = Quaternion(0.010290674, 0.058270313, 0.008853818, 0.9982085)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Head_end"
 bones/2/parent = 1
