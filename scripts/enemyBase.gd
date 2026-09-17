@@ -7,46 +7,53 @@ extends Stats
 @export var animTree: AnimationTree
 ##we stop rotating if playing angle within [-criticalAngle,criticalAngle]
 @export var animPlayer: AnimationPlayer
+@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
 var dirVector: Vector3 = Vector3.ZERO
 var relativeRigForward: Vector3 = Vector3.ZERO
-var takingDamage: bool = false
-##cannot be interrupted during attacks
-##@onready var stats : Stats = get_node("Stats") 
+var isTakingDamage: bool = false
+var isRecovering: bool = false
+var recoveryTimer: float = 0
+var isDead: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	print(get_tree().get_nodes_in_group("player"))
+	#print(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0]
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	print(moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/move/TimeScale/scale", moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
+	recoveryTimer -= delta
+	isRecovering = recoveryTimer > 0
+	if isRecovering:
+		isAttacking = false
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
+	if health <= 0 and !isDead:
+		isDead = true
+		death()
 
 func _physics_process(delta: float) -> void:
-	print(velocity.length()>0.2 and !isAttacking and not playerInRange(), !isAttacking or attackCooldownTimer>0)
-	if !takingDamage:
-		var pos = getNextMovementPosition()
-		dirVector = calculateDirVector(pos)
-		rotateToTarget(pos,delta)
-		if !playerInRange() and !isAttacking:
-			moveToPlayer(pos,delta)
+	if !isDead:
+		if !isTakingDamage:
+			var pos = getNextMovementPosition()
+			dirVector = calculateDirVector(pos)
+			rotateToTarget(delta)
+			if !isRecovering:
+				if !playerInRange() and !isAttacking:
+					moveToPlayer(pos,delta)
+				else:
+					if attackCooldownTimer <= 0 and !isAttacking:
+						attack()
 		else:
-			if attackCooldownTimer <= 0 and !isAttacking:
-				print("attack")
-				attack()
-	else:
-		isAttacking = false
-		attackCooldownTimer = 0
+			attackCooldownTimer = 0
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -55,7 +62,7 @@ func getNextMovementPosition():
 	navigationAgent.target_position = player.position 
 	return navigationAgent.get_next_path_position()
 	
-func rotateToTarget(pos, delta):
+func rotateToTarget(delta):
 	var flatDir = Vector3(dirVector.x, 0, dirVector.z).normalized()
 	if flatDir == Vector3.ZERO:
 		return
@@ -84,3 +91,6 @@ func moveToPlayer(target,delta)
 
 @abstract
 func takeDamage(damage: float)
+
+@abstract
+func death()

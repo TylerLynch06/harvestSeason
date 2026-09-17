@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	
 func attack():
 	if !isAttacking:
-		print("ATTACK")
+		##print("ATTACK")
 		isAttacking = true
 	
 func playerInRange():
@@ -31,14 +31,20 @@ func moveToPlayer(_position,delta):
 	move_and_slide()
 
 func animation_finished(anim_name):
-	print(anim_name)
-	if isAttacking:
+	##print(anim_name)
+	if isTakingDamage:
+		recoveryTimer = BASE_RECOVERY_TIME	
+		isTakingDamage = false
+	elif isAttacking:
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
 		
 func death():
-	pass
+	stateMachine.travel("death")
 	
 func takeDamage(damage: float):
-	pass
+	if !isRecovering:
+		health -= damage
+		print("TOOK DAMAGE")
+		isTakingDamage = true
 	
