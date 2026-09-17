@@ -9,6 +9,8 @@ class_name Stats
 @export var BASE_COOLDOWN: float
 @export var BASE_TURN_SPD: float
 @export var BASE_CRT_ANGLE: float
+##Time to recover after being hit
+@export var BASE_RECOVERY_TIME: float
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
@@ -23,6 +25,7 @@ class_name Stats
 
 ##cant be stunned by attacks
 @export var isUnstoppable: bool
+var _appliedFactors = false
 
 func _ready():
 	BASE_TURN_SPD = deg_to_rad(BASE_TURN_SPD)
@@ -30,15 +33,15 @@ func _ready():
 	turnSpeed = BASE_TURN_SPD
 	critAngle = BASE_CRT_ANGLE
 	print("VALUE: ",moveSpeed," ",BASE_MOVE_SPEED," ",moveSpeed/BASE_MOVE_SPEED)
-	
-@abstract func takeDamage(damage: float)
 
 func applyFactors(_heatlhFactor,_damageFactor,_moveSpeedFactor,_attackSpeedFactor,_cooldown_Factor,_turnSpeedFactor):
-	health*=_heatlhFactor
-	damage*=_damageFactor
-	moveSpeed*=_moveSpeedFactor
-	attackSpeed*=_attackSpeedFactor
-	cooldown*=_cooldown_Factor
-	turnSpeed*=_turnSpeedFactor
-	
+	if !_appliedFactors:
+		_appliedFactors = true
+		health*=_heatlhFactor
+		damage*=_damageFactor
+		moveSpeed*=_moveSpeedFactor
+		attackSpeed*=_attackSpeedFactor
+		cooldown*=_cooldown_Factor
+		turnSpeed*=_turnSpeedFactor
+		
 	

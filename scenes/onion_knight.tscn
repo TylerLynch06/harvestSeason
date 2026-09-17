@@ -6737,15 +6737,9 @@ radius = 0.734375
 [node name="Enemy" type="CharacterBody3D" unique_id=1671664162 node_paths=PackedStringArray("attackRange", "navigationAgent", "animTree", "animPlayer")]
 script = ExtResource("1_0hgpp")
 attackRange = NodePath("AttackRange")
-attackCooldown = 0.5
 navigationAgent = NodePath("NavigationAgent3D")
-baseMoveSpeed = 100.0
-moveSpeedFactor = 1.0
 animTree = NodePath("AnimationTree")
-turnSpeed = 160.0
-criticalAngle = 20.0
 animPlayer = NodePath("AnimationPlayer")
-attackSpeedFactor = 1.5
 
 [node name="Armature" type="Node3D" parent="." unique_id=1844865695]
 
@@ -6763,7 +6757,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.274193e-14, 0.53315985, -0.017297748)
 bones/1/enabled = true
 bones/1/position = Vector3(2.274193e-14, 0.53315985, -0.017297748)
-bones/1/rotation = Quaternion(0.012162124, 0.05765236, 0.008096023, 0.99822986)
+bones/1/rotation = Quaternion(-0.0032660738, 0.06440182, -0.011620799, 0.9978511)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Head_end"
 bones/2/parent = 1
