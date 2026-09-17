@@ -12,6 +12,21 @@ Enemies -
 	create enemy suite 
 	create enemy bosses
 	
+	projectiles - 
+		collision
+		destroy self on hit
+	
+Player - [Tyler]
+	player animations [Tyler]
+	player run [Tyler]
+	player attack [Tyler]
+	player combo [Tyler]
+	player collision [Tyler]
+	player object collision [Tyler]
+	player death [Tyler]
+	player health management [Tyler]
+	everything else player rltd. [Tyler]
+	
 Wave System - 
 	spawn enemies depending on wave
 	scale number of enemies with wave/loop
@@ -29,6 +44,7 @@ Arena -
 	player cannot move through openings
 	implement navmesh 
 	add farm buildings in player area for decorations/market
+	add collision to all objects in arena
 	
 ##Only vague ideas for this one
 Weather Effects- 
@@ -63,5 +79,20 @@ UI -
 		wave count (& season?)
 		enemies remaining
 		(boss health?)
-		ammo remaining in gun
+		ammo remaining in gun (if we go with guns)
+	health about enemy's head? (might have to be billboard over UI)
 		
+Sound Design - 
+	[Just about every interacitve thing will need osund, these are just a few examples]
+	hit enemy
+	player hit
+	enemy attack
+	enemy death
+	buy item
+	weapon specific sounds
+	jog sfx
+
+Story/presenation - 
+	might be able to make an in engine cutscene
+	preferably, we just have a still shot, showing the player fighitng an assortment of enemies (can pose like dolls)
+	
