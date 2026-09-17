@@ -1,0 +1,67 @@
+##MAIN OBJECTIVES
+Enemies - 
+	pathfinding [Tyler]
+	enemies deal damage [Tyler]
+	enemies take damage [Tyler]
+	enemy death [Tyler]
+	enemies give money on death
+	ranged enemies [Tyler]
+	melee enemies [Tyler]
+	destroy/respawn if stuck [Tyler]
+	
+	create enemy suite 
+	create enemy bosses
+	
+Wave System - 
+	spawn enemies depending on wave
+	scale number of enemies with wave/loop
+	(unsure) - scale enemy stats with wave/loop
+	creeate enemy spawn points
+	progress wave when all enemies dead
+	wave intermission (~20 sec between waves)
+	need to spawn in enemies at spawn points
+	some sort of distribution to spawn enemies, cant spawn all at once
+	
+Arena - 
+	green grass area encapsulated within an impassable fence
+	beyond the fence, there will be high (regular) crops, to obscure spawn points, refer to this as out of bounds (OOB)
+	must be openings in the fence so that enemies can into the player area from OOB
+	player cannot move through openings
+	implement navmesh 
+	add farm buildings in player area for decorations/market
+	
+##Only vague ideas for this one
+Weather Effects- 
+	WINTER:
+		snow particles
+		blueish filter over camera
+		(snow on floor likely not possible, can maybe just turn green floor white (likely ugly))
+	SPRING:
+		no idea
+	SUMMER:
+		bump up brightness of directional light effect (and/or), add heat haze filter
+	AUTUMN:
+		falling leaves particles effects (rigidbody maybe? so they stay on ground)
+	
+Store - 
+	CHOOSE EITHER FOR DESIGN:
+		Merchant:
+			rolls in with wheel barrow in intermission
+		Farm store:
+			permanent placement, interacted with mid round
+	adjusts player stats
+	take player money
+	player able to interact with upon pressing 'E' key
+	give/upgrade player weapons
+	unlock weapons
+	purchase ammo for gun (if we go with guns)
+		
+UI - 
+	display the following:
+		player health
+		player money
+		wave count (& season?)
+		enemies remaining
+		(boss health?)
+		ammo remaining in gun
+		
