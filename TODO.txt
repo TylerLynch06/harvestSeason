@@ -72,9 +72,9 @@ Store -
 	unlock weapons
 	purchase ammo for gun (if we go with guns)
 		
-UI - 
+UI - [Calum]
 	display the following:
-		player health
+		player health 
 		player money
 		wave count (& season?)
 		enemies remaining
