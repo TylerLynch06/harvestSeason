@@ -103,6 +103,8 @@ func takeDamage(damage: float):
 		health -= damage
 		print(health)
 		isTakingDamage = true
+	if !isUnstoppable:
+		recoveryTimer = BASE_RECOVERY_TIME	
 			
 @abstract
 func attack()

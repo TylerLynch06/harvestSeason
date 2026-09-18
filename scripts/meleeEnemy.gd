@@ -42,7 +42,8 @@ func animation_finished(anim_name):
 		#recoveryTimer = BASE_RECOVERY_TIME	
 		isTakingDamage = false
 	if isAttacking:
-		recoveryTimer = BASE_RECOVERY_TIME	
+		attackCooldownTimer = BASE_COOLDOWN
+		#recoveryTimer = BASE_RECOVERY_TIME	
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
 	print(isAttacking)
