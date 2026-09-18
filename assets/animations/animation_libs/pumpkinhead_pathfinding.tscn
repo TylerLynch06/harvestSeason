@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://ptyffqp2qts"]
 
 [ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="2_bwhib"]
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="3_lercn"]
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/playerStats.tscn" id="3_lercn"]
 [ext_resource type="PackedScene" uid="uid://cduhoe8ewnncm" path="res://scenes/melee_enemy_base.tscn" id="3_os8pf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
