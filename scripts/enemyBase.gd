@@ -17,10 +17,12 @@ var isTakingDamage: bool = false
 var isRecovering: bool = false
 var recoveryTimer: float = 0
 var isDead: bool = false
+var invulTimer: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
+	invulTimer = BASE_INVUL_ON_HIT
 	#print(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0]
 	animTree.advance_expression_base_node = get_path()
@@ -39,6 +41,8 @@ func _process(delta: float) -> void:
 	if health <= 0 and !isDead:
 		isDead = true
 		death()
+	if invulTimer > 0:
+		invulTimer -= delta
 
 func _physics_process(delta: float) -> void:
 	if !isDead:
@@ -94,3 +98,6 @@ func takeDamage(damage: float)
 
 @abstract
 func death()
+
+@abstract 
+func weaponLeftBody()

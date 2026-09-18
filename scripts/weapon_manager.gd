@@ -20,6 +20,7 @@ var inCombo = false
 ##-----FRAGILE CODE-----
 func _ready() -> void:
 	weaponHurtBox.area_entered.connect(sword_hit)
+	weaponHurtBox.area_exited.connect(sword_leave)
 	#postAttackMovementLockdownTimer = 0
 	#attackTimer = attackDuration
 
@@ -54,9 +55,14 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		comboWindowTimer = comboWindowTime
 		
 func sword_hit(area):
-	print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
+	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
+		
+func sword_leave(area):
+	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
+		var enemy = area.get_parent() as Enemy
+		enemy.weaponLeftBody()
 	
