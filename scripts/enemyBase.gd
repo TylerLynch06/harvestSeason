@@ -124,7 +124,6 @@ func playerInRange():
 		if area.get_parent() and area.get_parent() in get_tree().get_nodes_in_group("player"):	
 			return true
 
-
 func animation_finished(anim_name):
 	print("anim finished ",isAttacking)
 	##print(anim_name)

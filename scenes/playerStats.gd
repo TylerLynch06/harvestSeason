@@ -28,3 +28,6 @@ class_name PlayerStats
 @onready var moveSpeed: float = BASE_MOVE_SPEED
 @onready var attackSpeed: float = BASE_ATTACK_FACTOR_SPEED
 @onready var attackCooldown: float = BASE_ATTACK_COOLDOWN
+
+func playerHit(damage: float):
+	health -= damage
