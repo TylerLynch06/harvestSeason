@@ -24,6 +24,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Isometric3D-dungeon"
 
+[editor]
+
+movie_writer/movie_file="/cs/home/tl217/Documents/Godot/videos/enemy_testing.avi"
+
 [filesystem]
 
 import/blender/enabled=false
