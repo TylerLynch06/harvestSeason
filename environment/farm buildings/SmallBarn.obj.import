@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnw6gq3kih1b1"
+path="res://.godot/imported/SmallBarn.obj-40cad3d97b9ee06fe6c1704b97b31aff.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SmallBarn.obj-40cad3d97b9ee06fe6c1704b97b31aff.mesh"]
+
+source_file="res://environment/farm buildings/SmallBarn.obj"
+dest_files=["res://.godot/imported/SmallBarn.obj-40cad3d97b9ee06fe6c1704b97b31aff.mesh", "res://.godot/imported/SmallBarn.obj-40cad3d97b9ee06fe6c1704b97b31aff.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

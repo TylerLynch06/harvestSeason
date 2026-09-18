@@ -28,6 +28,10 @@ project/assembly_name="Isometric3D-dungeon"
 
 movie_writer/movie_file="/cs/home/tl217/Documents/Godot/videos/enemy_testing.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
