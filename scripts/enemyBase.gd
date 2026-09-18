@@ -8,6 +8,7 @@ extends Stats
 ##we stop rotating if playing angle within [-criticalAngle,criticalAngle]
 @export var animPlayer: AnimationPlayer
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
+@export var attackRange : Area3D
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -18,6 +19,9 @@ var isRecovering: bool = false
 var recoveryTimer: float = 0
 var isDead: bool = false
 var invulTimer: float = 0
+@onready var attackCollisionObject: CollisionShape3D = attackRange.get_child(0) as CollisionShape3D
+@onready var baseAttackRange = attackCollisionObject.shape.radius
+@onready var currentAttackRange = baseAttackRange
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +47,12 @@ func _process(delta: float) -> void:
 		death()
 	if invulTimer > 0:
 		invulTimer -= delta
+		
+	if isAttacking:
+		currentAttackRange = baseAttackRange * BASE_ATTACK_RANGE_INCRASE
+	else:
+		currentAttackRange = baseAttackRange
+	attackCollisionObject.shape.radius = currentAttackRange
 
 func _physics_process(delta: float) -> void:
 	if !isDead:
@@ -83,7 +93,14 @@ func rotateToTarget(delta):
 		-turnSpeed * delta,
 		turnSpeed * delta)
 		pivot.rotation.y += step
-		
+	
+func takeDamage(damage: float):
+	if invulTimer <= 0:
+		invulTimer = BASE_INVUL_ON_HIT
+		health -= damage
+		print(health)
+		isTakingDamage = true
+			
 @abstract
 func attack()
 
@@ -93,8 +110,7 @@ func playerInRange()
 @abstract
 func moveToPlayer(target,delta)
 
-@abstract
-func takeDamage(damage: float)
+
 
 @abstract
 func death()

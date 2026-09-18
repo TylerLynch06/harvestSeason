@@ -13,6 +13,8 @@ class_name Stats
 @export var BASE_RECOVERY_TIME: float
 ##invinciibility time
 @export var BASE_INVUL_ON_HIT: float
+##What factor he attack range increases by during an attack.
+@export var BASE_ATTACK_RANGE_INCRASE: float
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
