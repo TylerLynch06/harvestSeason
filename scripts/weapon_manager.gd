@@ -19,12 +19,13 @@ var inCombo = false
 ##-----DO NOT TOUCH SPEAK TO TYLER BEFORE TOUCHING-----
 ##-----FRAGILE CODE-----
 func _ready() -> void:
+	weaponHurtBox.monitoring = false
 	weaponHurtBox.area_entered.connect(sword_hit)
+	weaponHurtBox.area_exited.connect(sword_leave)
 	#postAttackMovementLockdownTimer = 0
 	#attackTimer = attackDuration
 
 func _process(delta: float):
-	weaponHurtBox.monitoring = isAttacking
 	comboWindowTimer -= delta
 	if comboWindowTimer <= 0:
 		comboWindowTimer = 0
@@ -36,7 +37,6 @@ func _process(delta: float):
 func attack():
 	if !isAttacking:
 		isAttacking = true
-		comboState = comboState % 3
 		movementManager.lockMovement()
 	##print(comboState,isAttacking)
 	#isAttacking = false
@@ -46,17 +46,27 @@ func canAttack():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	##print(anim_name) # Replace with function body.
-	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C","UAL/sword_heavy_1"]:
+	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C"]:
 		#print("changed combo state")
 		isAttacking = false
-		comboState += 1
+		print(anim_name+ " over. Combo state: ", comboState)
 		movementManager.unlockMovement()
 		comboWindowTimer = comboWindowTime
 		
 func sword_hit(area):
-	print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
+	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
+		
+func sword_leave(area):
+	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
+		var enemy = area.get_parent() as Enemy
+		enemy.weaponLeftBody()#
+		
+func toggleHurtbox():
+	weaponHurtBox.monitoring = !weaponHurtBox.monitoring
 	
+func setComboState(_comboState: int):
+	comboState = _comboState

@@ -9,8 +9,13 @@ class_name Stats
 @export var BASE_COOLDOWN: float
 @export var BASE_TURN_SPD: float
 @export var BASE_CRT_ANGLE: float
-##Time to recover after being hit
+##Time to start moving/attacking after being hit
 @export var BASE_RECOVERY_TIME: float
+##invinciibility time
+@export var BASE_INVUL_ON_HIT: float
+##What factor he attack range increases by during an attack.
+@export var BASE_ATTACK_RANGE_INCRASE: float
+@export var BASE_WALK_ANIM_SPD_FACTOR: float
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
