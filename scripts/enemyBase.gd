@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
+		
 	if health <= 0 and !isDead:
 		isDead = true
 		death()
@@ -55,6 +56,7 @@ func _process(delta: float) -> void:
 	attackCollisionObject.shape.radius = currentAttackRange
 
 func _physics_process(delta: float) -> void:
+	##print(!playerInRange(), !isAttacking)
 	if !isDead:
 		if !isTakingDamage:
 			var pos = getNextMovementPosition()
@@ -65,9 +67,8 @@ func _physics_process(delta: float) -> void:
 					moveToPlayer(pos,delta)
 				else:
 					if attackCooldownTimer <= 0 and !isAttacking:
+						print("attack")
 						attack()
-		else:
-			attackCooldownTimer = 0
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -109,8 +110,6 @@ func playerInRange()
 
 @abstract
 func moveToPlayer(target,delta)
-
-
 
 @abstract
 func death()

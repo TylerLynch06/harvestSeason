@@ -7,7 +7,6 @@ func _ready() -> void:
 	super._ready()
 	animTree.animation_finished.connect(animation_finished)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -37,13 +36,16 @@ func moveToPlayer(_position,delta):
 	move_and_slide()
 
 func animation_finished(anim_name):
+	print("anim finished ",isAttacking)
 	##print(anim_name)
 	if isTakingDamage:
-		recoveryTimer = BASE_RECOVERY_TIME	
+		#recoveryTimer = BASE_RECOVERY_TIME	
 		isTakingDamage = false
-	elif isAttacking:
+	if isAttacking:
+		recoveryTimer = BASE_RECOVERY_TIME	
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
+	print(isAttacking)
 		
 func death():
 	stateMachine.travel("death")
