@@ -55556,7 +55556,7 @@ _subresources={
 "Roll": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Roll.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://d3qsdqnews5qg",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -65836,7 +65836,7 @@ _subresources={
 "Spell_Simple_Enter": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Spell_Simple_Enter.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://c7o7vnwbh841j",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,

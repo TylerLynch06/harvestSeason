@@ -63780,7 +63780,7 @@ _subresources={
 "Sword_Regular_A": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Regular_A.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://ded80u5shurap",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -67892,7 +67892,7 @@ _subresources={
 "Sword_Regular_B": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Regular_B.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://byiwctf7qauyh",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -72004,7 +72004,7 @@ _subresources={
 "Sword_Regular_C": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Regular_C.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://c0wfhnhk1jssy",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
