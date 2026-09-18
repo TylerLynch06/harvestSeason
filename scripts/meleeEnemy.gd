@@ -1,16 +1,21 @@
 extends Enemy
 
-@export var attackRange : Area3D
+@export var debugHitbox: Area3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
 	animTree.animation_finished.connect(animation_finished)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
+	if (debugHitbox):
+		var colShape = debugHitbox.get_child(0) as CollisionShape3D
+		if invulTimer > 0:
+			colShape.debug_color = Color(0.245, 0.245, 0.245, 1.0)
+		else:
+			colShape.debug_color = Color(0x0000ffff)
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -31,20 +36,26 @@ func moveToPlayer(_position,delta):
 	move_and_slide()
 
 func animation_finished(anim_name):
+	print("anim finished ",isAttacking)
 	##print(anim_name)
 	if isTakingDamage:
-		recoveryTimer = BASE_RECOVERY_TIME	
+		#recoveryTimer = BASE_RECOVERY_TIME	
 		isTakingDamage = false
-	elif isAttacking:
+	if isAttacking:
+		attackCooldownTimer = BASE_COOLDOWN
+		#recoveryTimer = BASE_RECOVERY_TIME	
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
+	print(isAttacking)
 		
 func death():
 	stateMachine.travel("death")
 	
 func takeDamage(damage: float):
-	if !isRecovering:
-		health -= damage
-		print("TOOK DAMAGE")
-		isTakingDamage = true
+	super.takeDamage(damage)
+		
+##might not be need since invul timer exists, keep anyway
+func weaponLeftBody():
+	isTakingDamage = false
+	print("WEAPON LEFT BODY")
 	

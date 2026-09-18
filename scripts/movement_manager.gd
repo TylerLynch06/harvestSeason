@@ -3,24 +3,18 @@ class_name MovementManager
 
 @export var playerBody: CharacterBody3D
 @export var playerRig: Node3D
-@export var PLAYER_SPEED: float = 5
+
+@onready var stats = get_node("../Stats") as PlayerStats
+
 @onready var animTree: AnimationTree = playerRig.get_node("AnimationTree")
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 var directionVector: Vector3 = Vector3.ZERO
 var rollDirection: Vector3 = Vector3.ZERO
 
-@export var rollSpeed: float = 500
 @export var weaponManager: WeaponManager
-##How many times faster the animation should play, directly correlates to rill time
-var rollAnimationSpeedFactor = 1
-##This is the time it takes for the roll animation to play
-@export var rollTime: float = 1.1 / rollAnimationSpeedFactor
-var rollTimer: float 
-var rollRecoveryTime: float = 0.1
-var rollRecoveryTimer: float = 1
 
-var rollCooldown: float = 0.1
-var rollCooldownTimer: float = rollCooldown
+var rollTimer: float = 0
+var rollCooldownTimer: float = 0
 
 ##Used for animation queuing
 var stoppedMoving: bool = false
@@ -34,8 +28,7 @@ var isRecovering: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_priority = -1
-	rollTimer = rollTime
-	rollRecoveryTimer = rollRecoveryTime
+	rollTimer = stats.BASE_ROLL_TIME
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -96,9 +89,9 @@ func movementCheck():
 func movePlayer(delta):
 	var velocity
 	if !isRolling:
-		velocity = directionVector * PLAYER_SPEED * delta
+		velocity = directionVector * stats.BASE_MOVE_SPEED * delta
 	elif isRolling:
-		velocity = rollDirection * rollSpeed * delta
+		velocity = rollDirection * stats.BASE_ROLL_SPEED * delta
 		
 	if !isRecovering:
 		playerBody.velocity = velocity
@@ -124,7 +117,7 @@ func unlockMovement():
 	movementIsLocked = false
 
 func endRoll():
-	rollCooldownTimer = rollCooldown
+	rollCooldownTimer = stats.BASE_ROLL_COOLDOWN
 	isRolling = false
-	rollTimer = rollTime	
+	rollTimer = stats.BASE_ROLL_TIME	
 	#stateMachine.travel("idle")

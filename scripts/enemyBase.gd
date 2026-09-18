@@ -8,6 +8,7 @@ extends Stats
 ##we stop rotating if playing angle within [-criticalAngle,criticalAngle]
 @export var animPlayer: AnimationPlayer
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
+@export var attackRange : Area3D
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -17,16 +18,21 @@ var isTakingDamage: bool = false
 var isRecovering: bool = false
 var recoveryTimer: float = 0
 var isDead: bool = false
+var invulTimer: float = 0
+@onready var attackCollisionObject: CollisionShape3D = attackRange.get_child(0) as CollisionShape3D
+@onready var baseAttackRange = attackCollisionObject.shape.radius
+@onready var currentAttackRange = baseAttackRange
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
+	invulTimer = BASE_INVUL_ON_HIT
 	#print(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0]
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	animTree.set("parameters/move/TimeScale/scale", moveSpeed/BASE_MOVE_SPEED)
+	animTree.set("parameters/move/TimeScale/scale", BASE_WALK_ANIM_SPD_FACTOR*moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
 	recoveryTimer -= delta
@@ -36,24 +42,35 @@ func _process(delta: float) -> void:
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
+		
 	if health <= 0 and !isDead:
 		isDead = true
 		death()
+	if invulTimer > 0:
+		invulTimer -= delta
+		
+	if isAttacking:
+		currentAttackRange = baseAttackRange * BASE_ATTACK_RANGE_INCRASE
+	else:
+		currentAttackRange = baseAttackRange
+	attackCollisionObject.shape.radius = currentAttackRange
 
 func _physics_process(delta: float) -> void:
+	##print(!playerInRange(), !isAttacking)
 	if !isDead:
 		if !isTakingDamage:
 			var pos = getNextMovementPosition()
 			dirVector = calculateDirVector(pos)
 			rotateToTarget(delta)
-			if !isRecovering:
+			##Directly access statemachine to fix moving whiole attacking
+			##Usually isnt needed
+			if !isRecovering and stateMachine.get_current_node() != "attack":
 				if !playerInRange() and !isAttacking:
 					moveToPlayer(pos,delta)
 				else:
 					if attackCooldownTimer <= 0 and !isAttacking:
+						print("attack")
 						attack()
-		else:
-			attackCooldownTimer = 0
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -79,6 +96,15 @@ func rotateToTarget(delta):
 		-turnSpeed * delta,
 		turnSpeed * delta)
 		pivot.rotation.y += step
+	
+func takeDamage(damage: float):
+	if invulTimer <= 0:
+		invulTimer = BASE_INVUL_ON_HIT
+		health -= damage
+		print(health)
+		isTakingDamage = true
+	if !isUnstoppable:
+		recoveryTimer = BASE_RECOVERY_TIME	
 		
 @abstract
 func attack()
@@ -90,7 +116,7 @@ func playerInRange()
 func moveToPlayer(target,delta)
 
 @abstract
-func takeDamage(damage: float)
-
-@abstract
 func death()
+
+@abstract 
+func weaponLeftBody()
