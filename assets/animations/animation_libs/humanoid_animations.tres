@@ -9,6 +9,7 @@
 [ext_resource type="Animation" uid="uid://did7bagm3o4xn" path="res://assets/animations/res_files/Hit_Knockback.res" id="4_8qiph"]
 [ext_resource type="Animation" uid="uid://dyxq4glt58y4w" path="res://assets/animations/res_files/Zombie_Walk_Fwd.res" id="5_hflgx"]
 [ext_resource type="Animation" uid="uid://cbo35pj4486wd" path="res://assets/animations/res_files/Shield_Dash.res" id="6_31dem"]
+[ext_resource type="Animation" uid="uid://b1cfo3lsit2el" path="res://assets/animations/res_files/OverhandThrow.res" id="6_ypqi3"]
 [ext_resource type="Animation" uid="uid://cy3rmrf7n6e0t" path="res://assets/animations/res_files/Shield_OneShot.res" id="7_5rt88"]
 [ext_resource type="Animation" uid="uid://c7o7vnwbh841j" path="res://assets/animations/res_files/Spell_Simple_Enter.res" id="8_v170t"]
 [ext_resource type="Animation" uid="uid://b7okndnunvbiy" path="res://assets/animations/res_files/Spell_Simple_Exit.res" id="9_88gi7"]
@@ -23,6 +24,7 @@ _data = {
 &"Hit_Head": ExtResource("3_ypqi3"),
 &"Hit_Knockback": ExtResource("4_8qiph"),
 &"Jog_Fwd": ExtResource("2_xo6b7"),
+&"OverhandThrow": ExtResource("6_ypqi3"),
 &"Shield_Dash": ExtResource("6_31dem"),
 &"Shield_OneShot": ExtResource("7_5rt88"),
 &"Spell_Simple_Enter": ExtResource("8_v170t"),

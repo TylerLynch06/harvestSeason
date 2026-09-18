@@ -45276,7 +45276,7 @@ _subresources={
 "OverhandThrow": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/OverhandThrow.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://b1cfo3lsit2el",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,

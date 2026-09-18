@@ -63,7 +63,7 @@ func sword_hit(area):
 func sword_leave(area):
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
-		enemy.weaponLeftBody()#
+		enemy.weaponLeftBody()
 		
 func toggleHurtbox():
 	weaponHurtBox.monitoring = !weaponHurtBox.monitoring
