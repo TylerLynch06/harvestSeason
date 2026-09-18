@@ -16,10 +16,8 @@ var rollAnimationSpeedFactor = 1
 ##This is the time it takes for the roll animation to play
 @export var rollTime: float = 1.1 / rollAnimationSpeedFactor
 var rollTimer: float 
-var rollRecoveryTime: float = 0.1
-var rollRecoveryTimer: float = 1
 
-var rollCooldown: float = 0.1
+@export var rollCooldown: float = 0.1
 var rollCooldownTimer: float = rollCooldown
 
 ##Used for animation queuing
@@ -35,7 +33,6 @@ var isRecovering: bool = false
 func _ready() -> void:
 	process_priority = -1
 	rollTimer = rollTime
-	rollRecoveryTimer = rollRecoveryTime
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

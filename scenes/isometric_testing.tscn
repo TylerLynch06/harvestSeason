@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ds3e2r4hf1fy3"]
 
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_7bb16"]
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/playerStats.tscn" id="1_7bb16"]
 [ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="4_63vh6"]
 [ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="5_56sqr"]
 
