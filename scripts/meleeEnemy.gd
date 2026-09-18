@@ -1,6 +1,5 @@
 extends Enemy
 
-@export var attackRange : Area3D
 @export var debugHitbox: Area3D = null
 
 # Called when the node enters the scene tree for the first time.
@@ -50,12 +49,9 @@ func death():
 	stateMachine.travel("death")
 	
 func takeDamage(damage: float):
-	if invulTimer <= 0:
-		invulTimer = BASE_INVUL_ON_HIT
-		health -= damage
-		print(health)
-		isTakingDamage = true
+	super.takeDamage(damage)
 		
+##might not be need since invul timer exists, keep anyway
 func weaponLeftBody():
 	isTakingDamage = false
 	print("WEAPON LEFT BODY")
