@@ -14,3 +14,6 @@ BASE_COOLDOWN = 9999.0
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("2_aa581")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010986924, -1.1920929e-07, 1.4143877)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1871863176]
+transform = Transform3D(1, 0, 0, 0, 0.017334979, 0.99984974, 0, -0.99984974, 0.017334979, 0, 4.2712455, 0)
