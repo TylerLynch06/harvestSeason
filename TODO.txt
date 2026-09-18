@@ -39,7 +39,7 @@ Wave System -
 	need to spawn in enemies at spawn points
 	some sort of distribution to spawn enemies, cant spawn all at once
 	
-Arena - 
+Arena - [Elsa]
 	green grass area encapsulated within an impassable fence
 	beyond the fence, there will be high (regular) crops, to obscure spawn points, refer to this as out of bounds (OOB)
 	must be openings in the fence so that enemies can into the player area from OOB
@@ -94,7 +94,7 @@ Sound Design -
 	weapon specific sounds
 	jog sfx
 
-Story/presenation - 
+Story/presenation - [Elsa]
 	might be able to make an in engine cutscene
 	preferably, we just have a still shot, showing the player fighitng an assortment of enemies (can pose like dolls)
 	
