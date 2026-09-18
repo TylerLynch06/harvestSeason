@@ -32,7 +32,7 @@ func _ready() -> void:
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	animTree.set("parameters/move/TimeScale/scale", moveSpeed/BASE_MOVE_SPEED)
+	animTree.set("parameters/move/TimeScale/scale", BASE_WALK_ANIM_SPD_FACTOR*moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
 	recoveryTimer -= delta
@@ -62,7 +62,9 @@ func _physics_process(delta: float) -> void:
 			var pos = getNextMovementPosition()
 			dirVector = calculateDirVector(pos)
 			rotateToTarget(delta)
-			if !isRecovering:
+			##Directly access statemachine to fix moving whiole attacking
+			##Usually isnt needed
+			if !isRecovering and stateMachine.get_current_node() != "attack":
 				if !playerInRange() and !isAttacking:
 					moveToPlayer(pos,delta)
 				else:

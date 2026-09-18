@@ -1,0 +1,7 @@
+ACTIVE-----
+
+
+COMPLETED-----
+ENEMY SYSTEM	
+	If enemy attack is interrupted, and player remains in range of the enemy, 
+	the enemy will move during the attack

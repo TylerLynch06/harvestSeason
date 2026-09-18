@@ -1,12 +1,12 @@
 ##MAIN OBJECTIVES
 Enemies - 
-	pathfinding [Tyler]
+	pathfinding [Tyler] DONE
 	enemies deal damage [Tyler]
-	enemies take damage [Tyler]
+	enemies take damage [Tyler] DONE
 	enemy death [Tyler]
 	enemies give money on death
-	ranged enemies [Tyler]
-	melee enemies [Tyler]
+	ranged enemy base [Tyler]
+	melee enemy base [Tyler] DONE
 	destroy/respawn if stuck [Tyler]
 	
 	create enemy suite 
@@ -18,14 +18,16 @@ Enemies -
 	
 Player - [Tyler]
 	player animations [Tyler]
-	player run [Tyler]
-	player attack [Tyler]
-	player combo [Tyler]
+	player run [Tyler] DONE
+	player attack [Tyler] DONE
+	player combo [Tyler] DONE
 	player collision [Tyler]
 	player object collision [Tyler]
 	player death [Tyler]
 	player health management [Tyler]
 	everything else player rltd. [Tyler]
+	freeze player for tiny amount of time on successful hit to make attacks feel punchy [Tyler]
+	
 	
 Wave System - 
 	spawn enemies depending on wave
