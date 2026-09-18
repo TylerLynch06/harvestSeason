@@ -106,6 +106,13 @@ func takeDamage(damage: float):
 	if !isUnstoppable:
 		recoveryTimer = BASE_RECOVERY_TIME	
 		
+func death():
+	stateMachine.travel("death")
+		
+##might not be need since invul timer exists, keep anyway
+func weaponLeftBody():
+	isTakingDamage = false
+		
 @abstract
 func attack()
 
@@ -114,9 +121,3 @@ func playerInRange()
 
 @abstract
 func moveToPlayer(target,delta)
-
-@abstract
-func death()
-
-@abstract 
-func weaponLeftBody()

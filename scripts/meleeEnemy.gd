@@ -47,15 +47,5 @@ func animation_finished(anim_name):
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
 	print(isAttacking)
-		
-func death():
-	stateMachine.travel("death")
 	
-func takeDamage(damage: float):
-	super.takeDamage(damage)
-		
-##might not be need since invul timer exists, keep anyway
-func weaponLeftBody():
-	isTakingDamage = false
-	print("WEAPON LEFT BODY")
 	
