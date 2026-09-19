@@ -75,8 +75,9 @@ func weapon_hit(area):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
-		animTree.set("parameters/TimeScale/scale", 0.05)
-		microFreezeTimer = stats.BASE_MICROFREEZE_TIME
+		if WEAPON_DATA.isMelee.get(currentWeaponName):
+			animTree.set("parameters/TimeScale/scale", 0.05)
+			microFreezeTimer = stats.BASE_MICROFREEZE_TIME
 		
 		
 func weapon_leave(area):
@@ -100,15 +101,15 @@ func changeWeapon(weaponName: String):
 		if i >= len(currentAnimationSet.get("attack")):
 			break
 		print(currentAnimationSet.get("attack")[i])	
-		print(animTree.get_tree_root().get_node("attack_"+str(i+1))," ","attack_"+str(i+1))
-		print(animTree.get_tree_root().get_node("attack_"+str(i+1)).animation)
-		animTree.get_tree_root().get_node("attack_"+str(i+1)).animation = StringName(currentAnimationSet.get("attack")[i])
+		#print(animTree.get_tree_root()..get_node().get_node("attack_"+str(i+1))," ","attack_"+str(i+1))
+		#print(animTree.get_tree_root().get_node("attack_"+str(i+1)).animation)
+		animTree.get_tree_root().get_node("player").get_node("attack_"+str(i+1)).animation = StringName(currentAnimationSet.get("attack")[i])
 
 
 func alterDebugText():
 	if debugText:
 		var attackStateData = "is_attacking: "+str(isAttacking)+"\ncombo_window_timer: "+str(str(snapped(comboWindowTimer, 0.001)))+"\ncan_follow_up: "+str(comboWindowTimer>0)+"\ncombo_state: "+str(comboState)
-		var hitboxData = "hitbox_monitoring: "+str(weaponHurtBox.monitoring)
+		var hitboxData = "hitbox_monitoring: "+str(weaponHurtBox.monitoring)+"\nmicrofreeze: "+str(microFreezeTimer>0)
 		debugText.text = "ATTACK DATA\n"+attackStateData+"\n"+hitboxData
 		
 	if weaponDebugText:
