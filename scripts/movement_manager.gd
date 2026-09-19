@@ -7,7 +7,7 @@ class_name MovementManager
 @onready var stats = get_node("../Stats") as PlayerStats
 
 @onready var animTree: AnimationTree = playerRig.get_node("AnimationTree")
-@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
+@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/player/playback"]
 var directionVector: Vector3 = Vector3.ZERO
 var rollDirection: Vector3 = Vector3.ZERO
 
@@ -37,9 +37,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	alterDebugText()
-	animTree.set("parameters/conditions/is_rolling", isRolling)
-	animTree.set("parameters/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
-	animTree.set("parameters/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
+	animTree.set("parameters/player/conditions/is_rolling", isRolling)
+	animTree.set("parameters/player/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
+	animTree.set("parameters/player/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
 
 	hurtbox.monitorable = !isRolling
 	hurtbox.monitoring = !isRolling

@@ -3,7 +3,8 @@ class_name WeaponManager
 @export var playerBody: CharacterBody3D
 @export var playerRig: Node3D
 @onready var animTree: AnimationTree = playerRig.get_node("AnimationTree")
-@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
+@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/player/playback"]
+@onready var animPlayer: AnimationPlayer = playerRig.get_node("AnimationPlayer")
 @export var movementManager: MovementManager
 @export var comboWindowTime : float
 var comboWindowTimer: float
@@ -17,7 +18,9 @@ var inCombo = false
 
 @export var debugText: Label = null
 @export var weaponDebugText: Label = null
+@export var stats: PlayerStats
 var currentWeaponName = "sword"
+var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +43,12 @@ func _process(delta: float):
 		#if comboState!=0:
 			#print("RESET COMBO STATE")
 		comboState = 0
+	if microFreezeTimer > 0:
+		animPlayer.speed_scale = 0.0
+		microFreezeTimer -= delta
+	elif microFreezeTimer <= 0:
+		animTree.set("parameters/TimeScale/scale", 1)
+		microFreezeTimer = 0
 	animTree.advance_expression_base_node = self.get_path()
 	
 func attack():
@@ -61,10 +70,14 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		
 func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
+	
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
+		animTree.set("parameters/TimeScale/scale", 0.05)
+		microFreezeTimer = stats.BASE_MICROFREEZE_TIME
+		
 		
 func weapon_leave(area):
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
@@ -78,6 +91,7 @@ func setComboState(_comboState: int):
 	comboState = _comboState
 
 func changeWeapon(weaponName: String):
+	##Resets combo state and reassings attack animations
 	comboState = 0
 	currentWeaponName = weaponName
 	currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
