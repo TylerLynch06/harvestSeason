@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://oudp41u66lw3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgb75cwcqbmmb" path="res://VoxelFruitsAndVegetables/OBJs/Corn-0.obj" id="1_3r7vm"]
+[ext_resource type="Script" uid="uid://cihdk37o1sutd" path="res://scenes/wheat_pickup.gd" id="1_dcp1i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r7vm"]
+transparency = 1
+albedo_color = Color(0.99369687, 0.80569524, 1.540184e-06, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hjst"]
+albedo_color = Color(1, 0, 1, 1)
+emission_enabled = true
+emission = Color(1.5565991, 1.5565991, 1.5565991, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g73em"]
+transparency = 1
+albedo_color = Color(0.039215688, 0.5921569, 0, 0.09803922)
+emission_enabled = true
+emission = Color(3.1672676, 3.119357, 0.9035056, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e1uel"]
+radius = 0.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1uel"]
+spread = 180.0
+flatness = 0.13
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8yhy"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(3.7045925, 3.7045925, 0, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_10clc"]
+material = SubResource("StandardMaterial3D_e8yhy")
+radius = 0.2
+height = 0.7
+radial_segments = 6
+rings = 4
+
+[sub_resource type="Gradient" id="Gradient_dcp1i"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_53dv4"]
+gradient = SubResource("Gradient_dcp1i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_10clc"]
+direction = Vector3(0.1, 1, 0)
+spread = 40.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.19999999
+color_ramp = SubResource("GradientTexture1D_53dv4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r2tk"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.41568628)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_guyfr"]
+material = SubResource("StandardMaterial3D_0r2tk")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxdvv"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.18039216)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ojv0a"]
+material = SubResource("StandardMaterial3D_hxdvv")
+radius = 0.2
+height = 0.4
+
+[node name="Node3D" type="RigidBody3D" unique_id=652753890 node_paths=PackedStringArray("hitbox") groups=["wheat"]]
+collision_layer = 2
+collision_mask = 3
+angular_velocity = Vector3(0, 0.08726646, 0)
+angular_damp = 0.1
+script = ExtResource("1_dcp1i")
+hitbox = NodePath(".")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=142738839]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_3r7vm")
+surface_material_override/0 = SubResource("StandardMaterial3D_3r7vm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=270198599]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_3r7vm")
+surface_material_override/0 = SubResource("StandardMaterial3D_2hjst")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=790285486]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = ExtResource("1_3r7vm")
+surface_material_override/0 = SubResource("StandardMaterial3D_g73em")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1013430814]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.3
+omni_range = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1221171715 groups=["wheat"]]
+shape = SubResource("SphereShape3D_e1uel")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=531638881]
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_e1uel")
+draw_pass_1 = SubResource("SphereMesh_10clc")
+
+[node name="Timer" type="Timer" parent="." unique_id=1395072636]
+wait_time = 3.0
+autostart = true
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=983496120]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_10clc")
+draw_passes = 2
+draw_pass_1 = SubResource("CapsuleMesh_guyfr")
+draw_pass_2 = SubResource("SphereMesh_ojv0a")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
