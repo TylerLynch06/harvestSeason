@@ -112,12 +112,31 @@ func death():
 ##might not be need since invul timer exists, keep anyway
 func weaponLeftBody():
 	isTakingDamage = false
-		
-@abstract
-func attack()
 
-@abstract
-func playerInRange()
+func attack():
+	if !isAttacking:
+		##print("ATTACK")
+		isAttacking = true
+	
+func playerInRange():
+	var areas = attackRange.get_overlapping_areas()
+	for area in areas:
+		if area.get_parent() and area.get_parent() in get_tree().get_nodes_in_group("player"):	
+			return true
 
-@abstract
-func moveToPlayer(target,delta)
+func animation_finished(anim_name):
+	print("anim finished ",isAttacking)
+	##print(anim_name)
+	if isTakingDamage:
+		#recoveryTimer = BASE_RECOVERY_TIME	
+		isTakingDamage = false
+	if isAttacking:
+		attackCooldownTimer = BASE_COOLDOWN
+		#recoveryTimer = BASE_RECOVERY_TIME	
+		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
+		isAttacking = false
+	print(isAttacking)
+
+func moveToPlayer(_position,delta):
+	velocity = relativeRigForward * BASE_MOVE_SPEED * delta
+	move_and_slide()

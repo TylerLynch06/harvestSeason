@@ -10,6 +10,7 @@ var comboWindowTimer: float
 var isAttacking = false
 var comboState = 0
 var inCombo = false
+@export var debugText: Label = null
 
 @export var weaponHurtBox : Area3D
 
@@ -26,6 +27,7 @@ func _ready() -> void:
 	#attackTimer = attackDuration
 
 func _process(delta: float):
+	alterDebugText()
 	comboWindowTimer -= delta
 	if comboWindowTimer <= 0:
 		comboWindowTimer = 0
@@ -63,10 +65,16 @@ func sword_hit(area):
 func sword_leave(area):
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
-		enemy.weaponLeftBody()#
+		enemy.weaponLeftBody()
 		
 func toggleHurtbox():
 	weaponHurtBox.monitoring = !weaponHurtBox.monitoring
 	
 func setComboState(_comboState: int):
 	comboState = _comboState
+
+func alterDebugText():
+	if debugText:
+		var attackStateData = "is_attacking: "+str(isAttacking)+"\ncombo_window_timer: "+str(str(snapped(comboWindowTimer, 0.001)))+"\ncan_follow_up: "+str(comboWindowTimer>0)+"\ncombo_state: "+str(comboState)
+		var hitboxData = "hitbox_monitoring: "+str(weaponHurtBox.monitoring)
+		debugText.text = "ATTACK DATA\n"+attackStateData+"\n"+hitboxData

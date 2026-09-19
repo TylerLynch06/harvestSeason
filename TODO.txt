@@ -21,10 +21,10 @@ Player - [Tyler]
 	player run [Tyler] DONE
 	player attack [Tyler] DONE
 	player combo [Tyler] DONE
-	player collision [Tyler]
+	player collision [Tyler] 
 	player object collision [Tyler]
 	player death [Tyler]
-	player health management [Tyler]
+	player health management [Tyler] DONE
 	everything else player rltd. [Tyler]
 	freeze player for tiny amount of time on successful hit to make attacks feel punchy [Tyler]
 	
