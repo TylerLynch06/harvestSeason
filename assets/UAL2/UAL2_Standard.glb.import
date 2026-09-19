@@ -59668,7 +59668,7 @@ _subresources={
 "Sword_Dash": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Dash.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://ftpwwls2jcmm",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -61724,7 +61724,7 @@ _subresources={
 "Sword_Heavy_Combo": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Sword_Heavy_Combo.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://11fqfcaxlkc7",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -84340,7 +84340,7 @@ _subresources={
 "Zombie_Scratch": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Zombie_Scratch.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://dcwlga7v8v40d",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -86396,7 +86396,7 @@ _subresources={
 "Zombie_Walk_Fwd": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://assets/animations/res_files/Zombie_Walk_Fwd.res",
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://dyxq4glt58y4w",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,

@@ -1,15 +1,20 @@
 extends Enemy
 
 @export var debugHitbox: Area3D = null
+##can only hit player once per attack
+var hasHitPlayer = false
+var damaging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
+	damaging = false
 	animTree.animation_finished.connect(animation_finished)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
+	damageInHitbox()
 	if (debugHitbox):
 		var colShape = debugHitbox.get_child(0) as CollisionShape3D
 		if invulTimer > 0:
@@ -19,6 +24,19 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	
 
+func attack():
+	super.attack()
+	hasHitPlayer = false
+
+func toggleDamaging():
+	damaging = !damaging
+
+func damageInHitbox():
+	if playerInRange() and !hasHitPlayer and damaging:
+		var playerStats = player.get_node("Stats") as PlayerStats
+		playerStats.playerHit(20)
+		hasHitPlayer = true
 	
 	
