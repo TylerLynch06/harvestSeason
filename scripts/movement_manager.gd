@@ -12,6 +12,8 @@ var directionVector: Vector3 = Vector3.ZERO
 var rollDirection: Vector3 = Vector3.ZERO
 
 @export var weaponManager: WeaponManager
+@export var debugText: Label
+@export var hurtbox: Area3D
 
 var rollTimer: float = 0
 var rollCooldownTimer: float = 0
@@ -25,6 +27,8 @@ var stoppedRolling: bool = true
 var isRolling: bool = false
 var isRecovering: bool = false
 
+var isInvincible = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_priority = -1
@@ -32,12 +36,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	alterDebugText()
 	animTree.set("parameters/conditions/is_rolling", isRolling)
 	animTree.set("parameters/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
 	animTree.set("parameters/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
 
+	hurtbox.monitorable = !isRolling
+	hurtbox.monitoring = !isRolling
+
 	if !movementIsLocked and !isRolling:
-		rollCooldownTimer -= delta
+		if rollCooldownTimer>0:
+			rollCooldownTimer -= delta
+		else:
+			rollCooldownTimer = 0
 		if isMoving and !weaponManager.isAttacking:
 			#stateMachine.travel("run")
 			stoppedMoving = false
@@ -121,3 +132,10 @@ func endRoll():
 	isRolling = false
 	rollTimer = stats.BASE_ROLL_TIME	
 	#stateMachine.travel("idle")
+	
+func alterDebugText():
+	if debugText:
+		var rollData = "can_roll: "+str(canRoll())+"\nroll_cooldown_timer: "+str(snapped(rollCooldownTimer, 0.001))+"\nis_rolling: "+str(isRolling)+"\nis_invincible: "+str(!hurtbox.monitorable)
+		var locomotionData = "\nis_moving: "+str(isMoving)+"\nmovement_is_locked: "+str(movementIsLocked)
+		debugText.text = "MOVEMENT DATA\n"+rollData+locomotionData
+		
