@@ -12,6 +12,7 @@ class_name PlayerStats
 @export var BASE_ROLL_TIME: float
 @export var BASE_ROLL_COOLDOWN: float
 @export var BASE_WALK_ANIM_SPD_FACTOR: float
+@export var BASE_MICROFREEZE_TIME: float
 ###Time to start moving/attacking after being hit
 #@export var BASE_RECOVERY_TIME: float
 ###invinciibility time
