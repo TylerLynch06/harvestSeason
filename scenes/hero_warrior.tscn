@@ -238,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1238643, 1.5496662)
 [node name="weapon" type="Node3D" parent="." index="2" unique_id=1993941082]
 transform = Transform3D(0.31833494, 0.711158, 0.6268331, 0.7418199, 0.22481863, -0.63179266, -0.59022707, 0.66611797, -0.4559828, -0.040889442, -0.090219915, 0.054437697)
 
-[node name="GeneralSkeleton" parent="Armature" parent_id_path=PackedInt32Array(587884107) index="0" unique_id=1595500890]
+[node name="GeneralSkeleton" parent="Armature" parent_id_path=PackedInt32Array(464824289) index="0" unique_id=1473567378]
 bones/1/position = Vector3(0.0002967378, 0.7309973, -0.11034178)
 bones/1/rotation = Quaternion(-0.14672613, -0.20858695, -0.024817795, 0.9666163)
 bones/3/rotation = Quaternion(0.32048514, -0.040876776, 0.0073326705, 0.9463428)
@@ -325,7 +325,7 @@ debug_color = Color(1, 0, 0, 1)
 [node name="sword" type="MeshInstance3D" parent="Armature/GeneralSkeleton/rightHand/sword2" index="1" unique_id=915789152]
 mesh = SubResource("ArrayMesh_3x18r")
 
-[node name="AnimationPlayer" parent="." index="4" unique_id=1563084981]
+[node name="AnimationPlayer" parent="." index="4" unique_id=1174068845]
 libraries/UAL = SubResource("AnimationLibrary_5wk1s")
 autoplay = &"Sword_Idle"
 

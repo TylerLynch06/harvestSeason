@@ -16,6 +16,7 @@ class_name Stats
 ##What factor he attack range increases by during an attack.
 @export var BASE_ATTACK_RANGE_INCRASE: float
 @export var BASE_WALK_ANIM_SPD_FACTOR: float
+@export var WHEAT_ON_DEATH: int
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float

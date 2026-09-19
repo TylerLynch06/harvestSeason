@@ -7513,5 +7513,3 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0022797585, 0.0509872
 mesh = ExtResource("3_1v1td")
 skin = SubResource("Skin_hg080")
 skeleton = NodePath("..")
-
-[node name="AnimationTree" type="AnimationTree" parent="GeneralSkeleton" unique_id=149967774]
