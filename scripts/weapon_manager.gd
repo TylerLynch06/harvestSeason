@@ -10,9 +10,15 @@ var comboWindowTimer: float
 var isAttacking = false
 var comboState = 0
 var inCombo = false
-@export var debugText: Label = null
+@export var WEAPON_DATA: WeaponData
+
 
 @export var weaponHurtBox : Area3D
+
+@export var debugText: Label = null
+@export var weaponDebugText: Label = null
+var currentWeaponName = "sword"
+@onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 
 # Called when the node enters the scene tree for the first time.
 
@@ -21,8 +27,8 @@ var inCombo = false
 ##-----FRAGILE CODE-----
 func _ready() -> void:
 	weaponHurtBox.monitoring = false
-	weaponHurtBox.area_entered.connect(sword_hit)
-	weaponHurtBox.area_exited.connect(sword_leave)
+	weaponHurtBox.area_entered.connect(weapon_hit)
+	weaponHurtBox.area_exited.connect(weapon_leave)
 	#postAttackMovementLockdownTimer = 0
 	#attackTimer = attackDuration
 
@@ -40,29 +46,27 @@ func attack():
 	if !isAttacking:
 		isAttacking = true
 		movementManager.lockMovement()
-	##print(comboState,isAttacking)
-	#isAttacking = false
 	
 func canAttack():
 	return !isAttacking
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	##print(anim_name) # Replace with function body.
-	if anim_name in ["UAL/Sword_Regular_A","UAL/Sword_Regular_B","UAL/Sword_Regular_C"]:
+	if anim_name in currentAnimationSet.get("attack"):
 		#print("changed combo state")
 		isAttacking = false
 		print(anim_name+ " over. Combo state: ", comboState)
 		movementManager.unlockMovement()
 		comboWindowTimer = comboWindowTime
 		
-func sword_hit(area):
+func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
 		
-func sword_leave(area):
+func weapon_leave(area):
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
 		enemy.weaponLeftBody()
@@ -73,8 +77,26 @@ func toggleHurtbox():
 func setComboState(_comboState: int):
 	comboState = _comboState
 
+func changeWeapon(weaponName: String):
+	comboState = 0
+	currentWeaponName = weaponName
+	currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
+	print(currentAnimationSet," ",currentAnimationSet.values())
+	for i in range(3):
+		if i >= len(currentAnimationSet.get("attack")):
+			break
+		print(currentAnimationSet.get("attack")[i])	
+		print(animTree.get_tree_root().get_node("attack_"+str(i+1))," ","attack_"+str(i+1))
+		print(animTree.get_tree_root().get_node("attack_"+str(i+1)).animation)
+		animTree.get_tree_root().get_node("attack_"+str(i+1)).animation = StringName(currentAnimationSet.get("attack")[i])
+
+
 func alterDebugText():
 	if debugText:
 		var attackStateData = "is_attacking: "+str(isAttacking)+"\ncombo_window_timer: "+str(str(snapped(comboWindowTimer, 0.001)))+"\ncan_follow_up: "+str(comboWindowTimer>0)+"\ncombo_state: "+str(comboState)
 		var hitboxData = "hitbox_monitoring: "+str(weaponHurtBox.monitoring)
 		debugText.text = "ATTACK DATA\n"+attackStateData+"\n"+hitboxData
+		
+	if weaponDebugText:
+		var currentWeaponData = "current_weapon: "+str(currentWeaponName)
+		weaponDebugText.text = "WEAPON_DATA\n"+currentWeaponData
