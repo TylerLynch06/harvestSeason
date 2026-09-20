@@ -92,18 +92,19 @@ func setComboState(_comboState: int):
 	comboState = _comboState
 
 func changeWeapon(weaponName: String):
-	##Resets combo state and reassings attack animations
-	comboState = 0
-	currentWeaponName = weaponName
-	currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
-	print(currentAnimationSet," ",currentAnimationSet.values())
-	for i in range(3):
-		if i >= len(currentAnimationSet.get("attack")):
-			break
-		print(currentAnimationSet.get("attack")[i])	
-		#print(animTree.get_tree_root()..get_node().get_node("attack_"+str(i+1))," ","attack_"+str(i+1))
-		#print(animTree.get_tree_root().get_node("attack_"+str(i+1)).animation)
-		animTree.get_tree_root().get_node("player").get_node("attack_"+str(i+1)).animation = StringName(currentAnimationSet.get("attack")[i])
+	if !isAttacking:
+		##Resets combo state and reassings attack animations
+		comboState = 0
+		currentWeaponName = weaponName
+		currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
+		print(currentAnimationSet," ",currentAnimationSet.values())
+		for i in range(3):
+			if i >= len(currentAnimationSet.get("attack")):
+				break
+			print(currentAnimationSet.get("attack")[i])	
+			#print(animTree.get_tree_root()..get_node().get_node("attack_"+str(i+1))," ","attack_"+str(i+1))
+			#print(animTree.get_tree_root().get_node("attack_"+str(i+1)).animation)
+			animTree.get_tree_root().get_node("player").get_node("attack_"+str(i+1)).animation = StringName(currentAnimationSet.get("attack")[i])
 
 
 func alterDebugText():
