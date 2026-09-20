@@ -38,4 +38,4 @@ func _process(delta: float):
 	alterDebugText()
 	
 func alterDebugText():
-	statsDebugText.text = "STATS_DATA\nplayer_health: "+str(health)
+	statsDebugText.text = "STATS_DATA\nplayer_health: "+str(health) + "\nwheat: "+str(Economy.wheat)

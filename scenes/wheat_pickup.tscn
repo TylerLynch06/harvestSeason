@@ -75,13 +75,12 @@ material = SubResource("StandardMaterial3D_hxdvv")
 radius = 0.2
 height = 0.4
 
-[node name="Node3D" type="RigidBody3D" unique_id=652753890 node_paths=PackedStringArray("hitbox") groups=["wheat"]]
-collision_layer = 2
-collision_mask = 3
+[node name="Node3D" type="RigidBody3D" unique_id=652753890]
+collision_layer = 8
+collision_mask = 8
 angular_velocity = Vector3(0, 0.08726646, 0)
 angular_damp = 0.1
 script = ExtResource("1_dcp1i")
-hitbox = NodePath(".")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=142738839]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -117,7 +116,7 @@ process_material = SubResource("ParticleProcessMaterial_e1uel")
 draw_pass_1 = SubResource("SphereMesh_10clc")
 
 [node name="Timer" type="Timer" parent="." unique_id=1395072636]
-wait_time = 3.0
+wait_time = 10.0
 autostart = true
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=983496120]
@@ -130,4 +129,10 @@ draw_passes = 2
 draw_pass_1 = SubResource("CapsuleMesh_guyfr")
 draw_pass_2 = SubResource("SphereMesh_ojv0a")
 
+[node name="Timer2" type="Timer" parent="." unique_id=1678944723]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
