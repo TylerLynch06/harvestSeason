@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b065gbnnwckb" path="res://scenes/merchant.tscn" id="4_q1tif"]
 [ext_resource type="PackedScene" uid="uid://oudp41u66lw3" path="res://scenes/wheat_pickup.tscn" id="5_onomm"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_7pw6a"]
+vertices = PackedVector3Array(-1.8394747, 0.42061687, 1.6849699, -3.8394747, 0.42061687, 1.9349699, -3.5894747, 0.42061687, 7.18497, 1.1605253, 0.42061687, -4.56503, -1.8394747, 0.42061687, -4.56503, -9.839475, 0.42061687, 7.43497, -9.839475, 0.42061687, 10.43497, -2.0894747, 0.42061687, 10.43497, -1.8394747, 0.42061687, 9.68497, 1.1605253, 0.42061687, 9.18497)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(8, 7, 2), PackedInt32Array(2, 7, 5), PackedInt32Array(5, 7, 6), PackedInt32Array(8, 2, 9), PackedInt32Array(9, 2, 0), PackedInt32Array(9, 0, 3)]
+geometry_source_geometry_mode = 1
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)
 sky_horizon_color = Color(0.28747576, 0.23366877, 0.25727445, 1)
@@ -87,17 +92,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_las2w")
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_7pw6a"]
-vertices = PackedVector3Array(1.4236488, 0.5118506, 2.43497, 1.4236488, 0.2618506, -4.56503, -1.8263512, 0.5118506, -4.56503, -2.0763512, 0.2618506, 2.68497, 4.423649, 0.2618506, 2.68497, -13.576351, 0.2618506, 2.93497, -13.076351, 0.2618506, 28.18497, 4.423649, 0.2618506, 28.18497)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 5), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(3, 0, 4)]
-geometry_source_geometry_mode = 1
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_e1uel"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1uel"]
 size = Vector3(100, 1, 100)
 
 [node name="Node3D" type="Node3D" unique_id=412550460]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=861529662]
+transform = Transform3D(0.99977136, 0.021381663, 0, -0.021381663, 0.99977136, 0, 0, 0, 1, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_7pw6a")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=344648526]
 environment = SubResource("Environment_sbtqg")
@@ -111,7 +115,6 @@ transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, -3.267
 mesh = SubResource("ArrayMesh_xtlab")
 
 [node name="floor_piece2" type="Node3D" parent="terrain" unique_id=83145381]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Floor stone4_002" type="MeshInstance3D" parent="terrain/floor_piece2" unique_id=1872363310 groups=["navigation_mesh_source_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, -3.3762357, -0.071116135, 9.931743)
@@ -128,12 +131,8 @@ mesh = SubResource("ArrayMesh_xtlab")
 transform = Transform3D(-0.9996181, 0, -0.02763471, 0, 1, 0, 0.02763471, 0, -0.9996181, -8.400011, 0, 9.480891)
 
 [node name="Floor stone4_002" type="MeshInstance3D" parent="terrain/floor_piece4" unique_id=670800888 groups=["navigation_mesh_source_group"]]
-transform = Transform3D(3, 0, 0, 0, 1, -1.3113416e-07, 0, 4.371139e-08, 3, -9.492, 0, 8.239)
+transform = Transform3D(1, 0, 0, 0, 1, -4.3711385e-08, 0, 4.3711385e-08, 1, -9.492, 0, 8.239)
 mesh = SubResource("ArrayMesh_xtlab")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="terrain" unique_id=861529662]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005723238, 1.1920929e-07, -0.009123564)
-navigation_mesh = SubResource("NavigationMesh_7pw6a")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=674982492]
 transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.11313336, 0, 14.105721, 23.22163)
@@ -164,11 +163,17 @@ mesh = SubResource("CylinderMesh_e1uel")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23223042, 0)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1179643322]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 8
+collision_mask = 8
 gravity_scale = 0.0
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=106354655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_e1uel")
+
+[node name="Node3D3" parent="." unique_id=652753890 instance=ExtResource("5_onomm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60343564, 0.23223042, 0)
+
+[node name="Node3D4" parent="." unique_id=1206513796 instance=ExtResource("5_onomm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23223042, 0.57898986)
