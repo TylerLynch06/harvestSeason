@@ -25,6 +25,11 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
+func takeDamage(damage: float):
+	super.takeDamage(damage)
+	if invulTimer<0:
+		if damaging:
+			toggleDamaging()
 
 func attack():
 	super.attack()
