@@ -67,7 +67,7 @@ material = SubResource("StandardMaterial3D_tedtu")
 radius = 0.1
 height = 0.2
 
-[node name="Node3D" type="RigidBody3D" unique_id=652753890]
+[node name="WheatPickup" type="RigidBody3D" unique_id=652753890]
 collision_layer = 8
 collision_mask = 8
 angular_velocity = Vector3(0, 0.08726646, 0)
@@ -97,11 +97,12 @@ omni_range = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1221171715 groups=["wheat"]]
 shape = SubResource("SphereShape3D_e1uel")
+debug_color = Color(1, 1, 0, 1)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=531638881]
 emitting = false
 amount = 6
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_e1uel")

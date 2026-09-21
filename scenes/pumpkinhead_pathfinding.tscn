@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
-[ext_resource type="PackedScene" uid="uid://djxodwb1cnx51" path="res://assets/enemyTesting/enemyTesting.tscn" id="3_vquck"]
+[ext_resource type="PackedScene" uid="uid://oudp41u66lw3" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)
@@ -89,12 +89,21 @@ vertices = PackedVector3Array(-1.5521145, 0.491733, 7.18497, -4.0521145, 0.49173
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(1, 2, 6), PackedInt32Array(6, 2, 7), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 7)]
 geometry_source_geometry_mode = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lalod"]
+size = Vector3(100, 0.1, 200)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cccnq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vquck"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="Node3D" type="Node3D" unique_id=412550460]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=344648526]
 environment = SubResource("Environment_sbtqg")
 
 [node name="terrain" type="Node3D" parent="." unique_id=1662972207]
+visible = false
 
 [node name="floor_piece" type="Node3D" parent="terrain" unique_id=254091827]
 
@@ -119,7 +128,8 @@ mesh = SubResource("ArrayMesh_xtlab")
 transform = Transform3D(-0.9996181, 0, -0.02763471, 0, 1, 0, 0.02763471, 0, -0.9996181, -8.400011, 0, 9.480891)
 
 [node name="Floor stone4_002" type="MeshInstance3D" parent="terrain/floor_piece4" unique_id=670800888 groups=["navigation_mesh_source_group"]]
-transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, -3.1436067, 0, 11.416769)
+transform = Transform3D(3.9400005, -8.881784e-16, 0, 0, 3.94, -1.7222287e-07, 0, 1.722229e-07, 3.9400005, -15.196817, 0, 20.39464)
+layers = 9
 mesh = SubResource("ArrayMesh_xtlab")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="terrain" unique_id=861529662]
@@ -131,10 +141,27 @@ transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.1131
 [node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("2_cq08y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.555323, 0, -0.25257993)
 
-[node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.195507, -2.3841858e-07, 1.450768)
-
 [node name="merchantStop" type="Marker3D" parent="." unique_id=263662638]
 
-[node name="knight" parent="." unique_id=1486286344 instance=ExtResource("3_vquck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.188346, 0, 6.0421267)
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=128942783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14393187, 0)
+collision_layer = 8
+collision_mask = 8
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1749668388]
+shape = SubResource("BoxShape3D_lalod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=245707799]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_cccnq")
+surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
+
+[node name="Node3D" parent="." unique_id=652753890 instance=ExtResource("3_vquck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8266745, 0.9060683, 4.582651)
+
+[node name="Node3D2" parent="." unique_id=1831804474 instance=ExtResource("3_vquck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.574803, 0.90606785, 6.939413)
+
+[node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.902262, -0.09393191, 1.4474796)
