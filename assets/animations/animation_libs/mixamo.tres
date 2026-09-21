@@ -1,0 +1,10 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://d163ofyuj20e"]
+
+[ext_resource type="Animation" uid="uid://dhc58mn40r0qe" path="res://assets/enemyDesigns/jumpAttack.res" id="1_mh806"]
+[ext_resource type="Animation" uid="uid://dkvccc6ub4kgh" path="res://assets/enemyDesigns/roar.res" id="2_10x46"]
+
+[resource]
+_data = {
+&"jumpAttack": ExtResource("1_mh806"),
+&"roar": ExtResource("2_10x46")
+}
