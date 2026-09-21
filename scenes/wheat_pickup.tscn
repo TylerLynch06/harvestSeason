@@ -26,6 +26,8 @@ spread = 180.0
 flatness = 0.13
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
+scale_min = 0.099999994
+scale_max = 0.099999994
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8yhy"]
 albedo_color = Color(1, 1, 0, 1)
@@ -50,30 +52,20 @@ gradient = SubResource("Gradient_dcp1i")
 direction = Vector3(0.1, 1, 0)
 spread = 40.0
 initial_velocity_min = 1.0
-initial_velocity_max = 2.0
+initial_velocity_max = 5.0
 gravity = Vector3(0, -5, 0)
 scale_min = 0.19999999
+scale_max = 0.5
 color_ramp = SubResource("GradientTexture1D_53dv4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r2tk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedtu"]
 transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.41568628)
+albedo_color = Color(1, 1, 1, 0.05882353)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_guyfr"]
-material = SubResource("StandardMaterial3D_0r2tk")
+[sub_resource type="SphereMesh" id="SphereMesh_71nmq"]
+material = SubResource("StandardMaterial3D_tedtu")
 radius = 0.1
 height = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxdvv"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.18039216)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ojv0a"]
-material = SubResource("StandardMaterial3D_hxdvv")
-radius = 0.2
-height = 0.4
 
 [node name="Node3D" type="RigidBody3D" unique_id=652753890]
 collision_layer = 8
@@ -109,7 +101,7 @@ shape = SubResource("SphereShape3D_e1uel")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=531638881]
 emitting = false
 amount = 6
-lifetime = 0.2
+lifetime = 0.09999999999999999
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_e1uel")
@@ -121,13 +113,12 @@ autostart = true
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=983496120]
 emitting = false
-lifetime = 0.4
+lifetime = 0.2
 one_shot = true
-explosiveness = 1.0
+speed_scale = 2.0
+explosiveness = 0.46
 process_material = SubResource("ParticleProcessMaterial_10clc")
-draw_passes = 2
-draw_pass_1 = SubResource("CapsuleMesh_guyfr")
-draw_pass_2 = SubResource("SphereMesh_ojv0a")
+draw_pass_1 = SubResource("SphereMesh_71nmq")
 
 [node name="Timer2" type="Timer" parent="." unique_id=1678944723]
 one_shot = true
