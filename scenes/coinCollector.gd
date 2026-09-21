@@ -15,8 +15,10 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	things = get_overlapping_areas()
+	things = get_overlapping_bodies()
 	print("thigs!" + str(things))
 	for i in things:
 		if i.is_in_group("wheat"):
 			i.collect()
+		else:
+			print(i.name + "fail")

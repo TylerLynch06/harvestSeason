@@ -162,13 +162,13 @@ mesh = SubResource("CylinderMesh_e1uel")
 [node name="Node3D2" parent="." unique_id=1428578336 instance=ExtResource("5_onomm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23223042, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1179643322]
+[node name="Floor" type="RigidBody3D" parent="." unique_id=1179643322]
 collision_layer = 8
 collision_mask = 8
 gravity_scale = 0.0
 freeze = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=106354655]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=106354655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_e1uel")
 

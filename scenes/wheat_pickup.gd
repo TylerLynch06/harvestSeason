@@ -5,14 +5,14 @@ var acceleraition = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.apply_impulse(Vector3(randi_range(0,2),5,randi_range(0,2)))
+	self.apply_impulse(Vector3(randi_range(0,4),5,randi_range(0,4)))
 	self.angular_velocity.y = 7220
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.3).timeout
 	self.add_to_group("wheat")
 
 func collect():
 	collected = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	cash()
 	
 func _physics_process(delta: float) -> void:
@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 func cash():
 	Economy.wheat += 1
 	$GPUParticles3D.emitting = true
-	
+	$GPUParticles3D.show()
+	$GPUParticles3D.reparent($"../..")
 	self.queue_free()
 
 
@@ -34,6 +35,8 @@ func _on_timer_timeout() -> void:
 	if collected == true:
 		Economy.wheat += 1
 		$GPUParticles3D.emitting = true
+		$GPUParticles3D.show()
+		$GPUParticles3D.reparent($"../..")
 		self.queue_free()
 	else:
 		angular_damp = 3
@@ -44,6 +47,5 @@ func _on_timer_timeout() -> void:
 			$MeshInstance3D4.show()
 		$GPUParticles3D2.emitting = true
 		$GPUParticles3D2.show()
-		self.hide()
-		await get_tree().create_timer(3.0).timeout
+		$GPUParticles3D2.reparent($"../..")
 		self.queue_free()
