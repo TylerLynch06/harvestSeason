@@ -15,7 +15,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	print("alive")
 	self.position += velocity * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
