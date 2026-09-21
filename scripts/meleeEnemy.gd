@@ -41,7 +41,7 @@ func toggleDamaging():
 func damageInHitbox():
 	if playerInRange() and !hasHitPlayer and damaging:
 		var playerStats = player.get_node("Stats") as PlayerStats
-		playerStats.playerHit(20)
+		playerStats.playerHit(BASE_DAMAGE)
 		hasHitPlayer = true
 	
 	
