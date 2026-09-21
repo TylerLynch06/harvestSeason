@@ -2,6 +2,8 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bgb75cwcqbmmb" path="res://VoxelFruitsAndVegetables/OBJs/Corn-0.obj" id="1_3r7vm"]
 [ext_resource type="Script" uid="uid://cihdk37o1sutd" path="res://scenes/wheat_pickup.gd" id="1_dcp1i"]
+[ext_resource type="Script" uid="uid://c6bhjo45t14s5" path="res://scripts/wheat_collect_particles.gd" id="3_2hjst"]
+[ext_resource type="Script" uid="uid://w22jpjx80id" path="res://scripts/wheat_vanish_particles.gd" id="4_ifs4a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r7vm"]
 transparency = 1
@@ -73,7 +75,6 @@ collision_mask = 8
 angular_velocity = Vector3(0, 0.08726646, 0)
 angular_damp = 0.1
 script = ExtResource("1_dcp1i")
-COLLECTION_FREE_TIME = 0.25
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=142738839]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -108,6 +109,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_e1uel")
 draw_pass_1 = SubResource("SphereMesh_10clc")
+script = ExtResource("3_2hjst")
 
 [node name="Timer" type="Timer" parent="." unique_id=1395072636]
 wait_time = 10.0
@@ -121,6 +123,7 @@ speed_scale = 2.0
 explosiveness = 0.46
 process_material = SubResource("ParticleProcessMaterial_10clc")
 draw_pass_1 = SubResource("SphereMesh_71nmq")
+script = ExtResource("4_ifs4a")
 
 [node name="Timer2" type="Timer" parent="." unique_id=1678944723]
 one_shot = true
