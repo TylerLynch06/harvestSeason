@@ -1,8 +1,7 @@
 extends RigidBody3D
 var collected = false
-var speed = 300
+var speed = 100
 var acceleraition = 5
-@export var COLLECTION_FREE_TIME = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,39 +11,35 @@ func _ready() -> void:
 	self.add_to_group("wheat")
 
 func collect():
-	print(self.name)
 	collected = true
-	await get_tree().create_timer(COLLECTION_FREE_TIME).timeout
+	await get_tree().create_timer(50).timeout
 	cash()
 	
 func _physics_process(delta: float) -> void:
 	if collected == true:
 		var player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 		var distanceToPlayer = (player.global_position - global_position).length()
-		self.apply_force(((player.global_position) - global_position).normalized()*speed*1/distanceToPlayer)
+		self.apply_force(((player.global_position) - Vector3(global_position.x+ randf_range(0,0.6),global_position.y - 1 + randf_range(0,0.6), global_position.z + randf_range(0,-0.6))).normalized()*speed*1/distanceToPlayer)
+
 
 func cash():
 	Economy.wheat += 1
-	$GPUParticles3D.emitting = true
-	$GPUParticles3D.show()
-	$GPUParticles3D.reparent($"../..")
+	$GPUParticles3D.fire()
 	self.queue_free()
 
+
+
 func _on_timer_timeout() -> void:
-	if collected == true:
-		Economy.wheat += 1
-		$GPUParticles3D.emitting = true
-		$GPUParticles3D.show()
-		$GPUParticles3D.reparent($"../..")
-		self.queue_free()
-	else:
-		angular_damp = 3
-		for i in range(10):
-			await get_tree().create_timer(0.07 - (i/70)).timeout
-			$MeshInstance3D4.hide()
-			await get_tree().create_timer(0.07 - (i/70)).timeout
-			$MeshInstance3D4.show()
-		$GPUParticles3D2.emitting = true
-		$GPUParticles3D2.show()
-		$GPUParticles3D2.reparent($"../..")
-		self.queue_free()
+	#if collected == true:
+		#Economy.wheat += 1
+		#$GPUParticles3D.fire()
+		#self.queue_free()
+	#else:
+	angular_damp = 3
+	for i in range(10):
+		await get_tree().create_timer(0.07 - (i/70)).timeout
+		$MeshInstance3D4.hide()
+		await get_tree().create_timer(0.07 - (i/70)).timeout
+		$MeshInstance3D4.show()
+	$GPUParticles3D2.fire()
+	self.queue_free()
