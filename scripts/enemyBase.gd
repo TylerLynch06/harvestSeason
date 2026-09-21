@@ -22,6 +22,7 @@ var invulTimer: float = 0
 @onready var attackCollisionObject: CollisionShape3D = attackRange.get_child(0) as CollisionShape3D
 @onready var baseAttackRange = attackCollisionObject.shape.radius
 @onready var currentAttackRange = baseAttackRange
+@onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -107,7 +108,15 @@ func takeDamage(damage: float):
 		recoveryTimer = BASE_RECOVERY_TIME	
 		
 func death():
+	for i in range(WHEAT_ON_DEATH):
+		create_wheat()
+	print("add wheat equal " +str(WHEAT_ON_DEATH))
 	stateMachine.travel("death")
+	
+func create_wheat():
+	var wheat = wheatScene.instantiate()
+	wheat.global_position = global_position
+	get_tree().current_scene.add_child(wheat)
 		
 ##might not be need since invul timer exists, keep anyway
 func weaponLeftBody():
