@@ -125,10 +125,5 @@ process_material = SubResource("ParticleProcessMaterial_10clc")
 draw_pass_1 = SubResource("SphereMesh_71nmq")
 script = ExtResource("4_ifs4a")
 
-[node name="Timer2" type="Timer" parent="." unique_id=1678944723]
-one_shot = true
-autostart = true
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

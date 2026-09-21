@@ -10,7 +10,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#print(hurtbox.monitoring)
 	pass
-
-
-func _on_coin_collector_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
