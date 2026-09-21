@@ -131,5 +131,6 @@ func throwPitchfork():
 	print(projectileInstance)
 	projectileInstance.global_position = pitchforkSpawn.global_position
 	projectileInstance.rotation.y = playerRig.rotation.y
+	projectileInstance.setRotation(playerRig.global_transform.basis.z.normalized())
 	get_tree().root.add_child.call_deferred(projectileInstance)
 	

@@ -7670,6 +7670,9 @@ transform = Transform3D(0.7071068, -0.45451948, 0.54167527, 0, 0.7660445, 0.6427
 
 [node name="hero_warrior" type="Node3D" parent="." unique_id=186290468]
 
+[node name="pitchforkSpawn" type="Marker3D" parent="hero_warrior" unique_id=1526912811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9513898, 0.53565156)
+
 [node name="@Node3D@61567" type="Node3D" parent="hero_warrior" unique_id=90688897]
 transform = Transform3D(0.12893033, -0.81159014, 0.56982315, 0.9483687, 0.2688293, 0.1683078, -0.2897821, 0.5187025, 0.8043469, 0.037998676, 0.00507614, 0.044509828)
 
@@ -8213,7 +8216,7 @@ comboWindowTime = 1.0
 WEAPON_DATA = NodePath("../weaponData")
 weaponHurtBox = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/weaponSlotRight/hitbox")
 pitchforkProjectile = ExtResource("90_gvmy4")
-pitchforkSpawn = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand")
+pitchforkSpawn = NodePath("../hero_warrior/pitchforkSpawn")
 debugText = NodePath("../Control/attackData")
 weaponDebugText = NodePath("../Control/weaponData")
 stats = NodePath("../Stats")

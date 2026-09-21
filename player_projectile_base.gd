@@ -19,7 +19,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	print("alive")
 	velocity = dirVector * projectile_speed
 	self.position += velocity * delta
 
@@ -39,6 +38,7 @@ func setRotation(rotation: Vector3 = Vector3.ZERO):
 	dirVector = rotation
 	
 func hit(area: Area3D):
-	if area.name == "hurtbox" and area.get_parent().is_in_group("enemy"):
+	print("HIT ",area.name)
+	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(damage)
