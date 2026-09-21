@@ -1,6 +1,6 @@
 extends RigidBody3D
 var collected = false
-var speed = 100
+var speed = 300
 var acceleraition = 5
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func collect():
 	collected = true
-	await get_tree().create_timer(50).timeout
+	await get_tree().create_timer(1).timeout
 	cash()
 	
 func _physics_process(delta: float) -> void:
@@ -30,16 +30,16 @@ func cash():
 
 
 func _on_timer_timeout() -> void:
-	#if collected == true:
-		#Economy.wheat += 1
-		#$GPUParticles3D.fire()
-		#self.queue_free()
-	#else:
-	angular_damp = 3
-	for i in range(10):
-		await get_tree().create_timer(0.07 - (i/70)).timeout
-		$MeshInstance3D4.hide()
-		await get_tree().create_timer(0.07 - (i/70)).timeout
-		$MeshInstance3D4.show()
-	$GPUParticles3D2.fire()
-	self.queue_free()
+	if collected == true:
+		Economy.wheat += 1
+		$GPUParticles3D.fire()
+		self.queue_free()
+	else:
+		angular_damp = 3
+		for i in range(10):
+			await get_tree().create_timer(0.07 - (i/70)).timeout
+			$MeshInstance3D4.hide()
+			await get_tree().create_timer(0.07 - (i/70)).timeout
+			$MeshInstance3D4.show()
+		$GPUParticles3D2.fire()
+		self.queue_free()
