@@ -25,17 +25,16 @@ var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 
-@export var swordMesh: MeshInstance3D
-@export var pitchforkMesh: MeshInstance3D
-##Sickles are 2 meshes, just turn off the parent
-@export var sicklesParent: Node3D
-
 # Called when the node enters the scene tree for the first time.
 
 ##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
 ##-----DO NOT TOUCH SPEAK TO TYLER BEFORE TOUCHING-----
 ##-----FRAGILE CODE-----
 func _ready() -> void:
+	for weapon in WEAPON_DATA.meshSet.values():
+		if weapon:
+			weapon.hide()
+	changeWeapon("sword")
 	weaponHurtBox.monitoring = false
 	weaponHurtBox.area_entered.connect(weapon_hit)
 	weaponHurtBox.area_exited.connect(weapon_leave)
@@ -102,7 +101,14 @@ func changeWeapon(weaponName: String):
 	if !isAttacking:
 		##Resets combo state and reassings attack animations
 		comboState = 0
+		print(currentWeaponName)
+		print( WEAPON_DATA.meshSet.values())
+		print( WEAPON_DATA.meshSet.get(currentWeaponName) )
+		var oldWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
+		oldWeapon.hide()
 		currentWeaponName = weaponName
+		var newWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
+		newWeapon.show()
 		currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 		print(currentAnimationSet," ",currentAnimationSet.values())
 		for i in range(3):

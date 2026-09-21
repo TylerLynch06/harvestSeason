@@ -7665,6 +7665,11 @@ radius = 4.0
 
 [node name="Player" type="CharacterBody3D" unique_id=270954550 groups=["player"]]
 
+[node name="weaponData" type="Node3D" parent="." unique_id=1080459534 node_paths=PackedStringArray("swordMesh", "pitchforkMesh")]
+script = ExtResource("91_4vfid")
+swordMesh = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/weaponSlotRight/sword")
+pitchforkMesh = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/weaponSlotRight/pitchfork")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1484458411]
 transform = Transform3D(0.7071068, -0.45451948, 0.54167527, 0, 0.7660445, 0.64278764, -0.7071068, -0.45451948, 0.54167527, 5, 5, 5)
 
@@ -8207,7 +8212,7 @@ weaponManager = NodePath("../WeaponManager")
 debugText = NodePath("../Control/movementData")
 hurtbox = NodePath("../hurtbox")
 
-[node name="WeaponManager" type="Node3D" parent="." unique_id=1965518439 node_paths=PackedStringArray("playerBody", "playerRig", "movementManager", "WEAPON_DATA", "weaponHurtBox", "pitchforkSpawn", "debugText", "weaponDebugText", "stats", "swordMesh", "pitchforkMesh")]
+[node name="WeaponManager" type="Node3D" parent="." unique_id=1965518439 node_paths=PackedStringArray("playerBody", "playerRig", "movementManager", "WEAPON_DATA", "weaponHurtBox", "pitchforkSpawn", "debugText", "weaponDebugText", "stats")]
 script = ExtResource("3_tuyoq")
 playerBody = NodePath("..")
 playerRig = NodePath("../hero_warrior")
@@ -8220,8 +8225,6 @@ pitchforkSpawn = NodePath("../hero_warrior/pitchforkSpawn")
 debugText = NodePath("../Control/attackData")
 weaponDebugText = NodePath("../Control/weaponData")
 stats = NodePath("../Stats")
-swordMesh = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/weaponSlotRight/sword")
-pitchforkMesh = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/weaponSlotRight/pitchfork")
 
 [node name="PlayerInputHandler" type="Node3D" parent="." unique_id=403076730 node_paths=PackedStringArray("weaponManager")]
 script = ExtResource("4_fjrip")
@@ -8290,9 +8293,6 @@ offset_left = 712.0
 offset_right = 808.0
 offset_bottom = 23.0
 text = "DEBUG TEXT"
-
-[node name="weaponData" type="Node3D" parent="." unique_id=1080459534]
-script = ExtResource("91_4vfid")
 
 [node name="coinCollector" type="Area3D" parent="." unique_id=1899917093]
 collision_layer = 8
