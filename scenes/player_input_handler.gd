@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var weaponManager: WeaponManager
-@export var weaponDict = {1: "sword",2: "placeholder"}
+@export var weaponDict = {1: "sword",2: "pitchfork"}
 
 ##Doesnt include movement manager, movement manager's code cannot be applied to both player and enemy
 #@export var movementMangaer: MovementManager

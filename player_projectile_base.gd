@@ -10,6 +10,9 @@ var player: CharacterBody3D
 @export var projectile_speed: float
 @export var hitbox: Area3D
 
+##BASIC PROJECTILE
+##goes forward and straight
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hitbox.area_entered.connect(hit)
