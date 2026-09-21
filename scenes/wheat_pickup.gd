@@ -11,6 +11,7 @@ func _ready() -> void:
 	self.add_to_group("wheat")
 
 func collect():
+	print(self.name)
 	collected = true
 	await get_tree().create_timer(1).timeout
 	cash()
@@ -21,15 +22,12 @@ func _physics_process(delta: float) -> void:
 		var distanceToPlayer = (player.global_position - global_position).length()
 		self.apply_force(((player.global_position) - global_position).normalized()*speed*1/distanceToPlayer)
 
-
 func cash():
 	Economy.wheat += 1
 	$GPUParticles3D.emitting = true
 	$GPUParticles3D.show()
 	$GPUParticles3D.reparent($"../..")
 	self.queue_free()
-
-
 
 func _on_timer_timeout() -> void:
 	if collected == true:
