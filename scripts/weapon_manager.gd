@@ -13,8 +13,10 @@ var comboState = 0
 var inCombo = false
 @export var WEAPON_DATA: WeaponData
 
-
 @export var weaponHurtBox : Area3D
+
+@export var pitchforkProjectile: PackedScene
+@export var pitchforkSpawn: Node3D
 
 @export var debugText: Label = null
 @export var weaponDebugText: Label = null
@@ -22,6 +24,11 @@ var inCombo = false
 var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
+
+@export var swordMesh: MeshInstance3D
+@export var pitchforkMesh: MeshInstance3D
+##Sickles are 2 meshes, just turn off the parent
+@export var sicklesParent: Node3D
 
 # Called when the node enters the scene tree for the first time.
 
@@ -76,7 +83,7 @@ func weapon_hit(area):
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
 		if WEAPON_DATA.isMelee.get(currentWeaponName):
-			animTree.set("parameters/TimeScale/scale", 0.05)
+			animTree.set("parameters/TimeScale/scale", stats.BASE_MICROFREEZE_SPEED_FACTOR)
 			microFreezeTimer = stats.BASE_MICROFREEZE_TIME
 		
 		
@@ -116,3 +123,13 @@ func alterDebugText():
 	if weaponDebugText:
 		var currentWeaponData = "current_weapon: "+str(currentWeaponName)
 		weaponDebugText.text = "WEAPON_DATA\n"+currentWeaponData
+		
+##unfortunate this has to be here
+##Is called by the throw animation
+func throwPitchfork():
+	var projectileInstance = pitchforkProjectile.instantiate() as PlayerProjectile
+	print(projectileInstance)
+	projectileInstance.global_position = pitchforkSpawn.global_position
+	projectileInstance.rotation.y = playerRig.rotation.y
+	get_tree().root.add_child.call_deferred(projectileInstance)
+	
