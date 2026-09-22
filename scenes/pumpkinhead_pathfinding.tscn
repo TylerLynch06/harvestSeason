@@ -80,3 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.191025, 0, 4.128393)
 
 [node name="PumpkinHead3" parent="." unique_id=2020439705 instance=ExtResource("1_2iptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.589203, 0, -14.698648)
+
+[node name="PumpkinHead4" parent="." unique_id=1159501988 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.858137, 0, -8.256338)
+WHEAT_ON_DEATH = 500

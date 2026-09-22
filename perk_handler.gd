@@ -6,12 +6,12 @@ var perks = {
 	"battery": -1, #implemented in enemyBase
 	"fool bell": -1, #not implemented
 	"monsterhunter charm": 2, #implemented in weaponManager
-	"fishing magnet": 1
+	"fishing magnet": 2 #implemented in pitchforkProjectile
 }
 var progression = {
 	"battery": [0.5,1,1.5],
 	"monsterhunter charm": [0.1,0.2,0.3],
-	"fishing magnet" : [10,20,50]
+	"fishing magnet" : [15,25,50]
 }
 # Called when the node enters the scene tree for the first time.
 func activate(perkName):

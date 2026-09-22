@@ -24,11 +24,12 @@ func calcVelocity(_delta):
 				if i.global_position.distance_to(self.global_position) > nearestEnemy.global_position.distance_to(self.global_position): 
 					nearestEnemy = i
 				if nearestEnemy.global_position.distance_to(self.global_position) < PerkHandler.progression["fishing magnet"][PerkHandler.perks["fishing magnet"]]:
-					dirVector = (dirVector + (nearestEnemy.global_position - self.global_position).normalized())/2
-					self.look_at_from_position(self.position, nearestEnemy.global_position, Vector3.UP)
+					dirVector = (((dirVector * 6) + (nearestEnemy.global_position - self.global_position))/6).normalized()
+					self.look_at_from_position(self.position, nearestEnemy.global_position)
 					dirVector.y = 0
 		
 		var _velocity = dirVector*projectile_speed + Vector3.DOWN * simulatedGravityStrength
+		global_position += dirVector
 		mesh.rotation.x += angleDecreasePerSecond * _delta
 		return _velocity
 	else:
