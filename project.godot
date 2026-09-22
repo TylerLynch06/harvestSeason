@@ -46,6 +46,7 @@ navigation_mesh_source_group=""
 player=""
 enemy=""
 wheat=""
+ground=""
 
 [input]
 
