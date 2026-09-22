@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ci2cmpxlr6peg"]
+
+[ext_resource type="Script" uid="uid://2vi6w087x1mr" path="res://scripts/money_box.gd" id="2_1etfg"]
+[ext_resource type="PackedScene" uid="uid://c5ge7rat7bgn3" path="res://scenes/healthBar.tscn" id="2_fls4u"]
+[ext_resource type="Texture2D" uid="uid://bjrjo54gey8xg" path="res://assets/HUD/bagMoney.jpg" id="3_1etfg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prru6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72156864, 0.47843137, 0.33333334, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 12.0
+expand_margin_top = 4.0
+expand_margin_right = 12.0
+expand_margin_bottom = 4.0
+
+[node name="HUD" type="CanvasLayer" unique_id=1274022013]
+
+[node name="Root" type="Control" parent="." unique_id=410901623]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bar" parent="Root" unique_id=428272657 instance=ExtResource("2_fls4u")]
+layout_mode = 0
+offset_right = 128.0
+
+[node name="MoneyBox" type="PanelContainer" parent="Root" unique_id=533824026]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -368.0
+offset_top = 16.0
+offset_right = -11.76001
+offset_bottom = 148.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_prru6")
+script = ExtResource("2_1etfg")
+
+[node name="HBox" type="HBoxContainer" parent="Root/MoneyBox" unique_id=1282796306]
+layout_mode = 2
+
+[node name="MoneyIcon" type="TextureRect" parent="Root/MoneyBox/HBox" unique_id=887716365]
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 2
+texture = ExtResource("3_1etfg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AmountLabel" type="Label" parent="Root/MoneyBox/HBox" unique_id=1328289938]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
