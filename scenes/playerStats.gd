@@ -20,6 +20,9 @@ class_name PlayerStats
 #@export var BASE_INVUL_ON_HIT: float
 ##What factor he attack range increases by during an attack.
 #@export var BASE_ATTACK_RANGE_INCRASE: float
+@export var BASE_SICKLE_DRAIN_RATE: float
+@export var BASE_SICKLE_CHARGE_RATE: float
+@export var BASE_SICKLE_CHARGE_MAX: float
 
 
 ##critical angle doesnt need a factor
