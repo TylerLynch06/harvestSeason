@@ -19,7 +19,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	velocity = dirVector * projectile_speed
+	velocity = calcVelocity(delta)
 	self.position += velocity * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +28,10 @@ func _process(delta: float) -> void:
 	if lifetime<=0:
 		queue_free()
 		
+##Feel free to overwrite in subclass
+func calcVelocity(_delta):
+	return dirVector * projectile_speed
+	
 func setDamage(_damage: float = damage):
 	damage = _damage
 	

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dui5ym8xpdo2g"]
 
 [ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
+[ext_resource type="PackedScene" uid="uid://2x2s0bk5rc5g" path="res://scenes/player.tscn" id="2_cq08y"]
 [ext_resource type="PackedScene" uid="uid://oudp41u66lw3" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
@@ -41,10 +41,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.555323, 0, -0.25257993)
 
 [node name="merchantStop" type="Marker3D" parent="." unique_id=263662638]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=128942783]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=128942783 groups=["ground"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14393187, 0)
-collision_layer = 8
-collision_mask = 8
+collision_layer = 12
+collision_mask = 12
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1749668388]
