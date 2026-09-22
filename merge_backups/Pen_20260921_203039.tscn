@@ -1,3 +1,27 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:94d354dbcd00503db9e9065355f9483f12d0ccb883996d35a065bb8079634ee7
 size 1134
+=======
+[gd_scene format=3 uid="uid://dgqtolqemttap"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxgyutvcsfohi" path="res://environment/farm buildings/Fence.obj" id="1_o5464"]
+
+[node name="Pen_backup" type="Node3D" unique_id=726388089]
+
+[node name="Pen" type="MeshInstance3D" parent="." unique_id=791446498]
+transform = Transform3D(13.118848, 0, 11.733425, 0, 12.999998, 0, -13.118853, 0, 11.733421, 189, 0, -96)
+mesh = ExtResource("1_o5464")
+
+[node name="Fence5" type="MeshInstance3D" parent="Pen" unique_id=919194926]
+transform = Transform3D(-4.3711385e-08, 0, 0.49999994, 0, 0.9999999, 0, -1.9999998, 0, -4.3711385e-08, -2.9038458, 0, -5.8461533)
+mesh = ExtResource("1_o5464")
+
+[node name="Pen2" type="MeshInstance3D" parent="Pen" unique_id=1044817418]
+transform = Transform3D(-0.9999999, 0, 4.3711385e-08, 0, 0.9999999, 0, -1.7484554e-07, 0, -0.9999999, 0, 0, -11.76923)
+mesh = ExtResource("1_o5464")
+
+[node name="Fence6" type="MeshInstance3D" parent="Pen" unique_id=595231521]
+transform = Transform3D(-4.3711385e-08, 0, -0.49999982, 0, 0.99999964, 0, 1.9999993, 0, -4.3711385e-08, 2.9038448, 0, -5.9230766)
+mesh = ExtResource("1_o5464")
+>>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

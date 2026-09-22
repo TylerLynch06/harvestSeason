@@ -1,3 +1,13 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:2fb16bb3d05ed034b4b2d6540a12234ec3d193c9bb69e4f887c8d445e22e781f
 size 330
+=======
+[gd_scene format=3 uid="uid://bpufuwe1o2ebm"]
+
+[ext_resource type="PackedScene" uid="uid://cu22sjc5hfs06" path="res://assets/Medevial Tools/Medevial Tools/tools_glb.glb" id="1_qs2ad"]
+
+[node name="Node3D" type="Node3D" unique_id=1809475733]
+
+[node name="tools_glb" parent="." unique_id=1446242291 instance=ExtResource("1_qs2ad")]
+>>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

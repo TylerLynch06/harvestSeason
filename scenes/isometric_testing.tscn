@@ -1,3 +1,35 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:3ba8c5b5a5e442c633f8904f1bc5930ae59aad25649ac898263d37d5ad80984a
 size 1604
+=======
+[gd_scene format=3 uid="uid://ds3e2r4hf1fy3"]
+
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_7bb16"]
+[ext_resource type="PackedScene" uid="uid://cawt2uqo58hac" path="res://assets/Dungeon Items/Floor wood/Floor wood1.fbx" id="4_63vh6"]
+[ext_resource type="PackedScene" uid="uid://dkdubvor04tdv" path="res://assets/Dungeon Items/Walls/Wall1.fbx" id="5_56sqr"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pakj4"]
+
+[node name="Node3D" type="Node3D" unique_id=558410108]
+
+[node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_7bb16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23946738, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1665459011]
+transform = Transform3D(1, 0, 0, 0, 0.025241971, 0.99968135, 0, -0.99968135, 0.025241971, 0, 8.480473, 0)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=13703385]
+
+[node name="Floor wood1" parent="Node3D" unique_id=1250639630 instance=ExtResource("4_63vh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6069078, 0, -8.047509)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Node3D/Floor wood1" unique_id=1933948116]
+navigation_mesh = SubResource("NavigationMesh_pakj4")
+
+[node name="Wall1" parent="." unique_id=1515323171 instance=ExtResource("5_56sqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.381437, 0, -12.84372)
+
+[node name="Wall2" parent="." unique_id=1472453593 instance=ExtResource("5_56sqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.381437, 0, -12.84372)
+>>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

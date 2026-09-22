@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:df0d33bb28866267a028f35dc4579c485ef53695a7ffc18157be1f030f7ec8c0
 size 217
+=======
+[gd_scene format=3 uid="uid://s73ayuytvbyh"]
+
+[node name="Control" type="Control" unique_id=1076060561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+>>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

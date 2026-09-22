@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="Isometric3D-dungeon"
+<<<<<<< HEAD
 run/main_scene="uid://bigjocy6ildgb"
+=======
+run/main_scene="uid://dui5ym8xpdo2g"
+>>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
