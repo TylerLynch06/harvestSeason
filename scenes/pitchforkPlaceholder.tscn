@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ba2e3lats76c4"]
+[gd_scene format=3 uid="uid://dmik5i4nur33l"]
 
 [ext_resource type="Script" uid="uid://cesdbmurlky0y" path="res://pitchforkProjectile.gd" id="1_sal07"]
 
@@ -28,3 +28,9 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=216418699]
 shape = SubResource("CylinderShape3D_cccnq")
+
+[node name="Timer" type="Timer" parent="." unique_id=304114274]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -24,7 +24,7 @@ var inCombo = false
 var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
-
+var bonusDamage = 0
 var currentSickleCharge = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -83,8 +83,11 @@ func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
+		bonusDamage = 0
 		var enemy = area.get_parent() as Enemy
-		enemy.takeDamage(10)
+		if enemy.is_in_group("boss") and PerkHandler.perks["monsterhunter charm"] != -1:
+			bonusDamage += 10 * PerkHandler.progression["monsterhunter charm"][PerkHandler.perks["monsterhunter charm"]]
+		enemy.takeDamage(10 + bonusDamage)
 		if WEAPON_DATA.isMelee.get(currentWeaponName):
 			animTree.set("parameters/TimeScale/scale", stats.BASE_MICROFREEZE_SPEED_FACTOR)
 			microFreezeTimer = stats.BASE_MICROFREEZE_TIME

@@ -73,3 +73,10 @@ mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
 
 [node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.779737, 0, 0)
+
+[node name="PumpkinHead2" parent="." unique_id=1438096223 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.191025, 0, 4.128393)
+
+[node name="PumpkinHead3" parent="." unique_id=2020439705 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.589203, 0, -14.698648)
