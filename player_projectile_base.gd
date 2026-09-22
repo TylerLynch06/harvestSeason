@@ -19,8 +19,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	print("alive")
-	velocity = dirVector * projectile_speed
+	velocity = calcVelocity(delta)
 	self.position += velocity * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,6 +28,10 @@ func _process(delta: float) -> void:
 	if lifetime<=0:
 		queue_free()
 		
+##Feel free to overwrite in subclass
+func calcVelocity(_delta):
+	return dirVector * projectile_speed
+	
 func setDamage(_damage: float = damage):
 	damage = _damage
 	
@@ -39,6 +42,7 @@ func setRotation(rotation: Vector3 = Vector3.ZERO):
 	dirVector = rotation
 	
 func hit(area: Area3D):
-	if area.name == "hurtbox" and area.get_parent().is_in_group("enemy"):
+	print("HIT ",area.name)
+	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(damage)
