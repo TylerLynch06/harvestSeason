@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var pivot: Node3D
 var dirVector: Vector3 = Vector3.ZERO
 var relativeRigForward = Vector3.ZERO
-@export var BASE_MOVE_SPEED = 150
+@export var BASE_MOVE_SPEED = 350
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 	dirVector = calculateDirVector(pos)
 	rotateToTarget(delta)
 	moveToPlayer(pos,delta)
+	$Node3D.rotate_x(-0.025 * BASE_MOVE_SPEED/110)
+	$Node3D2.rotate_x(-0.025 * BASE_MOVE_SPEED/110)
 
 func getNextMovementPosition():
 	navigationAgent.target_position = stop.position 

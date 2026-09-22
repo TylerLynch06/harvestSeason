@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bbn4qc755i6ii" path="res://scenes/pullingGuy.tscn" id="4_0kcgo"]
 [ext_resource type="Script" uid="uid://calmo4q0ay8yv" path="res://scenes/area_3d.gd" id="5_os6ie"]
 [ext_resource type="AnimationLibrary" uid="uid://btt2oohy0otdf" path="res://assets/animations/animation_libs/humanoid_animations.tres" id="6_bwfpt"]
+[ext_resource type="Texture2D" uid="uid://bjrmjg1d37b6a" path="res://assets/BicycleWheel/BaseMaterial_albedom1.tga" id="6_os6ie"]
+[ext_resource type="ArrayMesh" uid="uid://crgllbiheam5n" path="res://assets/BicycleWheel/BicycleWheel.obj" id="7_t6u8v"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_um7h7"]
 radius = 0.2421875
@@ -7006,6 +7008,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g0i8o")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcynw"]
+albedo_texture = ExtResource("6_os6ie")
+
 [node name="Merchant" type="CharacterBody3D" unique_id=1671664162 node_paths=PackedStringArray("navigationAgent", "pivot") groups=["enemy"]]
 script = ExtResource("1_qrbky")
 navigationAgent = NodePath("pivot/NavigationAgent3D")
@@ -7530,3 +7535,19 @@ mesh = SubResource("ArrayMesh_0gj23")
 [node name="mountain of coins L" type="MeshInstance3D" parent="pivot" unique_id=1656609713]
 transform = Transform3D(-2, 7.642742e-15, 1.7484555e-07, 0, 2, -8.742278e-08, -1.7484555e-07, -8.742278e-08, -2, -3.865413, 0, 36.21265)
 mesh = SubResource("ArrayMesh_krsg3")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=624485926]
+transform = Transform3D(1.9161808e-08, 3.928753e-08, 1, 0.898794, -0.4383711, 0, 0.4383711, 0.898794, -4.371139e-08, -1.292, -0.38, 1.922)
+
+[node name="BicycleWheel" type="MeshInstance3D" parent="Node3D" unique_id=68033788]
+transform = Transform3D(0.35000002, 0, 6.217249e-15, 0, 0.35000002, 8.881784e-16, -6.217249e-15, 0, 0.35, -0.05077076, -0.92954266, 1.1920929e-07)
+material_override = SubResource("StandardMaterial3D_pcynw")
+mesh = ExtResource("7_t6u8v")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=191612821]
+transform = Transform3D(1.9161808e-08, 3.928753e-08, 1, 0.898794, -0.4383711, 0, 0.4383711, 0.898794, -4.371139e-08, 1.489, -0.38, 1.922)
+
+[node name="BicycleWheel" type="MeshInstance3D" parent="Node3D2" unique_id=330944624]
+transform = Transform3D(0.35000002, 0, 6.217249e-15, 0, 0.35000002, 8.881784e-16, -6.217249e-15, 0, 0.35, -0.045849055, -0.9194517, 1.1920929e-07)
+material_override = SubResource("StandardMaterial3D_pcynw")
+mesh = ExtResource("7_t6u8v")

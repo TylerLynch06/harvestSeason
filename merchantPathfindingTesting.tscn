@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bigjocy6ildgb"]
 
 [ext_resource type="PackedScene" uid="uid://bt3nkqyx0wfij" path="res://scenes/pathfinder.tscn" id="1_rna0k"]
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_ugs3e"]
+[ext_resource type="PackedScene" uid="uid://l4cnh7q0trww" path="res://scenes/player.tscn" id="2_ugs3e"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_q3ttl"]
 vertices = PackedVector3Array(-27.814074, 1.111444, 2.436077, -8.814074, 1.111444, 2.436077, -8.814074, 1.111444, -22.313923, -27.814074, 1.111444, -22.313923, 22.685926, 1.111444, 2.186077, 23.185926, 1.111444, 2.186077, 25.935926, 1.111444, -1.0639229, 12.685926, 1.111444, -14.813923, -3.5640736, 1.111444, 0.6860771, -1.0640736, 1.111444, 24.686077, -10.564074, 1.111444, 25.686077, -6.3140736, 1.111444, 29.936077, -7.5640736, 1.111444, 4.686077, -8.314074, 1.111444, 4.686077, -8.814074, 1.111444, 4.186077, -27.814074, 1.111444, 22.436077, -13.814074, 1.111444, 22.436077)
@@ -35,7 +35,7 @@ mesh = SubResource("PlaneMesh_lalod")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.764153, 1.2961392, -2.0594342)
 turnSpeed = 30
 stop = NodePath("../Marker3D")
-BASE_MOVE_SPEED = 50
+BASE_MOVE_SPEED = 220
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=38649063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37894166, -45.83908)

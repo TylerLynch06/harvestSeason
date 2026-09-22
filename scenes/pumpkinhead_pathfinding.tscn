@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dui5ym8xpdo2g"]
 
 [ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
-[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
+[ext_resource type="PackedScene" uid="uid://l4cnh7q0trww" path="res://scenes/player.tscn" id="2_cq08y"]
 [ext_resource type="PackedScene" uid="uid://oudp41u66lw3" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
@@ -37,7 +37,9 @@ environment = SubResource("Environment_sbtqg")
 transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.11313336, 0, 14.105721, 23.22163)
 
 [node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("2_cq08y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.555323, 0, -0.25257993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55201, 0, -0.25257993)
+collision_layer = 0
+collision_mask = 0
 
 [node name="merchantStop" type="Marker3D" parent="." unique_id=263662638]
 
@@ -62,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8266745, 0.9060683, 4.5826
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.574803, 0.90606785, 6.939413)
 
 [node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.902262, -0.09393191, 1.4474796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4383116, -0.09393191, 4.1495037)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1616107707]
 navigation_mesh = SubResource("NavigationMesh_cccnq")
@@ -71,3 +73,12 @@ navigation_mesh = SubResource("NavigationMesh_cccnq")
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
+
+[node name="PumpkinHead2" parent="." unique_id=1854648573 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.902262, -0.09393191, 4.5094595)
+
+[node name="PumpkinHead3" parent="." unique_id=889957309 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.061721, -0.09393191, 1.4474796)
+
+[node name="PumpkinHead4" parent="." unique_id=44870378 instance=ExtResource("1_2iptg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.902262, -0.09393191, 1.4474796)
