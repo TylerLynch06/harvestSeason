@@ -110,6 +110,7 @@ func takeDamage(damage: float):
 func death():
 	for i in range(WHEAT_ON_DEATH):
 		create_wheat()
+		await get_tree().create_timer(0.004).timeout
 	print("add wheat equal " +str(WHEAT_ON_DEATH))
 	stateMachine.travel("death")
 	

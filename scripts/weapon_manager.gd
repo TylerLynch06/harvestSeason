@@ -89,7 +89,6 @@ func weapon_hit(area):
 			animTree.set("parameters/TimeScale/scale", stats.BASE_MICROFREEZE_SPEED_FACTOR)
 			microFreezeTimer = stats.BASE_MICROFREEZE_TIME
 		
-		
 func weapon_leave(area):
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		var enemy = area.get_parent() as Enemy
