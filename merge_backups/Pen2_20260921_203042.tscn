@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:83f6b4774325dbb6a0754d294ed65d75d85b520ca0c5a6077253ef44c86c5a47
-size 2052
-=======
 [gd_scene format=3 uid="uid://cmhnbstunxtp6"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxgyutvcsfohi" path="res://environment/farm buildings/Fence.obj" id="1_yqvgp"]
@@ -40,4 +35,3 @@ mesh = ExtResource("1_yqvgp")
 [node name="Fence6" type="MeshInstance3D" parent="Pen3" unique_id=1282435895]
 transform = Transform3D(-4.3711385e-08, 0, -0.49999982, 0, 0.99999964, 0, 1.9999993, 0, -4.3711385e-08, 2.9038448, 0, -5.9230766)
 mesh = ExtResource("1_yqvgp")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

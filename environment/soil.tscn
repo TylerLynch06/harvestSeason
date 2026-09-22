@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:b45f12fa915f1610f15019d0f63b1e8eb6bdd0c6522dd85b79c4cb8fcb163cd9
-size 2719
-=======
 [gd_scene format=3 uid="uid://s8mn3irw1kda"]
 
 [ext_resource type="PackedScene" uid="uid://bbwq4ux4gfl2m" path="res://environment/Fertile soil by Frank Lynam - fdQd2Ayb9cU.glb" id="1_erxie"]
@@ -82,4 +77,3 @@ visible = false
 
 [node name="group1526355418" parent="." index="22" unique_id=353888163]
 visible = false
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

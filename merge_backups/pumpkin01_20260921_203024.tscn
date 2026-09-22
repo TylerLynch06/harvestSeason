@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:cdfd05aa56f9db904dc73514af0346b8c2fb2650d90720f7ffc6ba6c7830e7cc
-size 78538
-=======
 [gd_scene format=4 uid="uid://bf6d17ywhj0dw"]
 
 [ext_resource type="PackedScene" uid="uid://5wr4qg0whyp" path="res://environment/fruitsandvegetables/gltf/pumpkin01.gltf" id="1_hhfpj"]
@@ -143,4 +138,3 @@ mesh = SubResource("ArrayMesh_irm26")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DuckWhite2" unique_id=1509504149]
 libraries/ = SubResource("AnimationLibrary_re341")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

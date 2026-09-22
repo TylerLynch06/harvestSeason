@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:f77512d3b10f887598a8c5a49ce95c57dd4731e22bb9595312dcb1749d9ff3e9
-size 1426602
-=======
 [gd_scene format=4 uid="uid://bqn5nchvc8oml"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqwx6"]
@@ -48,4 +43,3 @@ shadow_mesh = SubResource("ArrayMesh_k2fq8")
 [node name="wheat" type="MeshInstance3D" unique_id=202918188]
 transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, 0.2, 0, -0.2, -8.742278e-09, 7.9894257, 9.106567, 12.00061)
 mesh = SubResource("ArrayMesh_27u2g")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

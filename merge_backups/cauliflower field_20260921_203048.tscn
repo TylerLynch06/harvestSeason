@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:e044856e0274204857f4710b120f681a4e87215846aac9c74e2839cd55fc446c
-size 156094
-=======
 [gd_scene format=4 uid="uid://cmlsnw18kwxkf"]
 
 [ext_resource type="ArrayMesh" uid="uid://d2p6plnglyrc6" path="res://environment/fruitsandvegetables/obj/cauliflower01.obj" id="1_d8qe8"]
@@ -901,4 +896,3 @@ mesh = SubResource("ArrayMesh_6owvr")
 [node name="group1526355418" type="MeshInstance3D" parent="cauliflower field/Cauliflower05/field3" unique_id=1036042535]
 visible = false
 mesh = SubResource("ArrayMesh_mpmse")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
