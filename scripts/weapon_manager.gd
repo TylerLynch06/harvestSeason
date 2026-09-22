@@ -13,8 +13,10 @@ var comboState = 0
 var inCombo = false
 @export var WEAPON_DATA: WeaponData
 
-
 @export var weaponHurtBox : Area3D
+
+@export var pitchforkProjectile: PackedScene
+@export var pitchforkSpawn: Node3D
 
 @export var debugText: Label = null
 @export var weaponDebugText: Label = null
@@ -23,12 +25,18 @@ var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 
+var currentSickleCharge = 0
+
 # Called when the node enters the scene tree for the first time.
 
 ##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
 ##-----DO NOT TOUCH SPEAK TO TYLER BEFORE TOUCHING-----
 ##-----FRAGILE CODE-----
 func _ready() -> void:
+	for weapon in WEAPON_DATA.meshSet.values():
+		if weapon:
+			weapon.hide()
+	changeWeapon("sword")
 	weaponHurtBox.monitoring = false
 	weaponHurtBox.area_entered.connect(weapon_hit)
 	weaponHurtBox.area_exited.connect(weapon_leave)
@@ -37,6 +45,8 @@ func _ready() -> void:
 
 func _process(delta: float):
 	alterDebugText()
+	if currentWeaponName == "sickles":
+		sickleUpdate(delta)
 	comboWindowTimer -= delta
 	if comboWindowTimer <= 0:
 		comboWindowTimer = 0
@@ -54,7 +64,8 @@ func _process(delta: float):
 func attack():
 	if !isAttacking:
 		isAttacking = true
-		movementManager.lockMovement()
+		if WEAPON_DATA.doMovementLock.get(currentWeaponName):
+			movementManager.lockMovement()
 	
 func canAttack():
 	return !isAttacking
@@ -70,13 +81,12 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		
 func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
-	
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(10)
 		if WEAPON_DATA.isMelee.get(currentWeaponName):
-			animTree.set("parameters/TimeScale/scale", 0.05)
+			animTree.set("parameters/TimeScale/scale", stats.BASE_MICROFREEZE_SPEED_FACTOR)
 			microFreezeTimer = stats.BASE_MICROFREEZE_TIME
 		
 		
@@ -95,7 +105,14 @@ func changeWeapon(weaponName: String):
 	if !isAttacking:
 		##Resets combo state and reassings attack animations
 		comboState = 0
+		print(currentWeaponName)
+		print( WEAPON_DATA.meshSet.values())
+		print( WEAPON_DATA.meshSet.get(currentWeaponName) )
+		var oldWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
+		oldWeapon.hide()
 		currentWeaponName = weaponName
+		var newWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
+		newWeapon.show()
 		currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 		print(currentAnimationSet," ",currentAnimationSet.values())
 		for i in range(3):
@@ -115,4 +132,25 @@ func alterDebugText():
 		
 	if weaponDebugText:
 		var currentWeaponData = "current_weapon: "+str(currentWeaponName)
+		if currentWeaponName == "sickles":
+			currentWeaponData+="\nsickle_charge: "+str(currentSickleCharge)
 		weaponDebugText.text = "WEAPON_DATA\n"+currentWeaponData
+		
+##unfortunate this has to be here
+##Is called by the throw animation
+func throwPitchfork():
+	var projectileInstance = pitchforkProjectile.instantiate() as PlayerProjectile
+	print(projectileInstance)
+	projectileInstance.global_position = pitchforkSpawn.global_position
+	projectileInstance.rotation.y = playerRig.rotation.y
+	projectileInstance.setRotation(playerRig.global_transform.basis.z.normalized())
+	get_tree().root.add_child.call_deferred(projectileInstance)
+	
+func chargeSickles(charge: float):
+	currentSickleCharge = charge
+	
+func sickleUpdate(delta):
+	if currentSickleCharge > 0:
+		currentSickleCharge -= stats.BASE_SICKLE_DRAIN_RATE * delta
+	elif currentSickleCharge <= 0:
+		isAttacking = false

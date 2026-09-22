@@ -1,7 +1,7 @@
 extends CharacterBody3D
 @export var critAngle = 5
 @export var turnSpeed = 150
-@export var stop: Marker3D
+@export var stop: Node3D
 @export var navigationAgent : NavigationAgent3D
 @export var pivot: Node3D
 var dirVector: Vector3 = Vector3.ZERO
@@ -23,20 +23,24 @@ func _physics_process(delta: float) -> void:
 	dirVector = calculateDirVector(pos)
 	rotateToTarget(delta)
 	moveToPlayer(pos,delta)
+	#moveTo(pos,delta)
 
 func getNextMovementPosition():
 	navigationAgent.target_position = stop.position 
 	return navigationAgent.get_next_path_position()
 	
 #func moveTo(pos,delta):
-	#var dirVector = pos - position
+	#var dirVector = (pos - position).normalized()
+	#
+	#pivot.rotation.y = atan2(dirVector.x, dirVector.z)
 	#velocity = dirVector * delta * BASE_MOVE_SPEED
 	#move_and_slide()
-	#
+	##
 func calculateDirVector(_position):
 	return (_position - position).normalized()
 	
 func rotateToTarget(delta):
+
 	var flatDir = Vector3(dirVector.x, 0, dirVector.z).normalized()
 	if flatDir == Vector3.ZERO:
 		return
@@ -46,8 +50,6 @@ func rotateToTarget(delta):
 	var currentHeading = atan2(forward.x, forward.z)
 	##If angle spills over pi, it goes to -pi
 	var signedAngle = wrapf(targetHeading - currentHeading, -PI, PI)
-
-	print(abs(signedAngle)," ", critAngle)
 	if abs(signedAngle) > critAngle:
 		var step = clamp(signedAngle, 
 		-turnSpeed * delta,
