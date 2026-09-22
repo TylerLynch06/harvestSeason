@@ -25,6 +25,8 @@ var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 
+var currentSickleCharge = 0
+
 # Called when the node enters the scene tree for the first time.
 
 ##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
@@ -43,6 +45,8 @@ func _ready() -> void:
 
 func _process(delta: float):
 	alterDebugText()
+	if currentWeaponName == "sickles":
+		sickleUpdate(delta)
 	comboWindowTimer -= delta
 	if comboWindowTimer <= 0:
 		comboWindowTimer = 0
@@ -60,7 +64,8 @@ func _process(delta: float):
 func attack():
 	if !isAttacking:
 		isAttacking = true
-		movementManager.lockMovement()
+		if WEAPON_DATA.doMovementLock.get(currentWeaponName):
+			movementManager.lockMovement()
 	
 func canAttack():
 	return !isAttacking
@@ -76,7 +81,6 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		
 func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
-	
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 		print("PLAYER ATTACK SUCCESS")
 		var enemy = area.get_parent() as Enemy
@@ -128,6 +132,8 @@ func alterDebugText():
 		
 	if weaponDebugText:
 		var currentWeaponData = "current_weapon: "+str(currentWeaponName)
+		if currentWeaponName == "sickles":
+			currentWeaponData+="\nsickle_charge: "+str(currentSickleCharge)
 		weaponDebugText.text = "WEAPON_DATA\n"+currentWeaponData
 		
 ##unfortunate this has to be here
@@ -140,3 +146,11 @@ func throwPitchfork():
 	projectileInstance.setRotation(playerRig.global_transform.basis.z.normalized())
 	get_tree().root.add_child.call_deferred(projectileInstance)
 	
+func chargeSickles(charge: float):
+	currentSickleCharge = charge
+	
+func sickleUpdate(delta):
+	if currentSickleCharge > 0:
+		currentSickleCharge -= stats.BASE_SICKLE_DRAIN_RATE * delta
+	elif currentSickleCharge <= 0:
+		isAttacking = false
