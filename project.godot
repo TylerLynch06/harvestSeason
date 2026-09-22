@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Economy="*uid://cwxdn3bd6rr5y"
+PerkHandler="*uid://8d6rkhtlgpu5"
 
 [display]
 

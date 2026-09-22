@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0e8bcb9cd6c122904904904a6753104dd7526ec2d7140d423643fb54adae5fd
-size 23513
-=======
 [gd_scene load_steps=7 format=3 uid="uid://nud6dwjcnj5v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysabf"]
@@ -542,4 +537,3 @@ layout_mode = 2
 text = "Close"
 
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/GeneralOptionsHBox/ResizeToggle" to="PanelContainer/MarginContainer/VBoxContainer/GeneralOptionsHBox/ResizeOptionButton" method="set_visible"]
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
