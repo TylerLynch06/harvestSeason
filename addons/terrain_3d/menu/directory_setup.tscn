@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0cf59599c8b878da27bd10bab9b68eef214943b7aa566a6319b98d42c20eaaa
-size 1678
-=======
 [gd_scene format=3 uid="uid://by3kr2nqbqr67"]
 
 [node name="DirectorySetup" type="ConfirmationDialog"]
@@ -51,4 +46,3 @@ layout_mode = 2
 [node name="Spacer" type="Control" parent="Margin/VBox"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

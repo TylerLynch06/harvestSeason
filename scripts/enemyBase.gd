@@ -24,6 +24,7 @@ var invulTimer: float = 0
 @onready var currentAttackRange = baseAttackRange
 @onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
 
+var batteryPerk = [0.3, 0.5,1]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
@@ -105,7 +106,7 @@ func takeDamage(damage: float):
 		print(health)
 		isTakingDamage = true
 	if !isUnstoppable:
-		recoveryTimer = BASE_RECOVERY_TIME	
+		recoveryTimer = BASE_RECOVERY_TIME + (batteryPerk[PerkHandler.perks["battery"]])
 		
 func death():
 	for i in range(WHEAT_ON_DEATH):
