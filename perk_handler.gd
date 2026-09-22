@@ -6,7 +6,8 @@ var perks = {
 	"battery": -1, #implemented in enemyBase
 	"fool bell": -1, #not implemented
 	"monsterhunter charm": 2, #implemented in weaponManager
-	"fishing magnet": 2 #implemented in pitchforkProjectile
+	"fishing magnet": 2, #implemented in pitchforkProjectile
+	"whetstone": -1
 }
 var progression = {
 	"battery": [0.5,1,1.5],
@@ -17,6 +18,8 @@ var progression = {
 func activate(perkName):
 	if perks[perkName] != -1:
 		perks[perkName] = 0
+	if perkName == "whetstone":
+		get_tree().get_nodes_in_group("player")[0].get_node("Stats").BASE_DAMAGE = 11
 	
 func upgrade(perkName):
 	if perks[perkName] < 2:
