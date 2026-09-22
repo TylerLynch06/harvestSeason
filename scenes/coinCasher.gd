@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("wheat"):
 		body.cash()
-		print("cashed" + str(body))
+		print("cashed " + str(body))
 
 
 func _on_timer_timeout() -> void:
