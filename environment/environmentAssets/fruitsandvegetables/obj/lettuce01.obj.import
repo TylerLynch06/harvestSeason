@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://m8jbe1qhpdaq"
+path="res://.godot/imported/lettuce01.obj-e1fb82d9ef9fabc0bf4f4de6abda6efd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lettuce01.obj-e1fb82d9ef9fabc0bf4f4de6abda6efd.mesh"]
+
+source_file="res://environment/environmentAssets/fruitsandvegetables/obj/lettuce01.obj"
+dest_files=["res://.godot/imported/lettuce01.obj-e1fb82d9ef9fabc0bf4f4de6abda6efd.mesh", "res://.godot/imported/lettuce01.obj-e1fb82d9ef9fabc0bf4f4de6abda6efd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
