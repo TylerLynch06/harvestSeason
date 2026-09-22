@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:d62c5477b51574be16b9d515024789c19f3a9e58ce158b247fc3c17ebfb24597
-size 1423612
-=======
 [gd_scene format=4 uid="uid://bbn4qc755i6ii"]
 
 [ext_resource type="Texture2D" uid="uid://d4k81fqhtrj3x" path="res://assets/VoxelFruitsAndVegetables/OBJs/Apple-0.png" id="1_1dpaq"]
@@ -7518,4 +7513,3 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0022797585, 0.0509872
 mesh = ExtResource("3_1v1td")
 skin = SubResource("Skin_hg080")
 skeleton = NodePath("..")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b848bf7d994a08559986f3e8c6f96ef438611a823c6dc385b7b0d1c7c4cab40
-size 1385295
-=======
 [gd_scene format=4 uid="uid://b7u83xvs2nv18"]
 
 [ext_resource type="Script" uid="uid://c2oar64n60svk" path="res://scripts/meleeEnemy.gd" id="1_0hgpp"]
@@ -6921,4 +6916,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96537244, 0)
 visible = false
 shape = SubResource("CylinderShape3D_cccnq")
 debug_color = Color(0, 0, 1, 1)
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

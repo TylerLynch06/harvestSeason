@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a4806aacc750a06a68116a1b29ed43b5dc46149fd4e9c3a39e8ad59a8e3b40a
-size 4650
-=======
 [gd_scene format=3 uid="uid://oudp41u66lw3"]
 
 [ext_resource type="ArrayMesh" uid="uid://bgb75cwcqbmmb" path="res://VoxelFruitsAndVegetables/OBJs/Corn-0.obj" id="1_3r7vm"]
@@ -131,4 +126,3 @@ script = ExtResource("4_ifs4a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

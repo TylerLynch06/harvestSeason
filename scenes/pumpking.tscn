@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:a42a07b2811958ae83a8a63c5847a2957a18e4abdb4e7f5d40d76d0ee0b1439c
-size 1425003
-=======
 [gd_scene format=4 uid="uid://bydr511lxxoqc"]
 
 [ext_resource type="Script" uid="uid://c2oar64n60svk" path="res://scripts/meleeEnemy.gd" id="1_u0iyq"]
@@ -7542,4 +7537,3 @@ parameters/BlendTree/TimeScale/scale = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8100891, 0)
 shape = SubResource("CylinderShape3D_pakj4")
 debug_color = Color(1, 0, 0, 1)
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

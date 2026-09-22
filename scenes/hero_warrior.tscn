@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:4253737f0770d60be59c29bb2b4544ab24b594c50383975231affffd949385a6
-size 22733
-=======
 [gd_scene format=4 uid="uid://ceq1e7ik3wrnf"]
 
 [ext_resource type="PackedScene" uid="uid://b7lga4ciwsgtp" path="res://assets/dungeon_creatures/characters/hero_warrior.glb" id="1_ufy0i"]
@@ -341,4 +336,3 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="AnimationTree" type="AnimationTree" parent="AnimationTree" index="0" unique_id=601755721]
 tree_root = SubResource("AnimationNodeStateMachine_twwqp")
 anim_player = NodePath("../AnimationPlayer")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

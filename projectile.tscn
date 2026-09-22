@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:bc80acf2ae39df3c45418b72eb1b6eab5718892a876d376624d132ead03a419d
-size 790
-=======
 [gd_scene format=3 uid="uid://blppewpkf0bbg"]
 
 [ext_resource type="Script" uid="uid://b1cnc4yhtah1p" path="res://projectile_base.gd" id="1_a85iw"]
@@ -24,4 +19,3 @@ shape = SubResource("SphereShape3D_cccnq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1133160746]
 mesh = SubResource("SphereMesh_cccnq")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

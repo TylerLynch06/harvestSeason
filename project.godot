@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="Isometric3D-dungeon"
-<<<<<<< HEAD
-run/main_scene="uid://bigjocy6ildgb"
-=======
 run/main_scene="uid://dui5ym8xpdo2g"
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="uid://bigjocy6ildgb"
 
 [autoload]
 
@@ -49,8 +46,6 @@ import/blender/enabled=false
 navigation_mesh_source_group=""
 player=""
 enemy=""
-wheat=""
-ground=""
 
 [input]
 
@@ -96,7 +91,7 @@ space={
 }
 3={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
+"events": [null, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
 ]
 }
 

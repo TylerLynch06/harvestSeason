@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:f96c61a12568c8071c9be6ec9c361b523afc8559e8756999b2df76c044e95b5b
-size 50527
-=======
 [gd_scene format=4 uid="uid://cbnjxoodmnxde"]
 
 [ext_resource type="Texture2D" uid="uid://6fyt2lyawtwd" path="res://assets/Medevial Tools/Medevial Tools/tools_glb_Tools_Tex.png" id="1_2rq4b"]
@@ -288,4 +283,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3033183, 0)
 [node name="sword" type="MeshInstance3D" parent="sword2" unique_id=789544995]
 transform = Transform3D(0.9405884, 0.3320276, -0.07107051, 0.33954874, -0.919754, 0.19687335, 0, -0.20930874, -0.9778498, -0.50580204, 0.6849103, 1.8285316)
 mesh = SubResource("ArrayMesh_3x18r")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:66da6bfc30a989beab1159e256f0b7ae77d03047cbb229387a7603c7ae9cec45
-size 2210417
-=======
 [gd_scene format=4 uid="uid://bt3nkqyx0wfij"]
 
 [ext_resource type="Script" uid="uid://duqw6kvcsmblw" path="res://scenes/pathfinder.gd" id="1_qrbky"]
@@ -7556,4 +7551,3 @@ transform = Transform3D(1.9161808e-08, 3.928753e-08, 1, 0.898794, -0.4383711, 0,
 transform = Transform3D(0.35000002, 0, 6.217249e-15, 0, 0.35000002, 8.881784e-16, -6.217249e-15, 0, 0.35, -0.045849055, -0.9194517, 1.1920929e-07)
 material_override = SubResource("StandardMaterial3D_pcynw")
 mesh = ExtResource("7_t6u8v")
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
