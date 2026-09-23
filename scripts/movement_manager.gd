@@ -65,19 +65,9 @@ func _physics_process(delta: float) -> void:
 	##print(movementIsLocked)
 	if !movementIsLocked:
 		directionVector = Vector3.ZERO
-		if Input.is_action_pressed("up"):
-			directionVector.x -= 1
-			directionVector.z -= 1
-		if Input.is_action_pressed("down"):
-			directionVector.x += 1
-			directionVector.z += 1
-		if Input.is_action_pressed("left"):
-			directionVector.x -= 1
-			directionVector.z += 1
-		if Input.is_action_pressed("right"):
-			directionVector.x += 1
-			directionVector.z -= 1
-			
+		
+		##PAUSE FLAG HERE
+		calcDirectionVector()
 		directionVector = directionVector.normalized()
 		if !isRolling and directionVector!= Vector3.ZERO:
 			rollDirection = directionVector
@@ -108,6 +98,20 @@ func movePlayer(delta):
 		playerBody.velocity = velocity
 		playerBody.move_and_slide()
 
+func calcDirectionVector():
+	if Input.is_action_pressed("up"):
+		directionVector.x -= 1
+		directionVector.z -= 1
+	if Input.is_action_pressed("down"):
+		directionVector.x += 1
+		directionVector.z += 1
+	if Input.is_action_pressed("left"):
+		directionVector.x -= 1
+		directionVector.z += 1
+	if Input.is_action_pressed("right"):
+		directionVector.x += 1
+		directionVector.z -= 1
+
 func rotatePlayer(_delta: float):
 	if weaponManager.currentSickleCharge > 0:
 		playerRig.rotation.y += stats.BASE_SICKLE_ROTATION_SPEED
@@ -118,7 +122,7 @@ func rotatePlayer(_delta: float):
 		playerRig.rotation.y = atan2(rollDirection.x,rollDirection.z)
 
 func canRoll():
-	return !movementIsLocked and !isRolling and rollCooldownTimer <= 0 
+	return !movementIsLocked and !isRolling and rollCooldownTimer <= 0 and weaponManager.currentSickleCharge <= 0
 
 func lockMovement():
 	if isRolling:

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c5ge7rat7bgn3"]
+
+[ext_resource type="Texture2D" uid="uid://wgn27rmkm1os" path="res://assets/HUD/healthBarUnder.png" id="1_spvli"]
+[ext_resource type="Script" uid="uid://dglnofcnij3j8" path="res://scripts/healthBar.gd" id="2_0vr2f"]
+[ext_resource type="Texture2D" uid="uid://dm7jcq22hbjrs" path="res://assets/HUD/healthBarOver.png" id="3_r72rs"]
+
+[node name="Bar" type="TextureProgressBar" unique_id=428272657]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.845343, 2.812903)
+value = 50.0
+texture_progress = ExtResource("3_r72rs")
+script = ExtResource("2_0vr2f")
+
+[node name="Damage" type="TextureProgressBar" parent="." unique_id=987014661]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+texture_under = ExtResource("1_spvli")
+texture_progress = ExtResource("3_r72rs")
+tint_progress = Color(0.49411765, 0.3647059, 0.078431375, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1037121342]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

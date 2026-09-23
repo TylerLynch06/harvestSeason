@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 func targetPlayer(_player: CharacterBody3D):
-	print("target")
 	player = _player
 	dirVector = (player.get_node("target").global_position - self.position).normalized() 
 	velocity = dirVector * projectile_speed
