@@ -4,11 +4,14 @@
 [ext_resource type="Shader" uid="uid://b7ae5qanl8bvt" path="res://scenes/perk_menu_bg.gdshader" id="2_0sp37"]
 [ext_resource type="Shader" uid="uid://bi4s2055klhrf" path="res://scenes/crt.gdshader" id="3_qcug2"]
 [ext_resource type="Shader" uid="uid://cit11ac88c0ud" path="res://scenes/anime_style_metal.gdshader" id="4_rn21x"]
+[ext_resource type="Script" uid="uid://bokshnruioajh" path="res://scenes/card.gd" id="4_wd5y0"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_6cxh8"]
+[ext_resource type="PackedScene" uid="uid://bkt0p58723jk1" path="res://scenes/perk.tscn" id="5_ey06g"]
+[ext_resource type="Shader" uid="uid://badyhpritn12r" path="res://scenes/cardtilt.gdshader" id="7_d7xl3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1uel"]
 shader = ExtResource("2_0sp37")
-shader_parameter/speed = 0.1
+shader_parameter/speed = 0.08
 shader_parameter/real_time = 0.0
 shader_parameter/pixelation = 8.0
 shader_parameter/zoom = 2.0
@@ -16,9 +19,60 @@ shader_parameter/gradient_pixelation = 0.2
 shader_parameter/background_threshold = 0.0
 shader_parameter/color_low_threshold = 0.24
 shader_parameter/color_mid_threshold = 0.48
-shader_parameter/color_low = Color(2.6351586e-06, 0.029073982, 0.33640355, 1)
-shader_parameter/color_mid = Color(0.9175206, 0.00030279055, 0.23577827, 1)
-shader_parameter/color_high = Color(0.6734608, 0, 0.22839305, 1)
+shader_parameter/color_low = Color(8.95232e-06, 0.27609608, 0.7669127, 1)
+shader_parameter/color_mid = Color(0.77095866, 0.31528905, 1, 1)
+shader_parameter/color_high = Color(13.047, 13.047, 13.047, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq3ql"]
+shader = ExtResource("4_rn21x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3uw0"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwij3"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uofo"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_043ib"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkjys"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_webnw"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvgt2"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1cjo"]
+shader = ExtResource("7_d7xl3")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_guyfr"]
 shader = ExtResource("3_qcug2")
@@ -30,9 +84,6 @@ shader_parameter/blur = 5.0
 shader_parameter/diffusion = 0.1
 shader_parameter/vinnette_alpla = 0.3999999910592
 shader_parameter/vinnette_inner_radius = 3.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq3ql"]
-shader = ExtResource("4_rn21x")
 
 [node name="Control" type="Control" unique_id=1617969140]
 layout_mode = 3
@@ -59,7 +110,330 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.23921569, 0.23921569, 0.23921569, 0.80784315)
+mouse_filter = 2
+color = Color(0.23921569, 0.23921569, 0.23921569, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="perkMenu" unique_id=1973154847]
+material = SubResource("ShaderMaterial_mq3ql")
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 646.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1612623179]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=2106079402]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1820973003]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=776976862]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=1702121645 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_q3uw0")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer" unique_id=557909064]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=1076060561 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=35699295]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=1510729423]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=2093213517]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=222807466 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_fwij3")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer" unique_id=736233136]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1132441185 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=32081807]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=1724243854]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=1563526563]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=323387344 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_8uofo")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer" unique_id=2110325647]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=128111894 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=173342325]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=45571583]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=1427118266]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=333086632 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_043ib")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer" unique_id=2003103282]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=204005858 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1393099297]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=316673644]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control" unique_id=662358852]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" unique_id=1924739965]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" unique_id=982441554 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_pkjys")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer" unique_id=1517686259]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=809052580]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2" unique_id=1908495803]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" unique_id=1619581129]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" unique_id=872094006 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_webnw")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer" unique_id=1305708156]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1431469694]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3" unique_id=1981760437]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" unique_id=2146926383]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" unique_id=938330237 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_rvgt2")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer" unique_id=1506249317]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1327733183]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4" unique_id=1488922307]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wd5y0")
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" unique_id=565491132]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_6cxh8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" unique_id=1092619004 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_r1cjo")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer" unique_id=1897722853]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268 instance=ExtResource("5_ey06g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ColorRect2" type="ColorRect" parent="perkMenu" unique_id=1510708763]
 material = SubResource("ShaderMaterial_guyfr")
@@ -69,69 +443,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0017661, 1)
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="perkMenu" unique_id=1973154847]
-material = SubResource("ShaderMaterial_mq3ql")
-layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 646.0
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1612623179]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=281231664]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=143312329]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect3" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=1701121663]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect4" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=167358606]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1393099297]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=2143922426]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1919442285]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect3" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=568849293]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
-
-[node name="TextureRect4" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=753570306]
-modulate = Color(1, 1, 1, 0.29803923)
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("5_6cxh8")
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" to="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer" method="_on_mouse_exited"]

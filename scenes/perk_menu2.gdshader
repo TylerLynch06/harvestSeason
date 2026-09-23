@@ -113,5 +113,5 @@ void fragment()
    	float shade = pattern(uv * zoom);
     
     COLOR = colormap(shade, uv);
-	COLOR.a = 0.5;
+	COLOR.a = 0.05;
 }

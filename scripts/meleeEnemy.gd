@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
-func takeDamage(damage: float):
+func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float = 0, weaponStunFactor: float = 1):
 	super.takeDamage(damage)
 	if invulTimer<0:
 		if damaging:
