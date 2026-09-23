@@ -3,6 +3,7 @@ extends Node3D
 class_name PlayerStats
 
 @export var BASE_HEALTH: float
+@export var MAX_HEALTH: float
 @export var BASE_DAMAGE: float
 @export var BASE_MOVE_SPEED: float
 @export var BASE_ATTACK_FACTOR_SPEED: float

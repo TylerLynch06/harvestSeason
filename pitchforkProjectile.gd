@@ -15,18 +15,20 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-
 func calcVelocity(_delta):
 	if !stuckInGround:
-		if PerkHandler.perks["fishing magnet"] != -1 and timerPopped == true:
-			var nearestEnemy = self
-			for i in get_tree().get_nodes_in_group("enemy"):
-				if i.global_position.distance_to(self.global_position) > nearestEnemy.global_position.distance_to(self.global_position): 
-					nearestEnemy = i
-				if nearestEnemy.global_position.distance_to(self.global_position) < PerkHandler.progression["fishing magnet"][PerkHandler.perks["fishing magnet"]]:
-					dirVector = (((dirVector * 6) + (nearestEnemy.global_position - self.global_position))/6).normalized()
-					self.look_at_from_position(self.position, nearestEnemy.global_position)
-					dirVector.y = 0
+		if PerkHandler.perks["fishing magnet"] != -1:
+			simulatedGravityStrength = 1.25
+			projectile_speed = 0.5
+			if timerPopped == true:
+				var nearestEnemy = self
+				for i in get_tree().get_nodes_in_group("enemy"):
+					if i.global_position.distance_to(self.global_position) > nearestEnemy.global_position.distance_to(self.global_position): 
+						nearestEnemy = i
+					if nearestEnemy.global_position.distance_to(self.global_position) < PerkHandler.progression["fishing magnet"][PerkHandler.perks["fishing magnet"]]:
+						dirVector = (((dirVector * 6) + (nearestEnemy.global_position - self.global_position))/6).normalized()
+						self.look_at_from_position(self.position, nearestEnemy.global_position)
+						dirVector.y = 0
 		
 		var _velocity = dirVector*projectile_speed + Vector3.DOWN * simulatedGravityStrength
 		global_position += dirVector

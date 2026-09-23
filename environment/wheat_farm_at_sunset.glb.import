@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://df7wgbv2ix4lp"
-valid=false
+path="res://.godot/imported/wheat_farm_at_sunset.glb-f0611cc429608588ae39934fee1dc921.scn"
 
 [deps]
 
 source_file="res://environment/wheat_farm_at_sunset.glb"
+dest_files=["res://.godot/imported/wheat_farm_at_sunset.glb-f0611cc429608588ae39934fee1dc921.scn"]
 
 [params]
 

@@ -5,9 +5,11 @@ extends Node
 var perks = {
 	"battery": -1, #implemented in enemyBase
 	"fool bell": -1, #not implemented
-	"monsterhunter charm": 2, #implemented in weaponManager
-	"fishing magnet": 2, #implemented in pitchforkProjectile
-	"whetstone": -1
+	"monsterhunter charm": -1, #implemented in weaponManager
+	"fishing magnet": -1, #implemented in pitchforkProjectile
+	"whetstone": -1,
+	"armour": -1,
+	"shoes": -1
 }
 var progression = {
 	"battery": [0.5,1,1.5],
@@ -15,11 +17,19 @@ var progression = {
 	"fishing magnet" : [15,25,50]
 }
 # Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	activate("fishing magnet")
+	activate("armour")
+	upgrade("fishing magnet")
+
 func activate(perkName):
 	if perks[perkName] != -1:
 		perks[perkName] = 0
 	if perkName == "whetstone":
-		get_tree().get_nodes_in_group("player")[0].get_node("Stats").BASE_DAMAGE = 11
+		get_tree().get_nodes_in_group("player")[0].get_node("Stats").damage = 11
+	if perkName == "armour":
+		get_tree().get_nodes_in_group("player")[0].get_node("Stats").MAX_HEALTH = 550
+		get_tree().get_nodes_in_group("player")[0].get_node("Stats").health += get_tree().get_nodes_in_group("player")[0].get_node("Stats").health*0.1
 	
 func upgrade(perkName):
 	if perks[perkName] < 2:
