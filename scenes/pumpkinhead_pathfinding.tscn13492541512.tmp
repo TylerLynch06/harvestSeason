@@ -56,6 +56,7 @@ mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1616107707]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_cccnq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1095739368]

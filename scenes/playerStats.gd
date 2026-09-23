@@ -26,6 +26,7 @@ class_name PlayerStats
 @export var BASE_SICKLE_CHARGE_MAX: float
 @export var BASE_SICKLE_ROTATION_SPEED: float
 @export var BASE_SICKLE_DAMAGE_INTERVAL: float
+@export var BASE_SICKLE_SPIN_MOVE_FACTOR: float
 
 @export var BASE_PUSH_FORCE: float
 

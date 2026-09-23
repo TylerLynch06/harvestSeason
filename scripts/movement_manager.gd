@@ -28,6 +28,7 @@ var isRolling: bool = false
 var isRecovering: bool = false
 
 var isInvincible = false
+var currentMoveSpeedFactor = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -91,6 +92,8 @@ func movePlayer(delta):
 	var velocity
 	if !isRolling:
 		velocity = directionVector * stats.BASE_MOVE_SPEED * delta
+		if weaponManager.currentSickleCharge > 0:
+			velocity *= stats.BASE_SICKLE_SPIN_MOVE_FACTOR
 	elif isRolling:
 		velocity = rollDirection * stats.BASE_ROLL_SPEED * delta
 		

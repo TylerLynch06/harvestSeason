@@ -29,6 +29,9 @@ var trackingVelocity: Vector3 = Vector3.ZERO
 @onready var currentAttackRange = baseAttackRange
 @onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
 
+@export var movePool: EnemyMovePool
+var nextMove = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -139,6 +142,7 @@ func weaponLeftBody():
 	isTakingDamage = false
 
 func attack():
+	nextMove = movePool.rollNextMove()
 	if !isAttacking:
 		##print("ATTACK")
 		isAttacking = true
