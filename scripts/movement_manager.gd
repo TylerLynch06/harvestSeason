@@ -65,19 +65,9 @@ func _physics_process(delta: float) -> void:
 	##print(movementIsLocked)
 	if !movementIsLocked:
 		directionVector = Vector3.ZERO
-		if Input.is_action_pressed("up"):
-			directionVector.x -= 1
-			directionVector.z -= 1
-		if Input.is_action_pressed("down"):
-			directionVector.x += 1
-			directionVector.z += 1
-		if Input.is_action_pressed("left"):
-			directionVector.x -= 1
-			directionVector.z += 1
-		if Input.is_action_pressed("right"):
-			directionVector.x += 1
-			directionVector.z -= 1
-			
+		
+		##PAUSE FLAG HERE
+		calcDirectionVector()
 		directionVector = directionVector.normalized()
 		if !isRolling and directionVector!= Vector3.ZERO:
 			rollDirection = directionVector
@@ -107,6 +97,20 @@ func movePlayer(delta):
 	if !isRecovering:
 		playerBody.velocity = velocity
 		playerBody.move_and_slide()
+
+func calcDirectionVector():
+	if Input.is_action_pressed("up"):
+		directionVector.x -= 1
+		directionVector.z -= 1
+	if Input.is_action_pressed("down"):
+		directionVector.x += 1
+		directionVector.z += 1
+	if Input.is_action_pressed("left"):
+		directionVector.x -= 1
+		directionVector.z += 1
+	if Input.is_action_pressed("right"):
+		directionVector.x += 1
+		directionVector.z -= 1
 
 func rotatePlayer(_delta: float):
 	if weaponManager.currentSickleCharge > 0:
