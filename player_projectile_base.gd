@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = calcVelocity(delta)
+	if PerkHandler.perks["fishing magnet"] != -1:
+		velocity = Vector3.ZERO
 	self.position += velocity * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

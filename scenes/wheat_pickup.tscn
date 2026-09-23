@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://oudp41u66lw3"]
+[gd_scene format=3 uid="uid://c7xg1xkvm5qrj"]
 
 [ext_resource type="ArrayMesh" uid="uid://bgb75cwcqbmmb" path="res://VoxelFruitsAndVegetables/OBJs/Corn-0.obj" id="1_3r7vm"]
 [ext_resource type="Script" uid="uid://cihdk37o1sutd" path="res://scenes/wheat_pickup.gd" id="1_dcp1i"]
@@ -16,9 +16,9 @@ emission = Color(1.5565991, 1.5565991, 1.5565991, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g73em"]
 transparency = 1
-albedo_color = Color(0.039215688, 0.5921569, 0, 0.09803922)
+albedo_color = Color(0.039215688, 0.5921569, 0, 1)
 emission_enabled = true
-emission = Color(3.1672676, 3.119357, 0.9035056, 1)
+emission = Color(2.055, 2.0236275, 0.5020588, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e1uel"]
 radius = 0.2

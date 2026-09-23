@@ -28,6 +28,7 @@ func activate(perkName):
 	if perkName == "whetstone":
 		get_tree().get_nodes_in_group("player")[0].get_node("Stats").damage = 11
 	if perkName == "armour":
+		await get_tree().create_timer(0.01).timeout
 		get_tree().get_nodes_in_group("player")[0].get_node("Stats").MAX_HEALTH = 550
 		get_tree().get_nodes_in_group("player")[0].get_node("Stats").health += get_tree().get_nodes_in_group("player")[0].get_node("Stats").health*0.1
 	
