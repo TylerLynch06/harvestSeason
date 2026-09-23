@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dui5ym8xpdo2g"]
 
-[ext_resource type="PackedScene" uid="uid://bgfuyfdhkohxy" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
+[ext_resource type="PackedScene" uid="uid://bgfuyfdhkohxy" path="res://assets/animations/res_files/pumpkin_head.tscn" id="1_2iptg"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
