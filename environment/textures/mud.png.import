@@ -3,16 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp3b13a7nj5vc"
-path.s3tc="res://.godot/imported/mud.png-7aecc1a32f4935364994c704f932e528.s3tc.ctex"
-metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
+valid=false
 
 [deps]
 
 source_file="res://environment/textures/mud.png"
-dest_files=["res://.godot/imported/mud.png-7aecc1a32f4935364994c704f932e528.s3tc.ctex"]
 
 [params]
 
