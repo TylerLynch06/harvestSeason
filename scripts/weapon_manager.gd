@@ -72,7 +72,7 @@ func canAttack():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	##print(anim_name) # Replace with function body.
-	if anim_name in currentAnimationSet.get("attack"):
+	if anim_name in currentAnimationSet.get("attack") and currentWeaponName != "sickles":
 		#print("changed combo state")
 		isAttacking = false
 		print(anim_name+ " over. Combo state: ", comboState)
