@@ -34,7 +34,7 @@ func calcVelocity(_delta):
 	if !stuckInGround:
 		var _velocity = dirVector* projectile_speed + Vector3.DOWN * simulatedGravityStrength
 		#global_position += dirVector
-		mesh.rotation.x += angleDecreasePerSecond * _delta
+		pivot.rotation.x += angleDecreasePerSecond * _delta
 		return _velocity
 	else:
 		return Vector3.ZERO
@@ -61,8 +61,12 @@ func rebound():
 	if nearestEnemy:
 		dirVector = (nearestEnemy.global_position - global_position).normalized()
 		pivot.rotation.y = atan2(dirVector.x,dirVector.z)
-		simulatedGravityStrength = 0
-		angleDecreasePerSecond = 0
+		pivot.rotation.x = PI/2
+		position.y += 1
+		simulatedGravityStrength = 2
+		if stuckInGround:
+			stuckInGround = false
+		
 		#if i.global_position.distance_to(self.global_position) > nearestEnemy.global_position.distance_to(self.global_position): 
 			#nearestEnemy = i
 		#if nearestEnemy.global_position.distance_to(self.global_position) < PerkHandler.progression["fishing magnet"][PerkHandler.perks["fishing magnet"]]:
