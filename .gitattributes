@@ -1,8 +1,16 @@
-# Normalize EOL for all files that Git considers text files.
-* text=auto eol=lf
-<<<<<<< HEAD
-*.psd filter=lfs diff=lfs merge=lfs -text
-*.tscn filter=lfs diff=lfs merge=lfs -text
-=======
-* !text !filter !merge !diff
->>>>>>> d43732f3ce54e5a3aaa93ca8fdc35c8c5f6fc640
+.png binary
+.jpg binary
+.jpeg binary
+.glb binary
+.gltf binary
+.fbx binary
+.blend binary
+.res binary
+.tres binary
+.exr binary
+.wav binary
+.ogg binary
+.dll binary
+.so binary
+.dylib binary
+.wasm binary
