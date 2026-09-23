@@ -22,6 +22,8 @@ var isBeingPushed: bool = false
 ##Cant apply force, have to push by modifying velocity
 var currentPushVelocity: Vector3 = Vector3.ZERO
 var invulTimer: float = 0
+##Velocity used to move player
+var trackingVelocity: Vector3 = Vector3.ZERO
 @onready var attackCollisionObject: CollisionShape3D = attackRange.get_child(0) as CollisionShape3D
 @onready var baseAttackRange = attackCollisionObject.shape.radius
 @onready var currentAttackRange = baseAttackRange
@@ -62,7 +64,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	##print(!playerInRange(), !isAttacking)
+	trackingVelocity = Vector3.ZERO
 	if !isDead:
+		if isBeingPushed:
+			calcPushVelocity()
 		if !isTakingDamage:
 			var pos = getNextMovementPosition()
 			dirVector = calculateDirVector(pos)
@@ -71,11 +76,12 @@ func _physics_process(delta: float) -> void:
 			##Usually isnt needed
 			if !isRecovering and stateMachine.get_current_node() != "attack":
 				if !playerInRange() and !isAttacking:
-					moveToPlayer(pos,delta)
+					calcTrackingVelocity(global_position)
 				else:
 					if attackCooldownTimer <= 0 and !isAttacking:
 						print("attack")
 						attack()
+		move(delta)
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -112,7 +118,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
 	if hitPos != Vector3.ZERO and pushForce != 0:
 		isBeingPushed = true
-		var pushDir = hitPos - global_position
+		var pushDir = global_position - hitPos
 		currentPushVelocity = pushDir * pushForce
 		
 func death():
@@ -156,6 +162,16 @@ func animation_finished(anim_name):
 		isAttacking = false
 	print(isAttacking)
 
-func moveToPlayer(_position,delta):
-	velocity = relativeRigForward * BASE_MOVE_SPEED * delta + currentPushVelocity * delta
+func calcTrackingVelocity(_position):
+	trackingVelocity = relativeRigForward * BASE_MOVE_SPEED
+
+func calcPushVelocity():
+	currentPushVelocity -= BASE_PUSH_DRAG_FACTOR * currentPushVelocity.normalized()
+	if currentPushVelocity.length() < 3:
+		isBeingPushed = false
+		currentPushVelocity = Vector3.ZERO
+
+func move(delta):
+	velocity = (trackingVelocity + currentPushVelocity)*delta
+	print(currentPushVelocity)
 	move_and_slide()

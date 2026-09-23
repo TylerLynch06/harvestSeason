@@ -90,7 +90,13 @@ func weapon_hit(area):
 		var enemy = area.get_parent() as Enemy
 		if enemy.is_in_group("boss") and PerkHandler.perks["monsterhunter charm"] != -1:
 			bonusDamage += 10 * PerkHandler.progression["monsterhunter charm"][PerkHandler.perks["monsterhunter charm"]]
-		enemy.takeDamage(10 + bonusDamage)
+		
+		var pushForce = stats.BASE_PUSH_FORCE * WEAPON_DATA.pushFactor.get(currentWeaponName)
+		enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage, 
+		global_position, 
+		pushForce,
+		0.3)
+		
 		if WEAPON_DATA.isMelee.get(currentWeaponName):
 			animTree.set("parameters/TimeScale/scale", stats.BASE_MICROFREEZE_SPEED_FACTOR)
 			microFreezeTimer = stats.BASE_MICROFREEZE_TIME
@@ -170,7 +176,10 @@ func sickleUpdate(delta):
 func sickleDamagePulse():
 	var overlappingAreas = sickleHitbox.get_overlapping_areas()
 	for area in overlappingAreas:
-		print(area.name)
 		if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
 			var enemy = area.get_parent() as Enemy
-			enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0])
+			var pushForce = stats.BASE_PUSH_FORCE * WEAPON_DATA.pushFactor.get("sickles")
+			enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0], 
+			global_position, 
+			pushForce,
+			0.3)

@@ -27,6 +27,8 @@ class_name PlayerStats
 @export var BASE_SICKLE_ROTATION_SPEED: float
 @export var BASE_SICKLE_DAMAGE_INTERVAL: float
 
+@export var BASE_PUSH_FORCE: float
+
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
 

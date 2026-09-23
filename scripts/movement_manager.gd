@@ -118,7 +118,7 @@ func rotatePlayer(_delta: float):
 		playerRig.rotation.y = atan2(rollDirection.x,rollDirection.z)
 
 func canRoll():
-	return !movementIsLocked and !isRolling and rollCooldownTimer <= 0 
+	return !movementIsLocked and !isRolling and rollCooldownTimer <= 0 and weaponManager.currentSickleCharge <= 0
 
 func lockMovement():
 	if isRolling:
