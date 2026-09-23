@@ -118,16 +118,16 @@ func changeWeapon(weaponName: String):
 		comboState = 0
 		##This has an extremletyty short cool down, resetting when weaponn changed will not lead to abuse
 		currentSickleDamageTimer = 0
-		print(currentWeaponName)
-		print( WEAPON_DATA.meshSet.values())
-		print( WEAPON_DATA.meshSet.get(currentWeaponName) )
+		#print(currentWeaponName)
+		#print( WEAPON_DATA.meshSet.values())
+		#print( WEAPON_DATA.meshSet.get(currentWeaponName) )
 		var oldWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
 		oldWeapon.hide()
 		currentWeaponName = weaponName
 		var newWeapon = WEAPON_DATA.meshSet.get(currentWeaponName) as Node3D
 		newWeapon.show()
 		currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
-		print(currentAnimationSet," ",currentAnimationSet.values())
+		#print(currentAnimationSet," ",currentAnimationSet.values())
 		for i in range(3):
 			if i >= len(currentAnimationSet.get("attack")):
 				break
@@ -152,11 +152,13 @@ func alterDebugText():
 ##unfortunate this has to be here
 ##Is called by the throw animation
 func throwPitchfork():
-	var projectileInstance = pitchforkProjectile.instantiate() as PlayerProjectile
-	print(projectileInstance)
-	projectileInstance.global_position = pitchforkSpawn.global_position
-	projectileInstance.rotation.y = playerRig.rotation.y
-	projectileInstance.setRotation(playerRig.global_transform.basis.z.normalized())
+	var projectileInstance = pitchforkProjectile.instantiate() as PitchforkProjectille
+	var TEMP_SPEED_FACTOR = 1
+	projectileInstance.setInitialPosAndRot(pitchforkSpawn.global_position, 
+	playerRig.rotation.y)
+	projectileInstance.setStats(WEAPON_DATA.damageOnHit.get("pitchfork")[0],
+	TEMP_SPEED_FACTOR,
+	playerRig.global_transform.basis.z.normalized())
 	get_tree().root.add_child.call_deferred(projectileInstance)
 	
 func chargeSickles(charge: float):

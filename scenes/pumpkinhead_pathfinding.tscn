@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bgfuyfdhkohxy" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
-[ext_resource type="PackedScene" uid="uid://c7xg1xkvm5qrj" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)
@@ -44,13 +43,11 @@ collision_mask = 0
 [node name="merchantStop" type="Marker3D" parent="." unique_id=263662638]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=128942783 groups=["ground"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14393187, 0)
 collision_layer = 12
 collision_mask = 12
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1749668388]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.269287, 0, 0)
 shape = SubResource("BoxShape3D_lalod")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=245707799]
@@ -58,13 +55,8 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
 
-[node name="Node3D" parent="." unique_id=652753890 instance=ExtResource("3_vquck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8266745, 0.9060683, 4.582651)
-
-[node name="Node3D2" parent="." unique_id=1831804474 instance=ExtResource("3_vquck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.574803, 0.90606785, 6.939413)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1616107707]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_cccnq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1095739368]
@@ -83,4 +75,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.589203, 0, -14.698648)
 
 [node name="PumpkinHead4" parent="." unique_id=1159501988 instance=ExtResource("1_2iptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.858137, 0, -8.256338)
-WHEAT_ON_DEATH = 500

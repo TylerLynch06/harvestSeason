@@ -166,12 +166,13 @@ func calcTrackingVelocity(_position):
 	trackingVelocity = relativeRigForward * BASE_MOVE_SPEED
 
 func calcPushVelocity():
-	currentPushVelocity -= BASE_PUSH_DRAG_FACTOR * currentPushVelocity.normalized()
+	currentPushVelocity *= BASE_PUSH_DRAG_FACTOR
 	if currentPushVelocity.length() < 3:
 		isBeingPushed = false
 		currentPushVelocity = Vector3.ZERO
 
 func move(delta):
 	velocity = (trackingVelocity + currentPushVelocity)*delta
-	print(currentPushVelocity)
+	if currentPushVelocity.length() >= 20:
+		print(currentPushVelocity)
 	move_and_slide()

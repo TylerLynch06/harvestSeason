@@ -20,7 +20,7 @@ class_name Stats
 ##Reduction in push force
 @export var BASE_PUSH_FACTOR: float = 1
 ##On update:
-## pushVelocity -= pushVelocity.normalized()*BASE_PUSH_DRAG_FACTOR
+## pushVelocity *= BASE_PUSH_DRAG_FACTOR
 @export var BASE_PUSH_DRAG_FACTOR: float = 1
 
 ##critical angle doesnt need a factor

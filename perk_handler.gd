@@ -1,4 +1,3 @@
-
 extends Node
 
 #design note: all of the bookkeeping for perks are done here, but implementation is done in the actual thing it affects.
@@ -14,17 +13,18 @@ var perks = {
 var progression = {
 	"battery": [0.5,1,1.5],
 	"monsterhunter charm": [0.1,0.2,0.3],
-	"fishing magnet" : [15,25,50]
+	"fishing magnet" : [1,2,3]
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	activate("fishing magnet")
 	activate("armour")
-	upgrade("fishing magnet")
+	#upgrade("fishing magnet")
 
 func activate(perkName):
-	if perks[perkName] != -1:
-		perks[perkName] = 0
+	if perks.get(perkName) == -1:
+		##Activate perks
+		perks.set(perkName,0)
 	if perkName == "whetstone":
 		get_tree().get_nodes_in_group("player")[0].get_node("Stats").damage = 11
 	if perkName == "armour":
@@ -33,8 +33,8 @@ func activate(perkName):
 		get_tree().get_nodes_in_group("player")[0].get_node("Stats").health += get_tree().get_nodes_in_group("player")[0].get_node("Stats").health*0.1
 	
 func upgrade(perkName):
-	if perks[perkName] < 2:
-		perks[perkName] += 1
+	if perks.get(perkName) < 2:
+		perks.set(perkName,perks.get(perkName)+1)
 	
 func deactivate(perkName):
 	perks[perkName] = -1
