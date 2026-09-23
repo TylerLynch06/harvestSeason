@@ -17,6 +17,8 @@ class_name Stats
 @export var BASE_ATTACK_RANGE_INCRASE: float
 @export var BASE_WALK_ANIM_SPD_FACTOR: float
 @export var WHEAT_ON_DEATH: int
+##Reduction in push force
+@export var BASE_PUSH_FACTOR: float = 1
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float

@@ -24,7 +24,8 @@ class_name PlayerStats
 @export var BASE_SICKLE_DRAIN_RATE: float
 @export var BASE_SICKLE_CHARGE_RATE: float
 @export var BASE_SICKLE_CHARGE_MAX: float
-
+@export var BASE_SICKLE_ROTATION_SPEED: float
+@export var BASE_SICKLE_DAMAGE_INTERVAL: float
 
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
@@ -36,6 +37,9 @@ class_name PlayerStats
 @onready var attackCooldown: float = BASE_ATTACK_COOLDOWN
 
 @export var statsDebugText: Label
+
+func _ready():
+	BASE_SICKLE_ROTATION_SPEED = deg_to_rad(BASE_SICKLE_ROTATION_SPEED)
 
 func playerHit(damage: float):
 	health -= damage
