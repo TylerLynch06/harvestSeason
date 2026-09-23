@@ -88,8 +88,8 @@ func weapon_hit(area):
 		print("PLAYER ATTACK SUCCESS")
 		bonusDamage = 0
 		var enemy = area.get_parent() as Enemy
-		if enemy.is_in_group("boss") and PerkHandler.perks["monsterhunter charm"] != -1:
-			bonusDamage += 10 * PerkHandler.progression["monsterhunter charm"][PerkHandler.perks["monsterhunter charm"]]
+		if enemy.is_in_group("boss") and PerkHandler.perks.get("monsterhunter charm") != -1:
+			bonusDamage += 10 * PerkHandler.progression.get("monsterhunter charm")[PerkHandler.perks.get("monsterhunter charm")]
 		
 		var pushForce = stats.BASE_PUSH_FORCE * WEAPON_DATA.pushFactor.get(currentWeaponName)
 		enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage, 
