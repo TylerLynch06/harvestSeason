@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b5g2frllqjb6s"]
+
+[ext_resource type="PackedScene" uid="uid://bhler2r1xuwqc" path="res://environment/environmentAssets/flowerPink.glb" id="1_mmpl5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahscy"]
+albedo_color = Color(0.47058824, 0.5529412, 0.27450982, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3vxt"]
+albedo_color = Color(0.99402803, 0.81874126, 0.90303636, 1)
+
+[node name="Root Scene" unique_id=1310157734 instance=ExtResource("1_mmpl5")]
+
+[node name="Flower_4_Group" parent="RootNode" parent_id_path=PackedInt32Array(212345204) index="0" unique_id=79811241]
+surface_material_override/0 = SubResource("StandardMaterial3D_ahscy")
+surface_material_override/1 = SubResource("StandardMaterial3D_u3vxt")
