@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dui5ym8xpdo2g"]
 
-[ext_resource type="PackedScene" uid="uid://b26vvboovx7f5" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
+[ext_resource type="PackedScene" uid="uid://bgfuyfdhkohxy" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
-[ext_resource type="PackedScene" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
+[ext_resource type="PackedScene" uid="uid://c7xg1xkvm5qrj" path="res://scenes/wheat_pickup.tscn" id="3_vquck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)

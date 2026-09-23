@@ -25,8 +25,11 @@ var currentWeaponName = "sword"
 var microFreezeTimer = 0
 @onready var currentAnimationSet = WEAPON_DATA.animationSet.get(currentWeaponName)
 var bonusDamage = 0
-var currentSickleCharge = 0
 
+var currentSickleCharge = 0
+##Sickle damages at regular intervals, using hitboxes for the sicles would be too messy and owuldnt work well
+var currentSickleDamageTimer = 0
+@export var sickleHitbox: Area3D
 # Called when the node enters the scene tree for the first time.
 
 ##----- THIS FUNCTION IS MESSY DUE TO ANIMATION CONSISTENCY WITH STATEMACHINES-----
@@ -72,7 +75,7 @@ func canAttack():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	##print(anim_name) # Replace with function body.
-	if anim_name in currentAnimationSet.get("attack"):
+	if anim_name in currentAnimationSet.get("attack") and currentWeaponName != "sickles":
 		#print("changed combo state")
 		isAttacking = false
 		print(anim_name+ " over. Combo state: ", comboState)
@@ -107,6 +110,8 @@ func changeWeapon(weaponName: String):
 	if !isAttacking:
 		##Resets combo state and reassings attack animations
 		comboState = 0
+		##This has an extremletyty short cool down, resetting when weaponn changed will not lead to abuse
+		currentSickleDamageTimer = 0
 		print(currentWeaponName)
 		print( WEAPON_DATA.meshSet.values())
 		print( WEAPON_DATA.meshSet.get(currentWeaponName) )
@@ -154,5 +159,18 @@ func chargeSickles(charge: float):
 func sickleUpdate(delta):
 	if currentSickleCharge > 0:
 		currentSickleCharge -= stats.BASE_SICKLE_DRAIN_RATE * delta
+		if currentSickleDamageTimer < 0:
+			sickleDamagePulse()
+			currentSickleDamageTimer = stats.BASE_SICKLE_DAMAGE_INTERVAL
+		currentSickleDamageTimer -= delta
 	elif currentSickleCharge <= 0:
 		isAttacking = false
+
+		
+func sickleDamagePulse():
+	var overlappingAreas = sickleHitbox.get_overlapping_areas()
+	for area in overlappingAreas:
+		print(area.name)
+		if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
+			var enemy = area.get_parent() as Enemy
+			enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0])

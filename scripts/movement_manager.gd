@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 
 		movementCheck()
 		movePlayer(delta)
-		rotatePlayer()
+		rotatePlayer(delta)
 	else:
 		playerBody.velocity = Vector3.ZERO
 
@@ -108,8 +108,10 @@ func movePlayer(delta):
 		playerBody.velocity = velocity
 		playerBody.move_and_slide()
 
-func rotatePlayer():
-	if !isRolling:
+func rotatePlayer(_delta: float):
+	if weaponManager.currentSickleCharge > 0:
+		playerRig.rotation.y += stats.BASE_SICKLE_ROTATION_SPEED
+	elif !isRolling:
 		if directionVector!= Vector3.ZERO:
 			playerRig.rotation.y = atan2(directionVector.x,directionVector.z)
 	else: 

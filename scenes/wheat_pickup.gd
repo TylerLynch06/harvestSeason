@@ -21,15 +21,12 @@ func _physics_process(delta: float) -> void:
 		var distanceToPlayer = (player.global_position - global_position).length()
 		self.apply_force(((player.global_position) - Vector3(global_position.x+ randf_range(0,1),global_position.y - 1 + randf_range(0,1), global_position.z + randf_range(0,-01))).normalized()*speed*1)
 
-
 func cash():
 	if collected == true:
 		Economy.wheat += 1
 		$GPUParticles3D.fire()
 		self.queue_free()
-
-
-
+		
 func _on_timer_timeout() -> void:
 	if collected == true:
 		Economy.wheat += 1

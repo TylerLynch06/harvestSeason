@@ -18,6 +18,9 @@ var isTakingDamage: bool = false
 var isRecovering: bool = false
 var recoveryTimer: float = 0
 var isDead: bool = false
+var isBeingPushed: bool = false
+##Cant apply force, have to push by modifying velocity
+var currentPushVelocity: Vector3 = Vector3.ZERO
 var invulTimer: float = 0
 @onready var attackCollisionObject: CollisionShape3D = attackRange.get_child(0) as CollisionShape3D
 @onready var baseAttackRange = attackCollisionObject.shape.radius
@@ -99,14 +102,18 @@ func rotateToTarget(delta):
 		turnSpeed * delta)
 		pivot.rotation.y += step
 	
-func takeDamage(damage: float):
+func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float = 0, weaponStunFactor: float = 1):
 	if invulTimer <= 0:
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
 		print(health)
 		isTakingDamage = true
 	if !isUnstoppable:
-		recoveryTimer = BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])
+		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
+	if hitPos != Vector3.ZERO and pushForce != 0:
+		isBeingPushed = true
+		var pushDir = hitPos - global_position
+		currentPushVelocity = pushDir * pushForce
 		
 func death():
 	self.remove_from_group("enemy")
@@ -150,5 +157,5 @@ func animation_finished(anim_name):
 	print(isAttacking)
 
 func moveToPlayer(_position,delta):
-	velocity = relativeRigForward * BASE_MOVE_SPEED * delta
+	velocity = relativeRigForward * BASE_MOVE_SPEED * delta + currentPushVelocity * delta
 	move_and_slide()
