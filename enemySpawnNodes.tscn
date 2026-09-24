@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cq4xjjnk403lu" path="res://getSpawnPoint.gd" id="27_an527"]
 [ext_resource type="PackedScene" uid="uid://btbtqrjcorwcs" path="res://environment/environmentAssets/glTF/DeadTree_4.gltf" id="27_fx78i"]
 [ext_resource type="ArrayMesh" uid="uid://bktgjcbbi5wnh" path="res://environment/Fire by Jakob Hippe - 1QpMTUO7P-G/model.obj" id="28_1iqx7"]
+[ext_resource type="Texture2D" uid="uid://be36wdalh0bf2" path="res://environment/environmentAssets/glTF/Rocks_Desert_Diffuse.png" id="28_ixhls"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3sx4"]
 sky_top_color = Color(0.81341714, 0.7309942, 0.8663693, 1)
@@ -322,11 +323,15 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="PlaneMesh" id="PlaneMesh_ixhls"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cve17"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("28_ixhls")
 
 [node name="Node3D" type="Node3D" unique_id=150514529]
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_cve17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.144, 0.546155, 0)
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1337471200]
 transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)

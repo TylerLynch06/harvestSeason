@@ -18,6 +18,10 @@ sky = SubResource("Sky_os8pf")
 [sub_resource type="BoxShape3D" id="BoxShape3D_lalod"]
 size = Vector3(148.53857, 0.1, 200)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_cccnq"]
+vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_cccnq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vquck"]
@@ -46,19 +50,13 @@ freeze = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="worldFloor" unique_id=1749668388]
 shape = SubResource("BoxShape3D_lalod")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="worldFloor" unique_id=245707799 groups=["level"]]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="worldFloor" unique_id=499794404]
+navigation_mesh = SubResource("NavigationMesh_cccnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="worldFloor/NavigationRegion3D" unique_id=245707799 groups=["level"]]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
 
 [node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.779737, 0, 0)
-
-[node name="PumpkinHead2" parent="." unique_id=1438096223 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.191025, 0, 4.128393)
-
-[node name="PumpkinHead3" parent="." unique_id=2020439705 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.589203, 0, -14.698648)
-
-[node name="PumpkinHead4" parent="." unique_id=1159501988 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.858137, 0, -8.256338)

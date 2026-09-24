@@ -44,7 +44,7 @@ func _ready():
 	BASE_CRT_ANGLE = deg_to_rad(BASE_CRT_ANGLE)
 	turnSpeed = BASE_TURN_SPD
 	critAngle = BASE_CRT_ANGLE
-	print("VALUE: ",moveSpeed," ",BASE_MOVE_SPEED," ",moveSpeed/BASE_MOVE_SPEED)
+	#print("VALUE: ",moveSpeed," ",BASE_MOVE_SPEED," ",moveSpeed/BASE_MOVE_SPEED)
 
 func applyFactors(_heatlhFactor,_damageFactor,_moveSpeedFactor,_attackSpeedFactor,_cooldown_Factor,_turnSpeedFactor):
 	if !_appliedFactors:

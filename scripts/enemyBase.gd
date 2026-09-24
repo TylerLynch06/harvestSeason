@@ -69,10 +69,10 @@ func _physics_process(delta: float) -> void:
 	##print(!playerInRange(), !isAttacking)
 	trackingVelocity = Vector3.ZERO
 	if !isDead:
-		if isBeingPushed:
-			calcPushVelocity()
+		
 		if !isTakingDamage:
 			var pos = getNextMovementPosition()
+			#print(pos)
 			dirVector = calculateDirVector(pos)
 			rotateToTarget(delta)
 			##Directly access statemachine to fix moving whiole attacking
@@ -84,7 +84,9 @@ func _physics_process(delta: float) -> void:
 					if attackCooldownTimer <= 0 and !isAttacking:
 						print("attack")
 						attack()
-		move(delta)
+	if isBeingPushed:
+		calcPushVelocity()
+	move(delta)
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -106,6 +108,7 @@ func rotateToTarget(delta):
 	var signedAngle = wrapf(targetHeading - currentHeading, -PI, PI)
 
 	if abs(signedAngle) > critAngle:
+		#print("rotating")
 		var step = clamp(signedAngle, 
 		-turnSpeed * delta,
 		turnSpeed * delta)
@@ -115,7 +118,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 	if invulTimer <= 0:
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
-		print(health)
+		#print(health)
 		isTakingDamage = true
 	if !isUnstoppable:
 		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
@@ -129,7 +132,7 @@ func death():
 	for i in range(WHEAT_ON_DEATH):
 		create_wheat()
 		await get_tree().create_timer(0.004).timeout
-	print("add wheat equal " +str(WHEAT_ON_DEATH))
+	#print("add wheat equal " +str(WHEAT_ON_DEATH))
 	stateMachine.travel("death")
 	
 func create_wheat():
@@ -154,7 +157,7 @@ func playerInRange():
 			return true
 
 func animation_finished(anim_name):
-	print("anim finished ",isAttacking)
+	#print("anim finished ",isAttacking)
 	##print(anim_name)
 	if isTakingDamage:
 		#recoveryTimer = BASE_RECOVERY_TIME	
@@ -164,7 +167,7 @@ func animation_finished(anim_name):
 		#recoveryTimer = BASE_RECOVERY_TIME	
 		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
-	print(isAttacking)
+	#print(isAttacking)
 
 func calcTrackingVelocity(_position):
 	trackingVelocity = relativeRigForward * BASE_MOVE_SPEED
@@ -178,5 +181,6 @@ func calcPushVelocity():
 func move(delta):
 	velocity = (trackingVelocity + currentPushVelocity)*delta
 	if currentPushVelocity.length() >= 20:
-		print(currentPushVelocity)
+		#print(currentPushVelocity)
+		pass
 	move_and_slide()
