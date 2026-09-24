@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Isometric3D-dungeon"
-run/main_scene="uid://dui5ym8xpdo2g"
+run/main_scene="uid://c1cfnnqvdteuh"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Economy="*uid://cwxdn3bd6rr5y"
 PerkHandler="*uid://8d6rkhtlgpu5"
 SeasonHandler="*uid://c3iclu3jddpkp"
+WaveSystem="*uid://sa05cupgn0ob"
 
 [display]
 
@@ -48,6 +49,7 @@ navigation_mesh_source_group=""
 player=""
 enemy=""
 level="so we know which scene to remove"
+spawnArea=""
 
 [input]
 
