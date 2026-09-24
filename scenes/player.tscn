@@ -8317,6 +8317,7 @@ BASE_ROLL_TIME = 0.7
 BASE_ROLL_COOLDOWN = 1.0
 BASE_WALK_ANIM_SPD_FACTOR = 1.0
 BASE_MICROFREEZE_TIME = 0.1
+BASE_MICROFREEZE_SPEED_FACTOR = 0.2
 BASE_SICKLE_DRAIN_RATE = 75.0
 BASE_SICKLE_CHARGE_RATE = 30.0
 BASE_SICKLE_CHARGE_MAX = 100.0
@@ -8382,10 +8383,10 @@ script = ExtResource("95_qmsq4")
 
 [node name="waveDebug" type="Label" parent="Debug" unique_id=107877836]
 layout_mode = 0
-offset_left = 801.0
-offset_top = 359.0
-offset_right = 897.0
-offset_bottom = 382.0
+offset_left = 851.0
+offset_top = 368.0
+offset_right = 947.0
+offset_bottom = 391.0
 text = "DEBUG TEXT"
 script = ExtResource("96_5vs2b")
 

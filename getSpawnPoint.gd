@@ -18,7 +18,7 @@ func getSpawnPoint():
 	var x = xSize * rng.randf()
 	var z = zSize * rng.randf()
 	var spawnOffset = Vector3(x,0,z)
-	var spawnpoint = corner.global_position + spawnOffset
+	var spawnpoint = corner.global_position+ spawnOffset
 	spawnpoint.y = SPAWN_Y_LEVEL
 	return spawnpoint
 	

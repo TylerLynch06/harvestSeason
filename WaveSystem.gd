@@ -2,8 +2,8 @@ extends Node
 
 var currentSpawnPoints = 10
 var BASE_WAVE_INCREMENT	= 7
-var BASE_WAVE_INCREMENT_FACTOR = 1.2
-var currentWave: int
+var BASE_WAVE_INCREMENT_FACTOR = 1.1
+var currentWave: int = 1
 ##0:Autumn, 1: Winter, etc...
 var currentSeasonIndex = 0
 @onready var spawnNodes = get_tree().get_nodes_in_group("spawnArea")
@@ -67,3 +67,4 @@ func newWave():
 	currentSpawnPoints *= BASE_WAVE_INCREMENT_FACTOR
 	currentSpawnPoints = floor(currentSpawnPoints)
 	totalWaveSpawnPoints = currentSpawnPoints
+	currentWave += 1

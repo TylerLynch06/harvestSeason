@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 	text += "\nintermission_time_remaining: "+str(snappedf(WaveSystem.waveIntermissionTimer,0.001))
 	text += "\ntime_without_enemies: "+str(snappedf(WaveSystem.waveFinishCheckTimer,0.001))
 	text += "\nwave_points "+str(WaveSystem.totalWaveSpawnPoints)
+	text += "\nwave_num "+str(WaveSystem.currentWave)

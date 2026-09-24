@@ -9,6 +9,7 @@ extends Stats
 @export var animPlayer: AnimationPlayer
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 @export var attackRange : Area3D
+@export var physBox: CollisionShape3D
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -38,7 +39,7 @@ func _ready() -> void:
 	super._ready()
 	invulTimer = BASE_INVUL_ON_HIT
 	#print(get_tree().get_nodes_in_group("player"))
-	player = get_tree().get_nodes_in_group("player")[0]
+	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
@@ -82,7 +83,6 @@ func _physics_process(delta: float) -> void:
 					calcTrackingVelocity(global_position)
 				else:
 					if attackCooldownTimer <= 0 and !isAttacking:
-						print("attack")
 						attack()
 	if isBeingPushed:
 		calcPushVelocity()
@@ -134,6 +134,9 @@ func death():
 		await get_tree().create_timer(0.004).timeout
 	#print("add wheat equal " +str(WHEAT_ON_DEATH))
 	stateMachine.travel("death")
+	collision_layer = 0
+	collision_mask = 0
+	
 	
 func create_wheat():
 	var wheat = wheatScene.instantiate()
@@ -157,17 +160,11 @@ func playerInRange():
 			return true
 
 func animation_finished(anim_name):
-	#print("anim finished ",isAttacking)
-	##print(anim_name)
 	if isTakingDamage:
-		#recoveryTimer = BASE_RECOVERY_TIME	
 		isTakingDamage = false
 	if isAttacking:
 		attackCooldownTimer = BASE_COOLDOWN
-		#recoveryTimer = BASE_RECOVERY_TIME	
-		#attackCooldownTimer = stats.BASE_VALUES.get("COOLDOWN")
 		isAttacking = false
-	#print(isAttacking)
 
 func calcTrackingVelocity(_position):
 	trackingVelocity = relativeRigForward * BASE_MOVE_SPEED
