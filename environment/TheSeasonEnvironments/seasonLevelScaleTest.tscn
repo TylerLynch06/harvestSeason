@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="1_5vn18"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_tkrys"]
+[ext_resource type="PackedScene" uid="uid://bgfuyfdhkohxy" path="res://assets/animations/res_files/pumpkin_head.tscn" id="3_tkrys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vn18"]
 size = Vector3(148.53857, 0.1, 200)
@@ -31,3 +32,12 @@ shape = SubResource("BoxShape3D_5vn18")
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_tkrys")
 surface_material_override/0 = SubResource("StandardMaterial3D_w6opb")
+
+[node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("3_tkrys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.608053, 0.017440796, -0.41090226)
+
+[node name="PumpkinHead2" parent="." unique_id=1044146222 instance=ExtResource("3_tkrys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.994217, 0.017440796, 3.1184597)
+
+[node name="PumpkinHead3" parent="." unique_id=1452111301 instance=ExtResource("3_tkrys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.559927, 0.017440796, 2.327963)
