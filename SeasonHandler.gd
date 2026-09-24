@@ -2,9 +2,21 @@ extends Node
 
 ##Handles the intermissions between seasons
 
-var seasonSequence = ["autumn","winter","spring","summer"]
+@onready var seasonDictPath = {
+	"autumn":"res://environment/TheSeasonEnvironments/autumn.tscn",
+	"winter":"res://environment/TheSeasonEnvironments/winter.tscn",
+	"spring":"res://environment/TheSeasonEnvironments/spring.tscn",
+	"summer":"res://environment/TheSeasonEnvironments/summer.tscn"}
+	
+var seasonSequence = ["autumn","winter","spring","summer"]	
 var isNextSceneLoaded = false
-var currentSeasonIndex = null
+var loadingProgress = 0.0
+var loadingScene = false
+var currentSceneIndex = 1
+var progress = []
+var timeSinceLoadStart = 0.0
+var nextToLoad = seasonSequence[currentSceneIndex]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,12 +24,39 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if Input.is_action_just_pressed("loadScene"):
+		loadingScene = true
+		loadNext()
+	if loadingScene:
+		timeSinceLoadStart += delta
+		var status = ResourceLoader.load_threaded_get_status(getNextPath(), progress)
+		match status:
+			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				loadingProgress = progress[0]
+			ResourceLoader.THREAD_LOAD_LOADED:
+				isNextSceneLoaded = true
+				placeScene()
+			
 func loadNext():
-	var path = getNextPath()
-	loader = ResourceLoader.load_interactive(path)
-	pass
+	timeSinceLoadStart = 0.0
+	var newLevel = ResourceLoader.load_threaded_request(getNextPath(),"PackedScene", false)
 
 func getNextPath():
-	return ""
+	return seasonDictPath.get(seasonSequence[currentSceneIndex])
+	
+func placeScene():
+	##Destrying old scene
+	var currentLevel = null
+	if get_tree().get_nodes_in_group("level"):
+		currentLevel = get_tree().get_nodes_in_group("level")[0] 
+	
+	var seasonScene = ResourceLoader.load_threaded_get(getNextPath())
+	var seasonInstance = seasonScene.instantiate()
+	add_child(seasonInstance)
+	loadingScene = false
+	currentSceneIndex = (currentSceneIndex + 1) % 4
+	nextToLoad = seasonSequence[currentSceneIndex]
+	
+	if currentLevel:
+		currentLevel.queue_free()
+		#get_tree().get_root()
