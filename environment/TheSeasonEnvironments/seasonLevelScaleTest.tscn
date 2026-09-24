@@ -3,9 +3,31 @@
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="1_5vn18"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_tkrys"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vn18"]
+size = Vector3(148.53857, 0.1, 200)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tkrys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6opb"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="SeasonLevelScaleTest" type="Node3D" unique_id=1554001347]
 
 [node name="autumnScene" parent="." unique_id=1337471200 instance=ExtResource("1_5vn18")]
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("2_tkrys")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.1620617, -0.051707715, 1.1915367)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1061629122 groups=["ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032559514, 0)
+collision_layer = 12
+collision_mask = 12
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1530637458]
+shape = SubResource("BoxShape3D_5vn18")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2140247985]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tkrys")
+surface_material_override/0 = SubResource("StandardMaterial3D_w6opb")
