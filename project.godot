@@ -50,6 +50,7 @@ player=""
 enemy=""
 level="so we know which scene to remove"
 spawnArea=""
+transition=""
 
 [input]
 
