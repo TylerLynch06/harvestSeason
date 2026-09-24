@@ -10,6 +10,7 @@ var enemy: PackedScene = preload("res://assets/animations/res_files/pumpkin_head
 var remainingEnemyCount = 0
 
 static var rng = RandomNumberGenerator.new()
+var doSpawn = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if currentSpawnPoints > 0:
+	if currentSpawnPoints > 0 and doSpawn:
 		spawnEnemy(enemy)
 	
 func spawnEnemy(_enemy : PackedScene):
@@ -31,6 +32,8 @@ func spawnEnemy(_enemy : PackedScene):
 
 func getRandomSpawnNode():
 	var nodeIndex = rng.randi_range(0, 3)
+	if !spawnNodes:
+		return null
 	return spawnNodes[nodeIndex]
 	
 func getRemainingEnemies():
