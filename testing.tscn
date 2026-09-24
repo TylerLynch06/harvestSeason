@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://fd2yxgf3a5mc"]
+
+[ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_h15u1"]
+[ext_resource type="Script" uid="uid://cq4xjjnk403lu" path="res://getSpawnPoint.gd" id="27_gfs52"]
+[ext_resource type="PackedScene" uid="uid://ddq74l1hgaoku" path="res://environment/TheSeasonEnvironments/winter.tscn" id="28_6wjnl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2log"]
+size = Vector3(15.217163, 1, 7.812561)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_an527"]
+size = Vector3(148.53857, 0.1, 200)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cccnq"]
+vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ixhls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cve17"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D" unique_id=150514529]
+
+[node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_h15u1")]
+
+[node name="spawnArea" type="Area3D" parent="." unique_id=879112294 node_paths=PackedStringArray("corner") groups=["spawnArea"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.397825)
+script = ExtResource("27_gfs52")
+corner = NodePath("corner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawnArea" unique_id=1769131006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146362, 0, -0.53408813)
+shape = SubResource("BoxShape3D_s2log")
+
+[node name="corner" type="Marker3D" parent="spawnArea" unique_id=1543536190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5489106, 0, -4.8841305)
+
+[node name="spawnArea2" type="Area3D" parent="." unique_id=1625313518 node_paths=PackedStringArray("corner") groups=["spawnArea"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.166897, 0, 1.1587524)
+script = ExtResource("27_gfs52")
+corner = NodePath("corner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawnArea2" unique_id=157692960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146362, 0, -0.53408813)
+shape = SubResource("BoxShape3D_s2log")
+
+[node name="corner" type="Marker3D" parent="spawnArea2" unique_id=963426052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5489106, 0, -4.8841305)
+
+[node name="spawnArea3" type="Area3D" parent="." unique_id=33014879 node_paths=PackedStringArray("corner") groups=["spawnArea"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40242, 0, 29.39355)
+script = ExtResource("27_gfs52")
+corner = NodePath("corner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawnArea3" unique_id=59593531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146362, 0, -0.53408813)
+shape = SubResource("BoxShape3D_s2log")
+
+[node name="corner" type="Marker3D" parent="spawnArea3" unique_id=1631729349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5489106, 0, -4.8841305)
+
+[node name="spawnArea4" type="Area3D" parent="." unique_id=153288994 node_paths=PackedStringArray("corner") groups=["spawnArea"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29.359222, 0, 0.43043447)
+script = ExtResource("27_gfs52")
+corner = NodePath("corner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawnArea4" unique_id=487247528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146362, 0, -0.53408813)
+shape = SubResource("BoxShape3D_s2log")
+
+[node name="corner" type="Marker3D" parent="spawnArea4" unique_id=1549772503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5489106, 0, -4.8841305)
+
+[node name="worldFloor" type="RigidBody3D" parent="." unique_id=609596324 groups=["ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.418244, 0)
+collision_layer = 12
+collision_mask = 12
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="worldFloor" unique_id=1603172360]
+shape = SubResource("BoxShape3D_an527")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="worldFloor" unique_id=1466055944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0022118092, -0.005302191, 0.0052144527)
+navigation_mesh = SubResource("NavigationMesh_cccnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="worldFloor/NavigationRegion3D" unique_id=1530322152 groups=["level"]]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ixhls")
+surface_material_override/0 = SubResource("StandardMaterial3D_cve17")
+
+[node name="Node3D" parent="." unique_id=1337471200 instance=ExtResource("28_6wjnl")]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0.005567074, 0, -0.23009253)
