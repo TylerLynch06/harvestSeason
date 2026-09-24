@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dbvtti47mkh3n"]
+
+[ext_resource type="Shader" uid="uid://badyhpritn12r" path="res://scenes/cardtilt.gdshader" id="1_88w3v"]
+
+[resource]
+shader = ExtResource("1_88w3v")
+shader_parameter/max_rotation = Vector2(0.2, 0.2)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3

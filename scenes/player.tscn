@@ -96,6 +96,7 @@
 [ext_resource type="Script" uid="uid://ciyt87p5pre2x" path="res://scenes/coinCasher.gd" id="91_gvmy4"]
 [ext_resource type="Script" uid="uid://1xgjoyh03gvu" path="res://scenes/coinCollector.gd" id="93_fr8ja"]
 [ext_resource type="Script" uid="uid://bqfdr72dhywq7" path="res://scenes/sceneLoaderDebug.gd" id="95_qmsq4"]
+[ext_resource type="PackedScene" uid="uid://b2u0p0huot55v" path="res://scenes/perk_menu.tscn" id="96_qmsq4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cccnq"]
 top_radius = 0.05
@@ -7695,6 +7696,8 @@ radius = 1.8
 
 [node name="Player" type="CharacterBody3D" unique_id=270954550 groups=["player"]]
 
+[node name="Control2" parent="." unique_id=1617969140 instance=ExtResource("96_qmsq4")]
+
 [node name="weaponData" type="Node3D" parent="." unique_id=1080459534 node_paths=PackedStringArray("swordMesh", "pitchforkMesh", "sickleParent")]
 script = ExtResource("91_4vfid")
 swordMesh = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/sword2/sword")
@@ -8225,7 +8228,6 @@ shape = SubResource("CapsuleShape3D_lalod")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="sword" type="MeshInstance3D" parent="hero_warrior/Armature/GeneralSkeleton/rightHand/sword2" unique_id=915789152]
-transform = Transform3D(1.565, -1.1920929e-07, 5.509355e-08, 5.9604645e-08, 1.565, 1.1641532e-10, 5.5966666e-08, -1.816079e-08, 1.5650004, 0.01580596, 0.07682872, -0.011575818)
 mesh = SubResource("ArrayMesh_3x18r")
 
 [node name="pitchfork" type="MeshInstance3D" parent="hero_warrior/Armature/GeneralSkeleton/rightHand/sword2" unique_id=2115555399]
@@ -8326,7 +8328,8 @@ statsDebugText = NodePath("../Debug/statsData")
 [node name="target" type="Marker3D" parent="." unique_id=1659860764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2582211, 0)
 
-[node name="Debug" type="Control" parent="." unique_id=639864458]
+[node name="Control" type="Control" parent="." unique_id=639864458]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
