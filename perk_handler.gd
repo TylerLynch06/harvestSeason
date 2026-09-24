@@ -11,7 +11,7 @@ var perks = {
 	"shoes": -1
 }
 var progression = {
-	"battery": [0.5,1,1.5],
+	"battery": [0.5,1,4],
 	"monsterhunter charm": [0.1,0.2,0.3],
 	"fishing magnet" : [1,2,3]
 }
@@ -19,6 +19,9 @@ var progression = {
 func _ready() -> void:
 	activate("fishing magnet")
 	activate("armour")
+	activate("battery")
+	upgrade("battery")
+	upgrade("battery")
 	#upgrade("fishing magnet")
 
 func activate(perkName):

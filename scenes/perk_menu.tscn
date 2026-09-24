@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ie0p26tgv3gy" path="res://scenes/perk_menu.gd" id="1_qkhem"]
 [ext_resource type="Shader" uid="uid://b7ae5qanl8bvt" path="res://scenes/perk_menu_bg.gdshader" id="2_0sp37"]
 [ext_resource type="Shader" uid="uid://bi4s2055klhrf" path="res://scenes/crt.gdshader" id="3_qcug2"]
-[ext_resource type="Shader" uid="uid://cit11ac88c0ud" path="res://scenes/anime_style_metal.gdshader" id="4_rn21x"]
+[ext_resource type="Shader" uid="uid://tbfocyibeun4" path="res://scenes/perk_menu.gdshader" id="3_wd5y0"]
 [ext_resource type="Script" uid="uid://bokshnruioajh" path="res://scenes/card.gd" id="4_wd5y0"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_6cxh8"]
 [ext_resource type="PackedScene" uid="uid://bkt0p58723jk1" path="res://scenes/perk.tscn" id="5_ey06g"]
@@ -24,7 +24,9 @@ shader_parameter/color_mid = Color(0.77095866, 0.31528905, 1, 1)
 shader_parameter/color_high = Color(13.047, 13.047, 13.047, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mq3ql"]
-shader = ExtResource("4_rn21x")
+shader = ExtResource("3_wd5y0")
+shader_parameter/pixel_size = 16.0
+shader_parameter/handle_edges = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3uw0"]
 shader = ExtResource("7_d7xl3")
@@ -122,6 +124,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1612623179]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
@@ -152,7 +155,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=1076060561 instance=ExtResource("5_ey06g")]
 anchors_preset = 0
@@ -190,7 +193,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1132441185 instance=ExtResource("5_ey06g")]
 anchors_preset = 0
@@ -228,7 +231,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=128111894 instance=ExtResource("5_ey06g")]
 anchors_preset = 0
@@ -266,7 +269,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=204005858 instance=ExtResource("5_ey06g")]
 anchors_preset = 0
