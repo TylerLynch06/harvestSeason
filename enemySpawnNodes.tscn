@@ -61,9 +61,11 @@ freeze = true
 shape = SubResource("BoxShape3D_an527")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="worldFloor" unique_id=1466055944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3904103, 0)
 navigation_mesh = SubResource("NavigationMesh_cccnq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="worldFloor/NavigationRegion3D" unique_id=1530322152 groups=["level"]]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_ixhls")
 surface_material_override/0 = SubResource("StandardMaterial3D_cve17")

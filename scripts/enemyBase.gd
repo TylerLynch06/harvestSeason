@@ -29,7 +29,7 @@ var trackingVelocity: Vector3 = Vector3.ZERO
 @onready var baseAttackRange = attackCollisionObject.shape.radius
 @onready var currentAttackRange = baseAttackRange
 @onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
-var isSpawning = true
+var isSpawning = HAS_SPAWN_ANIM
 
 @export var movePool: EnemyMovePool
 var nextMove = null
@@ -123,7 +123,8 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
 		#print(health)
-		isTakingDamage = true
+		if !isTakingDamage:
+			isTakingDamage = true
 	if !isUnstoppable:
 		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
 	if hitPos != Vector3.ZERO and pushForce != 0:

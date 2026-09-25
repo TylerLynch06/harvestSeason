@@ -24,6 +24,7 @@ class_name Stats
 @export var BASE_PUSH_DRAG_FACTOR: float = 1
 ##Only have so many enemy points to spend per wave, bigger enemies cost more points
 @export var SPAWN_VALUE: int = 1
+@export var HAS_SPAWN_ANIM = false
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
 

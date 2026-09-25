@@ -15,5 +15,5 @@ var animationSet = {"sword":swordAnimations, "pitchfork":pitchforkWeaponAnimatio
 var isMelee = {"sword":true,"pitchfork":false,"sickles":true}
 var doMovementLock = {"sword":true,"pitchfork":true,"sickles":false}
 ##weapon name and then combo state
-var damageOnHit = {"sword":[10,10,20],"pitchfork":[30],"sickles":[10]}
+var damageOnHit = {"sword":[10,20,20],"pitchfork":[30],"sickles":[20]}
 var pushFactor =  {"sword":0.8,"pitchfork":1.2,"sickles":0.4}
