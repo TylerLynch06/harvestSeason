@@ -56,7 +56,6 @@ func spawnRandomEnemy():
 		enemyIndex = rng.rand_weighted(spawnPoolWeights)
 		var tempEnemy = enemies[enemyIndex].instantiate() as Enemy
 		enemyPointValue = tempEnemy.SPAWN_VALUE
-		print(tempEnemy.name)
 		tempEnemy.free()
 	spawnEnemy(enemies[enemyIndex])
 	
@@ -65,7 +64,7 @@ func spawnEnemy(_enemy : PackedScene):
 	var enemyInstance = _enemy.instantiate() as Enemy
 	var spawnNode = getRandomSpawnNode()
 	enemyInstance.global_position = spawnNode.getSpawnPoint()
-	currentSpawnPoints -= enemyInstance.SPAWN_VALUE
+	currentSpawnPoints -= enemyInstance.SPAWN_VALUE 
 	get_tree().root.add_child.call_deferred(enemyInstance)
 
 func getRandomSpawnNode():
@@ -94,7 +93,7 @@ func calculateSpawnPoolProbabilities():
 	var weightArray = []
 	for enemy in enemies:
 		var tempEnemy = enemy.instantiate()
-		weightArray.append(1.0/tempEnemy.SPAWN_VALUE)
+		weightArray.append((1.0/tempEnemy.SPAWN_VALUE) * tempEnemy.SPAWN_PROBABILITY_FACTOR)
 		tempEnemy.free()
 	return PackedFloat32Array(weightArray)
 	

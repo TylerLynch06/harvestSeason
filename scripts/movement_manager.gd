@@ -12,6 +12,7 @@ var directionVector: Vector3 = Vector3.ZERO
 var rollDirection: Vector3 = Vector3.ZERO
 
 @export var weaponManager: WeaponManager
+@export var inputManager: InputManager
 @export var debugText: Label
 @export var hurtbox: Area3D
 
@@ -57,6 +58,7 @@ func _process(delta: float) -> void:
 			#stateMachine.travel("idle")
 			stoppedMoving = true
 	elif isRolling:
+		inputManager.sickleChargeAccumulation = 0
 		if rollTimer > 0:
 			rollTimer -= delta
 		if rollTimer <= 0:

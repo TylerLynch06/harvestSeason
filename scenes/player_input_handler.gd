@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name InputManager
+
 @export var weaponManager: WeaponManager
 @export var weaponDict = {1: "sword",2: "pitchfork",3:"sickles"}
 @export var stats: PlayerStats

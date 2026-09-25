@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bfw71yhx5qf75"]
+
+[ext_resource type="Script" uid="uid://b1cnc4yhtah1p" path="res://projectile_base.gd" id="1_srvs4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cccnq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cccnq"]
+
+[node name="Projectile" type="Node3D" unique_id=237092752 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_srvs4")
+lifetime = 5.0
+projectile_speed = 20.0
+hitbox = NodePath("hitbox")
+
+[node name="hitbox" type="Area3D" parent="." unique_id=1581752955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1284123191]
+shape = SubResource("SphereShape3D_cccnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1133160746]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_cccnq")
