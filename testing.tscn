@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fd2yxgf3a5mc"]
 
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_h15u1"]
+[ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="4_kj3p2"]
 [ext_resource type="Script" uid="uid://cq4xjjnk403lu" path="res://getSpawnPoint.gd" id="27_gfs52"]
 [ext_resource type="PackedScene" uid="uid://ddq74l1hgaoku" path="res://environment/TheSeasonEnvironments/winter.tscn" id="28_6wjnl"]
 
@@ -18,6 +19,60 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cve17"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_lc7k4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jn4p2"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ybq6y"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11ixh"]
+_data = {
+&"RESET": SubResource("Animation_lc7k4"),
+&"fade_to_black": SubResource("Animation_jn4p2"),
+&"fade_to_normal": SubResource("Animation_ybq6y")
+}
 
 [node name="Node3D" type="Node3D" unique_id=150514529]
 
@@ -89,5 +144,24 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ixhls")
 surface_material_override/0 = SubResource("StandardMaterial3D_cve17")
 
-[node name="Node3D" parent="." unique_id=1337471200 instance=ExtResource("28_6wjnl")]
+[node name="Node3D" parent="." unique_id=1337471200 groups=["level"] instance=ExtResource("28_6wjnl")]
 transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0.005567074, 0, -0.23009253)
+
+[node name="TransitionScene" type="CanvasLayer" parent="." unique_id=1274291490 node_paths=PackedStringArray("color_rect", "animation_player") groups=["transition"]]
+script = ExtResource("4_kj3p2")
+color_rect = NodePath("ColorRect")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScene" unique_id=635744264]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.005405575, 3.760215e-07, 0.07697707, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScene" unique_id=910753646]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_11ixh")
