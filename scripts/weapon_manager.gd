@@ -184,4 +184,4 @@ func sickleDamagePulse():
 			enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0], 
 			global_position, 
 			pushForce,
-			0.3)
+			0)

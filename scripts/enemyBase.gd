@@ -125,6 +125,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		health -= damage
 		#print(health)
 		if !isTakingDamage:
+			stateMachine.travel("hit")
 			isTakingDamage = true
 			timeSinceLastFlinch = 0
 	if !isUnstoppable:
