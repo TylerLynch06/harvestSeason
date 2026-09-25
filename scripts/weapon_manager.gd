@@ -92,6 +92,7 @@ func weapon_hit(area):
 			bonusDamage += 10 * PerkHandler.progression.get("monsterhunter charm")[PerkHandler.perks.get("monsterhunter charm")]
 		
 		var pushForce = stats.BASE_PUSH_FORCE * WEAPON_DATA.pushFactor.get(currentWeaponName)
+		print(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage)
 		enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage, 
 		global_position, 
 		pushForce,

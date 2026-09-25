@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bafx3h6fecvjp"]
 
 [ext_resource type="Script" uid="uid://y5dsvc3gceh6" path="res://scripts/weaponCollisionHandler.gd" id="1_w5j5w"]
+[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="2_a7i4v"]
 [ext_resource type="Animation" uid="uid://q8svwj4ko1ef" path="res://assets/animations/res_files/A_TPose.res" id="2_cbf1i"]
 [ext_resource type="Script" uid="uid://38s5c4fsg1ji" path="res://scripts/movement_manager.gd" id="2_qlg0r"]
 [ext_resource type="Animation" uid="uid://dtb7du5x0vcnd" path="res://assets/animations/res_files/Chest_Open.res" id="3_4vfid"]
@@ -97,6 +98,7 @@
 [ext_resource type="Script" uid="uid://1xgjoyh03gvu" path="res://scenes/coinCollector.gd" id="93_fr8ja"]
 [ext_resource type="Script" uid="uid://bqfdr72dhywq7" path="res://scenes/sceneLoaderDebug.gd" id="95_qmsq4"]
 [ext_resource type="Script" uid="uid://bdtw3rghvd1i" path="res://scenes/wave_debug.gd" id="96_5vs2b"]
+[ext_resource type="PackedScene" uid="uid://b2u0p0huot55v" path="res://scenes/perk_menu.tscn" id="96_qmsq4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cccnq"]
 top_radius = 0.05
@@ -7664,25 +7666,6 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"player"]
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tkrys"]
 height = 2.196289
 
-[sub_resource type="GDScript" id="GDScript_fcu33"]
-script/source = "extends Node3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-
-func perk_control(perk: String, level : int):
-	print(\"WIP\")
-	
-"
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pakj4"]
 height = 3.0
 radius = 1.0
@@ -8229,7 +8212,6 @@ shape = SubResource("CapsuleShape3D_lalod")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="sword" type="MeshInstance3D" parent="hero_warrior/Armature/GeneralSkeleton/rightHand/sword2" unique_id=915789152]
-transform = Transform3D(1.565, -1.1920929e-07, 5.509355e-08, 5.9604645e-08, 1.565, 1.1641532e-10, 5.5966666e-08, -1.816079e-08, 1.5650004, 0.01580596, 0.07682872, -0.011575818)
 mesh = SubResource("ArrayMesh_3x18r")
 
 [node name="pitchfork" type="MeshInstance3D" parent="hero_warrior/Armature/GeneralSkeleton/rightHand/sword2" unique_id=2115555399]
@@ -8280,8 +8262,8 @@ WEAPON_DATA = NodePath("../weaponData")
 weaponHurtBox = NodePath("../hero_warrior/Armature/GeneralSkeleton/rightHand/sword2/hitbox")
 pitchforkProjectile = ExtResource("90_gvmy4")
 pitchforkSpawn = NodePath("../hero_warrior/Armature/pitchforkSpawn")
-debugText = NodePath("../Debug/attackData")
-weaponDebugText = NodePath("../Debug/weaponData")
+debugText = NodePath("../Control/Debug#attackData")
+weaponDebugText = NodePath("../Control/Debug#weaponData2")
 stats = NodePath("../Stats")
 sickleHitbox = NodePath("../SickleHitbox")
 
@@ -8289,12 +8271,9 @@ sickleHitbox = NodePath("../SickleHitbox")
 script = ExtResource("4_fjrip")
 weaponManager = NodePath("../WeaponManager")
 stats = NodePath("../Stats")
-debugText = NodePath("../Debug/inputData")
+debugText = NodePath("../Control/Debug#inputData")
 
-[node name="PerkHandler" type="Node3D" parent="." unique_id=1246995123]
-script = SubResource("GDScript_fcu33")
-
-[node name="hurtbox" type="Area3D" parent="." unique_id=2021737906]
+[node name="hurtbox" type="Area3D" parent="." unique_id=2021737906 groups=["hurtbox"]]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 collision_layer = 9
 collision_mask = 9
@@ -8327,32 +8306,19 @@ BASE_SICKLE_ROTATION_SPEED = 60.0
 BASE_SICKLE_DAMAGE_INTERVAL = 0.25
 BASE_SICKLE_SPIN_MOVE_FACTOR = 1.8
 BASE_PUSH_FORCE = 300.0
-statsDebugText = NodePath("../Debug/statsData")
+statsDebugText = NodePath("../Control/Debug#statsData")
 
 [node name="target" type="Marker3D" parent="." unique_id=1659860764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2582211, 0)
 
-[node name="Debug" type="Control" parent="." unique_id=639864458]
+[node name="Control" type="Control" parent="." unique_id=639864458]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="movementData" type="Label" parent="Debug" unique_id=2140977049]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "DEBUG TEXT"
-
-[node name="attackData" type="Label" parent="Debug" unique_id=1823949178]
-layout_mode = 0
-offset_left = 219.0
-offset_top = 1.0
-offset_right = 315.0
-offset_bottom = 24.0
-text = "DEBUG TEXT"
-
-[node name="statsData" type="Label" parent="Debug" unique_id=1578894083]
+[node name="Debug#statsData" type="Label" parent="Control" unique_id=1578894083]
 layout_mode = 0
 offset_left = 462.0
 offset_top = -1.0
@@ -8360,21 +8326,28 @@ offset_right = 558.0
 offset_bottom = 22.0
 text = "DEBUG TEXT"
 
-[node name="weaponData" type="Label" parent="Debug" unique_id=1706754838]
+[node name="Debug#attackData" type="Label" parent="Control" unique_id=1823949178]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 1.0
+offset_right = 315.0
+offset_bottom = 24.0
+text = "DEBUG TEXT"
+
+[node name="Debug#movementData" type="Label" parent="Control" unique_id=2140977049]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 23.0
+text = "DEBUG TEXT"
+
+[node name="Debug#weaponData2" type="Label" parent="Control" unique_id=1706754838]
 layout_mode = 0
 offset_left = 712.0
 offset_right = 808.0
 offset_bottom = 23.0
 text = "DEBUG TEXT"
 
-[node name="inputData" type="Label" parent="Debug" unique_id=1826118028]
-layout_mode = 0
-offset_left = 936.0
-offset_right = 1032.0
-offset_bottom = 23.0
-text = "DEBUG TEXT"
-
-[node name="sceneLoader" type="Label" parent="Debug" unique_id=1639321925]
+[node name="Debug#sceneLoader" type="Label" parent="Control" unique_id=1639321925]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 369.0
@@ -8391,6 +8364,13 @@ offset_right = 947.0
 offset_bottom = 391.0
 text = "DEBUG TEXT"
 script = ExtResource("96_5vs2b")
+
+[node name="Debug#inputData" type="Label" parent="Control" unique_id=1826118028]
+layout_mode = 0
+offset_left = 936.0
+offset_right = 1032.0
+offset_bottom = 23.0
+text = "DEBUG TEXT"
 
 [node name="coinCollector" type="Area3D" parent="." unique_id=1899917093]
 collision_layer = 8

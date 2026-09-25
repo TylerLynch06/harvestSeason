@@ -93,7 +93,10 @@ func movementCheck():
 func movePlayer(delta):
 	var velocity
 	if !isRolling:
-		velocity = directionVector * stats.BASE_MOVE_SPEED * delta
+		if PerkHandler.perks["shoes"] != -1:
+			velocity = directionVector * stats.BASE_MOVE_SPEED * PerkHandler.progression["shoes"][PerkHandler.perks["shoes"]] * delta
+		else:
+			velocity = directionVector * stats.BASE_MOVE_SPEED * delta			
 		if weaponManager.currentSickleCharge > 0:
 			velocity *= stats.BASE_SICKLE_SPIN_MOVE_FACTOR
 	elif isRolling:

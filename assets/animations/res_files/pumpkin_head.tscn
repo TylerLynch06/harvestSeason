@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bgfuyfdhkohxy"]
+[gd_scene format=4 uid="uid://b26vvboovx7f5"]
 
 [ext_resource type="Texture2D" uid="uid://d4k81fqhtrj3x" path="res://assets/VoxelFruitsAndVegetables/OBJs/Apple-0.png" id="1_b45dj"]
 [ext_resource type="Script" uid="uid://c2oar64n60svk" path="res://scripts/meleeEnemy.gd" id="1_um7h7"]

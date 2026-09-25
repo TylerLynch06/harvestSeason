@@ -1,4 +1,32 @@
-[gd_scene format=3 uid="uid://7qjvcp3bia46"]
+[gd_scene format=3 uid="uid://cvqg8aq7e1hp2"]
+
+[ext_resource type="Material" uid="uid://vgb53aw6ea06" path="res://pixeler.tres" id="1_bo71u"]
+[ext_resource type="Script" uid="uid://bo8cuad18t3vt" path="res://scenes/merchantTradingUI.gd" id="1_onuwm"]
+[ext_resource type="Script" uid="uid://dtmwiltnn77gm" path="res://scenes/salecardInMerchant.gd" id="4_52sgd"]
+[ext_resource type="Texture2D" uid="uid://bc7gtlfleqbjv" path="res://assets/tray1.png" id="4_lovew"]
+[ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_0wgsg"]
+[ext_resource type="Shader" uid="uid://btdqiyhkwiwp0" path="res://cardtitl2.gdshader" id="6_vlvfu"]
+[ext_resource type="PackedScene" uid="uid://dbx2owru0ksuj" path="res://scenes/shop_perk.tscn" id="7_6f7gq"]
+[ext_resource type="Texture2D" uid="uid://dvuin16b2iu4p" path="res://assets/farmer portrait.png" id="8_0wgsg"]
+[ext_resource type="Shader" uid="uid://dadr1mpq6apoh" path="res://scenes/pixels.gdshader" id="8_6f7gq"]
+[ext_resource type="StyleBox" uid="uid://bh2vxsx33nni" path="res://failFlashButtonTex.tres" id="8_vlvfu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j5su"]
+shader = ExtResource("6_vlvfu")
+shader_parameter/max_rotation = Vector2(0.1, 0.1)
+shader_parameter/tilt = Vector2(0, 0)
+shader_parameter/shine_intensity = 0.3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1j5su"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6f7gq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hifqq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6f7gq"]
+shader = ExtResource("8_6f7gq")
+shader_parameter/pixel_size = 3.0000000475
+shader_parameter/handle_edges = false
 
 [node name="Control" type="Control" unique_id=1345859192]
 layout_mode = 3
@@ -7,3 +35,225 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_onuwm")
+
+[node name="Store" type="Control" parent="." unique_id=1137696009]
+anchors_preset = 0
+offset_left = 175.0
+offset_top = 100.0
+offset_right = 965.0
+offset_bottom = 600.0
+pivot_offset = Vector2(750, 450)
+
+[node name="Tray" type="TextureRect" parent="Store" unique_id=176444519]
+material = ExtResource("1_bo71u")
+layout_mode = 0
+offset_left = -144.0
+offset_top = -213.0
+offset_right = 556.0
+offset_bottom = 487.0
+scale = Vector2(1.6, 1)
+texture = ExtResource("4_lovew")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Store" unique_id=429435095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -92.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/VBoxContainer" unique_id=920183016]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Control2" type="Control" parent="Store/VBoxContainer/HBoxContainer" unique_id=1365477260]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Store/VBoxContainer/HBoxContainer/Control2" unique_id=1224173623]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 328.0
+rotation = -0.05235988
+script = ExtResource("4_52sgd")
+
+[node name="TextureRect" type="TextureRect" parent="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=2127690384]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_0wgsg")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=1225427350 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_1j5su")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer" unique_id=256113571]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1521192223 instance=ExtResource("7_6f7gq")]
+
+[node name="Button" type="Button" parent="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=195448760]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+offset_right = 220.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 92
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1j5su")
+theme_override_styles/pressed = ExtResource("8_vlvfu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6f7gq")
+
+[node name="Control3" type="Control" parent="Store/VBoxContainer/HBoxContainer" unique_id=1849632349]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Store/VBoxContainer/HBoxContainer/Control3" unique_id=1842467079]
+layout_mode = 0
+offset_left = 29.0
+offset_top = -11.000006
+offset_right = 249.0
+offset_bottom = 297.0
+rotation = 0.06981317
+script = ExtResource("4_52sgd")
+
+[node name="TextureRect" type="TextureRect" parent="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=1605307726]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_0wgsg")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=697665712 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_1j5su")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer" unique_id=1973145811]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=512688486 instance=ExtResource("7_6f7gq")]
+
+[node name="Button" type="Button" parent="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=88143515]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+offset_right = 220.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 92
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1j5su")
+theme_override_styles/pressed = ExtResource("8_vlvfu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hifqq")
+
+[node name="Control4" type="Control" parent="Store/VBoxContainer/HBoxContainer" unique_id=872302445]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Store/VBoxContainer/HBoxContainer/Control4" unique_id=490537989]
+layout_mode = 0
+offset_left = 54.999992
+offset_top = -44.000004
+offset_right = 275.0
+offset_bottom = 264.0
+rotation = 0.20943952
+script = ExtResource("4_52sgd")
+
+[node name="TextureRect" type="TextureRect" parent="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=255781018]
+modulate = Color(1, 1, 1, 0.29803923)
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+texture = ExtResource("5_0wgsg")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=184277002 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_1j5su")
+custom_minimum_size = Vector2(220, 308)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer" unique_id=2044672753]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(220, 308)
+render_target_update_mode = 4
+
+[node name="Control" parent="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=354171534 instance=ExtResource("7_6f7gq")]
+
+[node name="Button" type="Button" parent="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=1325542028]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+offset_right = 220.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 92
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1j5su")
+theme_override_styles/pressed = ExtResource("8_vlvfu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hifqq")
+
+[node name="AnimEndMarker" type="Control" parent="." unique_id=419582048]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=2058476501]
+anchors_preset = 0
+offset_left = 89.0
+offset_top = 495.0
+offset_right = 129.0
+offset_bottom = 535.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=556613734]
+material = SubResource("ShaderMaterial_6f7gq")
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 102.0
+texture = ExtResource("8_0wgsg")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=887677013]
+custom_minimum_size = Vector2(850, 100)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 2.0
+offset_right = 710.0
+offset_bottom = 103.0
+
+[node name="Label2" type="Label" parent="Control/PanelContainer" unique_id=131854596]
+custom_minimum_size = Vector2(850, 100)
+custom_maximum_size = Vector2(850, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Welcome to my humble travelling storefront, tiller of the soil...
+let me know if anything here strikes your fancy, eh?
+"
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer" method="_on_mouse_exited"]
+[connection signal="button_down" from="Store/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Button" to="." method="_on_button_button_down1"]
+[connection signal="mouse_entered" from="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer" method="_on_mouse_exited"]
+[connection signal="button_down" from="Store/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Button" to="." method="_on_button_button_down2"]
+[connection signal="mouse_entered" from="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" to="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer" method="_on_mouse_exited"]
+[connection signal="button_down" from="Store/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Button" to="." method="_on_button_button_down3"]
