@@ -39,6 +39,9 @@ var nextMove = null
 func _ready() -> void:
 	super._ready()
 	invulTimer = BASE_INVUL_ON_HIT
+	attackCollisionObject.shape = attackCollisionObject.shape.duplicate()
+	baseAttackRange = attackCollisionObject.shape.radius
+	currentAttackRange = baseAttackRange
 	#print(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 	animTree.advance_expression_base_node = get_path()
