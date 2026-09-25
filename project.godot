@@ -49,14 +49,11 @@ navigation_mesh_source_group=""
 player=""
 enemy=""
 level="so we know which scene to remove"
-<<<<<<< HEAD
 hurtbox=""
 merchant=""
 boss=""
-=======
 spawnArea=""
 transition=""
->>>>>>> origin
 
 [input]
 
