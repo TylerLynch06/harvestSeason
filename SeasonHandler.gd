@@ -12,11 +12,11 @@ var seasonSequence = ["autumn","winter","spring","summer"]
 var isNextSceneLoaded = false
 var loadingProgress = 0.0
 var loadingScene = false
-var currentSceneIndex = 1
+var currentSceneIndex = 0
 var progress = []
 var timeSinceLoadStart = 0.0
 var nextToLoad = seasonSequence[currentSceneIndex]
-
+@onready var transition = get_tree().get_nodes_in_group("transition")[0] 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +25,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("loadScene"):
-		loadingScene = true
 		loadNext()
 	if loadingScene:
 		timeSinceLoadStart += delta
@@ -36,8 +35,10 @@ func _process(delta: float) -> void:
 			ResourceLoader.THREAD_LOAD_LOADED:
 				isNextSceneLoaded = true
 				placeScene()
+	
 			
 func loadNext():
+	loadingScene = true
 	timeSinceLoadStart = 0.0
 	var newLevel = ResourceLoader.load_threaded_request(getNextPath(),"PackedScene", false)
 
@@ -49,7 +50,7 @@ func placeScene():
 	var currentLevel = null
 	if get_tree().get_nodes_in_group("level"):
 		currentLevel = get_tree().get_nodes_in_group("level")[0] 
-	
+	print("CURRENT: ",currentLevel)
 	var seasonScene = ResourceLoader.load_threaded_get(getNextPath())
 	var seasonInstance = seasonScene.instantiate()
 	add_child(seasonInstance)
@@ -59,4 +60,6 @@ func placeScene():
 	
 	if currentLevel:
 		currentLevel.queue_free()
+	
+
 		#get_tree().get_root()

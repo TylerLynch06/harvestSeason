@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Economy="*uid://cwxdn3bd6rr5y"
+WaveSystem="*uid://sa05cupgn0ob"
 PerkHandler="*uid://8d6rkhtlgpu5"
 SeasonHandler="*uid://c3iclu3jddpkp"
 
@@ -48,9 +49,14 @@ navigation_mesh_source_group=""
 player=""
 enemy=""
 level="so we know which scene to remove"
+<<<<<<< HEAD
 hurtbox=""
 merchant=""
 boss=""
+=======
+spawnArea=""
+transition=""
+>>>>>>> origin
 
 [input]
 

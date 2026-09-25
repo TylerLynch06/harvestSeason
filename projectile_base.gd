@@ -8,6 +8,7 @@ var player: CharacterBody3D
 @export var lifetime: float
 @export var projectile_speed: float
 @export var hitbox: Area3D
+@export var yLock = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
+	if yLock:
+		velocity.y = 0
 	self.position += velocity * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

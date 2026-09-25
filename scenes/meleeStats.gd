@@ -22,7 +22,10 @@ class_name Stats
 ##On update:
 ## pushVelocity *= BASE_PUSH_DRAG_FACTOR
 @export var BASE_PUSH_DRAG_FACTOR: float = 1
-
+##Only have so many enemy points to spend per wave, bigger enemies cost more points
+@export var SPAWN_VALUE: int = 1
+@export var SPAWN_PROBABILITY_FACTOR: float = 1
+@export var HAS_SPAWN_ANIM = false
 ##critical angle doesnt need a factor
 #var critAngleFactor: float
 
@@ -43,7 +46,7 @@ func _ready():
 	BASE_CRT_ANGLE = deg_to_rad(BASE_CRT_ANGLE)
 	turnSpeed = BASE_TURN_SPD
 	critAngle = BASE_CRT_ANGLE
-	print("VALUE: ",moveSpeed," ",BASE_MOVE_SPEED," ",moveSpeed/BASE_MOVE_SPEED)
+	#print("VALUE: ",moveSpeed," ",BASE_MOVE_SPEED," ",moveSpeed/BASE_MOVE_SPEED)
 
 func applyFactors(_heatlhFactor,_damageFactor,_moveSpeedFactor,_attackSpeedFactor,_cooldown_Factor,_turnSpeedFactor):
 	if !_appliedFactors:

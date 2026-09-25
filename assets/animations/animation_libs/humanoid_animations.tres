@@ -4,6 +4,7 @@
 [ext_resource type="Animation" uid="uid://b7oj76kqn0tvi" path="res://assets/animations/res_files/Hit_Chest.res" id="2_5hyf4"]
 [ext_resource type="Animation" uid="uid://dtb7du5x0vcnd" path="res://assets/animations/res_files/Chest_Open.res" id="2_31dem"]
 [ext_resource type="Animation" uid="uid://0s074vvcy1b7" path="res://assets/animations/res_files/Jog_Fwd.res" id="2_xo6b7"]
+[ext_resource type="Animation" uid="uid://cgat1v3sp45ry" path="res://assets/animations/res_files/EnemyProjectileThrow.res" id="3_ndwdk"]
 [ext_resource type="Animation" uid="uid://erqv8cpks646" path="res://assets/animations/res_files/Zombie_Idle.res" id="3_ok3mb"]
 [ext_resource type="Animation" uid="uid://daiseke6by7u7" path="res://assets/animations/res_files/Hit_Head.res" id="3_ypqi3"]
 [ext_resource type="Animation" uid="uid://dcwlga7v8v40d" path="res://assets/animations/res_files/Zombie_Scratch.res" id="4_2a5et"]
@@ -12,9 +13,12 @@
 [ext_resource type="Animation" uid="uid://cbo35pj4486wd" path="res://assets/animations/res_files/Shield_Dash.res" id="6_31dem"]
 [ext_resource type="Animation" uid="uid://b1cfo3lsit2el" path="res://assets/animations/res_files/OverhandThrow.res" id="6_ypqi3"]
 [ext_resource type="Animation" uid="uid://cy3rmrf7n6e0t" path="res://assets/animations/res_files/Shield_OneShot.res" id="7_5rt88"]
+[ext_resource type="Animation" uid="uid://d3ialqg5lab3q" path="res://assets/animations/res_files/NinjaJump_Idle.res" id="7_pjp3k"]
+[ext_resource type="Animation" uid="uid://bl40ki5w6f3fx" path="res://assets/animations/res_files/NinjaJump_Land.res" id="8_ndwdk"]
 [ext_resource type="Animation" uid="uid://c7o7vnwbh841j" path="res://assets/animations/res_files/Spell_Simple_Enter.res" id="8_v170t"]
 [ext_resource type="Animation" uid="uid://c1wluaves88vr" path="res://assets/animations/res_files/Sitting_Idle.res" id="9_5rt88"]
 [ext_resource type="Animation" uid="uid://b7okndnunvbiy" path="res://assets/animations/res_files/Spell_Simple_Exit.res" id="9_88gi7"]
+[ext_resource type="Animation" uid="uid://5q6bd2av2a6y" path="res://assets/animations/res_files/NinjaJump_Start.res" id="9_o31ob"]
 [ext_resource type="Animation" uid="uid://ctplgaubtjkaf" path="res://assets/animations/res_files/Spell_Simple_Idle.res" id="10_pjp3k"]
 [ext_resource type="Animation" uid="uid://ws8npgrrg4eh" path="res://assets/animations/res_files/Sitting_Talking.res" id="10_v170t"]
 [ext_resource type="Animation" uid="uid://jgt8cctaq8ap" path="res://assets/animations/res_files/Spell_Simple_Shoot.res" id="11_ndwdk"]
@@ -24,10 +28,14 @@
 _data = {
 &"A_TPose": ExtResource("1_aj1ii"),
 &"Chest_Open": ExtResource("2_31dem"),
+&"EnemyProjectileThrow": ExtResource("3_ndwdk"),
 &"Hit_Chest": ExtResource("2_5hyf4"),
 &"Hit_Head": ExtResource("3_ypqi3"),
 &"Hit_Knockback": ExtResource("4_8qiph"),
 &"Jog_Fwd": ExtResource("2_xo6b7"),
+&"NinjaJump_Idle": ExtResource("7_pjp3k"),
+&"NinjaJump_Land": ExtResource("8_ndwdk"),
+&"NinjaJump_Start": ExtResource("9_o31ob"),
 &"OverhandThrow": ExtResource("6_ypqi3"),
 &"Shield_Dash": ExtResource("6_31dem"),
 &"Shield_OneShot": ExtResource("7_5rt88"),

@@ -78,7 +78,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name in currentAnimationSet.get("attack") and currentWeaponName != "sickles":
 		#print("changed combo state")
 		isAttacking = false
-		print(anim_name+ " over. Combo state: ", comboState)
+		#print(anim_name+ " over. Combo state: ", comboState)
 		movementManager.unlockMovement()
 		comboWindowTimer = comboWindowTime
 		
@@ -185,4 +185,4 @@ func sickleDamagePulse():
 			enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0], 
 			global_position, 
 			pushForce,
-			0.3)
+			0)

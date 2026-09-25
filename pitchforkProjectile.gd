@@ -40,7 +40,7 @@ func calcVelocity(_delta):
 		return Vector3.ZERO
 		
 func hit(area: Area3D):
-	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
+	if area.name == "hitbox" and area.get_parent().is_in_group("enemy") and !stuckInGround:
 		var enemy = area.get_parent() as Enemy
 		enemy.takeDamage(damage)
 		if reboundsRemaining > 0:

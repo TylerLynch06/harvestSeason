@@ -2,6 +2,7 @@ extends RigidBody3D
 var collected = false
 var speed = 400
 var acceleraition = 5
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,12 +13,12 @@ func _ready() -> void:
 
 func collect():
 	collected = true
+	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 	await get_tree().create_timer(10).timeout
 	cash()
 	
 func _physics_process(delta: float) -> void:
-	if collected == true:
-		var player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
+	if collected == true and player:
 		var distanceToPlayer = (player.global_position - global_position).length()
 		self.apply_force(((player.global_position) - Vector3(global_position.x+ randf_range(0,1),global_position.y - 1 + randf_range(0,1), global_position.z + randf_range(0,-01))).normalized()*speed*1)
 

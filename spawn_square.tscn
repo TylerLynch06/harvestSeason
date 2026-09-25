@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://x8o55qhf6dxx"]
+
+[ext_resource type="Script" uid="uid://cq4xjjnk403lu" path="res://getSpawnPoint.gd" id="1_gxic5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2log"]
+size = Vector3(7.5, 1, 7.5)
+
+[node name="spawnSquare" type="Area3D" unique_id=307933793 node_paths=PackedStringArray("corner") groups=["spawnArea"]]
+script = ExtResource("1_gxic5")
+corner = NodePath("corner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484493962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146362, 0, -0.53408813)
+shape = SubResource("BoxShape3D_s2log")
+
+[node name="corner" type="Marker3D" parent="." unique_id=843479987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7041326, 0, -4.9947605)

@@ -70,8 +70,8 @@ radius = 0.1
 height = 0.2
 
 [node name="WheatPickup" type="RigidBody3D" unique_id=652753890]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 40
+collision_mask = 40
 angular_velocity = Vector3(0, 0.08726646, 0)
 script = ExtResource("1_dcp1i")
 

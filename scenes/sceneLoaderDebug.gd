@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 	text += "\nloading_progress: " + str(snappedf(SeasonHandler.loadingProgress,0.01))
 	text += "\nnext_to_load: " + str(SeasonHandler.nextToLoad)
 	text += "\ntime_taken: " + str(snappedf(SeasonHandler.timeSinceLoadStart,0.001))
+	text += "\nFPS: " + str(1/delta)
