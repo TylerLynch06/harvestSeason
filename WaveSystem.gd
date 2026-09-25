@@ -7,7 +7,10 @@ var currentWave: int = 1
 ##0:Autumn, 1: Winter, etc...
 var currentSeasonIndex = 0
 @onready var spawnNodes = get_tree().get_nodes_in_group("spawnArea")
-var enemy: PackedScene = preload("res://assets/animations/res_files/pumpkin_head.tscn")
+
+var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
+			preload("res://scenes/snowman.tscn")]
+
 var doSpawn = true
 var remainingEnemyCount = 0
 var WAVE_INTERMISSION_TIME = 5
@@ -16,9 +19,9 @@ var inIntermission = false
 var WAVE_FINISH_CHECK_INTERVAL = 1
 var waveFinishCheckTimer = 1
 var totalWaveSpawnPoints = currentSpawnPoints
+var spawnPoolProbFunction = null
 
 static var rng = RandomNumberGenerator.new()
-var doSpawn = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +31,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	remainingEnemyCount = getRemainingEnemies()
 	if currentSpawnPoints > 0 and doSpawn:
-		spawnEnemy(enemy)
+		spawnEnemy(enemies[0])
 	if remainingEnemyCount > 0:
 		waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
 	else:
@@ -51,7 +54,7 @@ func spawnEnemy(_enemy : PackedScene):
 	get_tree().root.add_child.call_deferred(enemyInstance)
 
 func getRandomSpawnNode():
-	var nodeIndex = rng.randi_range(0, 3)
+	var nodeIndex = rng.randi_range(0, 7)
 	if !spawnNodes:
 		return null
 	return spawnNodes[nodeIndex]
@@ -69,3 +72,13 @@ func newWave():
 	currentSpawnPoints = floor(currentSpawnPoints)
 	totalWaveSpawnPoints = currentSpawnPoints
 	currentWave += 1
+	
+##Each enemy should get an equal share of spawn points
+func calculateSpawnPoolProbabilities():
+	var weightArray = []
+	for enemy in enemies:
+		var tempEnemy = enemy.instantiate()
+		weightArray.append(tempEnemy.SPAWN_VALUE)
+		tempEnemy.free()
+	return PackedFloat32Array(weightArray)
+	

@@ -29,6 +29,7 @@ var trackingVelocity: Vector3 = Vector3.ZERO
 @onready var baseAttackRange = attackCollisionObject.shape.radius
 @onready var currentAttackRange = baseAttackRange
 @onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
+var isSpawning = true
 
 @export var movePool: EnemyMovePool
 var nextMove = null
@@ -68,25 +69,25 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	##print(!playerInRange(), !isAttacking)
-	trackingVelocity = Vector3.ZERO
-	if !isDead:
-		
-		if !isTakingDamage:
-			var pos = getNextMovementPosition()
-			#print(pos)
-			dirVector = calculateDirVector(pos)
-			rotateToTarget(delta)
-			##Directly access statemachine to fix moving whiole attacking
-			##Usually isnt needed
-			if !isRecovering and stateMachine.get_current_node() != "attack":
-				if !playerInRange() and !isAttacking:
-					calcTrackingVelocity(global_position)
-				else:
-					if attackCooldownTimer <= 0 and !isAttacking:
-						attack()
-	if isBeingPushed:
-		calcPushVelocity()
-	move(delta)
+	if !isSpawning:
+		trackingVelocity = Vector3.ZERO
+		if !isDead:
+			if !isTakingDamage:
+				var pos = getNextMovementPosition()
+				#print(pos)
+				dirVector = calculateDirVector(pos)
+				rotateToTarget(delta)
+				##Directly access statemachine to fix moving whiole attacking
+				##Usually isnt needed
+				if !isRecovering and stateMachine.get_current_node() != "attack":
+					if !playerInRange() and !isAttacking:
+						calcTrackingVelocity(global_position)
+					else:
+						if attackCooldownTimer <= 0 and !isAttacking:
+							attack()
+		if isBeingPushed:
+			calcPushVelocity()
+		move(delta)
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -160,6 +161,8 @@ func playerInRange():
 			return true
 
 func animation_finished(anim_name):
+	if isSpawning:
+		isSpawning = false
 	if isTakingDamage:
 		isTakingDamage = false
 	if isAttacking:
