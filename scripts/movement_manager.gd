@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 			rollTimer -= delta
 		if rollTimer <= 0:
 			endRoll()
-		
+
 func _physics_process(delta: float) -> void:
 	##print(movementIsLocked)
 	if !movementIsLocked:

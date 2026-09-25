@@ -35,6 +35,8 @@ var timeSinceLastFlinch = 0
 @export var movePool: EnemyMovePool
 var nextMove = null
 
+##Bandaid fix to a bug where the enemy remains in the 'isTakingDamage' state despite not being attacked
+var timeCanBeDamaged = 0.6
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,6 +56,12 @@ func _process(delta: float) -> void:
 	recoveryTimer -= delta
 	isRecovering = recoveryTimer > 0
 	if isRecovering:
+		isAttacking = false
+	if isAttacking:
+		timeCanBeDamaged -= delta
+	else:
+		timeCanBeDamaged = 0.6
+	if timeCanBeDamaged < 0:
 		isAttacking = false
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
@@ -123,7 +131,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 	if invulTimer <= 0:
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
-		#print(health)
+		#print(health)3dw
 		if !isTakingDamage:
 			stateMachine.travel("hit")
 			isTakingDamage = true
