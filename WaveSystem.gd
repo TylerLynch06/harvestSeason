@@ -3,7 +3,7 @@ extends Node
 var currentSpawnPoints = 0
 var BASE_WAVE_INCREMENT	= 5
 var BASE_WAVE_INCREMENT_FACTOR = 1.1
-var currentWave: int = 1
+var currentWave: int = 0
 ##0:Autumn, 1: Winter, etc...
 var currentSeasonIndex = 0
 @onready var spawnNodes = get_tree().get_nodes_in_group("spawnArea")
@@ -20,6 +20,8 @@ var WAVE_FINISH_CHECK_INTERVAL = 1
 var waveFinishCheckTimer = 1
 var totalWaveSpawnPoints = currentSpawnPoints
 var spawnPoolWeights= null
+var changingSeason = false
+var WAVES_BEFORE_SEASON_CHANGE = 3
 
 static var rng = RandomNumberGenerator.new()
 
@@ -29,7 +31,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if spawnNodes:
+	if spawnNodes and !changingSeason:
+		if currentWave % 3 == 0:
+			changingSeason = true
+			SeasonHandler.loadNext()
+			return
 		remainingEnemyCount = getRemainingEnemies()
 		if currentSpawnPoints > 0 and doSpawn:
 			spawnRandomEnemy()
@@ -37,7 +43,6 @@ func _process(delta: float) -> void:
 			waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
 		else:
 			waveFinishCheckTimer -= delta
-			
 		if getRemainingEnemies() <= 0 and !inIntermission and waveFinishCheckTimer <= 0:
 			inIntermission = true
 			waveIntermissionTimer = WAVE_INTERMISSION_TIME
@@ -59,7 +64,6 @@ func spawnRandomEnemy():
 		enemyPointValue = tempEnemy.SPAWN_VALUE
 		tempEnemy.free()
 	spawnEnemy(enemies[enemyIndex])
-	
 	
 func spawnEnemy(_enemy : PackedScene):
 	var enemyInstance = _enemy.instantiate() as Enemy
@@ -97,4 +101,3 @@ func calculateSpawnPoolProbabilities():
 		weightArray.append((1.0/tempEnemy.SPAWN_VALUE) * tempEnemy.SPAWN_PROBABILITY_FACTOR)
 		tempEnemy.free()
 	return PackedFloat32Array(weightArray)
-	

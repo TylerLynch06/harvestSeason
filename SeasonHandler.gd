@@ -25,7 +25,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("loadScene"):
-		loadingScene = true
 		loadNext()
 	if loadingScene:
 		timeSinceLoadStart += delta
@@ -36,11 +35,11 @@ func _process(delta: float) -> void:
 			ResourceLoader.THREAD_LOAD_LOADED:
 				isNextSceneLoaded = true
 				placeScene()
+	
 			
 func loadNext():
+	loadingScene = true
 	timeSinceLoadStart = 0.0
-	transition.fade_to_black()
-	#await transition.finished
 	var newLevel = ResourceLoader.load_threaded_request(getNextPath(),"PackedScene", false)
 
 func getNextPath():
@@ -61,7 +60,6 @@ func placeScene():
 	
 	if currentLevel:
 		currentLevel.queue_free()
-	transition.fade_to_normal()
 	
 
 		#get_tree().get_root()

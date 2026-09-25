@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 		timeCanBeDamaged = 0.6
 	if timeCanBeDamaged < 0:
 		isAttacking = false
+		stateMachine.travel("idle")
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
