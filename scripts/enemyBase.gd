@@ -118,7 +118,10 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		print(health)
 		isTakingDamage = true
 	if !isUnstoppable:
-		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
+		if PerkHandler.perks["battery"] != -1:
+			recoveryTimer = (BASE_RECOVERY_TIME * weaponStunFactor) + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])
+		else:
+			recoveryTimer = (BASE_RECOVERY_TIME * weaponStunFactor) 
 	if hitPos != Vector3.ZERO and pushForce != 0:
 		isBeingPushed = true
 		var pushDir = global_position - hitPos

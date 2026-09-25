@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://ie0p26tgv3gy" path="res://scenes/perk_menu.gd" id="1_qkhem"]
 [ext_resource type="Shader" uid="uid://b7ae5qanl8bvt" path="res://scenes/perk_menu_bg.gdshader" id="2_0sp37"]
 [ext_resource type="Shader" uid="uid://bi4s2055klhrf" path="res://scenes/crt.gdshader" id="3_qcug2"]
-[ext_resource type="Shader" uid="uid://tbfocyibeun4" path="res://scenes/perk_menu.gdshader" id="3_wd5y0"]
 [ext_resource type="Script" uid="uid://bokshnruioajh" path="res://scenes/card.gd" id="4_wd5y0"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_6cxh8"]
-[ext_resource type="PackedScene" uid="uid://bkt0p58723jk1" path="res://scenes/perk.tscn" id="5_ey06g"]
-[ext_resource type="Shader" uid="uid://badyhpritn12r" path="res://scenes/cardtilt.gdshader" id="7_d7xl3"]
+[ext_resource type="Shader" uid="uid://btdqiyhkwiwp0" path="res://cardtitl2.gdshader" id="5_kvrcq"]
+[ext_resource type="Script" uid="uid://bixjce1j0hjwc" path="res://scenes/perkTEST.gd" id="6_q3uw0"]
+[ext_resource type="Texture2D" uid="uid://cpy24ppetb3pu" path="res://assets/HUD/singleCard1.png" id="7_kvrcq"]
+[ext_resource type="Texture2D" uid="uid://cyhddcfjem4sq" path="res://assets/knight/knightlowres.png" id="8_fwij3"]
+[ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="9_8uofo"]
+[ext_resource type="Texture2D" uid="uid://b071bj5ntq46g" path="res://assets/light.jpg" id="10_kvrcq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1uel"]
 shader = ExtResource("2_0sp37")
@@ -23,55 +26,51 @@ shader_parameter/color_low = Color(8.95232e-06, 0.27609608, 0.7669127, 1)
 shader_parameter/color_mid = Color(0.77095866, 0.31528905, 1, 1)
 shader_parameter/color_high = Color(13.047, 13.047, 13.047, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq3ql"]
-shader = ExtResource("3_wd5y0")
-shader_parameter/pixel_size = 16.0
-shader_parameter/handle_edges = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3uw0"]
-shader = ExtResource("7_d7xl3")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mreyu"]
+shader = ExtResource("5_kvrcq")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwij3"]
-shader = ExtResource("7_d7xl3")
-shader_parameter/max_rotation = Vector2(0.1, 0.1)
-shader_parameter/tilt = Vector2(0, 0)
-shader_parameter/shine_intensity = 0.3
+[sub_resource type="Curve" id="Curve_fwij3"]
+_data = [Vector2(0, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.6979167, 0.37078655), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uofo"]
-shader = ExtResource("7_d7xl3")
-shader_parameter/max_rotation = Vector2(0.1, 0.1)
-shader_parameter/tilt = Vector2(0, 0)
-shader_parameter/shine_intensity = 0.3
+[sub_resource type="CurveTexture" id="CurveTexture_kvrcq"]
+curve = SubResource("Curve_fwij3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_043ib"]
-shader = ExtResource("7_d7xl3")
-shader_parameter/max_rotation = Vector2(0.1, 0.1)
-shader_parameter/tilt = Vector2(0, 0)
-shader_parameter/shine_intensity = 0.3
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1uel"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(110, 154, 1)
+spread = 180.0
+initial_velocity_max = 103.45
+gravity = Vector3(0, 10, 0)
+scale_min = 0.0
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_kvrcq")
+color = Color(1, 1, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkjys"]
-shader = ExtResource("7_d7xl3")
+shader = ExtResource("5_kvrcq")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
-shader_parameter/shine_intensity = 0.3
+shader_parameter/shine_intensity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_webnw"]
-shader = ExtResource("7_d7xl3")
+shader = ExtResource("5_kvrcq")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvgt2"]
-shader = ExtResource("7_d7xl3")
+shader = ExtResource("5_kvrcq")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1cjo"]
-shader = ExtResource("7_d7xl3")
+shader = ExtResource("5_kvrcq")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
@@ -105,6 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="perkMenu" unique_id=2052865554]
+z_index = -2
 material = SubResource("ShaderMaterial_e1uel")
 layout_mode = 1
 anchors_preset = 15
@@ -116,7 +116,6 @@ mouse_filter = 2
 color = Color(0.23921569, 0.23921569, 0.23921569, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="perkMenu" unique_id=1973154847]
-material = SubResource("ShaderMaterial_mq3ql")
 layout_mode = 0
 offset_right = 1154.0
 offset_bottom = 646.0
@@ -124,162 +123,432 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1612623179]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=2106079402]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=146062836]
 custom_minimum_size = Vector2(220, 308)
 custom_maximum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1820973003]
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=994373210]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_wd5y0")
 
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=776976862]
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=172507759]
 modulate = Color(1, 1, 1, 0.29803923)
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 texture = ExtResource("5_6cxh8")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=1702121645 groups=["shaderTogglers"]]
-material = SubResource("ShaderMaterial_q3uw0")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer" unique_id=1014867586 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_mreyu")
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer" unique_id=557909064]
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer" unique_id=506850631]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=1076060561 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=673226360]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
 
-[node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=35699295]
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1001049466]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=2063645435]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=914283870]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=386608856]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1069852020]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1011421136]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1841241723]
+process_mode = 3
+position = Vector2(110, 163)
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
+
+[node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=462767391]
 custom_minimum_size = Vector2(220, 308)
 custom_maximum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=1510729423]
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=1210437171]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_wd5y0")
 
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=2093213517]
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=501358228]
 modulate = Color(1, 1, 1, 0.29803923)
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 texture = ExtResource("5_6cxh8")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=222807466 groups=["shaderTogglers"]]
-material = SubResource("ShaderMaterial_fwij3")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer" unique_id=2029716230 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_pkjys")
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer" unique_id=736233136]
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer" unique_id=453252995]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1132441185 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=663544037]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
 
-[node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=32081807]
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=703981698]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=872594900]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1644486821]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=41109317]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=493624213]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=877679763]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=424213753]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
+
+[node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=572536571]
 custom_minimum_size = Vector2(220, 308)
 custom_maximum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=1724243854]
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=1662579666]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_wd5y0")
 
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=1563526563]
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=1436417894]
 modulate = Color(1, 1, 1, 0.29803923)
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 texture = ExtResource("5_6cxh8")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=323387344 groups=["shaderTogglers"]]
-material = SubResource("ShaderMaterial_8uofo")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer" unique_id=872751785 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_pkjys")
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer" unique_id=2110325647]
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer" unique_id=629504046]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=128111894 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=2012672118]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
 
-[node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=173342325]
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=335698477]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=1873208489]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1432924070]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=24601513]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=642798928]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1400255113]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=62747821]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
+
+[node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=331138403]
 custom_minimum_size = Vector2(220, 308)
 custom_maximum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=45571583]
+[node name="CenterContainer" type="CenterContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=1634466268]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_wd5y0")
 
-[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=1427118266]
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=1652539270]
 modulate = Color(1, 1, 1, 0.29803923)
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 texture = ExtResource("5_6cxh8")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=333086632 groups=["shaderTogglers"]]
-material = SubResource("ShaderMaterial_043ib")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer" unique_id=826687728 groups=["shaderTogglers"]]
+material = SubResource("ShaderMaterial_pkjys")
 custom_minimum_size = Vector2(220, 308)
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer" unique_id=2003103282]
+[node name="SubViewport" type="SubViewport" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer" unique_id=1669481940]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=204005858 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=719505559]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=450944747]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=361557261]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=121307993]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1445628606]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2078879708]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1676989668]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=1727381969]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1393099297]
 layout_mode = 2
@@ -314,15 +583,83 @@ handle_input_locally = false
 size = Vector2i(220, 308)
 render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=591663409]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=638340317]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=602598383]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1372109228]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=250426393]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=104319681]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control" unique_id=1622044219]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=809052580]
 custom_minimum_size = Vector2(220, 308)
@@ -352,15 +689,83 @@ handle_input_locally = false
 size = Vector2i(220, 308)
 render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=769230821]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=1909214273]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2042082784]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=641755276]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1168452643]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1254171187]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2" unique_id=1606469531]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1431469694]
 custom_minimum_size = Vector2(220, 308)
@@ -390,15 +795,83 @@ handle_input_locally = false
 size = Vector2i(220, 308)
 render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1754440691]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=1686055046]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1990224461]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1962792983]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=560830450]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=163923696]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3" unique_id=1154961533]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1327733183]
 custom_minimum_size = Vector2(220, 308)
@@ -428,15 +901,83 @@ handle_input_locally = false
 size = Vector2i(220, 308)
 render_target_update_mode = 4
 
-[node name="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268 instance=ExtResource("5_ey06g")]
+[node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268]
+layout_mode = 3
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+script = ExtResource("6_q3uw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1739858605]
+custom_minimum_size = Vector2(220, 308)
+custom_maximum_size = Vector2(220, 308)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 220.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer" unique_id=1504860323]
+layout_mode = 2
+texture = ExtResource("7_kvrcq")
+
+[node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1093723839]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 33.000004
+offset_top = 54.0
+offset_right = 233.0
+offset_bottom = 134.0
+scale = Vector2(0.73544955, 1.3808618)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_fwij3")
+
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=251179019]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 167.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1747257518]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=306847203]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 42.0
+text = "7 - to sell"
+icon = ExtResource("9_8uofo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4" unique_id=1551786366]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("10_kvrcq")
+process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="ColorRect2" type="ColorRect" parent="perkMenu" unique_id=1510708763]
 material = SubResource("ShaderMaterial_guyfr")

@@ -1,37 +1,63 @@
 shader_type canvas_item;
 
-uniform float pixel_size : hint_range(4.0, 16.0) = 4.0;
-uniform bool handle_edges = false;
+//uniforsm
+uniform sampler2D noise_tex;
+uniform vec4 star_color : source_color = vec4(1.0, 0.6, 0.2, 1.0);
+uniform int spike_count : hint_range(1, 8) = 4;
+uniform float rotation_offset : hint_range(0.0, 6.28) = 0.0;
+uniform float flare_intensity : hint_range(0.0, 5.0) = 1.0;
 
-varying vec2 p_world;
+uniform float spike_length : hint_range(0.1, 10.0) = 3.0;
+uniform float central_glow_effect : hint_range(0.0, 1.0) = 1.0;
+uniform float glow_size : hint_range(0.01, 0.04) = 0.01;
+uniform float glow_intensity : hint_range(0.0, 10.0) = 10.0; 
+uniform float master_brightness : hint_range(0.0, 5.0) = 1.0;
 
-void vertex() {
-	p_world = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
-}
+//alpha controls
+uniform float alpha_threshold : hint_range(0.0, 1.0) = 0.3;
+uniform float edge_smoothing : hint_range(0.1, 0.5) = 0.3; //smoothed a little
+
+uniform float inner_thickness : hint_range(0.0, 0.1) = 0.01;
+uniform float outer_thickness : hint_range(0.0, 0.1) = 0.01;
 
 void fragment() {
-	vec2 p_snapped = floor(p_world / pixel_size) * pixel_size + pixel_size / 2.0;
-	vec2 delta = p_snapped - p_world;
+	vec2 center = vec2(0.5);
+	vec2 rel = UV - center;
+	float dist = length(rel);
+	
+	//coreglow
+	float glow = exp(-dist / glow_size) * glow_intensity;
 
-	mat2 M_p = mat2(dFdx(p_world), dFdy(p_world));
-	mat2 M_uv = mat2(dFdx(UV), dFdy(UV));
-	mat2 J = M_uv * inverse(M_p);
-	vec2 delta_uv = J * delta;
 
-	vec2 uv = UV + delta_uv;
-	vec4 color = texture(TEXTURE, uv);
+	float angle = atan(rel.y, rel.x) / (2.0 * PI) + 0.5;
+	float radial_noise = texture(noise_tex, vec2(angle, 0.5)).r;
+	radial_noise = radial_noise * central_glow_effect;
+	float burst = (radial_noise / (dist + 0.1)) * 0.5;
+	
+	//main spikes
+	float spikes = 0.0;
+	float current_thickness = mix(inner_thickness, outer_thickness, clamp(dist * 2.0, 0.0, 1.0));
 
-	if (handle_edges) {
-		float margin_x = (abs(J[0].x) + abs(J[1].x)) * pixel_size * 0.5;
-		float margin_y = (abs(J[0].y) + abs(J[1].y)) * pixel_size * 0.5;
-		if (uv.x < margin_x || uv.x > 1.0 - margin_x || uv.y < margin_y || uv.y > 1.0 - margin_y) {
-			color.a = 0.0;
-		} else {
-			color.a = step(0.5, color.a);
-		}
-	} else {
-		color.a = step(0.5, color.a);
+	for (int i = 0; i < spike_count; i++) {
+		float spike_angle = (float(i) * 6.28318 / float(spike_count)) + rotation_offset;
+		vec2 dir = vec2(cos(spike_angle), sin(spike_angle));
+		float projection = abs(rel.x * dir.y - rel.y * dir.x);
+		float side_mask = step(0.0, dot(rel, dir));
+		float line = smoothstep(current_thickness, 0.0, projection) * side_mask;
+		spikes = max(spikes, line);
 	}
+	spikes *= exp(-dist * spike_length);
 
-	COLOR = color;
+	//final color
+	float combined = (glow + (burst * 0.5) + (spikes * flare_intensity)) * master_brightness;
+	
+	
+	//alpha sharpness
+	float sticker_alpha = smoothstep(alpha_threshold, alpha_threshold + edge_smoothing, combined);
+
+	vec3 final_color = mix(vec3(0.0), star_color.rgb, combined);
+	final_color += pow(combined, 4.0);
+
+
+	COLOR = vec4(final_color, sticker_alpha);
 }
