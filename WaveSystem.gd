@@ -29,23 +29,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	remainingEnemyCount = getRemainingEnemies()
-	if currentSpawnPoints > 0 and doSpawn:
-		spawnRandomEnemy()
-	if remainingEnemyCount > 0:
-		waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
-	else:
-		waveFinishCheckTimer -= delta
-		
-	if getRemainingEnemies() <= 0 and !inIntermission and waveFinishCheckTimer <= 0:
-		inIntermission = true
-		waveIntermissionTimer = WAVE_INTERMISSION_TIME
-	if inIntermission:
-		waveIntermissionTimer -= delta
-		waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
-	if inIntermission and waveIntermissionTimer <= 0:
-		inIntermission = false
-		newWave()
+	if spawnNodes:
+		remainingEnemyCount = getRemainingEnemies()
+		if currentSpawnPoints > 0 and doSpawn:
+			spawnRandomEnemy()
+		if remainingEnemyCount > 0:
+			waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
+		else:
+			waveFinishCheckTimer -= delta
+			
+		if getRemainingEnemies() <= 0 and !inIntermission and waveFinishCheckTimer <= 0:
+			inIntermission = true
+			waveIntermissionTimer = WAVE_INTERMISSION_TIME
+		if inIntermission:
+			waveIntermissionTimer -= delta
+			waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
+		if inIntermission and waveIntermissionTimer <= 0:
+			inIntermission = false
+			newWave()
 		
 func spawnRandomEnemy():
 	var enemyPointValue = INF

@@ -30,6 +30,7 @@ var trackingVelocity: Vector3 = Vector3.ZERO
 @onready var currentAttackRange = baseAttackRange
 @onready var wheatScene = preload("res://scenes/wheat_pickup.tscn")
 var isSpawning = HAS_SPAWN_ANIM
+var timeSinceLastFlinch = 0
 
 @export var movePool: EnemyMovePool
 var nextMove = null
@@ -57,7 +58,7 @@ func _process(delta: float) -> void:
 	##print(attackCooldownTimer)
 	if attackCooldownTimer < 0:
 		attackCooldownTimer = 0
-		
+	timeSinceLastFlinch -= delta
 	if health <= 0 and !isDead:
 		isDead = true
 		death()
@@ -125,6 +126,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		#print(health)
 		if !isTakingDamage:
 			isTakingDamage = true
+			timeSinceLastFlinch = 0
 	if !isUnstoppable:
 		recoveryTimer = (BASE_RECOVERY_TIME + (PerkHandler.progression["battery"][PerkHandler.perks["battery"]])) * weaponStunFactor
 	if hitPos != Vector3.ZERO and pushForce != 0:
@@ -141,7 +143,11 @@ func death():
 	stateMachine.travel("death")
 	collision_layer = 0
 	collision_mask = 0
+	removeBody()
 	
+func removeBody():
+	await get_tree().create_timer(5).timeout
+	queue_free()
 	
 func create_wheat():
 	var wheat = wheatScene.instantiate()
@@ -165,9 +171,10 @@ func playerInRange():
 			return true
 
 func animation_finished(anim_name):
+	print(anim_name)
 	if isSpawning:
 		isSpawning = false
-	if isTakingDamage:
+	if isTakingDamage or stateMachine.get_current_node() == "attack":
 		isTakingDamage = false
 	if isAttacking:
 		attackCooldownTimer = BASE_COOLDOWN

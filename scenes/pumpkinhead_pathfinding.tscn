@@ -36,7 +36,7 @@ environment = SubResource("Environment_sbtqg")
 transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.11313336, 0, 14.105721, 23.22163)
 
 [node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("2_cq08y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55201, 0, -0.25257993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55201, 0.9840236, -0.25257993)
 collision_layer = 0
 collision_mask = 0
 
@@ -59,4 +59,5 @@ mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
 
 [node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.779737, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3220844, 0, 0)
+BASE_HEALTH = 500.0
