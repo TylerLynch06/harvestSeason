@@ -3,7 +3,7 @@ extends PlayerProjectile
 class_name PitchforkProjectille
 
 @export var simulatedGravityStrength = 2.5
-@export var mesh: MeshInstance3D
+@export var mesh: Node3D
 @export var angleDecreasePerSecond: float
 var rangeRemaining = range
 var stuckInGround = false
