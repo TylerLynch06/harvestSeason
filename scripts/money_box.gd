@@ -5,9 +5,9 @@ extends PanelContainer
 var _displayed: float = 0.0
 var _tween: Tween
 
-func _ready() -> void:
-	GameState.money_changed.connect(_on_money_changed)
-	_set_display(GameState.money)
+#func _ready() -> void:
+#	GameState.money_changed.connect(_on_money_changed)
+	#_set_display(GameState.money)
 
 func _on_money_changed(new_amount: int) -> void:
 	if _tween:

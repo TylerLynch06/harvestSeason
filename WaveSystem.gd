@@ -39,13 +39,11 @@ func _process(delta: float) -> void:
 	if !transitionHandler:
 		if get_tree().get_nodes_in_group("transition"):
 			transitionHandler = get_tree().get_nodes_in_group("transition")[0]
-	print(isFading, changingSeason, transitionHandler.isFinished)
 	if changingSeason and SeasonHandler.isNextSceneLoaded and !isFading:
 		transitionHandler.fade_to_black()
 		isFading = true
 		
 	if isFading and transitionHandler.isFinished:
-		print("PLACED")
 		SeasonHandler.placeScene()
 		transitionHandler.fade_to_normal()
 		changingSeason = false

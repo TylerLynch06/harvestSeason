@@ -981,6 +981,7 @@ texture = ExtResource("10_kvrcq")
 process_material = SubResource("ParticleProcessMaterial_e1uel")
 
 [node name="ColorRect2" type="ColorRect" parent="perkMenu" unique_id=1510708763]
+z_index = 20
 material = SubResource("ShaderMaterial_guyfr")
 layout_mode = 1
 anchors_preset = 15

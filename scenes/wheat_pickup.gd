@@ -28,6 +28,7 @@ func cash():
 		$GPUParticles3D.fire()
 		self.queue_free()
 		
+		
 func _on_timer_timeout() -> void:
 	if collected == true:
 		Economy.wheat += 1

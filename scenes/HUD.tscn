@@ -1,65 +1,107 @@
 [gd_scene format=3 uid="uid://ci2cmpxlr6peg"]
 
-[ext_resource type="Script" uid="uid://2vi6w087x1mr" path="res://scripts/money_box.gd" id="2_1etfg"]
-[ext_resource type="PackedScene" uid="uid://c5ge7rat7bgn3" path="res://scenes/healthBar.tscn" id="2_fls4u"]
-[ext_resource type="Texture2D" uid="uid://bjrjo54gey8xg" path="res://assets/HUD/bagMoney.jpg" id="3_1etfg"]
+[ext_resource type="Texture2D" uid="uid://dm7jcq22hbjrs" path="res://assets/HUD/healthBarOver.png" id="1_1etfg"]
+[ext_resource type="Script" uid="uid://dglnofcnij3j8" path="res://scripts/healthBar.gd" id="2_7hsmw"]
+[ext_resource type="Texture2D" uid="uid://wgn27rmkm1os" path="res://assets/HUD/healthBarUnder.png" id="3_nysna"]
+[ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="4_7hsmw"]
+[ext_resource type="Script" uid="uid://cki304nfki08p" path="res://scenes/CashUI.gd" id="5_f6qnu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prru6"]
-bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.72156864, 0.47843137, 0.33333334, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-expand_margin_left = 12.0
-expand_margin_top = 4.0
-expand_margin_right = 12.0
-expand_margin_bottom = 4.0
-
-[node name="HUD" type="CanvasLayer" unique_id=1274022013]
-
-[node name="Root" type="Control" parent="." unique_id=410901623]
+[node name="HUD" type="Control" unique_id=950917154 groups=["HUD"]]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HEALTH" type="Control" parent="." unique_id=410901623]
+layout_mode = 1
+anchors_preset = 0
 mouse_filter = 2
 
-[node name="Bar" parent="Root" unique_id=428272657 instance=ExtResource("2_fls4u")]
+[node name="Bar" type="TextureProgressBar" parent="HEALTH" unique_id=428272657]
+z_index = 6
 layout_mode = 0
 offset_right = 128.0
+offset_bottom = 40.0
+scale = Vector2(2.845343, 2.812903)
+max_value = 500.0
+value = 500.0
+texture_progress = ExtResource("1_1etfg")
+script = ExtResource("2_7hsmw")
 
-[node name="MoneyBox" type="PanelContainer" parent="Root" unique_id=533824026]
+[node name="DamageBar" type="TextureProgressBar" parent="HEALTH/Bar" unique_id=987014661]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 500.0
+value = 300.0
+texture_under = ExtResource("3_nysna")
+texture_progress = ExtResource("1_1etfg")
+tint_progress = Color(0, 0.38494688, 0.7241222, 1)
+
+[node name="Timer" type="Timer" parent="HEALTH/Bar" unique_id=1037121342]
+wait_time = 0.4
+one_shot = true
+
+[node name="Control" type="Control" parent="." unique_id=1029838167]
+z_index = 6
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -368.0
-offset_top = 16.0
-offset_right = -11.76001
-offset_bottom = 148.0
+offset_left = -119.0
+offset_right = 1.0
+offset_bottom = 120.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_prru6")
-script = ExtResource("2_1etfg")
+script = ExtResource("5_f6qnu")
 
-[node name="HBox" type="HBoxContainer" parent="Root/MoneyBox" unique_id=1282796306]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1497711053]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_7hsmw")
 
-[node name="MoneyIcon" type="TextureRect" parent="Root/MoneyBox/HBox" unique_id=887716365]
-custom_minimum_size = Vector2(128, 24)
-layout_mode = 2
-texture = ExtResource("3_1etfg")
-expand_mode = 1
-stretch_mode = 5
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1503921790]
+modulate = Color(0, 0, 0, 0.81960785)
+z_index = -1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 127.0
+offset_bottom = 122.0
+scale = Vector2(1.1, 1)
+texture = ExtResource("4_7hsmw")
 
-[node name="AmountLabel" type="Label" parent="Root/MoneyBox/HBox" unique_id=1328289938]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "0"
+[node name="Label" type="Label" parent="Control" unique_id=1803184080]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -41.5
+offset_right = 68.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 42
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Control" unique_id=570765289]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="HEALTH/Bar/Timer" to="HEALTH/Bar" method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]

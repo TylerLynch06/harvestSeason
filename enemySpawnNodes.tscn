@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
 [ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
-[ext_resource type="Texture2D" uid="uid://be36wdalh0bf2" path="res://environment/environmentAssets/glTF/Rocks_Desert_Diffuse.png" id="28_ixhls"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_an527"]
 size = Vector3(148.53857, 0.1, 200)
@@ -13,11 +12,6 @@ size = Vector3(148.53857, 0.1, 200)
 [sub_resource type="NavigationMesh" id="NavigationMesh_cccnq"]
 vertices = PackedVector3Array(-9.75, 0.5, -13.75, -7.25, 0.5, -14.5, -7.25, 0.5, -99.5, -11.5, 0.5, -12, -99.5, 0.5, -9.25, -12.25, 0.5, -9.25, -99.5, 0.5, -99.5, 13.25, 0.5, -9, 13.75, 0.5, -9, 13.75, 0.5, -10, 12, 0.5, -10.5, -2.75, 0.5, -12, -2.5, 0.5, -11, 0.5, 0.5, -11.25, 0.5, 0.5, -14.5, 7.75, 0.5, -14.5, 7.75, 0.5, -13.5, 9.25, 0.5, -13.25, 10.5, 0.5, -12, 11, 0.5, -10.5, 14.75, 0.5, -10.75, 14.75, 0.5, -13, 13.5, 0.5, -12.75, 11.75, 0.5, -13.25, -4.5, 0.5, -13.75, 2.25, 0.5, -16.25, 11.75, 0.5, -20.25, 14, 0.5, -99.5, 5, 0.5, -16.5, 6, 0.5, -16.25, 9.75, 0.5, -17, 10.25, 0.5, -18.75, 10.25, 0.5, -14.75, 14, 0.5, -20.75, 17.75, 0.5, -17.5, 17.5, 0.5, -15.5, 19, 0.5, -15.75, 20.5, 0.5, -15.25, 17.25, 0.5, -19, 16, 0.5, -20.25, 22, 0.5, -13.75, 99.5, 0.5, -11.75, 99.5, 0.5, -99.5, 22.5, 0.5, -11.75, 22, 0.5, -9.75, 21, 0.5, -9, 21.25, 0.5, -7, 19, 0.5, -4.25, 17.25, 0.5, -4, 17.25, 0.5, 99.5, 99.5, 0.5, 99.5, 20.75, 0.5, -5.75, 3.5, 0.5, -7.75, 3.25, 0.5, -9, 2.25, 0.5, -9, 6.5, 0.5, -4.75, 6.25, 0.5, -6, 5, 0.5, -6.25, -2.75, 0.5, -6.5, -2, 0.5, -9, 7.75, 0.5, -3.5, -4.5, 0.5, -4.75, 10, 0.5, -3, -7.25, 0.5, -4.25, -7.25, 0.5, 99.5, 10, 0.5, 99.5, -11.5, 0.5, -6.5, -9.75, 0.5, -4.75, -99.5, 0.5, 99.5, 15.25, 0.5, -4.5, 13.75, 0.5, -6, 13.5, 0.5, -4.75, 12.25, 0.5, -3.5)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 3), PackedInt32Array(3, 4, 6), PackedInt32Array(3, 6, 2), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(10, 19, 18), PackedInt32Array(22, 21, 20), PackedInt32Array(9, 10, 20), PackedInt32Array(20, 10, 22), PackedInt32Array(22, 10, 23), PackedInt32Array(23, 10, 18), PackedInt32Array(24, 1, 25), PackedInt32Array(25, 1, 26), PackedInt32Array(26, 1, 2), PackedInt32Array(26, 2, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(11, 24, 14), PackedInt32Array(14, 24, 25), PackedInt32Array(18, 17, 23), PackedInt32Array(23, 17, 32), PackedInt32Array(27, 33, 26), PackedInt32Array(17, 15, 32), PackedInt32Array(32, 15, 30), PackedInt32Array(30, 15, 29), PackedInt32Array(31, 28, 26), PackedInt32Array(26, 28, 25), PackedInt32Array(36, 35, 34), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 34, 38), PackedInt32Array(38, 39, 27), PackedInt32Array(37, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(41, 38, 42), PackedInt32Array(42, 38, 27), PackedInt32Array(41, 43, 40), PackedInt32Array(39, 33, 27), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 41), PackedInt32Array(44, 43, 41), PackedInt32Array(47, 41, 48), PackedInt32Array(48, 41, 49), PackedInt32Array(49, 41, 50), PackedInt32Array(51, 46, 41), PackedInt32Array(47, 51, 41), PackedInt32Array(54, 53, 52), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(12, 13, 59), PackedInt32Array(59, 13, 54), PackedInt32Array(55, 60, 58), PackedInt32Array(58, 60, 61), PackedInt32Array(54, 52, 59), PackedInt32Array(59, 52, 58), PackedInt32Array(60, 62, 61), PackedInt32Array(61, 62, 63), PackedInt32Array(63, 62, 65), PackedInt32Array(63, 65, 64), PackedInt32Array(58, 52, 57), PackedInt32Array(4, 5, 66), PackedInt32Array(4, 66, 67), PackedInt32Array(67, 63, 4), PackedInt32Array(4, 63, 64), PackedInt32Array(4, 64, 68), PackedInt32Array(71, 70, 69), PackedInt32Array(71, 69, 72), PackedInt32Array(72, 69, 48), PackedInt32Array(72, 48, 62), PackedInt32Array(62, 48, 65), PackedInt32Array(65, 48, 49)]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ixhls"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cve17"]
-albedo_texture = ExtResource("28_ixhls")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cccnq"]
 size = Vector3(5.9258423, 6.6221924, 5.2164307)
@@ -229,12 +223,6 @@ radius = 4.0
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="worldFloor/NavigationRegion3D" unique_id=1530322152 groups=["level"]]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-visible = false
-mesh = SubResource("PlaneMesh_ixhls")
-surface_material_override/0 = SubResource("StandardMaterial3D_cve17")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1458031141]
 transform = Transform3D(1, 0, 0, 0, -0.8107505, 0.585392, 0, -0.585392, -0.8107505, 0, 22.138905, -20.725418)
 shadow_enabled = true
@@ -352,6 +340,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.005405575, 3.760215e-07, 0.07697707, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -370,10 +359,10 @@ process_material = SubResource("ParticleProcessMaterial_e1uel")
 draw_pass_1 = SubResource("SphereMesh_10clc")
 
 [node name="spawn" type="Marker3D" parent="." unique_id=1584563820 groups=["spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.052, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.052, 1.5, 0)
 
 [node name="stop" type="Marker3D" parent="." unique_id=1391886912 groups=["stop"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.997, 1, -3.888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.997, 1.5, -3.888)
 
 [node name="leave" type="Marker3D" parent="." unique_id=1800184204 groups=["leave"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.409, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.409, 1.5, 0)

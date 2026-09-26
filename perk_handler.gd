@@ -56,9 +56,9 @@ var descriptions = {
 		2: "Increases stun after hit by 1.5s."
 	},
 	"monsterhunter charm": {
-		0: "+10% damage against bosses",
-		1: "+20% damage against bosses",
-		2: "+30% damage against bosses"
+		0: "+10% damage against elites",
+		1: "+20% damage against elites",
+		2: "+30% damage against elites"
 	},
 	"whetstone": {
 		0: "9V Battery",
@@ -83,14 +83,7 @@ var descriptions = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	activate("battery")
-	activate("whetstone")
-	activate("shoes")
-	upgrade("shoes")
-	upgrade("shoes")
-	activate("fishing magnet")
-	upgrade("fishing magnet")
-	upgrade("fishing magnet")
+	pass
 func activate(perkName):
 	if perks.get(perkName) == -1:
 		##Activate perks

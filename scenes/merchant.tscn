@@ -6930,7 +6930,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_10clc"]
 height = 20.0
-radius = 15.0
+radius = 6.0
 
 [sub_resource type="Curve" id="Curve_krsg3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.28089893), 0.0, 0.0, 0, 0]
@@ -7002,18 +7002,18 @@ shape = SubResource("BoxShape3D_e1uel")
 
 [node name="cart" parent="Node3D" unique_id=1446242291 instance=ExtResource("1_7rnkl")]
 
-[node name="npc_villager" type="Node3D" parent="Node3D" unique_id=164201704]
+[node name="npc_villager" type="Node3D" parent="Node3D/cart" unique_id=164201704]
 transform = Transform3D(-1.4377731, 0, -0.080053724, 0, 1.44, 0, 0.080053724, 0, -1.4377731, 0, 0.97842705, -0.63301426)
 
-[node name="Armature" type="Node3D" parent="Node3D/npc_villager" unique_id=303773826]
+[node name="Armature" type="Node3D" parent="Node3D/cart/npc_villager" unique_id=303773826]
 
-[node name="SM_npc_villager" type="MeshInstance3D" parent="Node3D/npc_villager/Armature" unique_id=965363990]
+[node name="SM_npc_villager" type="MeshInstance3D" parent="Node3D/cart/npc_villager/Armature" unique_id=965363990]
 transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6m03n")
 skin = SubResource("Skin_d0fo8")
 skeleton = NodePath("../GeneralSkeleton")
 
-[node name="GeneralSkeleton" type="Skeleton3D" parent="Node3D/npc_villager/Armature" unique_id=1916960278]
+[node name="GeneralSkeleton" type="Skeleton3D" parent="Node3D/cart/npc_villager/Armature" unique_id=1916960278]
 unique_name_in_owner = true
 visible = false
 motion_scale = 0.9167
@@ -7473,7 +7473,7 @@ bones/64/position = Vector3(1.1690158e-08, 0.07890003, -2.2848866e-08)
 bones/64/rotation = Quaternion(1.16383486e-10, 1, -1.1728265e-07, -1.0623444e-07)
 bones/64/scale = Vector3(1, 1.0000015, 0.9999998)
 
-[node name="AnimationPlayerMerchant" type="AnimationPlayer" parent="Node3D/npc_villager" unique_id=1937687300]
+[node name="AnimationPlayerMerchant" type="AnimationPlayer" parent="Node3D/cart/npc_villager" unique_id=1937687300]
 libraries/ = SubResource("AnimationLibrary_cq6f4")
 libraries/humanoid_animations = ExtResource("2_1xj0k")
 autoplay = &"humanoid_animations/Sitting_Idle"
@@ -7509,7 +7509,7 @@ texture = ExtResource("7_xp888")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=188510632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9033313)
-amount = 1024
+amount = 128
 process_material = SubResource("ParticleProcessMaterial_10clc")
 draw_passes = 3
 draw_pass_1 = SubResource("SphereMesh_e8yhy")

@@ -4,6 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://qlnpdrdpiulo" path="res://assets/HUD/singleCard4.png" id="2_4vh1m"]
 [ext_resource type="Texture2D" uid="uid://cyhddcfjem4sq" path="res://assets/knight/knightlowres.png" id="3_dneux"]
 [ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="4_hifqq"]
+[ext_resource type="Texture2D" uid="uid://b071bj5ntq46g" path="res://assets/light.jpg" id="5_eii5v"]
+
+[sub_resource type="Curve" id="Curve_dneux"]
+_data = [Vector2(0, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.6979167, 0.37078655), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvrcq"]
+curve = SubResource("Curve_dneux")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0slds"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(110, 154, 1)
+spread = 180.0
+initial_velocity_max = 103.45
+gravity = Vector3(0, 10, 0)
+scale_min = 0.0
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_kvrcq")
+color = Color(1, 1, 0, 1)
 
 [node name="Control" type="Control" unique_id=1521192223]
 layout_mode = 3
@@ -44,10 +64,10 @@ texture = ExtResource("3_dneux")
 [node name="Label" type="Label" parent="." unique_id=386608856]
 custom_maximum_size = Vector2(-1, 30)
 layout_mode = 0
-offset_left = 18.0
-offset_top = 173.0
-offset_right = 208.0
-offset_bottom = 203.0
+offset_left = 19.0
+offset_top = 169.0
+offset_right = 209.0
+offset_bottom = 199.0
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -81,3 +101,23 @@ offset_right = 157.0
 offset_bottom = 47.0
 theme_override_font_sizes/font_size = 24
 text = "11"
+
+[node name="Label4" type="Label" parent="." unique_id=41960770]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 188.0
+offset_right = 178.0
+offset_bottom = 288.0
+scale = Vector2(1.206046, 0.972641)
+theme_override_colors/font_color = Color(1, 1, 0.22352941, 1)
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=258672086]
+process_mode = 3
+position = Vector2(110, 163)
+emitting = false
+texture = ExtResource("5_eii5v")
+process_material = SubResource("ParticleProcessMaterial_0slds")

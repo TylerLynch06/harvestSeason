@@ -2,6 +2,7 @@ extends Control
 var materialShad = load("res://scenes/perk_menu_bg.gdshader")
 var shaderScript1 = load("res://scenes/cardtilt.gdshader")
 var shaderScript2 = load("res://cardtitl2.gdshader")
+var UI
 @onready var cardSlots = [
 	$perkMenu/VBoxContainer/HBoxContainer/Control,
 	$perkMenu/VBoxContainer/HBoxContainer/Control2,
@@ -18,6 +19,7 @@ var shaderScript2 = load("res://cardtitl2.gdshader")
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	UI = get_tree().get_first_node_in_group("HUD")
 	process_mode = PROCESS_MODE_ALWAYS
 	var j = 0
 	for i in cardSlots:
@@ -38,17 +40,21 @@ func menuToggle():
 		if get_tree().get_first_node_in_group("merchant").playerHere == false:
 			if $perkMenu.visible == true:
 				$perkMenu.hide()
+				UI.show()
 				Engine.time_scale=1
 			else:
 				$perkMenu.show()
+				UI.hide()
 				Engine.time_scale = 0.0001
 				refreshPerks()
 	else:
 			if $perkMenu.visible == true:
 				$perkMenu.hide()
+				UI.show()
 				Engine.time_scale=1
 			else:
 				$perkMenu.show()
+				UI.hide()
 				Engine.time_scale = 0.0001
 				refreshPerks()
 

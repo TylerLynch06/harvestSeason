@@ -12,7 +12,14 @@ var priceMod = 1
 	"monsterhunter charm",
 	"battery"
 ]
-@onready var perkBackup = perksToChoose
+const perkBackup = [
+	"whetstone",
+	"shoes",
+	"fishing magnet",
+	"armour",
+	"monsterhunter charm",
+	"battery"
+]
 @onready var currentStorePerks = []
 @onready var slots = [
 	$Store/VBoxContainer/HBoxContainer/Control2,
@@ -22,19 +29,25 @@ var priceMod = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().create_timer(0.45).timeout
-	generateNewStore()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 func generateNewStore():
+	perksToChoose = perkBackup
+	priceMod = 1
+	currentStorePerks = []
 	for i in range(3):
 		var perkPicked = perksToChoose.pick_random()
-		perksToChoose.remove_at(perksToChoose.rfind(perkPicked))
+		perksToChoose.remove_at(perksToChoose.find(perkPicked))
 		slots[i].get_node("CenterContainer/SubViewportContainer/SubViewport/Control").setTo(perkPicked)
+		slots[i].show()
 		currentStorePerks.append(perkPicked)
-		
+		print(currentStorePerks)
+	print(currentStorePerks)
+	print(perksToChoose)
+	print(perkBackup)
 func slideAcross():
 	$Store.global_position = Vector2(-1100,100)
 	var tween := create_tween()
@@ -60,12 +73,13 @@ func _on_button_button_down1() -> void:
 			priceMod = priceMod*2
 			if PerkHandler.perks[currentStorePerks[0]] == -1:
 				PerkHandler.activate(currentStorePerks[0])
-				print(currentStorePerks[0])
+				print((((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod)
 				Economy.wheat -= (((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod
 				priceMod = priceMod*2
 			else:
 				PerkHandler.upgrade(currentStorePerks[0])
 				Economy.wheat -= (((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod
+	reloadStore()
 			
 
 func _on_button_button_down2() -> void:
@@ -81,7 +95,7 @@ func _on_button_button_down2() -> void:
 			else:
 				PerkHandler.upgrade(currentStorePerks[1])
 				Economy.wheat -= (((PerkHandler.perks[currentStorePerks[1]]+1)*10)+10) * priceMod
-
+	reloadStore()
 
 func _on_button_button_down3() -> void:
 	if Economy.wheat >= (((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod:
@@ -96,3 +110,4 @@ func _on_button_button_down3() -> void:
 			else:
 				PerkHandler.upgrade(currentStorePerks[2])
 				Economy.wheat -= (((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod
+	reloadStore()

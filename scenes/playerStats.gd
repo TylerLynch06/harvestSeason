@@ -45,7 +45,7 @@ func _ready():
 	BASE_SICKLE_ROTATION_SPEED = deg_to_rad(BASE_SICKLE_ROTATION_SPEED)
 
 func playerHit(damage: float):
-	health -= damage
+	get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(damage)
 	
 func _process(delta: float):
 	alterDebugText()
