@@ -10,7 +10,8 @@ var currentSeasonIndex = 0
 
 var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
 			preload("res://scenes/snowman.tscn"),
-			preload("res://scenes/pumpking.tscn")]
+			preload("res://scenes/pumpking.tscn"),
+			preload("res://scenes/bananaWizard.tscn")]
 			
 var activeEnemyPool = [enemies[0],enemies[1]]
 var merchant = preload("res://scenes/merchant.tscn")

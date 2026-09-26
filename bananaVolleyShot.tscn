@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b06gw8aw5eaqi"]
+
+[ext_resource type="Script" uid="uid://d4nwen8fieenr" path="res://homingProjectile.gd" id="1_mjho0"]
+[ext_resource type="PackedScene" uid="uid://c7qowb62wney5" path="res://environment/environmentAssets/fruitsandvegetables/gltf/banana01.gltf" id="2_mjho0"]
+[ext_resource type="Script" uid="uid://4lav6jgy68s3" path="res://scripts/spinner.gd" id="3_8xyjq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mjho0"]
+
+[node name="Projectile" type="Node3D" unique_id=237092752 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_mjho0")
+lifetime = 5.0
+projectile_speed = 5.0
+hitbox = NodePath("hitbox")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=573548015]
+transform = Transform3D(5.255, 0, 0, 0, 5.255, 0, 0, 0, 5.255, -0.10480094, 0.040623844, 0.048710287)
+script = ExtResource("3_8xyjq")
+degreesPerSecond = 360.0
+
+[node name="banana01" parent="Node3D" unique_id=674911325 instance=ExtResource("2_mjho0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03306649, 0, -0.019316917)
+
+[node name="hitbox" type="Area3D" parent="." unique_id=1581752955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1712582213]
+shape = SubResource("SphereShape3D_mjho0")
