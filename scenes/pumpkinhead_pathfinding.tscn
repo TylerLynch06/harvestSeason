@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dui5ym8xpdo2g"]
 
-[ext_resource type="PackedScene" path="res://scenes/pumpkin_head.tscn" id="1_2iptg"]
+[ext_resource type="PackedScene" uid="uid://dv23exh6xckrd" path="res://scenes/pumpking.tscn" id="1_2iptg"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="2_cq08y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
@@ -27,13 +27,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vquck"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_cccnq"]
-vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6y4v"]
-albedo_color = Color(0, 0.4159855, 0.10170079, 1)
-
 [node name="Node3D" type="Node3D" unique_id=412550460]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=344648526]
@@ -44,10 +37,9 @@ transform = Transform3D(1, 0, 0, 0, 0.11313336, 0.9935798, 0, -0.9935798, 0.1131
 
 [node name="Player" parent="." unique_id=270954550 groups=["plaer"] instance=ExtResource("2_cq08y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55201, 0.9840236, -0.25257993)
+visible = false
 collision_layer = 0
 collision_mask = 0
-
-[node name="merchantStop" type="Marker3D" parent="." unique_id=263662638]
 
 [node name="worldFloor" type="RigidBody3D" parent="." unique_id=128942783 groups=["ground"]]
 collision_layer = 12
@@ -64,15 +56,6 @@ navigation_mesh = SubResource("NavigationMesh_cccnq")
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_cccnq")
 surface_material_override/0 = SubResource("StandardMaterial3D_vquck")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1616107707]
-visible = false
-navigation_mesh = SubResource("NavigationMesh_cccnq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1095739368]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0.026724815)
-mesh = SubResource("PlaneMesh_cccnq")
-surface_material_override/0 = SubResource("StandardMaterial3D_t6y4v")
 
 [node name="PumpkinHead" parent="." unique_id=1671664162 instance=ExtResource("1_2iptg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3220844, 0, 0)

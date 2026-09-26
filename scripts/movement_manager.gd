@@ -16,6 +16,9 @@ var rollDirection: Vector3 = Vector3.ZERO
 @export var debugText: Label
 @export var hurtbox: Area3D
 
+var isBeingPushed = false
+var currentPushVelocity = Vector3.ZERO
+
 var rollTimer: float = 0
 var rollCooldownTimer: float = 0
 
@@ -79,8 +82,9 @@ func _physics_process(delta: float) -> void:
 			isRolling = true	
 
 		movementCheck()
-		movePlayer(delta)
-		rotatePlayer(delta)
+		movePlayer()
+		if !isBeingPushed:
+			rotatePlayer(delta)
 	else:
 		playerBody.velocity = Vector3.ZERO
 
@@ -90,21 +94,38 @@ func movementCheck():
 	else:
 		isMoving = true
 
-func movePlayer(delta):
+func movePlayer():
 	var velocity
 	if !isRolling:
 		if PerkHandler.perks["shoes"] != -1:
-			velocity = directionVector * stats.BASE_MOVE_SPEED * PerkHandler.progression["shoes"][PerkHandler.perks["shoes"]] * delta
+			velocity = directionVector * stats.BASE_MOVE_SPEED * PerkHandler.progression["shoes"][PerkHandler.perks["shoes"]]
 		else:
-			velocity = directionVector * stats.BASE_MOVE_SPEED * delta			
+			velocity = directionVector * stats.BASE_MOVE_SPEED		
 		if weaponManager.currentSickleCharge > 0:
 			velocity *= stats.BASE_SICKLE_SPIN_MOVE_FACTOR
 	elif isRolling:
-		velocity = rollDirection * stats.BASE_ROLL_SPEED * delta
+		velocity = rollDirection * stats.BASE_ROLL_SPEED
 		
 	if !isRecovering:
-		playerBody.velocity = velocity
+		if !isBeingPushed:
+			playerBody.velocity = velocity
+		else:
+			calcPushVelocity()
+			playerBody.velocity = currentPushVelocity
+			playerRig.rotation.y = PI+atan2(currentPushVelocity.x,currentPushVelocity.z)
 		playerBody.move_and_slide()
+
+func pushPlayer(pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO):
+	if hitPos == Vector3.ZERO:
+		return
+	isBeingPushed = true
+	var pushDir = global_position - hitPos
+	currentPushVelocity = pushDir * pushForce	
+	
+func calcPushVelocity():
+	currentPushVelocity *= stats.BASE_PUSH_DRAG_FACTOR
+	if currentPushVelocity.length() < 3:
+		currentPushVelocity = Vector3.ZERO
 
 func calcDirectionVector():
 	if Input.is_action_pressed("up"):
@@ -146,6 +167,10 @@ func endRoll():
 	isRolling = false
 	rollTimer = stats.BASE_ROLL_TIME	
 	#stateMachine.travel("idle")
+	
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "UAL/LayToIdle":
+		isBeingPushed = false 
 	
 func alterDebugText():
 	if debugText:

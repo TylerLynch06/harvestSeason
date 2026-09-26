@@ -50,7 +50,6 @@ func placeScene():
 	var currentLevel = null
 	if get_tree().get_nodes_in_group("level"):
 		currentLevel = get_tree().get_nodes_in_group("level")[0] 
-	print("CURRENT: ",currentLevel)
 	var seasonScene = ResourceLoader.load_threaded_get(getNextPath())
 	var seasonInstance = seasonScene.instantiate()
 	add_child(seasonInstance)
