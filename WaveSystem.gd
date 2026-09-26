@@ -22,8 +22,11 @@ var totalWaveSpawnPoints = currentSpawnPoints
 var spawnPoolWeights= null
 var changingSeason = false
 var WAVES_BEFORE_SEASON_CHANGE = 3
+var isFading = false
 
-var transitionHandler = null
+var MAX_ENEMIES_ON_SCREEN = 20
+
+var transitionHandler: Transition
 
 static var rng = RandomNumberGenerator.new()
 
@@ -33,9 +36,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if !transitionHandler:
 		if get_tree().get_nodes_in_group("transition"):
 			transitionHandler = get_tree().get_nodes_in_group("transition")[0]
+	print(isFading, changingSeason, transitionHandler.isFinished)
+	if changingSeason and SeasonHandler.isNextSceneLoaded and !isFading:
+		transitionHandler.fade_to_black()
+		isFading = true
+		
+	if isFading and transitionHandler.isFinished:
+		print("PLACED")
+		SeasonHandler.placeScene()
+		transitionHandler.fade_to_normal()
+		changingSeason = false
+		isFading = false
+		newWave()
 	
 	if spawnNodes and !changingSeason:
 		if currentWave % 3 == 0:
@@ -43,7 +59,7 @@ func _process(delta: float) -> void:
 			SeasonHandler.loadNext()
 			return
 		remainingEnemyCount = getRemainingEnemies()
-		if currentSpawnPoints > 0 and doSpawn:
+		if currentSpawnPoints > 0 and doSpawn and remainingEnemyCount < MAX_ENEMIES_ON_SCREEN:
 			spawnRandomEnemy()
 		if remainingEnemyCount > 0:
 			waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
