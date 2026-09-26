@@ -42,7 +42,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	alterDebugText()
-	print(isBeingPushed, currentPushVelocity.length())
 	animTree.set("parameters/player/conditions/is_rolling", isRolling)
 	animTree.set("parameters/player/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
 	animTree.set("parameters/player/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
