@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 							attack()
 		if isBeingPushed:
 			calcPushVelocity()
-		move(delta)
+		move()
 
 func calculateDirVector(_position):
 	return (_position - position).normalized()
@@ -202,8 +202,8 @@ func calcPushVelocity():
 		isBeingPushed = false
 		currentPushVelocity = Vector3.ZERO
 
-func move(delta):
-	velocity = (trackingVelocity + currentPushVelocity)*delta
+func move():
+	velocity = (trackingVelocity + currentPushVelocity)
 	if currentPushVelocity.length() >= 20:
 		#print(currentPushVelocity)
 		pass

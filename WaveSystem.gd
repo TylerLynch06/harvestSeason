@@ -11,6 +11,8 @@ var currentSeasonIndex = 0
 var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
 			preload("res://scenes/snowman.tscn"),
 			preload("res://scenes/pumpking.tscn")]
+			
+var activeEnemyPool = [enemies[0],enemies[1]]
 var merchant = preload("res://scenes/merchant.tscn")
 var doSpawn = true
 var remainingEnemyCount = 0
@@ -24,6 +26,9 @@ var spawnPoolWeights= null
 var changingSeason = false
 var WAVES_BEFORE_SEASON_CHANGE = 3
 var isFading = false
+var merchantPresent = false
+##Can spawn enemies from enemies up to and inlcuding this index
+var currentUnlockedEnemyIndex = 0
 
 var MAX_ENEMIES_ON_SCREEN = 20
 
@@ -36,7 +41,7 @@ func _ready() -> void:
 	newWave()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	merchantPresent = get_tree().get_nodes_in_group("merchant") != []
 	if !transitionHandler:
 		if get_tree().get_nodes_in_group("transition"):
 			transitionHandler = get_tree().get_nodes_in_group("transition")[0]
@@ -45,11 +50,10 @@ func _process(delta: float) -> void:
 		isFading = true
 		
 	if isFading and transitionHandler.isFinished:
-		print("PLACED")
 		SeasonHandler.placeScene()
 		transitionHandler.fade_to_normal()
 		changingSeason = false
-		isFading = false
+		isFading = false	
 		newWave()
 	
 	if spawnNodes and !changingSeason:
@@ -67,12 +71,17 @@ func _process(delta: float) -> void:
 		if getRemainingEnemies() <= 0 and !inIntermission and waveFinishCheckTimer <= 0:
 			inIntermission = true
 			waveIntermissionTimer = WAVE_INTERMISSION_TIME
+			if !merchantPresent:
+				merchantArrives()
 		if inIntermission:
 			waveIntermissionTimer -= delta
 			waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
-		if inIntermission and waveIntermissionTimer <= 0:
+		if inIntermission and waveIntermissionTimer <= 0 and !merchantPresent:
 			inIntermission = false
 			newWave()
+		
+func startIntermission():
+	merchantArrives()
 		
 func spawnRandomEnemy():
 	var enemyPointValue = INF
@@ -107,7 +116,7 @@ func getRemainingEnemies():
 		return 0
 		
 func newWave():
-	merchantArrives()
+	#merchantArrives()
 	currentSpawnPoints = totalWaveSpawnPoints + BASE_WAVE_INCREMENT
 	currentSpawnPoints *= BASE_WAVE_INCREMENT_FACTOR
 	currentSpawnPoints = floor(currentSpawnPoints)

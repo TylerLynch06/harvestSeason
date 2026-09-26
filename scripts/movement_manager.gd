@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 			isRolling = true	
 
 		movementCheck()
-		movePlayer(delta)
+		movePlayer()
 		if !isBeingPushed:
 			rotatePlayer(delta)
 	else:
@@ -95,17 +95,17 @@ func movementCheck():
 	else:
 		isMoving = true
 
-func movePlayer(delta):
+func movePlayer():
 	var velocity
 	if !isRolling:
 		if PerkHandler.perks["shoes"] != -1:
-			velocity = directionVector * stats.BASE_MOVE_SPEED * PerkHandler.progression["shoes"][PerkHandler.perks["shoes"]] * delta
+			velocity = directionVector * stats.BASE_MOVE_SPEED * PerkHandler.progression["shoes"][PerkHandler.perks["shoes"]]
 		else:
-			velocity = directionVector * stats.BASE_MOVE_SPEED * delta			
+			velocity = directionVector * stats.BASE_MOVE_SPEED		
 		if weaponManager.currentSickleCharge > 0:
 			velocity *= stats.BASE_SICKLE_SPIN_MOVE_FACTOR
 	elif isRolling:
-		velocity = rollDirection * stats.BASE_ROLL_SPEED * delta
+		velocity = rollDirection * stats.BASE_ROLL_SPEED
 		
 	if !isRecovering:
 		if !isBeingPushed:
