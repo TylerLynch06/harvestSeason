@@ -52,13 +52,14 @@ level="so we know which scene to remove"
 hurtbox=""
 merchant=""
 boss=""
-<<<<<<<HEADhurtbox=""
 spawnArea=""
 transition=""
 merchantUI=""
 spawn=""
 stop=""
 leave=""
+
+
 
 [input]
 

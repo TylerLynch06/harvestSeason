@@ -12,10 +12,11 @@ var seasonSequence = ["autumn","winter","spring","summer"]
 var isNextSceneLoaded = false
 var loadingProgress = 0.0
 var loadingScene = false
-var currentSceneIndex = 0
+var currentSceneIndex = 1
 var progress = []
 var timeSinceLoadStart = 0.0
 var nextToLoad = seasonSequence[currentSceneIndex]
+
 #@onready var transition = get_tree().get_nodes_in_group("transition")[0] 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +35,6 @@ func _process(delta: float) -> void:
 				loadingProgress = progress[0]
 			ResourceLoader.THREAD_LOAD_LOADED:
 				isNextSceneLoaded = true
-				placeScene()
 	
 			
 func loadNext():
