@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cndysummnr70p"]
 
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_pw63i"]
-[ext_resource type="PackedScene" uid="uid://dv23exh6xckrd" path="res://scenes/pumpkin_head.tscn" id="2_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://dv23exh6xckrd" path="res://scenes/pumpking.tscn" id="2_7ykc4"]
 [ext_resource type="ArrayMesh" uid="uid://0pqngmt56bid" path="res://environment/environmentAssets/farm buildings/Barn.obj" id="3_k67gn"]
 [ext_resource type="ArrayMesh" uid="uid://c0kpeusjirajp" path="res://environment/environmentAssets/farm buildings/BigBarn.obj" id="4_k3g67"]
 [ext_resource type="ArrayMesh" uid="uid://cllqapkpaba30" path="res://environment/environmentAssets/farm buildings/TowerWindmill.obj" id="5_4bgka"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://btbtqrjcorwcs" path="res://environment/environmentAssets/glTF/DeadTree_4.gltf" id="26_8dxha"]
 [ext_resource type="ArrayMesh" uid="uid://bktgjcbbi5wnh" path="res://environment/Fire by Jakob Hippe - 1QpMTUO7P-G/model.obj" id="27_j4epa"]
 [ext_resource type="PackedScene" uid="uid://m4x7f3cfhbx4" path="res://scenes/merchant.tscn" id="28_k3g67"]
-[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="29_4bgka"]
+[ext_resource type="PackedScene" uid="uid://7qjvcp3bia46" path="res://scenes/merchantUI.tscn" id="29_4bgka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)

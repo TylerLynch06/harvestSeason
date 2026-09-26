@@ -4,11 +4,13 @@ var spawn : Marker3D
 var leave : Marker3D
 var stop : Marker3D
 var stage = "ToStop"
+
 func _ready() -> void:
 	spawn = get_tree().get_first_node_in_group("spawn")
 	stop = get_tree().get_first_node_in_group("stop")
 	leave = get_tree().get_first_node_in_group("leave")
 	self.global_position = spawn.global_position
+	
 func _physics_process(delta: float) -> void:
 	if stage == "ToStop":
 		$GPUParticles3D.emitting = true

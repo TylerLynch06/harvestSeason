@@ -9,7 +9,8 @@ var currentSeasonIndex = 0
 @onready var spawnNodes = get_tree().get_nodes_in_group("spawnArea")
 
 var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
-			preload("res://scenes/snowman.tscn")]
+			preload("res://scenes/snowman.tscn"),
+			preload("res://scenes/pumpking.tscn")]
 var merchant = preload("res://scenes/merchant.tscn")
 var doSpawn = true
 var remainingEnemyCount = 0
@@ -39,7 +40,6 @@ func _process(delta: float) -> void:
 	if !transitionHandler:
 		if get_tree().get_nodes_in_group("transition"):
 			transitionHandler = get_tree().get_nodes_in_group("transition")[0]
-	print(isFading, changingSeason, transitionHandler.isFinished)
 	if changingSeason and SeasonHandler.isNextSceneLoaded and !isFading:
 		transitionHandler.fade_to_black()
 		isFading = true

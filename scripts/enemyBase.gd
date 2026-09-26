@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	if !isSpawning:
 		trackingVelocity = Vector3.ZERO
 		if !isDead:
-			if !isTakingDamage:
+			if !isTakingDamage or isUnstoppable:
 				var pos = getNextMovementPosition()
 				#print(pos)
 				dirVector = calculateDirVector(pos)
@@ -133,7 +133,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
 		#print(health)3dw
-		if !isTakingDamage:
+		if !isTakingDamage and !isUnstoppable:
 			stateMachine.travel("hit")
 			isTakingDamage = true
 			timeSinceLastFlinch = 0

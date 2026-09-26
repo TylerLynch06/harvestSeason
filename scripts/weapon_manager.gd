@@ -41,13 +41,18 @@ func _ready() -> void:
 			weapon.hide()
 	changeWeapon("sword")
 	weaponHurtBox.monitoring = false
-	weaponHurtBox.area_entered.connect(weapon_hit)
-	weaponHurtBox.area_exited.connect(weapon_leave)
+	#weaponHurtBox.area_entered.connect(weapon_hit)
+	#weaponHurtBox.area_exited.connect(weapon_leave)
 	#postAttackMovementLockdownTimer = 0
 	#attackTimer = attackDuration
 
 func _process(delta: float):
 	alterDebugText()
+	if movementManager.isBeingPushed:
+		movementManager.unlockMovement()
+	if !isAttacking or movementManager.isBeingPushed:
+		weaponHurtBox.monitoring = false
+		
 	if currentWeaponName == "sickles":
 		sickleUpdate(delta)
 	comboWindowTimer -= delta
@@ -64,9 +69,16 @@ func _process(delta: float):
 		microFreezeTimer = 0
 	animTree.advance_expression_base_node = self.get_path()
 	
+func _physics_process(delta):
+	if weaponHurtBox.monitoring:
+		for area in weaponHurtBox.get_overlapping_areas():
+			if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
+				weapon_hit(area)
+	
 func attack():
 	if !isAttacking:
 		isAttacking = true
+		weaponHurtBox.monitoring = false 
 		if WEAPON_DATA.doMovementLock.get(currentWeaponName):
 			movementManager.lockMovement()
 	
@@ -85,15 +97,13 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func weapon_hit(area):
 	##print(area.name == "hitbox" , area.get_parent().is_in_group("enemy"))
 	if area.name == "hitbox" and area.get_parent().is_in_group("enemy"):
-		print("PLAYER ATTACK SUCCESS")
 		bonusDamage = 0
 		var enemy = area.get_parent() as Enemy
 		if enemy.is_in_group("boss") and PerkHandler.perks.get("monsterhunter charm") != -1:
 			bonusDamage += 10 * PerkHandler.progression.get("monsterhunter charm")[PerkHandler.perks.get("monsterhunter charm")]
 		
 		var pushForce = stats.BASE_PUSH_FORCE * WEAPON_DATA.pushFactor.get(currentWeaponName)
-		print(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage)
-		enemy.takeDamage(WEAPON_DATA.damageOnHit.get("sickles")[0] + bonusDamage, 
+		enemy.takeDamage(WEAPON_DATA.damageOnHit.get(currentWeaponName)[comboState] + bonusDamage, 
 		global_position, 
 		pushForce,
 		0.3)
@@ -175,7 +185,6 @@ func sickleUpdate(delta):
 	elif currentSickleCharge <= 0:
 		isAttacking = false
 
-		
 func sickleDamagePulse():
 	var overlappingAreas = sickleHitbox.get_overlapping_areas()
 	for area in overlappingAreas:

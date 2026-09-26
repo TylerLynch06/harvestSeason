@@ -59,8 +59,6 @@ spawn=""
 stop=""
 leave=""
 
-
-
 [input]
 
 up={

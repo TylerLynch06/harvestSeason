@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
 	$perkMenu/ColorRect.material.set_shader_parameter("real_time", current_time)
 	$perkMenu/ColorRect2.material.set_shader_parameter("real_time", current_time)
+	
 func menuToggle():
 	if get_tree().get_first_node_in_group("merchant") != null:
 		if get_tree().get_first_node_in_group("merchant").playerHere == false:
@@ -63,6 +64,7 @@ func refreshPerks():
 		loadPerk(PerkHandler.currentPerks[i], cardSlots[i])
 	for i in range(8 - len(PerkHandler.currentPerks)):
 		hidePerk(cardSlots[7-i])
+		
 func loadPerk(perkData,level):
 	level.get_node("CenterContainer/SubViewportContainer").show()
 	level.get_node("CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer/TextureRect").texture = assetArray[perkData[1]]

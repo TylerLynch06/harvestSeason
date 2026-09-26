@@ -28,6 +28,7 @@ class_name PlayerStats
 @export var BASE_SICKLE_DAMAGE_INTERVAL: float
 @export var BASE_SICKLE_SPIN_MOVE_FACTOR: float
 
+@export var BASE_PUSH_DRAG_FACTOR: float = 0.92
 @export var BASE_PUSH_FORCE: float
 
 ##critical angle doesnt need a factor
@@ -38,14 +39,17 @@ class_name PlayerStats
 @onready var moveSpeed: float = BASE_MOVE_SPEED
 @onready var attackSpeed: float = BASE_ATTACK_FACTOR_SPEED
 @onready var attackCooldown: float = BASE_ATTACK_COOLDOWN
+@export var movementManager: MovementManager
 
 @export var statsDebugText: Label
 
 func _ready():
 	BASE_SICKLE_ROTATION_SPEED = deg_to_rad(BASE_SICKLE_ROTATION_SPEED)
 
-func playerHit(damage: float):
+func playerHit(damage: float, pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO):
 	health -= damage
+	if pushForce!=0 and hitPos != Vector3.ZERO:
+		movementManager.pushPlayer(pushForce, hitPos)
 	
 func _process(delta: float):
 	alterDebugText()

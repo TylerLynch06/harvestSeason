@@ -16,6 +16,9 @@ var rollDirection: Vector3 = Vector3.ZERO
 @export var debugText: Label
 @export var hurtbox: Area3D
 
+var isBeingPushed = false
+var currentPushVelocity = Vector3.ZERO
+
 var rollTimer: float = 0
 var rollCooldownTimer: float = 0
 
@@ -39,6 +42,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	alterDebugText()
+	print(isBeingPushed, currentPushVelocity.length())
 	animTree.set("parameters/player/conditions/is_rolling", isRolling)
 	animTree.set("parameters/player/conditions/is_running", !isRolling and playerBody.velocity.length() > 2)
 	animTree.set("parameters/player/conditions/is_idle", !weaponManager.isAttacking and playerBody.velocity.length() < 2)
@@ -80,7 +84,8 @@ func _physics_process(delta: float) -> void:
 
 		movementCheck()
 		movePlayer(delta)
-		rotatePlayer(delta)
+		if !isBeingPushed:
+			rotatePlayer(delta)
 	else:
 		playerBody.velocity = Vector3.ZERO
 
@@ -103,8 +108,25 @@ func movePlayer(delta):
 		velocity = rollDirection * stats.BASE_ROLL_SPEED * delta
 		
 	if !isRecovering:
-		playerBody.velocity = velocity
+		if !isBeingPushed:
+			playerBody.velocity = velocity
+		else:
+			calcPushVelocity()
+			playerBody.velocity = currentPushVelocity
+			playerRig.rotation.y = PI+atan2(currentPushVelocity.x,currentPushVelocity.z)
 		playerBody.move_and_slide()
+
+func pushPlayer(pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO):
+	if hitPos == Vector3.ZERO:
+		return
+	isBeingPushed = true
+	var pushDir = global_position - hitPos
+	currentPushVelocity = pushDir * pushForce	
+	
+func calcPushVelocity():
+	currentPushVelocity *= stats.BASE_PUSH_DRAG_FACTOR
+	if currentPushVelocity.length() < 3:
+		currentPushVelocity = Vector3.ZERO
 
 func calcDirectionVector():
 	if Input.is_action_pressed("up"):
@@ -146,6 +168,10 @@ func endRoll():
 	isRolling = false
 	rollTimer = stats.BASE_ROLL_TIME	
 	#stateMachine.travel("idle")
+	
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "UAL/LayToIdle":
+		isBeingPushed = false 
 	
 func alterDebugText():
 	if debugText:
