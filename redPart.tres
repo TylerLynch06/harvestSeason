@@ -1,0 +1,20 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://xwowhe3pvve7"]
+
+[sub_resource type="Curve" id="Curve_fwij3"]
+_data = [Vector2(0, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.22916667, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvrcq"]
+curve = SubResource("Curve_fwij3")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(110, 154, 1)
+spread = 180.0
+initial_velocity_max = 103.45
+gravity = Vector3(0, 300, 0)
+scale_min = 0.0
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_kvrcq")
+color = Color(0.7634146, 0, 0.17814633, 1)

@@ -5,12 +5,14 @@
 [ext_resource type="Shader" uid="uid://bi4s2055klhrf" path="res://scenes/crt.gdshader" id="3_qcug2"]
 [ext_resource type="Script" uid="uid://bokshnruioajh" path="res://scenes/card.gd" id="4_wd5y0"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_6cxh8"]
-[ext_resource type="Shader" uid="uid://btdqiyhkwiwp0" path="res://cardtitl2.gdshader" id="5_kvrcq"]
+[ext_resource type="Shader" uid="uid://mvfql3elj4w7" path="res://cardTilt3.gdshader" id="5_8uofo"]
 [ext_resource type="Script" uid="uid://bixjce1j0hjwc" path="res://scenes/perkTEST.gd" id="6_q3uw0"]
 [ext_resource type="Texture2D" uid="uid://cpy24ppetb3pu" path="res://assets/HUD/singleCard1.png" id="7_kvrcq"]
 [ext_resource type="Texture2D" uid="uid://cyhddcfjem4sq" path="res://assets/knight/knightlowres.png" id="8_fwij3"]
 [ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="9_8uofo"]
 [ext_resource type="Texture2D" uid="uid://b071bj5ntq46g" path="res://assets/light.jpg" id="10_kvrcq"]
+[ext_resource type="Material" uid="uid://xwowhe3pvve7" path="res://redPart.tres" id="11_fwij3"]
+[ext_resource type="Material" uid="uid://dbi5mgk8k474l" path="res://goldPart.tres" id="12_8uofo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1uel"]
 shader = ExtResource("2_0sp37")
@@ -27,50 +29,31 @@ shader_parameter/color_mid = Color(0.77095866, 0.31528905, 1, 1)
 shader_parameter/color_high = Color(13.047, 13.047, 13.047, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mreyu"]
-shader = ExtResource("5_kvrcq")
+shader = ExtResource("5_8uofo")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
-[sub_resource type="Curve" id="Curve_fwij3"]
-_data = [Vector2(0, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.6979167, 0.37078655), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_kvrcq"]
-curve = SubResource("Curve_fwij3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1uel"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(110, 154, 1)
-spread = 180.0
-initial_velocity_max = 103.45
-gravity = Vector3(0, 10, 0)
-scale_min = 0.0
-scale_max = 0.03
-scale_curve = SubResource("CurveTexture_kvrcq")
-color = Color(1, 1, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkjys"]
-shader = ExtResource("5_kvrcq")
+shader = ExtResource("5_8uofo")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_webnw"]
-shader = ExtResource("5_kvrcq")
+shader = ExtResource("5_8uofo")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvgt2"]
-shader = ExtResource("5_kvrcq")
+shader = ExtResource("5_8uofo")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1cjo"]
-shader = ExtResource("5_kvrcq")
+shader = ExtResource("5_8uofo")
 shader_parameter/max_rotation = Vector2(0.1, 0.1)
 shader_parameter/tilt = Vector2(0, 0)
 shader_parameter/shine_intensity = 0.3
@@ -86,7 +69,7 @@ shader_parameter/diffusion = 0.1
 shader_parameter/vinnette_alpla = 0.3999999910592
 shader_parameter/vinnette_inner_radius = 3.5
 
-[node name="Control" type="Control" unique_id=1617969140]
+[node name="Control2" type="Control" unique_id=1617969140]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,7 +173,6 @@ offset_bottom = 134.0
 scale = Vector2(0.73544955, 1.3808618)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("8_fwij3")
 
 [node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=386608856]
 custom_maximum_size = Vector2(-1, 30)
@@ -231,7 +213,7 @@ icon = ExtResource("9_8uofo")
 process_mode = 3
 position = Vector2(110, 163)
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=462767391]
 custom_minimum_size = Vector2(220, 308)
@@ -297,17 +279,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=41109317]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=493624213]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -332,12 +303,22 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1100443320]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=424213753]
 process_mode = 3
 position = Vector2(110, 163)
-emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("12_8uofo")
 
 [node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=572536571]
 custom_minimum_size = Vector2(220, 308)
@@ -403,17 +384,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=24601513]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=642798928]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -438,12 +408,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1537575588]
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 167.0
+offset_right = 209.0
+offset_bottom = 207.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=62747821]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=331138403]
 custom_minimum_size = Vector2(220, 308)
@@ -509,17 +490,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1445628606]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2078879708]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -544,12 +514,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=553181665]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=1727381969]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="perkMenu/VBoxContainer" unique_id=1393099297]
 layout_mode = 2
@@ -620,17 +601,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1372109228]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=250426393]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -655,12 +625,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1927614683]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control" unique_id=1622044219]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=809052580]
 custom_minimum_size = Vector2(220, 308)
@@ -726,17 +707,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=641755276]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1168452643]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -761,12 +731,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1789795401]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2" unique_id=1606469531]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="Control3" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1431469694]
 custom_minimum_size = Vector2(220, 308)
@@ -832,17 +813,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1962792983]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=560830450]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -867,12 +837,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=359767663]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3" unique_id=1154961533]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="Control4" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2" unique_id=1327733183]
 custom_minimum_size = Vector2(220, 308)
@@ -938,17 +919,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=251179019]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 52.0
-offset_top = 168.0
-offset_right = 167.0
-offset_bottom = 198.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1747257518]
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
@@ -973,12 +943,23 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1115031370]
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 210.0
+offset_bottom = 198.0
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4" unique_id=1551786366]
 process_mode = 3
 position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("10_kvrcq")
-process_material = SubResource("ParticleProcessMaterial_e1uel")
+process_material = ExtResource("11_fwij3")
 
 [node name="ColorRect2" type="ColorRect" parent="perkMenu" unique_id=1510708763]
 z_index = 20

@@ -163,9 +163,14 @@ func removeBody():
 	queue_free()
 	
 func create_wheat():
-	var wheat = wheatScene.instantiate()
-	wheat.global_position = global_position
-	get_tree().current_scene.add_child(wheat)
+	if PerkHandler.perks["platinum card"] != 3:
+		var wheat = wheatScene.instantiate()
+		wheat.global_position = global_position
+		get_tree().current_scene.add_child(wheat)
+		if self.is_in_group("boss"):
+			wheat.spawn("boss")
+		else:
+			wheat.spawn("normal")
 		
 ##might not be need since invul timer exists, keep anyway
 func weaponLeftBody():

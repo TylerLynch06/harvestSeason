@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dtmwiltnn77gm" path="res://scenes/salecardInMerchant.gd" id="4_52sgd"]
 [ext_resource type="Texture2D" uid="uid://bc7gtlfleqbjv" path="res://assets/tray1.png" id="4_lovew"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_0wgsg"]
-[ext_resource type="Shader" uid="uid://btdqiyhkwiwp0" path="res://cardtitl2.gdshader" id="6_vlvfu"]
+[ext_resource type="Shader" uid="uid://mvfql3elj4w7" path="res://cardTilt3.gdshader" id="6_vlvfu"]
 [ext_resource type="PackedScene" uid="uid://dbx2owru0ksuj" path="res://scenes/shop_perk.tscn" id="7_6f7gq"]
 [ext_resource type="Texture2D" uid="uid://dvuin16b2iu4p" path="res://assets/farmer portrait.png" id="8_0wgsg"]
 [ext_resource type="Shader" uid="uid://dadr1mpq6apoh" path="res://scenes/pixels.gdshader" id="8_6f7gq"]
@@ -28,7 +28,7 @@ shader = ExtResource("8_6f7gq")
 shader_parameter/pixel_size = 3.0000000475
 shader_parameter/handle_edges = false
 
-[node name="Control" type="Control" unique_id=1345859192]
+[node name="Control2" type="Control" unique_id=1345859192]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

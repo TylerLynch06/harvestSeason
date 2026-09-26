@@ -50,10 +50,12 @@ func _on_mouse_exited():
 	is_hovered = false
 
 func _on_button_button_down() -> void:
-	if len(PerkHandler.currentPerks) > 0:
-		if pos < len(PerkHandler.currentPerks):
-			Economy.wheat += (((PerkHandler.perks[PerkHandler.currentPerks[pos][0]] + 1)**2)*3 )
-			await PerkHandler.deactivate(PerkHandler.currentPerks[pos][0])
-			$"../../../../..".refreshPerks()
-			print(PerkHandler.currentPerks)
-			get_tree().get_first_node_in_group("merchantUI").reloadStore()
+	if visible:
+		if !(PerkHandler.currentPerks[pos][0] in PerkHandler.corruptedPerks):
+			if len(PerkHandler.currentPerks) > 0:
+				if pos < len(PerkHandler.currentPerks):
+					Economy.wheat += (((PerkHandler.perks[PerkHandler.currentPerks[pos][0]] + 1)**2)*3 )
+					await PerkHandler.deactivate(PerkHandler.currentPerks[pos][0])
+					$"../../../../..".refreshPerks()
+					print(PerkHandler.currentPerks)
+					get_tree().get_first_node_in_group("merchantUI").reloadStore()

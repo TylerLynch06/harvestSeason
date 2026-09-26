@@ -6,11 +6,15 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.apply_impulse(Vector3(randi_range(0,4),7,randi_range(0,4)))
-	self.angular_velocity.y = 7220
 	await get_tree().create_timer(0.45).timeout
 	self.add_to_group("wheat")
-
+func spawn(type):
+	if type == "normal":
+		self.apply_impulse(Vector3(randi_range(0,4),7,randi_range(0,4)))
+		self.angular_velocity.y = 7220
+	if type == "boss":
+		self.apply_impulse(Vector3(randi_range(0,7),10,randi_range(0,7)))
+		self.angular_velocity.y = 7220
 func collect():
 	collected = true
 	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D

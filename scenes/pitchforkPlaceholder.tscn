@@ -85,7 +85,7 @@ shader_parameter/vinnette_inner_radius = 3.5
 
 [node name="PitchforkPlaceholder" type="Node3D" unique_id=1637730101 node_paths=PackedStringArray("mesh", "hitbox", "pivot")]
 script = ExtResource("1_sal07")
-simulatedGravityStrength = 4.0
+simulatedGravityStrength = 3.0
 mesh = NodePath("MeshInstance3D")
 angleDecreasePerSecond = 30.0
 damage = 50.0
@@ -97,6 +97,10 @@ pivot = NodePath("MeshInstance3D")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1503988111]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_cccnq")
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D" unique_id=1776199015]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, -1.988203e-08, 0.22742386, -0.97379583, 8.513194e-08, -0.97379583, -0.22742386, 0, -1.3167931, -0.2662285)
+visible = false
 
 [node name="Area3D" type="Area3D" parent="." unique_id=12383230]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -111,10 +115,8 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1776199015]
-transform = Transform3D(0.70710677, -0.5930297, 0.38511792, 0, 0.544639, 0.8386706, -0.70710677, -0.5930297, 0.38511792, 4, 7, 4)
-
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=215675449]
+visible = false
 z_index = 5
 material = SubResource("ShaderMaterial_y3t3m")
 anchors_preset = 15

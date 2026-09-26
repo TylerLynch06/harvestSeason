@@ -163,14 +163,17 @@ func alterDebugText():
 ##unfortunate this has to be here
 ##Is called by the throw animation
 func throwPitchfork():
-	var projectileInstance = pitchforkProjectile.instantiate() as PitchforkProjectille
-	var TEMP_SPEED_FACTOR = 1
-	projectileInstance.setInitialPosAndRot(pitchforkSpawn.global_position, 
-	playerRig.rotation.y)
-	projectileInstance.setStats(WEAPON_DATA.damageOnHit.get("pitchfork")[0],
-	TEMP_SPEED_FACTOR,
-	playerRig.global_transform.basis.z.normalized())
-	get_tree().root.add_child.call_deferred(projectileInstance)
+	if !PerkHandler.thrown:
+		print(str(PerkHandler.thrown) + " thrown")
+		var projectileInstance = pitchforkProjectile.instantiate() as PitchforkProjectille
+		var TEMP_SPEED_FACTOR = 1
+		projectileInstance.setInitialPosAndRot(pitchforkSpawn.global_position, 
+		playerRig.rotation.y)
+		projectileInstance.setStats(WEAPON_DATA.damageOnHit.get("pitchfork")[0],
+		TEMP_SPEED_FACTOR,
+		playerRig.global_transform.basis.z.normalized())
+		get_tree().root.add_child.call_deferred(projectileInstance)
+		PerkHandler.thrown = true
 	
 func chargeSickles(charge: float):
 	currentSickleCharge = charge

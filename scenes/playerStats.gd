@@ -45,16 +45,11 @@ class_name PlayerStats
 
 func _ready():
 	BASE_SICKLE_ROTATION_SPEED = deg_to_rad(BASE_SICKLE_ROTATION_SPEED)
-
-<<<<<<< HEAD
-func playerHit(damage: float):
-	get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(damage)
-=======
 func playerHit(damage: float, pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO):
 	health -= damage
 	if pushForce!=0 and hitPos != Vector3.ZERO:
 		movementManager.pushPlayer(pushForce, hitPos)
->>>>>>> origin
+	get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(damage)
 	
 func _process(delta: float):
 	alterDebugText()

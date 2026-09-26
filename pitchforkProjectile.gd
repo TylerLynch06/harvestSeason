@@ -15,14 +15,21 @@ var reboundsRemaining = 0
 
 func _ready():
 	super._ready()
-	$Camera3D.make_current()
 	angleDecreasePerSecond = deg_to_rad(angleDecreasePerSecond)
 	get_node("Area3D").body_entered.connect(stickInGround)
 	print(PerkHandler.perks.get("fishing magnet"))
+	$ColorRect2.hide()
 	if PerkHandler.perks.get("fishing magnet") == -1:
 		reboundsRemaining = 0
 	else:
 		reboundsRemaining = PerkHandler.progression.get("fishing magnet")[PerkHandler.perks.get("fishing magnet")]
+	if PerkHandler.perks.get("wire guidance") == 3:
+		reboundsRemaining = 100
+		PerkHandler.thrown = true
+		$MeshInstance3D/Camera3D.make_current()
+		$ColorRect2.show()
+		projectile_speed = 15
+		simulatedGravityStrength = 1.0
 	print(reboundsRemaining)
 	
 func _physics_process(delta: float) -> void:
@@ -77,6 +84,7 @@ func rebound():
 			#dirVector.y = 0
 		
 func stickInGround(area):
+	PerkHandler.thrown = false
 	print("PROJECTILE HIT ",area.name)
 	if area.is_in_group("ground"):
 		stuckInGround = true

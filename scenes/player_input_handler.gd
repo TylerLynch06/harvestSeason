@@ -18,8 +18,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb") and weaponManager.canAttack():
-		if weaponManager.currentWeaponName != "sickles" :
-			weaponManager.attack()
+		if weaponManager.currentWeaponName != "sickles":
+			if PerkHandler.thrown != true:
+				weaponManager.attack()
 	if Input.is_action_pressed("lmb") and weaponManager.currentSickleCharge<=0 and weaponManager.currentWeaponName == "sickles":
 		if stats.BASE_SICKLE_CHARGE_MAX>sickleChargeAccumulation:
 			sickleChargeAccumulation += stats.BASE_SICKLE_CHARGE_RATE * delta
