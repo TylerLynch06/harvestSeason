@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Isometric3D-dungeon"
-run/main_scene="uid://cndysummnr70p"
+run/main_scene="uid://c1cfnnqvdteuh"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Economy="*uid://cwxdn3bd6rr5y"
-WaveSystem="*uid://sa05cupgn0ob"
 PerkHandler="*uid://8d6rkhtlgpu5"
 SeasonHandler="*uid://c3iclu3jddpkp"
+WaveSystem="*uid://sa05cupgn0ob"
 
 [display]
 
@@ -52,8 +52,13 @@ level="so we know which scene to remove"
 hurtbox=""
 merchant=""
 boss=""
+<<<<<<<HEADhurtbox=""
 spawnArea=""
 transition=""
+merchantUI=""
+spawn=""
+stop=""
+leave=""
 
 [input]
 

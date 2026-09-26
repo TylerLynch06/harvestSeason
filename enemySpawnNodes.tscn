@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_cve17"]
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="2_cve17"]
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
+[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
 [ext_resource type="Texture2D" uid="uid://be36wdalh0bf2" path="res://environment/environmentAssets/glTF/Rocks_Desert_Diffuse.png" id="28_ixhls"]
 
@@ -92,7 +93,21 @@ _data = {
 &"fade_to_normal": SubResource("Animation_ybq6y")
 }
 
-[node name="Node3D" type="Node3D" unique_id=150514529]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1uel"]
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 2.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.0
+scale_max = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q6mp"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.078431375)
+
+[sub_resource type="SphereMesh" id="SphereMesh_10clc"]
+material = SubResource("StandardMaterial3D_8q6mp")
+
+[node name="Node3D2" type="Node3D" unique_id=150514529]
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_cve17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.144, 0.98003685, 0)
@@ -343,3 +358,22 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScene" unique_id=1042743146]
 root_node = NodePath("../ColorRect")
 libraries/ = SubResource("AnimationLibrary_ac42p")
+
+[node name="Control2" parent="." unique_id=1345859192 groups=["merchantUI"] instance=ExtResource("6_ac42p")]
+visible = false
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=316221731]
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_e1uel")
+draw_pass_1 = SubResource("SphereMesh_10clc")
+
+[node name="spawn" type="Marker3D" parent="." unique_id=1584563820 groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.052, 1, 0)
+
+[node name="stop" type="Marker3D" parent="." unique_id=1391886912 groups=["stop"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.997, 1, -3.888)
+
+[node name="leave" type="Marker3D" parent="." unique_id=1800184204 groups=["leave"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.409, 1, 0)

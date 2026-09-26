@@ -44,8 +44,8 @@ var names = {
 		2: "Winged Sandals"
 	},
 	"fishing magnet": {
-		0: "fishing magnet",
-		1: "electromagnet",
+		0: "wire-guidance system",
+		1: "wire-guidance system",
 		2: "wire-guidance system"
 	},	
 }
@@ -76,7 +76,7 @@ var descriptions = {
 		2: "+75% Speed"
 	},
 	"fishing magnet": {
-		0: "fishing magnet",
+		0: "Pitchfork automatically targets enemies",
 		1: "electromagnet",
 		2: "wire-guidance system"
 	},	

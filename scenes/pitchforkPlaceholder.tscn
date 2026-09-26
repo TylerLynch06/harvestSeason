@@ -16,7 +16,7 @@ mesh = NodePath("MeshInstance3D")
 angleDecreasePerSecond = 30.0
 damage = 50.0
 lifetime = 5.0
-projectile_speed = 50.0
+projectile_speed = 35.0
 hitbox = NodePath("Area3D")
 pivot = NodePath("MeshInstance3D")
 
@@ -36,5 +36,8 @@ shape = SubResource("BoxShape3D_vquck")
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1776199015]
+transform = Transform3D(0.70710677, -0.5930297, 0.38511792, 0, 0.544639, 0.8386706, -0.70710677, -0.5930297, 0.38511792, 4, 7, 4)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

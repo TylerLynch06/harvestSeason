@@ -15,6 +15,7 @@ var reboundsRemaining = 0
 
 func _ready():
 	super._ready()
+	$Camera3D.make_current()
 	angleDecreasePerSecond = deg_to_rad(angleDecreasePerSecond)
 	get_node("Area3D").body_entered.connect(stickInGround)
 	print(PerkHandler.perks.get("fishing magnet"))
@@ -35,6 +36,7 @@ func calcVelocity(_delta):
 		var _velocity = dirVector* projectile_speed + Vector3.DOWN * simulatedGravityStrength
 		#global_position += dirVector
 		pivot.rotation.x += angleDecreasePerSecond * _delta
+		
 		return _velocity
 	else:
 		return Vector3.ZERO

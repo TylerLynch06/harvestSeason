@@ -96,6 +96,7 @@ grow_vertical = 2
 script = ExtResource("1_qkhem")
 
 [node name="perkMenu" type="Control" parent="." unique_id=1142948155]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,7 +154,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=673226360]
 layout_mode = 3
@@ -258,7 +259,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=663544037]
 layout_mode = 3
@@ -364,7 +365,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=2012672118]
 layout_mode = 3
@@ -470,7 +471,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=719505559]
 layout_mode = 3
@@ -581,7 +582,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490]
 layout_mode = 3
@@ -687,7 +688,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208]
 layout_mode = 3
@@ -793,7 +794,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710]
 layout_mode = 3
@@ -899,7 +900,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268]
 layout_mode = 3

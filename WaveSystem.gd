@@ -10,7 +10,7 @@ var currentSeasonIndex = 0
 
 var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
 			preload("res://scenes/snowman.tscn")]
-
+var merchant = preload("res://scenes/merchant.tscn")
 var doSpawn = true
 var remainingEnemyCount = 0
 var WAVE_INTERMISSION_TIME = 5
@@ -30,7 +30,6 @@ static var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	newWave()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !transitionHandler:
@@ -92,6 +91,7 @@ func getRemainingEnemies():
 		return 0
 		
 func newWave():
+	merchantArrives()
 	currentSpawnPoints = totalWaveSpawnPoints + BASE_WAVE_INCREMENT
 	currentSpawnPoints *= BASE_WAVE_INCREMENT_FACTOR
 	currentSpawnPoints = floor(currentSpawnPoints)
@@ -107,3 +107,7 @@ func calculateSpawnPoolProbabilities():
 		weightArray.append((1.0/tempEnemy.SPAWN_VALUE) * tempEnemy.SPAWN_PROBABILITY_FACTOR)
 		tempEnemy.free()
 	return PackedFloat32Array(weightArray)
+
+func merchantArrives():
+	var merchantInstance = merchant.instantiate()
+	get_tree().root.add_child.call_deferred(merchantInstance)

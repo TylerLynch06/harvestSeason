@@ -14,7 +14,7 @@ func _ready() -> void:
 func collect():
 	collected = true
 	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(4).timeout
 	cash()
 	
 func _physics_process(delta: float) -> void:

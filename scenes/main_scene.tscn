@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://btbtqrjcorwcs" path="res://environment/environmentAssets/glTF/DeadTree_4.gltf" id="26_8dxha"]
 [ext_resource type="ArrayMesh" uid="uid://bktgjcbbi5wnh" path="res://environment/Fire by Jakob Hippe - 1QpMTUO7P-G/model.obj" id="27_j4epa"]
 [ext_resource type="PackedScene" uid="uid://m4x7f3cfhbx4" path="res://scenes/merchant.tscn" id="28_k3g67"]
+[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="29_4bgka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lercn"]
 sky_top_color = Color(0.19049764, 0.006269656, 0.13669223, 1)
@@ -317,7 +318,7 @@ albedo_color = Color(0.7607843, 0.6627451, 0.45882353, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q18l"]
 albedo_color = Color(0.7607843, 0.6627451, 0.45882353, 1)
 
-[node name="Node3D" type="Node3D" unique_id=412550460]
+[node name="Node3D2" type="Node3D" unique_id=412550460]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=344648526]
 environment = SubResource("Environment_sbtqg")
@@ -1059,3 +1060,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2087355, 0, 0)
 
 [node name="MerchantSpawn" type="Marker3D" parent="." unique_id=438535847 groups=["spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.698296, 0, 0)
+
+[node name="Control2" parent="." unique_id=1345859192 groups=["merchantUI"] instance=ExtResource("29_4bgka")]
+visible = false
+offset_top = -3.0
+offset_bottom = -3.0
