@@ -9,7 +9,7 @@
 [node name="Projectile" type="Node3D" unique_id=237092752 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_mjho0")
 lifetime = 5.0
-projectile_speed = 5.0
+projectile_speed = 3.0
 hitbox = NodePath("hitbox")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=573548015]
