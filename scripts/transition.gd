@@ -9,6 +9,7 @@ func _ready():
 	await get_tree().physics_frame
 	color_rect.visible = false
 	animation_player.animation_finished.connect(_on_animation_finished)
+	fade_to_normal()
 	
 func _on_animation_finished(anim_name):
 	if anim_name == "fade_to_black":
