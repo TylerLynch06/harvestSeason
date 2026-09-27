@@ -128,6 +128,7 @@ func _ready() -> void:
 	#upgrade("agricultural bank")
 	#activate("armour")
 	#activate("platinum card")
+	
 func activate(perkName):
 	if perks.get(perkName) == -1 and  !(perkName in corruptedPerks):
 		##Activate perks
