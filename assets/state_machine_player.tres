@@ -27,6 +27,9 @@ stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwc7v"]
+animation = &"UAL/Death01"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsjk6"]
 animation = &"UAL/LayToIdle"
 
@@ -164,6 +167,8 @@ states/attack_2/node = SubResource("AnimationNodeAnimation_h8rk8")
 states/attack_2/position = Vector2(794.7078, 88.71585)
 states/attack_3/node = SubResource("AnimationNodeAnimation_oqo60")
 states/attack_3/position = Vector2(724.7078, 171.29327)
+states/death/node = SubResource("AnimationNodeAnimation_pwc7v")
+states/death/position = Vector2(563.02, 187.13406)
 states/getup/node = SubResource("AnimationNodeAnimation_rsjk6")
 states/getup/position = Vector2(879.02, -165.33334)
 states/idle/node = SubResource("AnimationNodeAnimation_en0jt")
@@ -175,4 +180,4 @@ states/roll/position = Vector2(306.6667, 2.6666718)
 states/run/node = SubResource("AnimationNodeAnimation_56xj2")
 states/run/position = Vector2(449.7778, -75.333336)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_56xj2"), "idle", "roll", SubResource("AnimationNodeStateMachineTransition_twwqp"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_8q8vd"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_xk2u8"), "roll", "idle", SubResource("AnimationNodeStateMachineTransition_o18i6"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_bchpq"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_78bvt"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_8t3av"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_2a2tb"), "idle", "attack_2", SubResource("AnimationNodeStateMachineTransition_h8rk8"), "idle", "attack_3", SubResource("AnimationNodeStateMachineTransition_oqo60"), "attack_3", "idle", SubResource("AnimationNodeStateMachineTransition_yr754"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_oprk7"), "roll", "run", SubResource("AnimationNodeStateMachineTransition_w5j5w"), "run", "attack_2", SubResource("AnimationNodeStateMachineTransition_cbf1i"), "run", "attack_3", SubResource("AnimationNodeStateMachineTransition_4vfid"), "idle", "knockback", SubResource("AnimationNodeStateMachineTransition_rsjk6"), "knockback", "getup", SubResource("AnimationNodeStateMachineTransition_pwc7v"), "getup", "idle", SubResource("AnimationNodeStateMachineTransition_l1qoa"), "run", "knockback", SubResource("AnimationNodeStateMachineTransition_sqkwr"), "attack_1", "knockback", SubResource("AnimationNodeStateMachineTransition_ispdu"), "attack_2", "knockback", SubResource("AnimationNodeStateMachineTransition_x0w4h"), "attack_3", "knockback", SubResource("AnimationNodeStateMachineTransition_80c23")]
-graph_offset = Vector2(37.02005, -238.43079)
+graph_offset = Vector2(37.02005, 83.77421)

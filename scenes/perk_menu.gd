@@ -36,7 +36,7 @@ func _ready() -> void:
 		j = j + 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(PerkHandler.perks)
+	#print(PerkHandler.perks)
 	if Input.is_action_just_pressed("perk"):
 		menuToggle()
 	var current_time = Time.get_ticks_msec() / 1000.0

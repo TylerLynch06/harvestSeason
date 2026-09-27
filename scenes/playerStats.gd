@@ -40,11 +40,18 @@ class_name PlayerStats
 @onready var attackSpeed: float = BASE_ATTACK_FACTOR_SPEED
 @onready var attackCooldown: float = BASE_ATTACK_COOLDOWN
 @export var movementManager: MovementManager
+@export var weaponManager: WeaponManager
 
 @export var statsDebugText: Label
 
+@export var isDead = false
+
+@export var animTree: AnimationTree
+@onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/player/playback"]
+
 func _ready():
 	BASE_SICKLE_ROTATION_SPEED = deg_to_rad(BASE_SICKLE_ROTATION_SPEED)
+	
 func playerHit(damage: float, pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO):
 	health -= damage
 	if pushForce!=0 and hitPos != Vector3.ZERO:
@@ -53,6 +60,12 @@ func playerHit(damage: float, pushForce: int = 0, hitPos: Vector3 = Vector3.ZERO
 	
 func _process(delta: float):
 	alterDebugText()
+	if health <= 0 and !isDead:
+		isDead = true
+		#movementManager.queue_free()
+		#weaponManager.queue_free()
+		stateMachine.travel("death")
+		GameoverManager.gameover()
 	
 func alterDebugText():
 	statsDebugText.text = "STATS_DATA\nplayer_health: "+str(health) + "\nwheat: "+str(Economy.wheat)

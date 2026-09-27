@@ -50,7 +50,7 @@ func _ready() -> void:
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	print(attackCooldownTimer)
+	#print(attackCooldownTimer)
 	animTree.set("parameters/move/TimeScale/scale", BASE_WALK_ANIM_SPD_FACTOR*moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	##print(!playerInRange(), !isAttacking)
-	if !isSpawning:
+	if !isSpawning and !GameoverManager.isGameover:
 		trackingVelocity = Vector3.ZERO
 		if !isDead:
 			if !isTakingDamage or isUnstoppable:
@@ -107,7 +107,11 @@ func calculateDirVector(_position):
 	return (_position - position).normalized()
 
 func getNextMovementPosition():
-	navigationAgent.target_position = player.position 
+	if GameoverManager.isGameover:
+		return null
+	if not is_instance_valid(player):
+		return null
+	navigationAgent.target_position = player.position
 	return navigationAgent.get_next_path_position()
 	
 func rotateToTarget(delta):

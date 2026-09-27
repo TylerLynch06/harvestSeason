@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_cve17"]
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="2_cve17"]
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
-[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
+[ext_resource type="PackedScene" uid="uid://7qjvcp3bia46" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_an527"]

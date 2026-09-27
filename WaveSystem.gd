@@ -6,7 +6,7 @@ var BASE_WAVE_INCREMENT_FACTOR = 1.1
 var currentWave: int = 0
 ##0:Autumn, 1: Winter, etc...
 var currentSeasonIndex = 0
-@onready var spawnNodes = get_tree().get_nodes_in_group("spawnArea")
+@onready var spawnNodes: Array[Node]
 
 var enemies = [preload("res://assets/animations/res_files/pumpkin_head.tscn"),
 			preload("res://scenes/snowman.tscn"),
@@ -40,6 +40,8 @@ static var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	newWave()
+	loadSpawnNodes()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	merchantPresent = get_tree().get_nodes_in_group("merchant") != []
@@ -103,6 +105,21 @@ func spawnEnemy(_enemy : PackedScene):
 	currentSpawnPoints -= enemyInstance.SPAWN_VALUE 
 	get_tree().root.add_child.call_deferred(enemyInstance)
 
+func reset():
+	loadSpawnNodes()
+	currentUnlockedEnemyIndex = 0
+	currentWave = 0
+	currentSpawnPoints = 0
+	totalWaveSpawnPoints = 0
+	currentSeasonIndex = 0
+	changingSeason = false
+	isFading = false
+	inIntermission = false
+	doSpawn = true
+	waveIntermissionTimer = WAVE_INTERMISSION_TIME
+	waveFinishCheckTimer = WAVE_FINISH_CHECK_INTERVAL
+	newWave()
+
 func getRandomSpawnNode():
 	var nodeIndex = rng.randi_range(0, 7)
 	if !spawnNodes:
@@ -139,3 +156,10 @@ func merchantArrives():
 		Economy.wheat += round(PerkHandler.progression["agricultural bank"][PerkHandler.perks["agricultural bank"]] * Economy.wheat)
 	var merchantInstance = merchant.instantiate()
 	get_tree().root.add_child.call_deferred(merchantInstance)
+
+##Pumpkiung will always spawn on round 2
+#func spawnWaveSpecificEenemies():
+	#if currentWave == 2:
+		
+func loadSpawnNodes():
+	spawnNodes = get_tree().get_nodes_in_group("spawnArea")

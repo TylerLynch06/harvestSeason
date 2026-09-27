@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 func doublePrice():
 		$Label3.text = str(int($Label3.text)*2)
+		
 func setTo(picked):
 	if picked:
 		if PerkHandler.perks[picked] < 2:

@@ -59,6 +59,12 @@ func placeScene():
 	
 	if currentLevel:
 		currentLevel.queue_free()
-	
+
+func reset():
+	currentSceneIndex = 1
+	nextToLoad = seasonSequence[currentSceneIndex]
+	isNextSceneLoaded = false
+	loadingScene = false
+	timeSinceLoadStart = 0.0
 
 		#get_tree().get_root()

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cvqg8aq7e1hp2"]
+[gd_scene format=3 uid="uid://7qjvcp3bia46"]
 
 [ext_resource type="Material" uid="uid://vgb53aw6ea06" path="res://pixeler.tres" id="1_bo71u"]
 [ext_resource type="Script" uid="uid://bo8cuad18t3vt" path="res://scenes/merchantTradingUI.gd" id="1_onuwm"]

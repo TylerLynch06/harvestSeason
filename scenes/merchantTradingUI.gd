@@ -44,10 +44,11 @@ func generateNewStore():
 		slots[i].get_node("CenterContainer/SubViewportContainer/SubViewport/Control").setTo(perkPicked)
 		slots[i].show()
 		currentStorePerks.append(perkPicked)
-		print(currentStorePerks)
-	print(currentStorePerks)
-	print(perksToChoose)
-	print(perkBackup)
+		#print(currentStorePerks)
+	#print(currentStorePerks)
+	#print(perksToChoose)
+	#print(perkBackup)
+	
 func slideAcross():
 	$Store.global_position = Vector2(-1100,100)
 	var tween := create_tween()
@@ -55,6 +56,7 @@ func slideAcross():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property($Store, "global_position", Vector2(175,100), 1.0)
 	tween.set_ignore_time_scale(true)
+	
 func killTween():
 	tween = create_tween()
 	tween.kill()
@@ -65,6 +67,7 @@ func reloadStore():
 
 
 func _on_button_button_down1() -> void:
+	print((((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod)
 	if Economy.wheat >= (((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod:
 		if 	PerkHandler.perks[currentStorePerks[0]]+1 < 3:
 			$Store/VBoxContainer/HBoxContainer/Control2.hide()
@@ -73,7 +76,7 @@ func _on_button_button_down1() -> void:
 			priceMod = priceMod*2
 			if PerkHandler.perks[currentStorePerks[0]] == -1:
 				PerkHandler.activate(currentStorePerks[0])
-				print((((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod)
+				#print((((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod)
 				Economy.wheat -= (((PerkHandler.perks[currentStorePerks[0]]+1)*10)+10) * priceMod
 				priceMod = priceMod*2
 			else:
@@ -83,6 +86,7 @@ func _on_button_button_down1() -> void:
 			
 
 func _on_button_button_down2() -> void:
+	print((((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod)
 	if Economy.wheat >= (((PerkHandler.perks[currentStorePerks[1]]+1)*10)+10) * priceMod:
 		if 	PerkHandler.perks[currentStorePerks[1]]+1 < 3:
 			$Store/VBoxContainer/HBoxContainer/Control3.hide()
@@ -98,6 +102,7 @@ func _on_button_button_down2() -> void:
 	reloadStore()
 
 func _on_button_button_down3() -> void:
+	print((((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod)
 	if Economy.wheat >= (((PerkHandler.perks[currentStorePerks[2]]+1)*10)+10) * priceMod:
 		if 	PerkHandler.perks[currentStorePerks[2]]+1 < 3:
 			$Store/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control.doublePrice()
