@@ -8,6 +8,7 @@ var transitionHandler: Transition
 var gameoverScene = preload("res://scenes/gameoverScene.tscn")
 var gameoverInstance
 var fadingToBlack = false
+var enemiesKilled = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,6 +58,7 @@ func restartGame():
 	SeasonHandler.reset()
 	WaveSystem.reset()
 	##RESET PERKS
+	enemiesKilled = 0
 	
 func enemyWipe():
 	for enemy in get_tree().get_nodes_in_group("enemy"):

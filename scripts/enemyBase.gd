@@ -168,6 +168,7 @@ func death():
 	#print("add wheat equal " +str(WHEAT_ON_DEATH))
 	collision_layer = 0
 	collision_mask = 0
+	GameoverManager.enemiesKilled += 1
 
 func removeBody():
 	await get_tree().create_timer(5).timeout

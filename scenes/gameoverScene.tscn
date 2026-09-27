@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dfmw4adp4jvb4" path="res://pressRtorestart.png" id="1_gdoyn"]
 [ext_resource type="Texture2D" uid="uid://bgreb3m5qkp08" path="res://gameover.png" id="2_mh78i"]
+[ext_resource type="Script" uid="uid://bqxxx5hohtdc2" path="res://scenes/enemiesKilledLabel.gd" id="3_17v1h"]
 
 [node name="GameoverScene" type="Control" unique_id=135108269]
 z_index = 10
@@ -16,18 +17,26 @@ grow_vertical = 2
 layer = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=924788852]
-offset_left = -18.0
-offset_top = 134.0
-offset_right = 1902.0
-offset_bottom = 1135.0
+offset_left = -57.0
+offset_top = 133.7595
+offset_right = 1863.0
+offset_bottom = 1134.7595
 scale = Vector2(0.645, 0.645)
 texture = ExtResource("1_gdoyn")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=274620969]
-offset_left = 70.0
-offset_top = -22.0
-offset_right = 1990.0
-offset_bottom = 979.0
+offset_left = 31.0
+offset_top = -22.240494
+offset_right = 1951.0
+offset_bottom = 978.7595
 rotation = -0.05235988
 scale = Vector2(0.535, 0.535)
 texture = ExtResource("2_mh78i")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1198657269]
+offset_left = 13.0
+offset_top = 571.0
+offset_right = 139.0
+offset_bottom = 594.0
+text = "ENEMIES KILLED: "
+script = ExtResource("3_17v1h")
