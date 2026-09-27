@@ -1,4 +1,5 @@
 extends Enemy
+class_name RangedEnemy
 
 @export var debugHitbox: Area3D = null
 @export var projectile: PackedScene

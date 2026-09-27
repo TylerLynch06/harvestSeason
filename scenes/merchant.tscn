@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://m4x7f3cfhbx4"]
 
 [ext_resource type="Script" uid="uid://c0e2j0ewqdo58" path="res://scenes/merchant_behaviour.gd" id="1_0gj23"]
-[ext_resource type="PackedScene" path="res://scenes/cart.tscn" id="1_7rnkl"]
+[ext_resource type="PackedScene" uid="uid://cbnjxoodmnxde" path="res://scenes/cart.tscn" id="1_7rnkl"]
 [ext_resource type="AnimationLibrary" uid="uid://btt2oohy0otdf" path="res://assets/animations/animation_libs/humanoid_animations.tres" id="2_1xj0k"]
-[ext_resource type="PackedScene" path="res://scenes/pullingGuy.tscn" id="3_0gj23"]
+[ext_resource type="PackedScene" uid="uid://bbn4qc755i6ii" path="res://scenes/pullingGuy.tscn" id="3_0gj23"]
 [ext_resource type="Script" uid="uid://calmo4q0ay8yv" path="res://scenes/area_3d.gd" id="4_0gj23"]
 [ext_resource type="Texture2D" uid="uid://b8omcs18ccmwd" path="res://assets/pixil-frame-0.png" id="6_krsg3"]
 [ext_resource type="Texture2D" uid="uid://jv0fdu10w6ri" path="res://assets/chain_samples.png" id="7_xp888"]
@@ -7509,7 +7509,7 @@ texture = ExtResource("7_xp888")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=188510632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9033313)
-amount = 128
+amount = 32
 process_material = SubResource("ParticleProcessMaterial_10clc")
 draw_passes = 3
 draw_pass_1 = SubResource("SphereMesh_e8yhy")

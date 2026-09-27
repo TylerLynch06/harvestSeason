@@ -50,6 +50,7 @@ func _ready() -> void:
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
+	print(attackCooldownTimer)
 	animTree.set("parameters/move/TimeScale/scale", BASE_WALK_ANIM_SPD_FACTOR*moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
@@ -149,15 +150,15 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		
 func death():
 	self.remove_from_group("enemy")
+	stateMachine.travel("death")
+	removeBody()
 	for i in range(WHEAT_ON_DEATH):
 		create_wheat()
 		await get_tree().create_timer(0.004).timeout
 	#print("add wheat equal " +str(WHEAT_ON_DEATH))
-	stateMachine.travel("death")
 	collision_layer = 0
 	collision_mask = 0
-	removeBody()
-	
+
 func removeBody():
 	await get_tree().create_timer(5).timeout
 	queue_free()
