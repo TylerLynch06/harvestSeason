@@ -44,6 +44,8 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if GameoverManager.isGameover:
+		return
 	merchantPresent = get_tree().get_nodes_in_group("merchant") != []
 	if !transitionHandler:
 		if get_tree().get_nodes_in_group("transition"):

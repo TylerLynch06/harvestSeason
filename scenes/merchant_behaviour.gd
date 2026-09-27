@@ -12,6 +12,7 @@ func _ready() -> void:
 	self.global_position = spawn.global_position
 	$Node3D/cart.rotation.x = deg_to_rad(20)
 	get_tree().get_first_node_in_group("merchantUI").generateNewStore()
+	
 func _physics_process(delta: float) -> void:
 	if stage == "ToStop":
 		$GPUParticles3D.emitting = true
