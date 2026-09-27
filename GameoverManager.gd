@@ -57,6 +57,7 @@ func restartGame():
 		gameoverInstance.free()
 	SeasonHandler.reset()
 	WaveSystem.reset()
+	PerkHandler.resetPerks()
 	##RESET PERKS
 	enemiesKilled = 0
 	

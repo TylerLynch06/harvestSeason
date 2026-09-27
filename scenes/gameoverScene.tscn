@@ -34,9 +34,9 @@ scale = Vector2(0.535, 0.535)
 texture = ExtResource("2_mh78i")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1198657269]
-offset_left = 13.0
-offset_top = 571.0
-offset_right = 139.0
-offset_bottom = 594.0
+offset_left = 507.0
+offset_top = 549.0
+offset_right = 641.0
+offset_bottom = 572.0
 text = "ENEMIES KILLED: "
 script = ExtResource("3_17v1h")
