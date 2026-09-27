@@ -122,11 +122,12 @@ var descriptions = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	activate("agricultural bank")
-	upgrade("agricultural bank")
-	upgrade("agricultural bank")
-	activate("armour")
-	activate("platinum card")
+	pass
+	#activate("agricultural bank")
+	#upgrade("agricultural bank")
+	#upgrade("agricultural bank")
+	#activate("armour")
+	#activate("platinum card")
 func activate(perkName):
 	if perks.get(perkName) == -1 and  !(perkName in corruptedPerks):
 		##Activate perks

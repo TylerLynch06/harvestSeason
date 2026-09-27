@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0e2j0ewqdo58" path="res://scenes/merchant_behaviour.gd" id="1_0gj23"]
 [ext_resource type="PackedScene" uid="uid://cbnjxoodmnxde" path="res://scenes/cart.tscn" id="1_7rnkl"]
 [ext_resource type="AnimationLibrary" uid="uid://btt2oohy0otdf" path="res://assets/animations/animation_libs/humanoid_animations.tres" id="2_1xj0k"]
+[ext_resource type="AudioStream" uid="uid://cvr0nm4s6qsk0" path="res://SFX/merchantArrival.mp3" id="2_m1kdm"]
 [ext_resource type="PackedScene" uid="uid://bbn4qc755i6ii" path="res://scenes/pullingGuy.tscn" id="3_0gj23"]
 [ext_resource type="Script" uid="uid://calmo4q0ay8yv" path="res://scenes/area_3d.gd" id="4_0gj23"]
 [ext_resource type="Texture2D" uid="uid://b8omcs18ccmwd" path="res://assets/pixil-frame-0.png" id="6_krsg3"]
@@ -6974,23 +6975,24 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wsgf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghsth"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.06666667)
 
 [sub_resource type="SphereMesh" id="SphereMesh_e8yhy"]
-material = SubResource("StandardMaterial3D_1wsgf")
+material = SubResource("StandardMaterial3D_ghsth")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mq3ql"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olu2c"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_guyfr"]
-material = SubResource("StandardMaterial3D_mq3ql")
+material = SubResource("StandardMaterial3D_olu2c")
 height = 0.5
 
 [node name="Node3D2" type="CharacterBody3D" unique_id=1713954688]
 script = ExtResource("1_0gj23")
+arrivalSfx = ExtResource("2_m1kdm")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1178559197]
 

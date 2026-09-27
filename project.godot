@@ -22,6 +22,7 @@ PerkHandler="*uid://8d6rkhtlgpu5"
 SeasonHandler="*uid://c3iclu3jddpkp"
 WaveSystem="*uid://sa05cupgn0ob"
 GameoverManager="*uid://b51f36awhjn5s"
+SoundManager="*uid://dfgq72aa7h5p3"
 
 [display]
 

@@ -3,6 +3,7 @@ var collected = false
 var speed = 400
 var acceleraition = 5
 var player
+@export var sfx: AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,7 @@ func spawn(type):
 	if type == "boss":
 		self.apply_impulse(Vector3(randi_range(0,7),10,randi_range(0,7)))
 		self.angular_velocity.y = 7220
+
 func collect():
 	collected = true
 	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
@@ -30,6 +32,7 @@ func cash():
 	if collected == true:
 		Economy.wheat += 1
 		$GPUParticles3D.fire()
+		SoundManager.playSfx(sfx)
 		self.queue_free()
 		
 		

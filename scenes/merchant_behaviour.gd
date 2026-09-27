@@ -5,7 +5,10 @@ var leave : Marker3D
 var stop : Marker3D
 var stage = "ToStop"
 
+@export var arrivalSfx: AudioStream
+
 func _ready() -> void:
+	SoundManager.playSfx(arrivalSfx)
 	spawn = get_tree().get_first_node_in_group("spawn")
 	stop = get_tree().get_first_node_in_group("stop")
 	leave = get_tree().get_first_node_in_group("leave")

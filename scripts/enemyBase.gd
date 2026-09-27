@@ -10,6 +10,9 @@ extends Stats
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 @export var attackRange : Area3D
 @export var physBox: CollisionShape3D
+@export var takeDamageSfx: AudioStream = null
+@export var deathSfx: AudioStream = null
+@export var attackSfx: AudioStream = null
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -137,6 +140,8 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 	if invulTimer <= 0:
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
+		if takeDamageSfx:
+			SoundManager.playSfx(takeDamageSfx,Vector2.ZERO,-0.5)
 		#print(health)3dw
 		if !isTakingDamage and !isUnstoppable:
 			stateMachine.travel("hit")
@@ -153,6 +158,7 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		currentPushVelocity = pushDir * pushForce
 		
 func death():
+	SoundManager.playSfx(deathSfx)
 	self.remove_from_group("enemy")
 	stateMachine.travel("death")
 	removeBody()
@@ -182,6 +188,8 @@ func weaponLeftBody():
 	isTakingDamage = false
 
 func attack():
+	if attackSfx:
+		SoundManager.playSfx(attackSfx)
 	nextMove = movePool.rollNextMove()
 	if !isAttacking:
 		##print("ATTACK")

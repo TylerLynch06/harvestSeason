@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c1cfnnqvdteuh"]
 
+[ext_resource type="Script" uid="uid://bbemd4mkyxap" path="res://playMusic.gd" id="1_ac42p"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_cve17"]
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="2_cve17"]
+[ext_resource type="AudioStream" uid="uid://c2cvptpmugeh4" path="res://SFX/chimimin-a-goofy-and-silly-medieval-song-161310.mp3" id="2_gsvbo"]
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
 [ext_resource type="PackedScene" uid="uid://7qjvcp3bia46" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
@@ -102,6 +104,8 @@ albedo_color = Color(1, 1, 1, 0.078431375)
 material = SubResource("StandardMaterial3D_8q6mp")
 
 [node name="Node3D2" type="Node3D" unique_id=150514529]
+script = ExtResource("1_ac42p")
+bgMusic = ExtResource("2_gsvbo")
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_cve17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.144, 0.98003685, 0)

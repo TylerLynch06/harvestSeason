@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bgb75cwcqbmmb" path="res://VoxelFruitsAndVegetables/OBJs/Corn-0.obj" id="1_3r7vm"]
 [ext_resource type="Script" uid="uid://cihdk37o1sutd" path="res://scenes/wheat_pickup.gd" id="1_dcp1i"]
+[ext_resource type="AudioStream" uid="uid://ch8wl70u3cqa0" path="res://SFX/coin.mp3" id="2_ifs4a"]
 [ext_resource type="Script" uid="uid://c6bhjo45t14s5" path="res://scripts/wheat_collect_particles.gd" id="3_2hjst"]
 [ext_resource type="Script" uid="uid://w22jpjx80id" path="res://scripts/wheat_vanish_particles.gd" id="4_ifs4a"]
 
@@ -74,6 +75,7 @@ collision_layer = 40
 collision_mask = 40
 angular_velocity = Vector3(0, 0.08726646, 0)
 script = ExtResource("1_dcp1i")
+sfx = ExtResource("2_ifs4a")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=142738839]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
