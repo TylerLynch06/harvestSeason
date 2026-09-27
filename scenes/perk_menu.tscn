@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://bixjce1j0hjwc" path="res://scenes/perkTEST.gd" id="6_q3uw0"]
 [ext_resource type="Texture2D" uid="uid://cpy24ppetb3pu" path="res://assets/HUD/singleCard1.png" id="7_kvrcq"]
 [ext_resource type="Texture2D" uid="uid://cyhddcfjem4sq" path="res://assets/knight/knightlowres.png" id="8_fwij3"]
+[ext_resource type="Material" uid="uid://drqfte8pcrmky" path="res://Tpixeler.tres" id="8_pkjys"]
 [ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="9_8uofo"]
+[ext_resource type="Texture2D" uid="uid://8x3ii3s4gneg" path="res://CARD_IMAGES/armour0.jpg" id="9_webnw"]
 [ext_resource type="Texture2D" uid="uid://b071bj5ntq46g" path="res://assets/light.jpg" id="10_kvrcq"]
 [ext_resource type="Material" uid="uid://xwowhe3pvve7" path="res://redPart.tres" id="11_fwij3"]
 [ext_resource type="Material" uid="uid://dbi5mgk8k474l" path="res://goldPart.tres" id="12_8uofo"]
@@ -79,7 +81,6 @@ grow_vertical = 2
 script = ExtResource("1_qkhem")
 
 [node name="perkMenu" type="Control" parent="." unique_id=1142948155]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,7 +138,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=673226360]
 layout_mode = 3
@@ -163,6 +164,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=914283870]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -173,6 +175,7 @@ offset_bottom = 134.0
 scale = Vector2(0.73544955, 1.3808618)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("9_webnw")
 
 [node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=386608856]
 custom_maximum_size = Vector2(-1, 30)
@@ -181,6 +184,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -209,11 +213,11 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1841241723]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1468696371]
 process_mode = 3
 position = Vector2(110, 163)
 texture = ExtResource("10_kvrcq")
-process_material = ExtResource("11_fwij3")
+process_material = ExtResource("12_8uofo")
 
 [node name="Control2" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer" unique_id=462767391]
 custom_minimum_size = Vector2(220, 308)
@@ -241,7 +245,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=663544037]
 layout_mode = 3
@@ -267,6 +271,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1644486821]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -287,7 +292,6 @@ offset_left = 28.0
 offset_top = 223.0
 offset_right = 188.0
 offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
 text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
 "
 autowrap_mode = 2
@@ -346,7 +350,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=2012672118]
 layout_mode = 3
@@ -372,6 +376,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1432924070]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -415,6 +420,7 @@ offset_left = 20.0
 offset_top = 167.0
 offset_right = 209.0
 offset_bottom = 207.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -452,7 +458,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=719505559]
 layout_mode = 3
@@ -478,6 +484,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=121307993]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -511,6 +518,7 @@ offset_left = 33.0
 offset_top = 12.0
 offset_right = 183.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
@@ -521,6 +529,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -563,7 +572,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490]
 layout_mode = 3
@@ -622,6 +631,7 @@ offset_left = 33.0
 offset_top = 12.0
 offset_right = 183.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
@@ -632,6 +642,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -669,7 +680,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208]
 layout_mode = 3
@@ -695,6 +706,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2042082784]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -728,6 +740,7 @@ offset_left = 33.0
 offset_top = 12.0
 offset_right = 183.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
@@ -738,6 +751,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -775,7 +789,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710]
 layout_mode = 3
@@ -801,6 +815,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1990224461]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -821,7 +836,6 @@ offset_left = 28.0
 offset_top = 223.0
 offset_right = 188.0
 offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
 text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
 "
 autowrap_mode = 2
@@ -834,6 +848,7 @@ offset_left = 33.0
 offset_top = 12.0
 offset_right = 183.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
@@ -844,6 +859,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
@@ -881,7 +897,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268]
 layout_mode = 3
@@ -907,6 +923,7 @@ layout_mode = 2
 texture = ExtResource("7_kvrcq")
 
 [node name="TextureRect2" type="TextureRect" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1093723839]
+material = ExtResource("8_pkjys")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -927,7 +944,6 @@ offset_left = 28.0
 offset_top = 223.0
 offset_right = 188.0
 offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
 text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
 "
 autowrap_mode = 2
@@ -940,6 +956,7 @@ offset_left = 33.0
 offset_top = 12.0
 offset_right = 183.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
@@ -950,6 +967,7 @@ offset_left = 21.0
 offset_top = 168.0
 offset_right = 210.0
 offset_bottom = 198.0
+theme_override_font_sizes/font_size = 28
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1

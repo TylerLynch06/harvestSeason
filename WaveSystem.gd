@@ -138,4 +138,5 @@ func merchantArrives():
 	if PerkHandler.perks["agricultural bank"] != -1:
 		Economy.wheat += round(PerkHandler.progression["agricultural bank"][PerkHandler.perks["agricultural bank"]] * Economy.wheat)
 	var merchantInstance = merchant.instantiate()
+	get_tree().get_first_node_in_group("merchantUI").generateNewStore()
 	get_tree().root.add_child.call_deferred(merchantInstance)

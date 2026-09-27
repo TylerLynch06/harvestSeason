@@ -16,7 +16,7 @@ func _ready() -> void:
 	DamageBar.value = stats.health
 
 	await get_tree().create_timer(0.45).timeout
-
+	damage_health(0)
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("perk"):
 		if visible == true:
@@ -31,7 +31,17 @@ func damage_health(damage: float) -> void:
 
 	# Start the timer so the damage bar follows afterward
 	timer.start()
+func add_health(damage: float) -> void:
+	print("Health: ", stats.health)
+	stats.health += damage
+	# Main bar immediately shows current health
+	value = stats.health
 
+	# Start the timer so the damage bar follows afterward
+	timer.start()
+func add_max_health(damage: float) -> void:
+	stats.MAX_HEALTH += 50
+	max_value = stats.MAX_HEALTH
 
 func _on_timer_timeout() -> void:
 	var tween := create_tween()

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvqg8aq7e1hp2"]
 
-[ext_resource type="Material" uid="uid://vgb53aw6ea06" path="res://pixeler.tres" id="1_bo71u"]
 [ext_resource type="Script" uid="uid://bo8cuad18t3vt" path="res://scenes/merchantTradingUI.gd" id="1_onuwm"]
+[ext_resource type="Material" uid="uid://drqfte8pcrmky" path="res://Tpixeler.tres" id="2_vlvfu"]
 [ext_resource type="Script" uid="uid://dtmwiltnn77gm" path="res://scenes/salecardInMerchant.gd" id="4_52sgd"]
 [ext_resource type="Texture2D" uid="uid://bc7gtlfleqbjv" path="res://assets/tray1.png" id="4_lovew"]
 [ext_resource type="Texture2D" uid="uid://cjr66rb1s7ov6" path="res://assets/dungeon_creatures/ui/slot.png" id="5_0wgsg"]
@@ -46,7 +46,7 @@ offset_bottom = 600.0
 pivot_offset = Vector2(750, 450)
 
 [node name="Tray" type="TextureRect" parent="Store" unique_id=176444519]
-material = ExtResource("1_bo71u")
+material = ExtResource("2_vlvfu")
 layout_mode = 0
 offset_left = -144.0
 offset_top = -213.0

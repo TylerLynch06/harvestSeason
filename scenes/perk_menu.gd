@@ -36,7 +36,7 @@ func _ready() -> void:
 		j = j + 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(PerkHandler.perks)
+	print(PerkHandler.currentPerks)
 	if Input.is_action_just_pressed("perk"):
 		menuToggle()
 	var current_time = Time.get_ticks_msec() / 1000.0
@@ -79,7 +79,7 @@ func refreshPerks():
 		hidePerk(cardSlots[7-i])
 		
 func loadPerk(perkData,level):
-	if perkData in PerkHandler.images.keys():
+	if perkData[0] in PerkHandler.images.keys():
 		level.get_node("CenterContainer/SubViewportContainer/SubViewport/Control/TextureRect2").texture = PerkHandler.images[perkData[0]][perkData[1]]
 	level.get_node("CenterContainer/SubViewportContainer").show()
 	level.get_node("CenterContainer/SubViewportContainer/SubViewport/Control/MarginContainer/TextureRect").texture = assetArray[perkData[1]]

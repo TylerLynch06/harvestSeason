@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 func cash():
 	if collected == true:
 		Economy.wheat += 1
-		$GPUParticles3D.fire()
+		if $GPUParticles3D:
+			$GPUParticles3D.fire()
 		self.queue_free()
 		
 		
