@@ -5,6 +5,8 @@ extends Enemy
 var hasHitPlayer = false
 var damaging = false
 
+@export var hitPlayerSfx: AudioStream = null
+
 @export var DO_PUSH_PLAYER = false
 @export var PUSH_FORCE = 1000
 
@@ -45,6 +47,7 @@ func damageInHitbox():
 	if playerInRange() and !hasHitPlayer and damaging:
 		var playerStats = player.get_node("Stats") as PlayerStats
 		hasHitPlayer = true
+		SoundManager.playSfx(hitPlayerSfx)
 		if DO_PUSH_PLAYER:
 			playerStats.playerHit(BASE_DAMAGE, PUSH_FORCE, global_position)
 		else:

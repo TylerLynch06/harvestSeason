@@ -10,6 +10,9 @@ extends Stats
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animTree["parameters/playback"]
 @export var attackRange : Area3D
 @export var physBox: CollisionShape3D
+@export var takeDamageSfx: AudioStream = null
+@export var deathSfx: AudioStream = null
+@export var attackSfx: AudioStream = null
 var isAttacking: bool = false
 var attackCooldownTimer: float = 0
 var player : CharacterBody3D
@@ -50,7 +53,7 @@ func _ready() -> void:
 	animTree.advance_expression_base_node = get_path()
 
 func _process(delta: float) -> void:
-	print(attackCooldownTimer)
+	#print(attackCooldownTimer)
 	animTree.set("parameters/move/TimeScale/scale", BASE_WALK_ANIM_SPD_FACTOR*moveSpeed/BASE_MOVE_SPEED)
 	animTree.set("parameters/attack/TimeScale/scale", attackSpeed)
 	attackCooldownTimer -= delta
@@ -83,7 +86,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	##print(!playerInRange(), !isAttacking)
-	if !isSpawning:
+	if !isSpawning and !GameoverManager.isGameover:
 		trackingVelocity = Vector3.ZERO
 		if !isDead:
 			if !isTakingDamage or isUnstoppable:
@@ -107,7 +110,11 @@ func calculateDirVector(_position):
 	return (_position - position).normalized()
 
 func getNextMovementPosition():
-	navigationAgent.target_position = player.position 
+	if GameoverManager.isGameover:
+		return null
+	if not is_instance_valid(player):
+		return null
+	navigationAgent.target_position = player.position
 	return navigationAgent.get_next_path_position()
 	
 func rotateToTarget(delta):
@@ -136,6 +143,9 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		if PerkHandler.perks["pesticide"] == 3:
 			health -= damage / 2
 		#print(health)3
+		if takeDamageSfx:
+			SoundManager.playSfx(takeDamageSfx,Vector2.ZERO,-0.5)
+		#print(health)
 		if !isTakingDamage and !isUnstoppable:
 			stateMachine.travel("hit")
 			isTakingDamage = true
@@ -155,6 +165,7 @@ func death():
 		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").add_health(100)
 	if PerkHandler.perks["good crystal"] == 3:
 		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(75)
+	SoundManager.playSfx(deathSfx)
 	self.remove_from_group("enemy")
 	stateMachine.travel("death")
 	removeBody()
@@ -164,6 +175,7 @@ func death():
 	#print("add wheat equal " +str(WHEAT_ON_DEATH))
 	collision_layer = 0
 	collision_mask = 0
+	GameoverManager.enemiesKilled += 1
 
 func removeBody():
 	await get_tree().create_timer(5).timeout
@@ -184,6 +196,8 @@ func weaponLeftBody():
 	isTakingDamage = false
 
 func attack():
+	if attackSfx:
+		SoundManager.playSfx(attackSfx)
 	nextMove = movePool.rollNextMove()
 	if !isAttacking:
 		##print("ATTACK")

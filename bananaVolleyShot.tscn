@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b06gw8aw5eaqi"]
 
 [ext_resource type="Script" uid="uid://d4nwen8fieenr" path="res://homingProjectile.gd" id="1_mjho0"]
+[ext_resource type="AudioStream" uid="uid://bd0if1uxwsjge" path="res://SFX/genericPlayHitSfx.mp3" id="2_8xyjq"]
 [ext_resource type="PackedScene" uid="uid://c7qowb62wney5" path="res://environment/environmentAssets/fruitsandvegetables/gltf/banana01.gltf" id="2_mjho0"]
 [ext_resource type="Script" uid="uid://4lav6jgy68s3" path="res://scripts/spinner.gd" id="3_8xyjq"]
 
@@ -11,6 +12,7 @@ script = ExtResource("1_mjho0")
 lifetime = 5.0
 projectile_speed = 3.0
 hitbox = NodePath("hitbox")
+impactSfx = ExtResource("2_8xyjq")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=573548015]
 transform = Transform3D(5.255, 0, 0, 0, 5.255, 0, 0, 0, 5.255, -0.10480094, 0.040623844, 0.048710287)

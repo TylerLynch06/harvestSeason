@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://c1cfnnqvdteuh"]
 
+[ext_resource type="Script" uid="uid://bbemd4mkyxap" path="res://playMusic.gd" id="1_ac42p"]
 [ext_resource type="PackedScene" uid="uid://bafx3h6fecvjp" path="res://scenes/player.tscn" id="1_cve17"]
 [ext_resource type="PackedScene" uid="uid://52wtwubusluh" path="res://environment/TheSeasonEnvironments/autumn.tscn" id="2_cve17"]
+[ext_resource type="AudioStream" uid="uid://c2cvptpmugeh4" path="res://SFX/chimimin-a-goofy-and-silly-medieval-song-161310.mp3" id="2_gsvbo"]
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
+[ext_resource type="PackedScene" uid="uid://7qjvcp3bia46" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
 [ext_resource type="Script" uid="uid://bww01eskujgl1" path="res://campfire.gd" id="6_gsvbo"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
@@ -107,6 +110,8 @@ height = 20.0
 radius = 4.0
 
 [node name="Node3D2" type="Node3D" unique_id=150514529]
+script = ExtResource("1_ac42p")
+bgMusic = ExtResource("2_gsvbo")
 
 [node name="Player" parent="." unique_id=270954550 instance=ExtResource("1_cve17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.144, 0.98003685, 0)
@@ -334,12 +339,14 @@ shape = SubResource("BoxShape3D_lalod")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="TransitionScene" type="CanvasLayer" parent="." unique_id=2097866567 node_paths=PackedStringArray("color_rect", "animation_player") groups=["transition"]]
+layer = 0
 script = ExtResource("5_17vm4")
 color_rect = NodePath("ColorRect")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="TransitionScene" unique_id=308440210]
 modulate = Color(1, 1, 1, 0)
+z_index = -5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -352,6 +359,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScene" unique_id=1042743146]
 root_node = NodePath("../ColorRect")
 libraries/ = SubResource("AnimationLibrary_ac42p")
+autoplay = &"fade_to_normal"
 
 [node name="Control2" parent="." unique_id=1345859192 groups=["merchantUI"] instance=ExtResource("6_ac42p")]
 visible = false

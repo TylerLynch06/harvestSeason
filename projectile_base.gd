@@ -9,6 +9,7 @@ var player: CharacterBody3D
 @export var projectile_speed: float
 @export var hitbox: Area3D
 @export var yLock = true
+@export var impactSfx: AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,4 +40,5 @@ func hit(area: Area3D):
 			stats.playerHit(10)
 		else:
 			stats.playerHit(2)
+		SoundManager.playSfx(impactSfx)
 		queue_free()

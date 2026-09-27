@@ -23,8 +23,10 @@ mouse_filter = 2
 [node name="Bar" type="TextureProgressBar" parent="HEALTH" unique_id=428272657]
 z_index = 6
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 11.999999
+offset_right = 136.0
+offset_bottom = 52.0
 scale = Vector2(2.845343, 2.812903)
 max_value = 500.0
 value = 500.0
@@ -63,18 +65,18 @@ script = ExtResource("5_f6qnu")
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=1497711053]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 120.0
+offset_left = -6.0
+offset_top = 14.0
+offset_right = 114.0
+offset_bottom = 134.0
 texture = ExtResource("4_7hsmw")
 
 [node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1503921790]
 modulate = Color(0, 0, 0, 0.81960785)
 z_index = -1
 layout_mode = 0
-offset_left = 7.0
-offset_top = 2.0
-offset_right = 127.0
-offset_bottom = 122.0
+offset_right = 120.0
+offset_bottom = 120.0
 scale = Vector2(1.1, 1)
 texture = ExtResource("4_7hsmw")
 
@@ -85,10 +87,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -41.5
-offset_right = 68.5
-offset_bottom = 41.5
+offset_left = -109.0
+offset_top = -17.0
+offset_right = 63.5
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

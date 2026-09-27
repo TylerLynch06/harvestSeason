@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://j0amduliraky" path="res://wizard.gd" id="1_qvyc1"]
 [ext_resource type="PackedScene" uid="uid://b06gw8aw5eaqi" path="res://bananaVolleyShot.tscn" id="2_qvyc1"]
+[ext_resource type="AudioStream" uid="uid://1qvpj7riobmx" path="res://SFX/zapsplat_impacts_body_hit_stab_squelch_of_blood_006_90704.mp3" id="3_ckgsm"]
 [ext_resource type="Texture2D" uid="uid://ce8ccrihjot6y" path="res://scenes/the_green_wizard_gnome_n64_style_0.png" id="3_skbfb"]
+[ext_resource type="AudioStream" uid="uid://dyhn5s8ti86bh" path="res://SFX/pumpkingDeath.mp3" id="4_ej4wq"]
 [ext_resource type="PackedScene" uid="uid://c7qowb62wney5" path="res://environment/environmentAssets/fruitsandvegetables/gltf/banana01.gltf" id="4_qvyc1"]
 [ext_resource type="Script" uid="uid://yayaici066t4" path="res://enemyMovePool.gd" id="5_qvyc1"]
+[ext_resource type="AudioStream" uid="uid://dhmiemj8y7pm" path="res://SFX/wizard spell.mp3" id="5_tveqj"]
 [ext_resource type="Script" uid="uid://w22jpjx80id" path="res://scripts/wheat_vanish_particles.gd" id="6_u3hpd"]
 
 [sub_resource type="Animation" id="Animation_smj2v"]
@@ -1712,6 +1715,9 @@ animTree = NodePath("AnimationTree")
 animPlayer = NodePath("AnimationPlayer")
 attackRange = NodePath("AttackRange")
 physBox = NodePath("CollisionShape3D")
+takeDamageSfx = ExtResource("3_ckgsm")
+deathSfx = ExtResource("4_ej4wq")
+attackSfx = ExtResource("5_tveqj")
 movePool = NodePath("MovePool")
 BASE_HEALTH = 5.0
 BASE_MOVE_SPEED = 1.0

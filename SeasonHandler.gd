@@ -63,5 +63,12 @@ func placeScene():
 		Economy.wheat = Economy.wheat / 2
 	
 
+func reset():
+	currentSceneIndex = 1
+	nextToLoad = seasonSequence[currentSceneIndex]
+	isNextSceneLoaded = false
+	loadingScene = false
+	timeSinceLoadStart = 0.0
+
 		#get_tree().get_root()
 	get_tree().get_first_node_in_group("merchantUI").generateNewStore()

@@ -61,6 +61,11 @@ func generateNewStore():
 		slots[i].get_node("CenterContainer/SubViewportContainer/SubViewport/Control").show()
 		slots[i].get_node("CenterContainer/SubViewportContainer/SubViewport/Button").disabled = false
 		currentStorePerks.append(perkPicked)
+		#print(currentStorePerks)
+	#print(currentStorePerks)
+	#print(perksToChoose)
+	#print(perkBackup)
+	
 	$Control/PanelContainer/Label2.text = merchantDialogue.pick_random()
 	if $Control/PanelContainer/Label2.text == "Your greed sickens me. Do not come to me again until you get rid of some of those perks." and len(PerkHandler.currentPerks) < 8:
 		$Control/PanelContainer/Label2.text = "Good."
@@ -76,6 +81,7 @@ func slideAcross():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property($Store, "global_position", Vector2(175,100), 1.0)
 	tween.set_ignore_time_scale(true)
+	
 func killTween():
 	tween = create_tween()
 	tween.kill()
