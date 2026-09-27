@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 
 func setTo(picked, priceMod):
 	self.show()
+	if len(PerkHandler.currentPerks) > 7:
+		self.hide()
 	if picked:
 		if len(PerkHandler.currentPerks) < 8:
 			if !(picked in PerkHandler.corruptedPerks):
@@ -65,7 +67,6 @@ func setTo(picked, priceMod):
 					$TextureRect2.texture = PerkHandler.images[picked][3]
 					$MarginContainer/TextureRect.texture = card4
 					$Label4.text = ""
-
 		else:
 			self.hide()
 	else:

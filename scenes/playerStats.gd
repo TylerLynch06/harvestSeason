@@ -56,3 +56,10 @@ func _process(delta: float):
 	
 func alterDebugText():
 	statsDebugText.text = "STATS_DATA\nplayer_health: "+str(health) + "\nwheat: "+str(Economy.wheat)
+
+
+func _on_timer_timeout() -> void:
+	if PerkHandler.perks["dark crystal"] == 3:
+		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(8)
+	if PerkHandler.perks["good crystal"] == 3:
+		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").add_health(10)

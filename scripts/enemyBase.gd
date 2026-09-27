@@ -133,7 +133,9 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 	if invulTimer <= 0:
 		invulTimer = BASE_INVUL_ON_HIT
 		health -= damage
-		#print(health)3dw
+		if PerkHandler.perks["pesticide"] == 3:
+			health -= damage / 2
+		#print(health)3
 		if !isTakingDamage and !isUnstoppable:
 			stateMachine.travel("hit")
 			isTakingDamage = true
@@ -149,6 +151,10 @@ func takeDamage(damage: float, hitPos: Vector3 = Vector3.ZERO, pushForce: float 
 		currentPushVelocity = pushDir * pushForce
 		
 func death():
+	if PerkHandler.perks["dark crystal"] == 3:
+		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").add_health(100)
+	if PerkHandler.perks["good crystal"] == 3:
+		get_tree().get_first_node_in_group("HUD").get_node("HEALTH/Bar").damage_health(75)
 	self.remove_from_group("enemy")
 	stateMachine.travel("death")
 	removeBody()

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bny4wfrhok6sk" path="res://scenes/shop_perk.gd" id="1_4vh1m"]
 [ext_resource type="Texture2D" uid="uid://qlnpdrdpiulo" path="res://assets/HUD/singleCard4.png" id="2_4vh1m"]
+[ext_resource type="Material" uid="uid://drqfte8pcrmky" path="res://Tpixeler.tres" id="3_0slds"]
 [ext_resource type="Texture2D" uid="uid://cyhddcfjem4sq" path="res://assets/knight/knightlowres.png" id="3_dneux"]
 [ext_resource type="Texture2D" uid="uid://rwmh4gq1rkp1" path="res://assets/HUD/MoneyBar.png" id="4_hifqq"]
 [ext_resource type="Texture2D" uid="uid://b071bj5ntq46g" path="res://assets/light.jpg" id="5_eii5v"]
@@ -49,6 +50,7 @@ layout_mode = 2
 texture = ExtResource("2_4vh1m")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=914283870]
+material = ExtResource("3_0slds")
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 80)
 layout_mode = 0
@@ -60,30 +62,6 @@ scale = Vector2(0.73544955, 1.3808618)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_dneux")
-
-[node name="Label" type="Label" parent="." unique_id=386608856]
-custom_maximum_size = Vector2(-1, 30)
-layout_mode = 0
-offset_left = 19.0
-offset_top = 169.0
-offset_right = 209.0
-offset_bottom = 199.0
-text = "VENI VEDI VECI
-"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="." unique_id=1069852020]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=336512858]
 layout_mode = 0
@@ -106,13 +84,13 @@ text = "11"
 custom_minimum_size = Vector2(160, 100)
 custom_maximum_size = Vector2(160, 100)
 layout_mode = 0
-offset_left = 18.0
-offset_top = 188.0
-offset_right = 178.0
-offset_bottom = 288.0
+offset_left = 19.0
+offset_top = 193.00002
+offset_right = 179.0
+offset_bottom = 293.0
 scale = Vector2(1.206046, 0.972641)
 theme_override_colors/font_color = Color(1, 1, 0.22352941, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 15
 text = "<UPGRADES JERKIN>"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -123,3 +101,29 @@ position = Vector2(110, 163)
 emitting = false
 texture = ExtResource("5_eii5v")
 process_material = SubResource("ParticleProcessMaterial_0slds")
+
+[node name="Label2" type="Label" parent="." unique_id=409236391]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=732820966]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 165.0
+offset_right = 210.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
+text = "VENI VEDI VECI
+"
+horizontal_alignment = 1
+autowrap_mode = 2

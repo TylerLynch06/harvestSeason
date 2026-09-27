@@ -104,7 +104,7 @@ func movePlayer():
 		if weaponManager.currentSickleCharge > 0:
 			velocity *= stats.BASE_SICKLE_SPIN_MOVE_FACTOR
 	elif isRolling:
-		velocity = rollDirection * stats.BASE_ROLL_SPEED
+		velocity = rollDirection * stats.BASE_ROLL_SPEED * PerkHandler.progression["bells"][PerkHandler.perks["bells"]+1]
 		
 	if !isRecovering:
 		if !isBeingPushed:

@@ -35,5 +35,8 @@ func hit(area: Area3D):
 	if area.name == "hurtbox" and area.get_parent().is_in_group("player"):
 		var player = area.get_parent() as CharacterBody3D
 		var stats = player.get_node("Stats") as PlayerStats
-		stats.playerHit(10)
+		if PerkHandler.perks["armour"] != 2:
+			stats.playerHit(10)
+		else:
+			stats.playerHit(2)
 		queue_free()

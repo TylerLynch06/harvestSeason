@@ -28,7 +28,7 @@ func damage_health(damage: float) -> void:
 	stats.health -= damage
 	# Main bar immediately shows current health
 	value = stats.health
-
+	DamageBar.value = stats.health
 	# Start the timer so the damage bar follows afterward
 	timer.start()
 func add_health(damage: float) -> void:
@@ -36,13 +36,15 @@ func add_health(damage: float) -> void:
 	stats.health += damage
 	# Main bar immediately shows current health
 	value = stats.health
-
+	DamageBar.value = stats.health
+	if stats.health > stats.MAX_HEALTH:
+		stats.health = stats.MAX_HEALTH
 	# Start the timer so the damage bar follows afterward
 	timer.start()
 func add_max_health(damage: float) -> void:
-	stats.MAX_HEALTH += 50
+	stats.MAX_HEALTH += damage
 	max_value = stats.MAX_HEALTH
-
+	DamageBar.value = stats.health
 func _on_timer_timeout() -> void:
 	var tween := create_tween()
 	tween.tween_property(DamageBar, "value", stats.health, 0.3)\

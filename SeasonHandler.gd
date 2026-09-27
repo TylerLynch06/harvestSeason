@@ -59,6 +59,9 @@ func placeScene():
 	
 	if currentLevel:
 		currentLevel.queue_free()
+	if PerkHandler.perks["pesticide"] == 3:
+		Economy.wheat = Economy.wheat / 2
 	
 
 		#get_tree().get_root()
+	get_tree().get_first_node_in_group("merchantUI").generateNewStore()

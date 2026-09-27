@@ -26,7 +26,7 @@ func _ready():
 	if PerkHandler.perks.get("wire guidance") == 3:
 		reboundsRemaining = 100
 		PerkHandler.thrown = true
-		$MeshInstance3D/Camera3D.make_current()
+		$Node3D/Pitchfork/Camera3D.make_current()
 		$ColorRect2.show()
 		projectile_speed = 15
 		simulatedGravityStrength = 1.0
@@ -70,7 +70,7 @@ func rebound():
 	if nearestEnemy:
 		dirVector = (nearestEnemy.global_position - global_position).normalized()
 		pivot.rotation.y = atan2(dirVector.x,dirVector.z)
-		pivot.rotation.x = PI/2
+		#pivot.rotation.x = PI/2
 		position.y += 1
 		simulatedGravityStrength = 2
 		if stuckInGround:

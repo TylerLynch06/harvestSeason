@@ -81,6 +81,7 @@ grow_vertical = 2
 script = ExtResource("1_qkhem")
 
 [node name="perkMenu" type="Control" parent="." unique_id=1142948155]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,7 +139,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=673226360]
 layout_mode = 3
@@ -178,28 +179,18 @@ size_flags_vertical = 4
 texture = ExtResource("9_webnw")
 
 [node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=386608856]
-custom_maximum_size = Vector2(-1, 30)
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1069852020]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1011421136]
@@ -212,6 +203,18 @@ offset_right = 183.0
 offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1333860734]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control" unique_id=1468696371]
 process_mode = 3
@@ -245,7 +248,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=663544037]
 layout_mode = 3
@@ -307,16 +310,20 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1100443320]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1481099950]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control2" unique_id=424213753]
 process_mode = 3
@@ -350,7 +357,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=2012672118]
 layout_mode = 3
@@ -389,19 +396,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=642798928]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1400255113]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -413,17 +407,32 @@ offset_bottom = 42.0
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1537575588]
-custom_maximum_size = Vector2(-1, 40)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=846237015]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
-offset_left = 20.0
-offset_top = 167.0
-offset_right = 209.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 28
+offset_left = 21.0
+offset_top = 165.0
+offset_right = 210.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=51554274]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control3" unique_id=62747821]
 process_mode = 3
@@ -458,7 +467,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=719505559]
 layout_mode = 3
@@ -497,19 +506,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2078879708]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1676989668]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -522,17 +518,32 @@ theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=553181665]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=388489991]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=852496204]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer/Control4" unique_id=1727381969]
 process_mode = 3
@@ -572,7 +583,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport" unique_id=212806490]
 layout_mode = 3
@@ -610,19 +621,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=250426393]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=104319681]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -635,17 +633,32 @@ theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1927614683]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=613423252]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1163869105]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control" unique_id=1622044219]
 process_mode = 3
@@ -680,7 +693,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport" unique_id=1475163208]
 layout_mode = 3
@@ -719,19 +732,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1168452643]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-theme_override_font_sizes/font_size = 12
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1254171187]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -744,17 +744,32 @@ theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1789795401]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=703860872]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1486248151]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control2" unique_id=1606469531]
 process_mode = 3
@@ -789,7 +804,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport" unique_id=1138122710]
 layout_mode = 3
@@ -828,18 +843,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=560830450]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=163923696]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -852,17 +855,32 @@ theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=359767663]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2010729342]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=375842040]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control3" unique_id=1154961533]
 process_mode = 3
@@ -897,7 +915,7 @@ layout_mode = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(220, 308)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport" unique_id=304636268]
 layout_mode = 3
@@ -936,18 +954,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_fwij3")
 
-[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1747257518]
-custom_minimum_size = Vector2(160, 100)
-custom_maximum_size = Vector2(160, 100)
-layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 188.0
-offset_bottom = 323.0
-text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
-"
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=306847203]
 custom_minimum_size = Vector2(150, 30)
 custom_maximum_size = Vector2(150, 30)
@@ -960,17 +966,32 @@ theme_override_font_sizes/font_size = 24
 text = "7 - to sell"
 icon = ExtResource("9_8uofo")
 
-[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=1115031370]
-custom_maximum_size = Vector2(-1, 30)
+[node name="Label" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=2058035141]
+custom_minimum_size = Vector2(189, 50)
+custom_maximum_size = Vector2(189, 50)
 layout_mode = 0
 offset_left = 21.0
-offset_top = 168.0
+offset_top = 165.0
 offset_right = 210.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 25
 text = "VENI VEDI VECI
 "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4/CenterContainer/SubViewportContainer/SubViewport/Control" unique_id=564307697]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "take 10% less damage from non-armour piercing enemy attacks, lorem 
+"
+autowrap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perkMenu/VBoxContainer/HBoxContainer2/Control4" unique_id=1551786366]
 process_mode = 3
