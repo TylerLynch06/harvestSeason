@@ -7,6 +7,7 @@ var transitionHandler: Transition
 @export var mainScene = preload("res://enemySpawnNodes.tscn")
 var gameoverScene = preload("res://scenes/gameoverScene.tscn")
 var gameoverInstance
+var fadingToBlack = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,9 +20,12 @@ func _process(delta: float) -> void:
 		
 	if isInMainMenu:
 		if Input.is_action_just_pressed("space"):
+			fadingToBlack = true
+			transitionHandler.fade_to_black()
+		if fadingToBlack and transitionHandler.isFinished:
+			fadingToBlack = false
 			isInMainMenu = false
-			print("loading game")
-			restartGame()		
+			restartGame()
 		
 	if isGameover:
 		if !preparingGameReset:

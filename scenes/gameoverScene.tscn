@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bprj6moaunc36"]
 
+[ext_resource type="Texture2D" uid="uid://dfmw4adp4jvb4" path="res://pressRtorestart.png" id="1_gdoyn"]
+[ext_resource type="Texture2D" uid="uid://bgreb3m5qkp08" path="res://gameover.png" id="2_mh78i"]
+
 [node name="GameoverScene" type="Control" unique_id=135108269]
 z_index = 10
 layout_mode = 3
@@ -12,20 +15,19 @@ grow_vertical = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=94993259]
 layer = 2
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=144808050]
-z_index = 10
-offset_left = 497.0
-offset_top = 135.0
-offset_right = 686.0
-offset_bottom = 190.0
-theme_override_font_sizes/font_size = 40
-text = "YOU DIED"
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=924788852]
+offset_left = -18.0
+offset_top = 134.0
+offset_right = 1902.0
+offset_bottom = 1135.0
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("1_gdoyn")
 
-[node name="Label2" type="Label" parent="CanvasLayer" unique_id=2120202636]
-z_index = 10
-offset_left = 385.0
-offset_top = 447.0
-offset_right = 797.0
-offset_bottom = 502.0
-theme_override_font_sizes/font_size = 40
-text = "PRESS 'R' TO RESTART"
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=274620969]
+offset_left = 70.0
+offset_top = -22.0
+offset_right = 1990.0
+offset_bottom = 979.0
+rotation = -0.05235988
+scale = Vector2(0.535, 0.535)
+texture = ExtResource("2_mh78i")
