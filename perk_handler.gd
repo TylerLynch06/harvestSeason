@@ -26,7 +26,7 @@ var progression = {
 	"shoes" : [1.2,1.4,1.75],
 	"agricultural bank" : [0.03, 0.06,0.15],
 	"pesticide": [1,1.5],
-	"bells": [1,1.2,1.4,1.75]
+	"bells": [1,1.3,1.6,2]
 }
 
 var corruptedPerks = [
@@ -181,9 +181,9 @@ var descriptions = {
 		3: "50% damage increase, but you lose 50% of collected wheat at the end of a season"
 	},
 	"bells": {
-		0: "Roll distance increased 20%",
-		1: "Roll distance increased 40%",
-		2: "Roll distance increased 75%"
+		0: "Roll distance increased 30%",
+		1: "Roll distance increased 60%",
+		2: "Roll distance increased 100%"
 	},
 	"dark crystal": {
 		3: "lose 2% of your health every second, but you heal 20% per kill."
@@ -194,9 +194,10 @@ var descriptions = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	activate("armour")
-	activate("monsterhunter charm")
-	upgrade("monsterhunter charm")
+	await get_tree().create_timer(10).timeout
+	activate("bells")
+	upgrade("bells")
+	upgrade("bells")
 func resetPerks():
 	print("PERKS NOT RESET")
 func activate(perkName):

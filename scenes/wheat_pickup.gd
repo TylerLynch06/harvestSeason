@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 func cash():
 	if collected == true:
 		Economy.wheat += 1
-		$GPUParticles3D.fire()
+		if $GPUParticles3D:
+			$GPUParticles3D.fire()
 		SoundManager.playSfx(sfx)
 		if $GPUParticles3D:
 			$GPUParticles3D.fire()
@@ -41,7 +42,8 @@ func cash():
 func _on_timer_timeout() -> void:
 	if collected == true:
 		Economy.wheat += 1
-		$GPUParticles3D.fire()
+		if $GPUParticles3D:
+			$GPUParticles3D.fire()
 		self.queue_free()
 	else:
 		angular_damp = 3
@@ -50,5 +52,6 @@ func _on_timer_timeout() -> void:
 			$MeshInstance3D4.hide()
 			await get_tree().create_timer(0.07 - (i/70)).timeout
 			$MeshInstance3D4.show()
-		$GPUParticles3D2.fire()
+		if $GPUParticles3D2:
+			$GPUParticles3D2.fire()
 		self.queue_free()

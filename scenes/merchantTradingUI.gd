@@ -10,7 +10,8 @@ var priceMod = 1
 	"armour",
 	"monsterhunter charm",
 	"battery",
-	"agricultural bank"
+	"agricultural bank",
+	"bells"
 ]
 const perkBackup = [
 	"shoes",
@@ -18,7 +19,8 @@ const perkBackup = [
 	"armour",
 	"monsterhunter charm",
 	"battery",
-	"agricultural bank"
+	"agricultural bank",
+	"bells"
 ]
 const merchantDialogue = [
 	"Welcome to my humble travelling storefront, tiller of the soil... \n Let me know if anything here strikes your fancy, eh?",
