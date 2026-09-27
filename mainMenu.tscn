@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dxopg5y5v74r4"]
+
+[ext_resource type="Texture2D" uid="uid://biq5xkg5505dh" path="res://title.png" id="1_wut1r"]
+[ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="3_w7d22"]
+[ext_resource type="Texture2D" uid="uid://c722vtllflmsu" path="res://Screenshot_2026-09-27_at_18.51.48.png" id="3_wc2lj"]
+
+[sub_resource type="Animation" id="Animation_lc7k4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jn4p2"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ybq6y"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wc2lj"]
+_data = {
+&"RESET": SubResource("Animation_lc7k4"),
+&"fade_to_black": SubResource("Animation_jn4p2"),
+&"fade_to_normal": SubResource("Animation_ybq6y")
+}
+
+[node name="MainMenu" type="Control" unique_id=1169821851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 228.0
+offset_right = 133.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=1509062921]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=786497346]
+visible = false
+layout_mode = 0
+offset_left = -259.0
+offset_top = -200.0
+offset_right = 1727.6667
+offset_bottom = 829.3334
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_wut1r")
+
+[node name="TextureRect3" type="TextureRect" parent="Control" unique_id=425481901]
+visible = false
+layout_mode = 0
+offset_left = -278.0
+offset_top = 142.0
+offset_right = 2562.0
+offset_bottom = 1623.0
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("3_wc2lj")
+
+[node name="TransitionScene" type="CanvasLayer" parent="." unique_id=2117812083 node_paths=PackedStringArray("color_rect", "animation_player") groups=["transition"]]
+layer = 0
+script = ExtResource("3_w7d22")
+color_rect = NodePath("ColorRect")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScene" unique_id=1055687505]
+modulate = Color(1, 1, 1, 0)
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005405575, 3.760215e-07, 0.07697707, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScene" unique_id=1689732546]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_wc2lj")
+autoplay = &"fade_to_normal"

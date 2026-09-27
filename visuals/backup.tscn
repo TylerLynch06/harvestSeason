@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://6lhx05nooymu"]
+
+[ext_resource type="PackedScene" uid="uid://duqkqu1c5hemf" path="res://environment/environmentAssets/Branch by MiniPoly - Q8X1m9Fv4a.glb" id="1_y13ri"]
+
+[node name="Root Scene" unique_id=1358808632 instance=ExtResource("1_y13ri")]

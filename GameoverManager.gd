@@ -1,5 +1,6 @@
 extends Node
 
+var isInMainMenu =  true
 var isGameover = false
 var preparingGameReset = false
 var transitionHandler: Transition
@@ -15,6 +16,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !transitionHandler and get_tree().get_nodes_in_group("transition"):
 		transitionHandler = get_tree().get_nodes_in_group("transition")[0] 
+		
+	if isInMainMenu:
+		if Input.is_action_just_pressed("space"):
+			isInMainMenu = false
+			print("loading game")
+			restartGame()		
 		
 	if isGameover:
 		if !preparingGameReset:

@@ -97,6 +97,8 @@ func spawnRandomEnemy():
 		enemyIndex = rng.rand_weighted(spawnPoolWeights)
 		var tempEnemy = enemies[enemyIndex].instantiate() as Enemy
 		enemyPointValue = tempEnemy.SPAWN_VALUE
+		if currentWave <=2 and enemyIndex == 1:
+			enemyPointValue = INF
 		tempEnemy.free()
 	spawnEnemy(enemies[enemyIndex])
 	
