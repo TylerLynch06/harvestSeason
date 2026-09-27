@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://c2cvptpmugeh4" path="res://SFX/chimimin-a-goofy-and-silly-medieval-song-161310.mp3" id="2_gsvbo"]
 [ext_resource type="Script" uid="uid://bihqqufjewbtm" path="res://scripts/transition.gd" id="5_17vm4"]
 [ext_resource type="PackedScene" uid="uid://7qjvcp3bia46" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
+[ext_resource type="PackedScene" uid="uid://cvqg8aq7e1hp2" path="res://scenes/merchantUI.tscn" id="6_ac42p"]
+[ext_resource type="Script" uid="uid://bww01eskujgl1" path="res://campfire.gd" id="6_gsvbo"]
 [ext_resource type="PackedScene" uid="uid://x8o55qhf6dxx" path="res://spawn_square.tscn" id="27_ixhls"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_an527"]
@@ -102,6 +104,10 @@ albedo_color = Color(1, 1, 1, 0.078431375)
 
 [sub_resource type="SphereMesh" id="SphereMesh_10clc"]
 material = SubResource("StandardMaterial3D_8q6mp")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_10clc"]
+height = 20.0
+radius = 4.0
 
 [node name="Node3D2" type="Node3D" unique_id=150514529]
 script = ExtResource("1_ac42p")
@@ -373,3 +379,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.997, 1.5, -3.888)
 
 [node name="leave" type="Marker3D" parent="." unique_id=1800184204 groups=["leave"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.409, 1.5, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2016848336]
+script = ExtResource("6_gsvbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=699900767]
+shape = SubResource("CylinderShape3D_10clc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area3D" unique_id=1339963701]
+
+[node name="Label3D" type="Label3D" parent="Area3D" unique_id=1878889387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.861155, 0)
+billboard = 1
+text = "F to Eat"
+font_size = 64
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

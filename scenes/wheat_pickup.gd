@@ -33,6 +33,8 @@ func cash():
 		Economy.wheat += 1
 		$GPUParticles3D.fire()
 		SoundManager.playSfx(sfx)
+		if $GPUParticles3D:
+			$GPUParticles3D.fire()
 		self.queue_free()
 		
 		
